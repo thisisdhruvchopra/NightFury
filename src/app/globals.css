@@ -1,26 +1,111 @@
 @import "tailwindcss";
 
+@theme {
+  /* Official NightFury palette */
+  --color-night-950: #0a1622; /* Shadow Black */
+  --color-night-900: #0f2a44; /* Primary Blue */
+  --color-night-800: #163b5c; /* Secondary Blue */
+  --color-night-700: #1c3e5e; /* Divider Blue */
+  --color-night-600: #1c3e5e;
+  --color-night-500: #163b5c;
+  --color-flame-600: #d9741f; /* Dark Orange */
+  --color-flame-500: #f28c28; /* Accent Orange */
+  --color-flame-400: #f28c28;
+  --color-flame-300: #ffd36a; /* Warm Halogen Yellow */
+  --color-gold-500: #f2b705;  /* Car Yellow */
+  --color-mist-300: #ccd4dc;  /* Soft Grey White (desaturated for screen) */
+  --color-led-50: #f8faff;    /* Cool LED White */
+
+  --font-display: var(--font-montserrat);
+  --font-sans: var(--font-inter);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  color-scheme: dark;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-night-950);
+  color: var(--color-mist-300);
+  font-family: var(--font-sans), system-ui, sans-serif;
 }
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  color: var(--color-led-50);
+}
+
+::selection {
+  background: var(--color-flame-500);
+  color: var(--color-night-950);
+}
+
+/* Subtle carbon-fiber texture for hero backgrounds */
+.bg-carbon {
+  background-color: var(--color-night-950);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(15, 42, 68, 0.55), transparent),
+    repeating-linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.012) 0px,
+      rgba(255, 255, 255, 0.012) 2px,
+      transparent 2px,
+      transparent 6px
+    );
+}
+
+.text-gradient-flame {
+  background: linear-gradient(100deg, #ffd36a 0%, #f28c28 55%, #d9741f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Orange-stroke window frame, echoing the product box motif */
+.frame-flame {
+  border: 2px solid var(--color-flame-500);
+  border-radius: 1.25rem;
+  box-shadow:
+    0 0 0 1px rgba(242, 140, 40, 0.15),
+    0 0 40px rgba(242, 140, 40, 0.08) inset;
+}
+
+@keyframes beam-sweep {
+  0% { transform: translateX(-120%) skewX(-20deg); opacity: 0; }
+  40% { opacity: 0.6; }
+  100% { transform: translateX(320%) skewX(-20deg); opacity: 0; }
+}
+
+.beam-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 35%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.06), transparent);
+  animation: beam-sweep 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 24s linear infinite;
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
