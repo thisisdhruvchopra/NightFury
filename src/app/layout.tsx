@@ -3,6 +3,7 @@ import { Montserrat, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import TopBar from "@/components/TopBar";
 import Footer from "@/components/Footer";
 
 const montserrat = Montserrat({
@@ -34,6 +35,7 @@ export default function RootLayout({
       className={`${montserrat.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <TopBar />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
