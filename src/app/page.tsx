@@ -1,10 +1,8 @@
 import Link from "next/link";
 import { SUB_BRANDS } from "@/lib/products";
 import Testimonials from "@/components/Testimonials";
-import StarRating from "@/components/StarRating";
 import {
   TachDial,
-  SpeedChevrons,
   RoadDivider,
   CarSilhouette,
   BikeSilhouette,
@@ -13,14 +11,14 @@ import {
 
 const STATS = [
   {
-    value: "18 Months",
+    value: "18 months",
     label: "Warranty on lighting",
     icon: <path d="M12 2 3 6v6c0 5 3.8 9 9 10 5.2-1 9-5 9-10V6l-9-4zM8.5 12l2.5 2.5L16 9.5" />,
   },
   {
-    value: "4.8 / 5",
-    label: "Average owner rating",
-    icon: <path d="M12 2.5l2.9 5.9 6.6 1-4.7 4.6 1.1 6.5L12 17.4l-5.9 3.1 1.1-6.5L2.5 9.4l6.6-1L12 2.5z" />,
+    value: "IP67",
+    label: "Water & dust rated",
+    icon: <path d="M12 3C12 3 5 11 5 15.5a7 7 0 0 0 14 0C19 11 12 3 12 3z" />,
   },
   {
     value: "100%",
@@ -33,7 +31,7 @@ const STATS = [
     ),
   },
   {
-    value: "3 Lines",
+    value: "3 lines",
     label: "Vision · Aroma · Care",
     icon: <path d="M2 17l5-10 4 7 3-4 3 7h4" />,
   },
@@ -41,19 +39,19 @@ const STATS = [
 
 const PILLARS = [
   {
-    title: "Engineered, Not Assembled",
+    title: "Engineered, not assembled",
     body: "Every NightFury product passes thermal, vibration and endurance testing before it earns the badge. We reject entire batches over a single failure.",
     icon: (
       <path d="M12 2 2 7v6c0 5.5 4.3 10 10 11 5.7-1 10-5.5 10-11V7l-10-5zM9 12l2 2 4-4" />
     ),
   },
   {
-    title: "18-Month Warranty",
+    title: "18-month warranty",
     body: "We back our lighting with one of the longest warranties in the segment, because products built right don't come back.",
     icon: <path d="M12 8v5l3 2M21 12a9 9 0 1 1-9-9 9 9 0 0 1 9 9z" />,
   },
   {
-    title: "Dealer-First Network",
+    title: "Dealer-first network",
     body: "From metro accessory hubs to highway service points, our growing partner network keeps genuine NightFury parts within reach.",
     icon: <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8" />,
   },
@@ -64,39 +62,31 @@ export default function Home() {
     <>
       {/* ============ HERO ============ */}
       <section className="bg-carbon relative overflow-hidden">
-        {/* tachometer backdrop */}
-        <TachDial className="pointer-events-none absolute -right-24 top-1/2 hidden h-[34rem] w-[34rem] -translate-y-1/2 text-slate-400 opacity-[0.13] lg:block" />
-        <TachDial className="pointer-events-none absolute -left-44 top-1/2 hidden h-[26rem] w-[26rem] -translate-y-1/2 text-slate-400 opacity-[0.09] lg:block" />
-        <div className="beam-sweep relative mx-auto flex min-h-[82vh] max-w-7xl flex-col items-center justify-center px-5 py-24 text-center">
-          <p className="animate-fade-up rounded-full border border-flame-500/30 bg-flame-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] text-flame-400">
-            Premium Automotive Parts &amp; Accessories
+        <TachDial className="pointer-events-none absolute -right-24 top-1/2 hidden h-[34rem] w-[34rem] -translate-y-1/2 text-slate-400 opacity-[0.1] lg:block" />
+        <div className="relative mx-auto flex min-h-[78vh] max-w-7xl flex-col items-center justify-center px-5 py-24 text-center">
+          <p className="animate-fade-up text-xs font-semibold uppercase tracking-wider text-flame-400">
+            Premium automotive parts &amp; accessories
           </p>
-          <h1 className="animate-fade-up delay-100 mt-8 font-display text-5xl font-extrabold italic tracking-tight text-white md:text-7xl">
-            Night<span className="text-gradient-flame">Fury</span>
+          <h1 className="animate-fade-up delay-100 mt-6 font-display text-5xl font-bold italic tracking-tight md:text-7xl">
+            Night<span className="text-flame-500">Fury</span>
           </h1>
-          <p className="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-relaxed text-slate-300 md:text-xl">
-            One brand. One standard. Lighting that owns the dark, fragrance that
-            defines your cabin, and care that keeps every drive showroom-fresh.
+          <p className="animate-fade-up delay-200 mt-6 max-w-2xl text-lg leading-relaxed text-slate-300">
+            Lighting that owns the dark, fragrance that defines your cabin, and
+            care that keeps every drive showroom-fresh. One brand, one standard.
           </p>
           <div className="animate-fade-up delay-300 mt-10 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/vision"
-              className="rounded-md bg-flame-500 px-7 py-3.5 text-sm font-extrabold uppercase tracking-wider text-night-950 transition-colors hover:bg-flame-600"
+              className="rounded-md bg-flame-500 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-flame-600"
             >
-              Explore Products
+              Explore products
             </Link>
             <a
               href="#brands"
-              className="rounded-md border border-white/15 px-7 py-3.5 text-sm font-extrabold uppercase tracking-wider text-white transition-colors hover:border-flame-500/60"
+              className="rounded-md border border-white/15 px-7 py-3 text-sm font-semibold text-white transition-colors hover:border-flame-500/60"
             >
-              The NightFury Range
+              View the range
             </a>
-          </div>
-          <div className="animate-fade-up delay-300 mt-12 flex items-center gap-3">
-            <StarRating rating={5} size={18} />
-            <span className="text-sm text-slate-400">
-              Rated 4.8/5 by verified owners across India
-            </span>
           </div>
         </div>
       </section>
@@ -107,8 +97,8 @@ export default function Home() {
           {STATS.map((s) => (
             <div key={s.label} className="flex flex-col items-center px-6 py-10 text-center">
               <svg
-                width="30"
-                height="30"
+                width="28"
+                height="28"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="#f28c28"
@@ -118,12 +108,10 @@ export default function Home() {
               >
                 {s.icon}
               </svg>
-              <div className="mt-3 font-display text-2xl font-extrabold text-flame-400 md:text-3xl">
+              <div className="mt-3 font-display text-2xl font-bold text-white">
                 {s.value}
               </div>
-              <div className="mt-1.5 text-xs font-semibold uppercase tracking-wider text-slate-400">
-                {s.label}
-              </div>
+              <div className="mt-1 text-sm text-slate-400">{s.label}</div>
             </div>
           ))}
         </div>
@@ -132,15 +120,11 @@ export default function Home() {
       {/* ============ SUB-BRANDS ============ */}
       <section id="brands" className="py-24">
         <div className="mx-auto max-w-7xl px-5">
-          <div className="flex items-center justify-center gap-4">
-            <SpeedChevrons className="h-4 w-12 -scale-x-100" />
-            <p className="text-center text-xs font-bold uppercase tracking-[0.3em] text-flame-500">
-              Three Lines. One Standard.
-            </p>
-            <SpeedChevrons className="h-4 w-12" />
-          </div>
-          <h2 className="mt-3 text-center text-3xl font-extrabold text-white md:text-4xl">
-            The NightFury Range
+          <p className="text-center text-xs font-semibold uppercase tracking-wider text-flame-400">
+            Our product lines
+          </p>
+          <h2 className="mt-3 text-center text-3xl font-bold md:text-4xl">
+            The NightFury range
           </h2>
 
           <div className="mt-14 grid gap-8 lg:grid-cols-3">
@@ -148,17 +132,13 @@ export default function Home() {
               <Link
                 key={b.slug}
                 href={`/${b.slug}`}
-                className="group frame-flame relative flex flex-col overflow-hidden bg-night-900/80 p-8 transition-transform hover:-translate-y-1.5"
-                style={{ borderColor: "rgba(242,140,40,0.35)" }}
+                className="group flex flex-col rounded-2xl border border-white/10 bg-night-900/80 p-8 transition-colors hover:border-flame-500/40"
               >
                 <BrandGlyph slug={b.slug} />
-                <h3 className="mt-6 font-display text-2xl font-extrabold italic text-white">
+                <h3 className="mt-6 font-display text-2xl font-semibold">
                   {b.name.replace("NightFury ", "")}
-                  <span className="ml-2 align-middle text-xs font-bold not-italic uppercase tracking-widest text-slate-500">
-                    by NightFury
-                  </span>
                 </h3>
-                <p className="mt-1 text-sm font-bold uppercase tracking-[0.2em] text-flame-400">
+                <p className="mt-1 text-sm font-medium text-flame-400">
                   {b.tagline}
                 </p>
                 <p className="mt-4 flex-1 text-sm leading-relaxed text-slate-400">
@@ -172,9 +152,9 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <span className="mt-8 inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-wider text-flame-400 transition-colors group-hover:text-flame-300">
+                <span className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-flame-400 transition-colors group-hover:text-flame-300">
                   Explore {b.name.replace("NightFury ", "")}
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
                 </span>
@@ -197,18 +177,16 @@ export default function Home() {
         <div className="relative mx-auto max-w-7xl px-5">
           <div className="grid items-center gap-14 lg:grid-cols-2">
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.3em] text-flame-500">
-                The NightFury Standard
+              <p className="text-xs font-semibold uppercase tracking-wider text-flame-400">
+                The NightFury standard
               </p>
-              <h2 className="mt-3 text-3xl font-extrabold leading-tight text-white md:text-4xl">
-                Built Like a Performance Brand.
-                <br />
-                Priced Like It Respects You.
+              <h2 className="mt-3 text-3xl font-bold leading-tight md:text-4xl">
+                Built like a performance brand
               </h2>
               <p className="mt-5 max-w-xl leading-relaxed text-slate-400">
                 The aftermarket is flooded with unbranded parts that fail in
                 months. NightFury exists for drivers and riders who want
-                OEM-plus quality with a face behind it, real warranties, real
+                OEM-plus quality with a face behind it: real warranties, real
                 dealers, real accountability.
               </p>
             </div>
@@ -221,7 +199,7 @@ export default function Home() {
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-bold text-white">{p.title}</h3>
+                    <h3 className="font-semibold">{p.title}</h3>
                     <p className="mt-1.5 text-sm leading-relaxed text-slate-400">{p.body}</p>
                   </div>
                 </div>
@@ -238,8 +216,8 @@ export default function Home() {
         <CarSilhouette className="pointer-events-none absolute bottom-10 left-0 hidden h-28 w-auto -scale-x-100 text-slate-400 opacity-[0.14] lg:block" />
         <BikeSilhouette className="pointer-events-none absolute bottom-10 right-2 hidden h-28 w-auto text-slate-400 opacity-[0.14] lg:block" />
         <div className="relative mx-auto max-w-4xl px-5 text-center">
-          <h2 className="font-display text-3xl font-extrabold italic text-white md:text-5xl">
-            Ready to <span className="text-gradient-flame">Drive the Difference?</span>
+          <h2 className="font-display text-3xl font-bold md:text-4xl">
+            Ready to <span className="text-flame-500">drive the difference?</span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-slate-400">
             Find NightFury at your nearest accessories dealer, or partner with
@@ -248,15 +226,15 @@ export default function Home() {
           <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
             <Link
               href="/vision"
-              className="rounded-md bg-flame-500 px-7 py-3.5 text-sm font-extrabold uppercase tracking-wider text-night-950 transition-colors hover:bg-flame-600"
+              className="rounded-md bg-flame-500 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-flame-600"
             >
-              Browse the Range
+              Browse the range
             </Link>
             <a
               href="#contact"
-              className="rounded-md border border-white/15 px-7 py-3.5 text-sm font-extrabold uppercase tracking-wider text-white transition-colors hover:border-flame-500/60"
+              className="rounded-md border border-white/15 px-7 py-3 text-sm font-semibold text-white transition-colors hover:border-flame-500/60"
             >
-              Find Nearby Dealer
+              Find nearby dealer
             </a>
           </div>
         </div>

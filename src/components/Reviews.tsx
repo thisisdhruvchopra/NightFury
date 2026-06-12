@@ -2,26 +2,34 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { supabase, REVIEW_MEDIA_BUCKET } from "@/lib/supabase";
-import type { Review } from "@/lib/reviews-seed";
 import StarRating from "./StarRating";
 
 type ProductOption = { slug: string; name: string };
+
+type ReviewMedia = { type: "image" | "video"; url: string };
+
+type Review = {
+  id: string;
+  productSlug: string;
+  name: string;
+  location?: string;
+  rating: number;
+  title: string;
+  body: string;
+  date: string;
+  media: ReviewMedia[];
+};
 
 type PendingFile = { file: File; previewUrl: string; type: "image" | "video" };
 
 const MAX_FILES = 4;
 const MAX_FILE_MB = 25;
 
-export default function Reviews({
-  products,
-  seedReviews,
-}: {
-  products: ProductOption[];
-  seedReviews: Review[];
-}) {
+export default function Reviews({ products }: { products: ProductOption[] }) {
   const [remote, setRemote] = useState<Review[]>([]);
   const [local, setLocal] = useState<Review[]>([]);
   const [filter, setFilter] = useState<string>("all");
+  const [lightbox, setLightbox] = useState<ReviewMedia | null>(null);
 
   // form state
   const [name, setName] = useState("");
@@ -56,17 +64,26 @@ export default function Reviews({
             title: r.title,
             body: r.body,
             date: (r.created_at as string).slice(0, 10),
-            verified: false,
-            media: (r.media as Review["media"]) ?? [],
+            media: (r.media as ReviewMedia[]) ?? [],
           })),
         );
       });
   }, [slugs]);
 
+  // close lightbox on Escape
+  useEffect(() => {
+    if (!lightbox) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setLightbox(null);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [lightbox]);
+
   const all = useMemo(() => {
-    const merged = [...local, ...remote, ...seedReviews];
+    const merged = [...local, ...remote];
     return filter === "all" ? merged : merged.filter((r) => r.productSlug === filter);
-  }, [local, remote, seedReviews, filter]);
+  }, [local, remote, filter]);
 
   const avg = useMemo(() => {
     if (all.length === 0) return 0;
@@ -109,7 +126,7 @@ export default function Reviews({
     setNotice(null);
 
     try {
-      let media: Review["media"] = [];
+      let media: ReviewMedia[] = [];
 
       if (supabase) {
         for (const pf of files) {
@@ -144,7 +161,6 @@ export default function Reviews({
         title: title.trim(),
         body: body.trim(),
         date: new Date().toISOString().slice(0, 10),
-        verified: false,
         media,
       };
       setLocal((l) => [newReview, ...l]);
@@ -168,23 +184,27 @@ export default function Reviews({
   return (
     <section className="py-20" id="reviews">
       <div className="mx-auto max-w-7xl px-5">
-        <p className="text-xs font-bold uppercase tracking-[0.3em] text-flame-500">
-          Customer Reviews
+        <p className="text-xs font-semibold uppercase tracking-wider text-flame-400">
+          Customer reviews
         </p>
         <div className="mt-3 flex flex-wrap items-end justify-between gap-4">
-          <h2 className="text-3xl font-extrabold text-white md:text-4xl">
-            Rated {avg} / 5 by Real Owners
+          <h2 className="text-3xl font-bold md:text-4xl">
+            What owners say
           </h2>
-          <div className="flex items-center gap-2">
-            <StarRating rating={Math.round(avg)} size={20} />
-            <span className="text-sm text-slate-400">({all.length} reviews)</span>
-          </div>
+          {all.length > 0 && (
+            <div className="flex items-center gap-2">
+              <StarRating rating={Math.round(avg)} size={18} />
+              <span className="text-sm text-slate-400">
+                {avg} / 5 · {all.length} {all.length === 1 ? "review" : "reviews"}
+              </span>
+            </div>
+          )}
         </div>
 
-        {products.length > 1 && (
+        {products.length > 1 && all.length > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
             <FilterChip active={filter === "all"} onClick={() => setFilter("all")}>
-              All Products
+              All products
             </FilterChip>
             {products.map((p) => (
               <FilterChip key={p.slug} active={filter === p.slug} onClick={() => setFilter(p.slug)}>
@@ -204,18 +224,11 @@ export default function Reviews({
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-flame-500/15 font-display text-sm font-extrabold text-flame-400">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-flame-500/15 text-sm font-semibold text-flame-400">
                       {r.name.split(" ").map((w) => w[0]).slice(0, 2).join("")}
                     </div>
                     <div>
-                      <div className="flex items-center gap-2 text-sm font-bold text-white">
-                        {r.name}
-                        {r.verified && (
-                          <span className="rounded bg-flame-500/15 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-flame-400">
-                            Verified Buyer
-                          </span>
-                        )}
-                      </div>
+                      <div className="text-sm font-semibold text-white">{r.name}</div>
                       <div className="text-xs text-slate-500">
                         {r.location ? `${r.location} · ` : ""}{r.date}
                       </div>
@@ -224,38 +237,54 @@ export default function Reviews({
                   <StarRating rating={r.rating} size={14} />
                 </div>
 
-                <h3 className="mt-4 text-sm font-bold text-white">{r.title}</h3>
+                <h3 className="mt-4 text-sm font-semibold text-white">{r.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-slate-300">{r.body}</p>
-                <p className="mt-3 text-xs font-semibold text-slate-500">
+                <p className="mt-3 text-xs text-slate-500">
                   Product: <span className="text-slate-400">{productName(r.productSlug)}</span>
                 </p>
 
                 {r.media.length > 0 && (
                   <div className="mt-4 flex flex-wrap gap-3">
-                    {r.media.map((m, i) =>
-                      m.type === "video" ? (
-                        <video
-                          key={i}
-                          src={m.url}
-                          controls
-                          className="h-28 rounded-lg border border-white/10"
-                        />
-                      ) : (
-                        // eslint-disable-next-line @next/next/no-img-element
-                        <img
-                          key={i}
-                          src={m.url}
-                          alt="Customer upload"
-                          className="h-28 rounded-lg border border-white/10 object-cover"
-                        />
-                      ),
-                    )}
+                    {r.media.map((m, i) => (
+                      <button
+                        key={i}
+                        type="button"
+                        onClick={() => setLightbox(m)}
+                        className="group/media relative cursor-pointer overflow-hidden rounded-lg border border-white/10 transition-colors hover:border-flame-500/60"
+                        aria-label="View media"
+                      >
+                        {m.type === "video" ? (
+                          <>
+                            <video src={m.url} muted preload="metadata" className="h-28 w-36 object-cover" />
+                            <span className="absolute inset-0 flex items-center justify-center bg-black/30">
+                              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/90">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#0a1622">
+                                  <path d="M8 5v14l11-7z" />
+                                </svg>
+                              </span>
+                            </span>
+                          </>
+                        ) : (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={m.url}
+                            alt="Customer upload"
+                            className="h-28 w-28 object-cover transition-transform group-hover/media:scale-105"
+                          />
+                        )}
+                      </button>
+                    ))}
                   </div>
                 )}
               </article>
             ))}
             {all.length === 0 && (
-              <p className="text-sm text-slate-500">No reviews yet for this product.</p>
+              <div className="rounded-2xl border border-dashed border-white/10 p-10 text-center">
+                <p className="text-sm font-medium text-slate-300">No reviews yet</p>
+                <p className="mt-1 text-sm text-slate-500">
+                  Own one of these products? Be the first to share your experience.
+                </p>
+              </div>
             )}
           </div>
 
@@ -265,9 +294,9 @@ export default function Reviews({
               onSubmit={handleSubmit}
               className="sticky top-24 rounded-2xl border border-white/5 bg-night-800/50 p-7"
             >
-              <h3 className="text-lg font-extrabold text-white">Write a Review</h3>
+              <h3 className="text-lg font-semibold text-white">Write a review</h3>
               <p className="mt-1 text-xs text-slate-400">
-                Share your experience, photos and videos welcome.
+                Share your experience. Photos and videos welcome.
               </p>
 
               <div className="mt-5 space-y-4">
@@ -366,7 +395,7 @@ export default function Reviews({
                             type="button"
                             onClick={() => removeFile(i)}
                             aria-label="Remove file"
-                            className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-flame-500 text-[11px] font-bold text-night-950"
+                            className="absolute -right-1.5 -top-1.5 flex h-5 w-5 items-center justify-center rounded-full bg-flame-500 text-[11px] font-bold text-white"
                           >
                             ×
                           </button>
@@ -378,7 +407,7 @@ export default function Reviews({
 
                 {notice && (
                   <p
-                    className={`text-xs font-semibold ${
+                    className={`text-xs font-medium ${
                       notice.kind === "ok" ? "text-emerald-400" : "text-red-400"
                     }`}
                   >
@@ -389,21 +418,54 @@ export default function Reviews({
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="w-full rounded-lg bg-flame-500 py-3 text-sm font-extrabold uppercase tracking-wider text-night-950 transition-colors hover:bg-flame-600 disabled:opacity-60"
+                  className="w-full rounded-lg bg-flame-500 py-3 text-sm font-semibold text-white transition-colors hover:bg-flame-600 disabled:opacity-60"
                 >
-                  {submitting ? "Posting..." : "Post Review"}
+                  {submitting ? "Posting..." : "Post review"}
                 </button>
-
-                {!supabase && (
-                  <p className="text-center text-[11px] text-slate-600">
-                    Demo mode, connect Supabase to persist reviews.
-                  </p>
-                )}
               </div>
             </form>
           </div>
         </div>
       </div>
+
+      {/* ============ LIGHTBOX ============ */}
+      {lightbox && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-night-950/90 p-4 backdrop-blur-sm"
+          onClick={() => setLightbox(null)}
+          role="dialog"
+          aria-modal="true"
+        >
+          <button
+            type="button"
+            onClick={() => setLightbox(null)}
+            aria-label="Close"
+            className="absolute right-5 top-5 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-xl text-white transition-colors hover:bg-flame-500"
+          >
+            ×
+          </button>
+          <div
+            className="max-h-[85vh] max-w-[90vw]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {lightbox.type === "video" ? (
+              <video
+                src={lightbox.url}
+                controls
+                autoPlay
+                className="max-h-[85vh] max-w-[90vw] rounded-xl"
+              />
+            ) : (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={lightbox.url}
+                alt="Customer upload"
+                className="max-h-[85vh] max-w-[90vw] rounded-xl object-contain"
+              />
+            )}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
@@ -420,9 +482,9 @@ function FilterChip({
   return (
     <button
       onClick={onClick}
-      className={`rounded-full px-4 py-1.5 text-xs font-bold transition-colors ${
+      className={`rounded-full px-4 py-1.5 text-xs font-semibold transition-colors ${
         active
-          ? "bg-flame-500 text-night-950"
+          ? "bg-flame-500 text-white"
           : "border border-white/10 text-slate-400 hover:border-flame-500/40 hover:text-white"
       }`}
     >

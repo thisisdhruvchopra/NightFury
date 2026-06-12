@@ -12,7 +12,7 @@ export default function Footer() {
             we actually drive on. Vision. Aroma. Care. One standard, the
             NightFury standard.
           </p>
-          <p className="mt-6 text-xs font-bold uppercase tracking-[0.25em] text-flame-500">
+          <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-flame-400">
             Drive the Difference
           </p>
         </div>

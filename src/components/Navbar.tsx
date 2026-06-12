@@ -42,7 +42,7 @@ export default function Navbar() {
 
         <a
           href="#contact"
-          className="hidden rounded-md bg-flame-500 px-4 py-2 text-sm font-bold text-night-950 transition-colors hover:bg-flame-600 md:block"
+          className="hidden rounded-md bg-flame-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-flame-600 md:block"
         >
           Find Nearby Dealer
         </a>
