@@ -80,6 +80,8 @@ export default function Reviews({ products }: { products: ProductOption[] }) {
     return () => window.removeEventListener("keydown", onKey);
   }, [lightbox]);
 
+  const totalCount = local.length + remote.length;
+
   const all = useMemo(() => {
     const merged = [...local, ...remote];
     return filter === "all" ? merged : merged.filter((r) => r.productSlug === filter);
@@ -201,7 +203,7 @@ export default function Reviews({ products }: { products: ProductOption[] }) {
           )}
         </div>
 
-        {products.length > 1 && all.length > 0 && (
+        {products.length > 1 && totalCount > 0 && (
           <div className="mt-6 flex flex-wrap gap-2">
             <FilterChip active={filter === "all"} onClick={() => setFilter("all")}>
               All products
