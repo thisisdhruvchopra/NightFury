@@ -10,6 +10,8 @@ export type Product = {
   image?: string;
   /** Which built-in SVG box art to render when no photo exists. */
   boxArt?: "led2w" | "microfiber" | "wipes";
+  /** Selectable output options, e.g. wattages. */
+  wattOptions?: string[];
   badge?: string;
 };
 
@@ -37,9 +39,9 @@ export const SUB_BRANDS: SubBrand[] = [
         variant: "Pair Pack",
         tagline: "Superior visibility on the road",
         description:
-          "Our flagship 250W LED pair turns night into day with dual 6000K / 4300K color temperature modes and full-width road coverage. CANBUS integration means zero dashboard errors, plug in and drive.",
+          "Our flagship LED pair, available in 240W and 300W outputs, turns night into day with dual 6000K / 4300K color temperature modes and full-width road coverage. CANBUS integration means zero dashboard errors, plug in and drive.",
         features: [
-          "Ultra bright 250W output",
+          "Available in 240W and 300W",
           "Cool 6000K / 4300K color temperature",
           "Life span up to 5,000 hours",
           "CANBUS integration, no error codes",
@@ -47,14 +49,15 @@ export const SUB_BRANDS: SubBrand[] = [
           "Excellent road coverage",
         ],
         specs: [
-          { label: "Power", value: "250W (pair)" },
+          { label: "Power", value: "240W / 300W" },
           { label: "Voltage", value: "9V-32V" },
           { label: "Color Temp", value: "6000K / 4300K" },
           { label: "Life Span", value: "5,000 hours" },
           { label: "Warranty", value: "18 months" },
           { label: "Pack", value: "Pair Pack" },
         ],
-        image: "/products/vision-led-4w.png",
+        image: "/media/products/4whled.png",
+        wattOptions: ["240W", "300W"],
         badge: "Premium Edition",
       },
       {

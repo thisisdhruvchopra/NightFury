@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { supabase, REVIEW_MEDIA_BUCKET } from "@/lib/supabase";
 import StarRating from "./StarRating";
 
-type ProductOption = { slug: string; name: string };
+type ProductOption = { slug: string; name: string; wattOptions?: string[] };
 
 type ReviewMedia = { type: "image" | "video"; url: string };
 
@@ -18,6 +18,7 @@ type Review = {
   body: string;
   date: string;
   media: ReviewMedia[];
+  variant?: string;
 };
 
 type PendingFile = { file: File; previewUrl: string; type: "image" | "video" };
@@ -34,6 +35,9 @@ export default function Reviews({ products }: { products: ProductOption[] }) {
   // form state
   const [name, setName] = useState("");
   const [productSlug, setProductSlug] = useState(products[0]?.slug ?? "");
+  const [watt, setWatt] = useState<string | null>(
+    products[0]?.wattOptions?.[0] ?? null,
+  );
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
   const [title, setTitle] = useState("");
@@ -65,6 +69,7 @@ export default function Reviews({ products }: { products: ProductOption[] }) {
             body: r.body,
             date: (r.created_at as string).slice(0, 10),
             media: (r.media as ReviewMedia[]) ?? [],
+            variant: r.variant ?? undefined,
           })),
         );
       });
@@ -141,14 +146,21 @@ export default function Reviews({ products }: { products: ProductOption[] }) {
           media.push({ type: pf.type, url: pub.publicUrl });
         }
 
-        const { error: insErr } = await supabase.from("reviews").insert({
+        const row: Record<string, unknown> = {
           product_slug: productSlug,
           name: name.trim(),
           rating,
           title: title.trim(),
           body: body.trim(),
           media,
-        });
+        };
+        if (watt) row.variant = watt;
+        let { error: insErr } = await supabase.from("reviews").insert(row);
+        // Retry without variant if the column doesn't exist yet.
+        if (insErr && watt && /variant/i.test(insErr.message)) {
+          delete row.variant;
+          ({ error: insErr } = await supabase.from("reviews").insert(row));
+        }
         if (insErr) throw new Error(insErr.message);
       } else {
         // Demo mode: keep media as local object URLs for this session.
@@ -164,6 +176,7 @@ export default function Reviews({ products }: { products: ProductOption[] }) {
         body: body.trim(),
         date: new Date().toISOString().slice(0, 10),
         media,
+        variant: watt ?? undefined,
       };
       setLocal((l) => [newReview, ...l]);
       setName("");
@@ -242,7 +255,11 @@ export default function Reviews({ products }: { products: ProductOption[] }) {
                 <h3 className="mt-4 text-sm font-semibold text-white">{r.title}</h3>
                 <p className="mt-1.5 text-sm leading-relaxed text-slate-300">{r.body}</p>
                 <p className="mt-3 text-xs text-slate-500">
-                  Product: <span className="text-slate-400">{productName(r.productSlug)}</span>
+                  Product:{" "}
+                  <span className="text-slate-400">
+                    {productName(r.productSlug)}
+                    {r.variant ? ` · ${r.variant}` : ""}
+                  </span>
                 </p>
 
                 {r.media.length > 0 && (
@@ -312,7 +329,13 @@ export default function Reviews({ products }: { products: ProductOption[] }) {
                 <select
                   className={inputCls}
                   value={productSlug}
-                  onChange={(e) => setProductSlug(e.target.value)}
+                  onChange={(e) => {
+                    setProductSlug(e.target.value);
+                    setWatt(
+                      products.find((p) => p.slug === e.target.value)
+                        ?.wattOptions?.[0] ?? null,
+                    );
+                  }}
                 >
                   {products.map((p) => (
                     <option key={p.slug} value={p.slug} className="bg-night-900">
@@ -320,6 +343,30 @@ export default function Reviews({ products }: { products: ProductOption[] }) {
                     </option>
                   ))}
                 </select>
+
+                {(() => {
+                  const opts = products.find((p) => p.slug === productSlug)?.wattOptions;
+                  if (!opts) return null;
+                  return (
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-slate-400">Output:</span>
+                      {opts.map((w) => (
+                        <button
+                          key={w}
+                          type="button"
+                          onClick={() => setWatt(w)}
+                          className={`rounded-md border px-3.5 py-1.5 text-xs font-semibold transition-colors ${
+                            watt === w
+                              ? "border-flame-500 bg-flame-500/10 text-flame-400"
+                              : "border-white/15 text-slate-300 hover:border-flame-500/50"
+                          }`}
+                        >
+                          {w}
+                        </button>
+                      ))}
+                    </div>
+                  );
+                })()}
 
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-slate-400">Your rating:</span>

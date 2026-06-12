@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getSubBrand } from "@/lib/products";
 import ProductVisual from "./ProductVisual";
+import ProductDetail from "./ProductDetail";
 import Reviews from "./Reviews";
 import {
   TachDial,
@@ -13,7 +14,11 @@ export default function SubBrandPage({ slug }: { slug: string }) {
   const brand = getSubBrand(slug);
   if (!brand) notFound();
 
-  const productOptions = brand.products.map((p) => ({ slug: p.slug, name: p.name }));
+  const productOptions = brand.products.map((p) => ({
+    slug: p.slug,
+    name: p.name,
+    wattOptions: p.wattOptions,
+  }));
 
   return (
     <>
@@ -61,41 +66,7 @@ export default function SubBrandPage({ slug }: { slug: string }) {
               </div>
 
               {/* Copy */}
-              <div>
-                {p.badge && (
-                  <span className="inline-block rounded-full bg-flame-500/15 px-3 py-1 text-xs font-semibold text-flame-400">
-                    {p.badge}
-                  </span>
-                )}
-                <h2 className="mt-4 text-3xl font-bold md:text-4xl">
-                  {p.name}
-                </h2>
-                {p.variant && (
-                  <p className="mt-1 text-sm text-slate-500">{p.variant}</p>
-                )}
-                <p className="mt-2 text-lg font-medium text-flame-400">{p.tagline}</p>
-                <p className="mt-5 leading-relaxed text-slate-300">{p.description}</p>
-
-                <ul className="mt-7 grid gap-2.5 sm:grid-cols-2">
-                  {p.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300">
-                      <svg className="mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f28c28" strokeWidth="2">
-                        <path d="M5 13l4 4L19 7" />
-                      </svg>
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-3">
-                  {p.specs.map((s) => (
-                    <div key={s.label} className="bg-night-900 px-4 py-3.5">
-                      <div className="text-xs text-slate-500">{s.label}</div>
-                      <div className="mt-0.5 text-sm font-semibold text-white">{s.value}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <ProductDetail product={p} />
             </article>
           ))}
         </div>

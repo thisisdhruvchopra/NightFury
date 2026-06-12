@@ -9,8 +9,12 @@ create table if not exists public.reviews (
   rating int not null check (rating between 1 and 5),
   title text not null,
   body text not null,
-  media jsonb not null default '[]'::jsonb
+  media jsonb not null default '[]'::jsonb,
+  variant text
 );
+
+-- If the table already exists from an earlier version, add the column:
+alter table public.reviews add column if not exists variant text;
 
 alter table public.reviews enable row level security;
 

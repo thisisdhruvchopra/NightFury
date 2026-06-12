@@ -22,13 +22,15 @@ export default function ProductVisual({
 
   if (showImage) {
     return (
-      // eslint-disable-next-line @next/next/no-img-element
-      <img
-        src={product.image}
-        alt={product.name}
-        className={`h-full w-full object-contain ${className}`}
-        onError={() => setImgFailed(true)}
-      />
+      <div className={`flex h-full w-full items-center justify-center rounded-xl bg-white p-4 ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={product.image}
+          alt={product.name}
+          className="max-h-full max-w-full object-contain"
+          onError={() => setImgFailed(true)}
+        />
+      </div>
     );
   }
 
