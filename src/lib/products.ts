@@ -65,7 +65,7 @@ export const SUB_BRANDS: SubBrand[] = [
         description:
           "Compact, vibration-tested LED engineered for motorcycles and scooters. The same NightFury optics as our 4-wheeler flagship, packed into a fan-cooled unit that shrugs off monsoons and washboard roads.",
         features: [
-          "Ultra bright 120W output",
+          "Ultra bright 60W output",
           "Cool 6000K / 4300K color temperature",
           "Vibration-tested for two-wheelers",
           "IP67 water & dust resistant",
@@ -73,7 +73,7 @@ export const SUB_BRANDS: SubBrand[] = [
           "Universal H4 fitment",
         ],
         specs: [
-          { label: "Power", value: "120W" },
+          { label: "Power", value: "60W" },
           { label: "Voltage", value: "9V-32V" },
           { label: "Color Temp", value: "6000K / 4300K" },
           { label: "Rating", value: "IP67" },
@@ -94,8 +94,8 @@ export const SUB_BRANDS: SubBrand[] = [
     products: [
       {
         slug: "aroma-hanging",
-        name: "Hanging Bottle Car Perfume",
-        variant: "Ocean Breeze · 8 ml",
+        name: "Aroma Essence",
+        variant: "Hanging Bottle · Ocean Breeze · 8 ml",
         tagline: "Premium fragrance, suspended in glass",
         description:
           "A faceted glass bottle with a braided cord and natural wood cap, filled with 8 ml of slow-release premium fragrance oil. Ocean Breeze keeps the cabin fresh for weeks, not days.",
@@ -117,8 +117,8 @@ export const SUB_BRANDS: SubBrand[] = [
       },
       {
         slug: "aroma-spray",
-        name: "Spray Car Perfume",
-        variant: "Midnight Noir · 50 ml",
+        name: "Aroma Elite",
+        variant: "Spray + Hanging Card · Midnight Noir · 50 ml",
         tagline: "Spray. Hang. Arrive.",
         description:
           "A matte-black 50 ml atomizer paired with a NightFury hanging card. Mist the card, hang it from your mirror, and refresh whenever you want, one bottle outlasts a dozen disposable fresheners.",
