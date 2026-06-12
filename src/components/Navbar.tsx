@@ -4,8 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Logo from "./Logo";
-import SearchBar from "./SearchBar";
-import DistributorModal from "./DistributorModal";
 
 const LINKS = [
   { href: "/", label: "Home" },
@@ -17,23 +15,20 @@ const LINKS = [
 export default function Navbar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [showDealer, setShowDealer] = useState(false);
 
   return (
     <header className="sticky top-0 z-50 border-b border-white/5 bg-night-950/85 backdrop-blur-md">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center gap-5 px-5">
-        <Logo className="shrink-0" />
+      <nav className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
+        <Logo />
 
-        <SearchBar className="hidden w-full max-w-xs flex-1 lg:block xl:max-w-sm" />
-
-        <div className="ml-auto hidden items-center gap-1 md:flex">
+        <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
           {LINKS.map((l) => {
             const active = pathname === l.href;
             return (
               <Link
                 key={l.href}
                 href={l.href}
-                className={`rounded-md px-3.5 py-2 text-sm font-semibold tracking-wide transition-colors ${
+                className={`rounded-md px-4 py-2 text-sm font-semibold tracking-wide transition-colors ${
                   active
                     ? "text-flame-400"
                     : "text-slate-300 hover:text-white"
@@ -43,21 +38,17 @@ export default function Navbar() {
               </Link>
             );
           })}
-          <button
-            type="button"
-            onClick={() => setShowDealer(true)}
-            className="ml-3 flex items-center gap-2 rounded-md bg-flame-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-flame-600"
-          >
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 21s7-5.5 7-11a7 7 0 1 0-14 0c0 5.5 7 11 7 11z" />
-              <circle cx="12" cy="10" r="2.5" />
-            </svg>
-            Find Nearby Dealer
-          </button>
         </div>
 
+        <a
+          href="#contact"
+          className="hidden rounded-md bg-flame-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-flame-600 md:block"
+        >
+          Find Nearby Dealer
+        </a>
+
         <button
-          className="ml-auto text-slate-200 md:hidden"
+          className="md:hidden text-slate-200"
           onClick={() => setOpen(!open)}
           aria-label="Toggle menu"
         >
@@ -72,8 +63,7 @@ export default function Navbar() {
       </nav>
 
       {open && (
-        <div className="border-t border-white/5 bg-night-900 px-5 py-4 md:hidden">
-          <SearchBar className="mb-3" />
+        <div className="border-t border-white/5 bg-night-900 px-5 py-3 md:hidden">
           {LINKS.map((l) => (
             <Link
               key={l.href}
@@ -86,20 +76,8 @@ export default function Navbar() {
               {l.label}
             </Link>
           ))}
-          <button
-            type="button"
-            onClick={() => {
-              setOpen(false);
-              setShowDealer(true);
-            }}
-            className="mt-2 flex w-full items-center justify-center gap-2 rounded-md bg-flame-500 px-4 py-2.5 text-sm font-semibold text-white"
-          >
-            Find Nearby Dealer
-          </button>
         </div>
       )}
-
-      {showDealer && <DistributorModal onClose={() => setShowDealer(false)} />}
     </header>
   );
 }
