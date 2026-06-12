@@ -45,7 +45,7 @@ export const SUB_BRANDS: SubBrand[] = [
           "Cool 6000K / 4300K color temperature",
           "Life span up to 5,000 hours",
           "CANBUS integration, no error codes",
-          "Super brightness up to 250%",
+          "Super brightness up to 250%*",
           "Excellent road coverage",
         ],
         specs: [
@@ -98,7 +98,7 @@ export const SUB_BRANDS: SubBrand[] = [
       {
         slug: "aroma-hanging",
         name: "Aroma Essence",
-        variant: "Hanging Bottle · Ocean Breeze · 8 ml",
+        variant: "Hanging Bottle · Ocean Breeze · 15 ml",
         tagline: "Premium fragrance, suspended in glass",
         description:
           "A faceted glass bottle with a braided cord and natural wood cap, filled with 8 ml of slow-release premium fragrance oil. Ocean Breeze keeps the cabin fresh for weeks, not days.",
@@ -111,7 +111,7 @@ export const SUB_BRANDS: SubBrand[] = [
           "Made for every drive",
         ],
         specs: [
-          { label: "Volume", value: "8 ml" },
+          { label: "Volume", value: "15 ml" },
           { label: "Fragrance", value: "Ocean Breeze" },
           { label: "Type", value: "Hanging bottle" },
           { label: "Duration", value: "Up to 45 days" },
@@ -137,7 +137,7 @@ export const SUB_BRANDS: SubBrand[] = [
           { label: "Volume", value: "50 ml" },
           { label: "Fragrance", value: "Midnight Noir" },
           { label: "Type", value: "Spray + hanging card" },
-          { label: "Duration", value: "200+ sprays" },
+          { label: "Duration", value: "500+ sprays" },
         ],
         badge: "Premium Edition",
       },

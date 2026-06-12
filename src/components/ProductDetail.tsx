@@ -2,10 +2,12 @@
 
 import { useState } from "react";
 import type { Product } from "@/lib/products";
+import DistributorModal from "./DistributorModal";
 
 /** Product copy column with selectable output options (e.g. 240W / 300W). */
 export default function ProductDetail({ product: p }: { product: Product }) {
   const [watt, setWatt] = useState(p.wattOptions?.[0] ?? null);
+  const [showDistributor, setShowDistributor] = useState(false);
 
   const specs =
     watt === null
@@ -29,7 +31,7 @@ export default function ProductDetail({ product: p }: { product: Product }) {
       {p.wattOptions && (
         <div className="mt-6">
           <span className="text-sm font-medium text-slate-300">Output</span>
-          <div className="mt-2 flex gap-2">
+          <div className="mt-2 flex flex-wrap items-center gap-2">
             {p.wattOptions.map((w) => (
               <button
                 key={w}
@@ -44,8 +46,19 @@ export default function ProductDetail({ product: p }: { product: Product }) {
                 {w}
               </button>
             ))}
+            <button
+              type="button"
+              onClick={() => setShowDistributor(true)}
+              className="ml-1 rounded-lg bg-flame-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-flame-600"
+            >
+              Get Yours Today!
+            </button>
           </div>
         </div>
+      )}
+
+      {showDistributor && (
+        <DistributorModal onClose={() => setShowDistributor(false)} />
       )}
 
       <ul className="mt-7 grid gap-2.5 sm:grid-cols-2">
