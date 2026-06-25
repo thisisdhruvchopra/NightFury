@@ -6,7 +6,6 @@ import { useState } from "react";
 import Logo from "./Logo";
 
 const LINKS = [
-  { href: "/", label: "Home" },
   { href: "/vision", label: "Vision" },
   { href: "/aroma", label: "Aroma" },
   { href: "/care", label: "Care" },
@@ -17,67 +16,100 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/5 bg-night-950/85 backdrop-blur-md">
-      <nav className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-5">
-        <Logo />
+    <>
+      {/* Marquee announcement bar */}
+      <div className="marquee-bar">
+        <div className="marquee-track">
+          <span>&#9733; 18 MONTHS WARRANTY ON LIGHTING</span>
+          <span>&#9679; IP67 WATER &amp; DUST RATED</span>
+          <span>&#9733; 100% BATCH QUALITY TESTED</span>
+          <span>&#9679; VISION &middot; AROMA &middot; CARE</span>
+          <span>&#9733; DRIVE THE DIFFERENCE</span>
+          <span>&#9733; 18 MONTHS WARRANTY ON LIGHTING</span>
+          <span>&#9679; IP67 WATER &amp; DUST RATED</span>
+          <span>&#9733; 100% BATCH QUALITY TESTED</span>
+          <span>&#9679; VISION &middot; AROMA &middot; CARE</span>
+          <span>&#9733; DRIVE THE DIFFERENCE</span>
+        </div>
+      </div>
 
-        <div className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 md:flex">
-          {LINKS.map((l) => {
-            const active = pathname === l.href;
-            return (
+      {/* Nav */}
+      <header
+        className="sticky top-0 z-50 border-b border-border"
+        style={{ background: "rgba(10,10,11,.86)", backdropFilter: "blur(12px)" }}
+      >
+        <nav className="mx-auto flex h-16 max-w-[1280px] items-center justify-between px-10">
+          <div className="flex items-center gap-3">
+            <Logo />
+            <span
+              className="ml-2 hidden text-[9px] font-semibold tracking-[.28em] text-dim uppercase md:block"
+              style={{ fontFamily: "var(--font-spline), monospace" }}
+            >
+              Drive The Difference
+            </span>
+          </div>
+
+          <div className="hidden items-center gap-8 text-sm font-bold tracking-[.14em] uppercase md:flex">
+            {LINKS.map((l) => (
               <Link
                 key={l.href}
                 href={l.href}
-                className={`rounded-md px-4 py-2 text-sm font-semibold tracking-wide transition-colors ${
-                  active
-                    ? "text-flame-400"
-                    : "text-slate-300 hover:text-white"
+                className={`nf-link ${
+                  pathname === l.href ? "text-accent" : "text-chalk"
                 }`}
               >
                 {l.label}
               </Link>
-            );
-          })}
-        </div>
+            ))}
+          </div>
 
-        <a
-          href="#contact"
-          className="hidden rounded-md bg-flame-500 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-flame-600 md:block"
-        >
-          Find Nearby Dealer
-        </a>
+          <div className="hidden items-center gap-4 md:flex">
+            <a href="#contact" className="nf-btn nf-btn-primary" style={{ padding: "9px 16px", fontSize: "14px" }}>
+              <span>Find Nearby Dealer</span>
+            </a>
+          </div>
 
-        <button
-          className="md:hidden text-slate-200"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            {open ? (
-              <path d="M6 6l12 12M18 6L6 18" />
-            ) : (
-              <path d="M4 7h16M4 12h16M4 17h16" />
-            )}
-          </svg>
-        </button>
-      </nav>
+          <button
+            className="text-chalk md:hidden"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              {open ? (
+                <path d="M6 6l12 12M18 6L6 18" />
+              ) : (
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              )}
+            </svg>
+          </button>
+        </nav>
 
-      {open && (
-        <div className="border-t border-white/5 bg-night-900 px-5 py-3 md:hidden">
-          {LINKS.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
+        {open && (
+          <div className="border-t border-border bg-panel px-5 py-3 md:hidden">
+            {LINKS.map((l) => (
+              <Link
+                key={l.href}
+                href={l.href}
+                onClick={() => setOpen(false)}
+                className={`block px-3 py-2.5 text-sm font-bold uppercase tracking-wider ${
+                  pathname === l.href ? "text-accent" : "text-chalk"
+                }`}
+              >
+                {l.label}
+              </Link>
+            ))}
+            <a
+              href="#contact"
               onClick={() => setOpen(false)}
-              className={`block rounded-md px-3 py-2.5 text-sm font-semibold ${
-                pathname === l.href ? "text-flame-400" : "text-slate-300"
-              }`}
+              className="mt-2 block px-3 py-2.5 text-sm font-bold uppercase tracking-wider text-accent"
             >
-              {l.label}
-            </Link>
-          ))}
-        </div>
-      )}
-    </header>
+              Find Nearby Dealer
+            </a>
+          </div>
+        )}
+      </header>
+
+      <div className="carbon-trim" />
+    </>
   );
 }

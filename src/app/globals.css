@@ -1,88 +1,241 @@
 @import "tailwindcss";
 
 @theme {
-  /* Official NightFury palette */
-  --color-night-950: #0a1622; /* Shadow Black */
-  --color-night-900: #0f2a44; /* Primary Blue */
-  --color-night-800: #163b5c; /* Secondary Blue */
-  --color-night-700: #1c3e5e; /* Divider Blue */
-  --color-night-600: #1c3e5e;
-  --color-night-500: #163b5c;
-  --color-flame-600: #d9741f; /* Dark Orange */
-  --color-flame-500: #f28c28; /* Accent Orange */
-  --color-flame-400: #f28c28;
-  --color-flame-300: #ffd36a; /* Warm Halogen Yellow */
-  --color-gold-500: #f2b705;  /* Car Yellow */
-  --color-mist-300: #ccd4dc;  /* Soft Grey White (desaturated for screen) */
-  --color-led-50: #f8faff;    /* Cool LED White */
+  --color-carbon: #0A0A0B;
+  --color-panel: #0C0C0E;
+  --color-raised: #15151A;
+  --color-accent: #FF5500;
+  --color-redline: #E11D2A;
+  --color-chalk: #F4F5F7;
+  --color-muted: #9A9AA0;
+  --color-dim: #6E6E76;
+  --color-faint: #5A5A60;
+  --color-border: #17171A;
+  --color-border-strong: #2A2A30;
+  --color-border-hover: #2E2E34;
+  --color-grid-line: #1F1F24;
 
-  --font-display: var(--font-montserrat);
-  --font-sans: var(--font-inter);
+  --font-display: var(--font-saira);
+  --font-mono: var(--font-spline);
 }
 
 :root {
   color-scheme: dark;
 }
 
+*{box-sizing:border-box;}
+
 body {
-  background: var(--color-night-950);
-  color: var(--color-mist-300);
-  font-family: var(--font-sans), system-ui, sans-serif;
-}
-
-h1, h2, h3, h4, .font-display {
-  font-family: var(--font-display), system-ui, sans-serif;
-}
-
-h1, h2, h3, h4 {
-  color: var(--color-led-50);
+  margin: 0;
+  background-color: var(--color-carbon);
+  background-image:
+    linear-gradient(27deg, #0F0F11 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #0F0F11 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #131315 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #131315 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #0C0C0E 10px, #0A0A0B 10px, #0A0A0B 20px, #0C0C0E 20px);
+  background-size: 20px 20px;
+  color: var(--color-chalk);
+  font-family: var(--font-display), 'Arial Narrow', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 ::selection {
-  background: var(--color-flame-500);
-  color: var(--color-night-950);
+  background: var(--color-accent);
+  color: var(--color-carbon);
 }
 
-/* Subtle carbon-fiber texture for hero backgrounds */
-.bg-carbon {
-  background-color: var(--color-night-950);
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display), 'Arial Narrow', Arial, sans-serif;
+  color: var(--color-chalk);
+}
+
+/* ===== Animations ===== */
+@keyframes nfGlow {
+  0%, 100% { opacity: .55; }
+  50% { opacity: 1; }
+}
+@keyframes nfMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ===== Carbon fiber card texture ===== */
+.nf-card {
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  transition: transform .25s ease, border-color .25s ease;
+  background-color: var(--color-panel);
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(15, 42, 68, 0.55), transparent),
-    repeating-linear-gradient(
-      45deg,
-      rgba(255, 255, 255, 0.012) 0px,
-      rgba(255, 255, 255, 0.012) 2px,
-      transparent 2px,
-      transparent 6px
-    );
+    linear-gradient(27deg, #131316 4px, transparent 4px) 0 4px,
+    linear-gradient(207deg, #131316 4px, transparent 4px) 8px 0px,
+    linear-gradient(27deg, #161619 4px, transparent 4px) 0px 8px,
+    linear-gradient(207deg, #161619 4px, transparent 4px) 8px 4px,
+    linear-gradient(90deg, #0E0E10 8px, #0C0C0E 8px, #0C0C0E 16px, #0E0E10 16px);
+  background-size: 16px 16px;
+}
+.nf-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-border-hover);
 }
 
-/* Orange-stroke window frame, echoing the product box motif */
-.frame-flame {
-  border: 2px solid var(--color-flame-500);
-  border-radius: 1.25rem;
-  box-shadow:
-    0 0 0 1px rgba(242, 140, 40, 0.15),
-    0 0 40px rgba(242, 140, 40, 0.08) inset;
+/* ===== Carbon trim divider ===== */
+.carbon-trim {
+  height: 7px;
+  width: 100%;
+  border-top: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-border);
+  background-color: #0E0E10;
+  background-image:
+    linear-gradient(27deg, #16161a 3px, transparent 3px) 0 3px,
+    linear-gradient(207deg, #16161a 3px, transparent 3px) 6px 0px,
+    linear-gradient(27deg, #1a1a1e 3px, transparent 3px) 0px 6px,
+    linear-gradient(207deg, #1a1a1e 3px, transparent 3px) 6px 3px;
+  background-size: 12px 12px;
 }
 
-@keyframes spin-slow {
-  to { transform: rotate(360deg); }
+/* ===== Placeholder for product images ===== */
+.ph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(60% 60% at 50% 40%, rgba(255,85,0,0.16), transparent 70%),
+    repeating-linear-gradient(135deg, #101012 0 2px, #0c0c0e 2px 22px);
+  color: var(--color-dim);
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  text-align: center;
+  border: 1px dashed var(--color-border-strong);
 }
 
-.animate-spin-slow {
-  animation: spin-slow 24s linear infinite;
+/* ===== Marquee ===== */
+.marquee-bar {
+  background: var(--color-accent);
+  color: var(--color-carbon);
+  overflow: hidden;
+  white-space: nowrap;
+  border-bottom: 1px solid rgba(0,0,0,.25);
+}
+.marquee-track {
+  display: inline-flex;
+  gap: 46px;
+  padding: 8px 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  animation: nfMarquee 22s linear infinite;
 }
 
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ===== Buttons ===== */
+.nf-btn {
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+  display: inline-flex;
+  cursor: pointer;
+  border: none;
+  align-items: center;
+}
+.nf-btn:hover { transform: translateY(-2px); }
+
+.nf-btn-primary {
+  background: var(--color-accent);
+  color: var(--color-carbon);
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  transform: skewX(-8deg);
+  box-shadow: 5px 5px 0 rgba(255,85,0,0.22);
+  padding: 14px 26px;
+  font-size: 15px;
+  font-family: var(--font-display), sans-serif;
+}
+.nf-btn-primary > span { display: inline-block; transform: skewX(8deg); }
+.nf-btn-primary:hover { transform: skewX(-8deg) translateY(-2px); }
+
+.nf-btn-outline {
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-chalk);
+  font-weight: 700;
+  text-transform: uppercase;
+  transform: skewX(-8deg);
+  background: transparent;
+  padding: 14px 24px;
+  font-size: 14px;
+  font-family: var(--font-display), sans-serif;
+}
+.nf-btn-outline > span { display: inline-block; transform: skewX(8deg); }
+.nf-btn-outline:hover { transform: skewX(-8deg) translateY(-2px); border-color: var(--color-accent); }
+
+/* ===== Skew utility ===== */
+.skew { transform: skewX(-4deg); }
+
+/* ===== Link underline animation ===== */
+.nf-link {
+  position: relative;
+  cursor: pointer;
+}
+.nf-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 2px;
+  width: 0;
+  background: var(--color-accent);
+  transition: width .22s ease;
+}
+.nf-link:hover::after { width: 100%; }
+
+/* ===== NightFury Wordmark ===== */
+.nf-word {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 700;
+  font-style: italic;
+  letter-spacing: .01em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.nf-word .n { color: var(--color-chalk); }
+.nf-word .f { color: var(--color-accent); }
+.nf-word .reg {
+  font-style: normal;
+  font-weight: 600;
+  font-size: .4em;
+  letter-spacing: 0;
+  vertical-align: super;
+  color: var(--color-accent);
+  margin-left: 2px;
 }
 
-.animate-fade-up {
-  animation: fade-up 0.7s ease-out both;
+/* ===== Dot glow ===== */
+.dot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent);
+  display: inline-block;
+  border-radius: 50%;
+  animation: nfGlow 2s ease-in-out infinite;
 }
 
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
+/* ===== Responsive ===== */
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr !important; min-height: auto !important; }
+  .cat-grid { grid-template-columns: 1fr !important; }
+  .lineup-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .featured-grid { grid-template-columns: 1fr !important; }
+  .why-grid { grid-template-columns: 1fr !important; }
+  .review-grid { grid-template-columns: 1fr !important; }
+  .foot-top { grid-template-columns: 1fr 1fr !important; }
+}
+
+@media (max-width: 640px) {
+  .lineup-grid { grid-template-columns: 1fr !important; }
+  .foot-top { grid-template-columns: 1fr !important; }
+}

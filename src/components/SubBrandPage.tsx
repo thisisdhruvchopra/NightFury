@@ -3,12 +3,12 @@ import { getSubBrand } from "@/lib/products";
 import ProductVisual from "./ProductVisual";
 import ProductDetail from "./ProductDetail";
 import Reviews from "./Reviews";
-import {
-  TachDial,
-  RoadDivider,
-  CarSilhouette,
-  BikeSilhouette,
-} from "./AutoMotifs";
+
+const TAGLINES: Record<string, string> = {
+  vision: "DRIVE THE DIFFERENCE",
+  aroma: "SMELL THE DIFFERENCE",
+  care: "FEEL THE DIFFERENCE",
+};
 
 export default function SubBrandPage({ slug }: { slug: string }) {
   const brand = getSubBrand(slug);
@@ -23,66 +23,81 @@ export default function SubBrandPage({ slug }: { slug: string }) {
   return (
     <>
       {/* ============ BRAND HERO ============ */}
-      <section className="bg-carbon relative overflow-hidden border-b border-white/5">
-        <TachDial className="pointer-events-none absolute -right-20 top-8 hidden h-[24rem] w-[24rem] text-slate-400 opacity-[0.1] lg:block" />
-        {brand.slug === "vision" ? (
-          <>
-            <CarSilhouette className="pointer-events-none absolute bottom-4 right-[24%] hidden h-20 w-auto text-slate-400 opacity-[0.18] lg:block" />
-            <BikeSilhouette className="pointer-events-none absolute bottom-4 right-[8%] hidden h-20 w-auto text-slate-400 opacity-[0.18] lg:block" />
-          </>
-        ) : (
-          <CarSilhouette className="pointer-events-none absolute bottom-4 right-[8%] hidden h-20 w-auto text-slate-400 opacity-[0.18] lg:block" />
-        )}
-        <div className="relative mx-auto max-w-7xl px-5 py-20 md:py-28">
-          <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
-            NightFury product line
-          </p>
-          <h1 className="mt-4 font-display text-4xl font-bold md:text-5xl">
-            {brand.name}
+      <section className="relative overflow-hidden border-b border-border">
+        <div
+          className="pointer-events-none absolute"
+          style={{ top: "-6%", right: "-10%", width: "60%", height: "24px", background: "var(--color-accent)", opacity: 0.08, transform: "rotate(-18deg)" }}
+        />
+        <div className="relative mx-auto max-w-[1280px] px-10 py-20 md:py-28">
+          <div
+            className="text-[11px] tracking-[.2em] text-accent uppercase"
+            style={{ fontFamily: "var(--font-spline), monospace" }}
+          >
+            NIGHTFURY PRODUCT LINE
+          </div>
+          <h1
+            className="mt-4 text-[52px] font-extrabold italic uppercase leading-[.88] tracking-tight md:text-[64px]"
+            style={{ transform: "skewX(-4deg)" }}
+          >
+            {brand.name.replace("NightFury ", "")}
           </h1>
-          <p className="mt-3 text-base font-medium text-flame-400">
-            {brand.tagline}
-          </p>
-          <p className="mt-6 max-w-2xl leading-relaxed text-slate-300">
+          <div
+            className="mt-3 text-sm font-bold tracking-[.14em] text-accent uppercase"
+          >
+            {TAGLINES[brand.slug]}
+          </div>
+          <p
+            className="mt-6 max-w-2xl text-sm leading-[1.7] text-muted"
+            style={{ fontFamily: "var(--font-spline), monospace" }}
+          >
             {brand.intro}
           </p>
         </div>
       </section>
 
+      <div className="carbon-trim" />
+
       {/* ============ PRODUCTS ============ */}
       <section className="py-20">
-        <div className="mx-auto max-w-7xl space-y-24 px-5">
+        <div className="mx-auto max-w-[1280px] space-y-24 px-10">
           {brand.products.map((p, idx) => (
             <article
               key={p.slug}
               id={p.slug}
-              className={`grid items-center gap-12 lg:grid-cols-2 ${
-                idx % 2 === 1 ? "lg:[&>*:first-child]:order-2" : ""
-              }`}
+              className="nf-card relative overflow-hidden"
+              style={{
+                display: "grid",
+                gridTemplateColumns: idx % 2 === 1 ? "1.05fr 1fr" : "1fr 1.05fr",
+                background: "linear-gradient(150deg, #15100c, #0A0A0B 60%)",
+              }}
             >
-              {/* Visual */}
-              <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-2xl border border-white/10 bg-night-900/60 p-6">
-                <ProductVisual product={p} />
+              {/* Image side */}
+              <div
+                className="relative"
+                style={{
+                  minHeight: "440px",
+                  order: idx % 2 === 1 ? 2 : 0,
+                }}
+              >
+                <div className="absolute inset-0" style={{ background: "radial-gradient(56% 56% at 50% 50%, rgba(255,85,0,.2), transparent 70%)" }} />
+                <div className="absolute inset-8">
+                  <ProductVisual product={p} />
+                </div>
               </div>
 
-              {/* Copy */}
-              <ProductDetail product={p} />
+              {/* Detail side */}
+              <div className="relative z-10 px-10 py-11" style={{ order: idx % 2 === 1 ? 0 : 1 }}>
+                <ProductDetail product={p} />
+              </div>
             </article>
           ))}
         </div>
       </section>
 
-      <div className="relative">
-        {brand.slug === "vision" ? (
-          <BikeSilhouette className="absolute -top-[4rem] right-[12%] hidden h-16 w-auto text-slate-500 opacity-50 md:block" />
-        ) : (
-          <CarSilhouette className="absolute -top-[4rem] right-[12%] hidden h-16 w-auto text-slate-500 opacity-50 md:block" />
-        )}
-        <RoadDivider />
-      </div>
+      <div className="carbon-trim" />
 
       {/* ============ REVIEWS ============ */}
-      <div className="border-t border-white/5 bg-night-900/40">
+      <div className="border-t border-border">
         <Reviews products={productOptions} />
       </div>
     </>

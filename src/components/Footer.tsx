@@ -3,72 +3,110 @@ import Logo from "./Logo";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="border-t border-white/5 bg-night-900">
-      <div className="mx-auto grid max-w-7xl gap-10 px-5 py-14 md:grid-cols-2 lg:grid-cols-5">
-        <div className="lg:col-span-2">
-          <Logo />
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-slate-400">
-            Premium automotive parts and accessories, engineered for the roads
-            we actually drive on. Vision. Aroma. Care. One standard, the
-            NightFury standard.
-          </p>
-          <p className="mt-6 text-xs font-semibold uppercase tracking-wider text-flame-400">
-            Drive the Difference
-          </p>
-        </div>
+    <footer id="contact">
+      <div className="carbon-trim" />
 
-        <div>
-          <h4 className="text-sm font-bold uppercase tracking-wider text-white">
-            Product Lines
-          </h4>
-          <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
-            <li><Link href="/vision" className="hover:text-flame-400">NightFury Vision</Link></li>
-            <li><Link href="/aroma" className="hover:text-flame-400">NightFury Aroma</Link></li>
-            <li><Link href="/care" className="hover:text-flame-400">NightFury Care</Link></li>
-          </ul>
-        </div>
+      <div className="mx-auto max-w-[1280px] px-10 pt-20">
+        <div
+          className="foot-top"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1.6fr 1fr 1fr 1fr",
+            gap: "40px",
+            paddingBottom: "48px",
+            borderBottom: "1px solid var(--color-border)",
+          }}
+        >
+          {/* Brand column */}
+          <div>
+            <Logo size="lg" />
+            <div className="mt-3.5 flex items-center gap-3">
+              <div className="h-0.5 w-10" style={{ background: "linear-gradient(90deg, transparent, var(--color-accent))" }} />
+              <span
+                className="text-[11px] font-bold tracking-[.34em] text-chalk"
+                style={{ fontFamily: "Arial, Helvetica, sans-serif" }}
+              >
+                DRIVE THE DIFFERENCE
+              </span>
+              <div className="h-0.5 w-10" style={{ background: "linear-gradient(90deg, var(--color-accent), transparent)" }} />
+            </div>
+            <p
+              className="mt-5 max-w-[280px] text-xs leading-[1.7] text-dim"
+              style={{ fontFamily: "var(--font-spline), monospace" }}
+            >
+              Premium automotive parts and accessories, engineered for the roads
+              we actually drive on. Vision. Aroma. Care. One standard, the
+              NightFury standard.
+            </p>
+          </div>
 
-        <div>
-          <h4 className="text-sm font-bold uppercase tracking-wider text-white">
-            Authorized Distributor
-          </h4>
-          <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
-            <li className="font-semibold text-slate-300">Yash Marketing, Kanpur</li>
-            <li>
-              <a href="mailto:yashp.marketing@gmail.com" className="hover:text-flame-400">
+          {/* Product Lines */}
+          <div>
+            <div
+              className="mb-4 text-[10px] tracking-[.2em] text-dim uppercase"
+              style={{ fontFamily: "var(--font-spline), monospace" }}
+            >
+              Product Lines
+            </div>
+            <div className="flex flex-col gap-3">
+              <Link href="/vision" className="nf-link w-fit text-sm font-semibold tracking-wide text-[#C8C8CE]">
+                NightFury Vision
+              </Link>
+              <Link href="/aroma" className="nf-link w-fit text-sm font-semibold tracking-wide text-[#C8C8CE]">
+                NightFury Aroma
+              </Link>
+              <Link href="/care" className="nf-link w-fit text-sm font-semibold tracking-wide text-[#C8C8CE]">
+                NightFury Care
+              </Link>
+            </div>
+          </div>
+
+          {/* Authorized Distributor */}
+          <div>
+            <div
+              className="mb-4 text-[10px] tracking-[.2em] text-dim uppercase"
+              style={{ fontFamily: "var(--font-spline), monospace" }}
+            >
+              Authorized Distributor
+            </div>
+            <div className="flex flex-col gap-3 text-sm font-semibold tracking-wide text-[#C8C8CE]">
+              <span>Yash Marketing, Kanpur</span>
+              <a href="mailto:yashp.marketing@gmail.com" className="nf-link w-fit">
                 yashp.marketing@gmail.com
               </a>
-            </li>
-            <li>
-              <a href="tel:+919839187898" className="hover:text-flame-400">
+              <a href="tel:+919839187898" className="nf-link w-fit">
                 +91 98391 87898
               </a>
-            </li>
-          </ul>
-        </div>
+            </div>
+          </div>
 
-        <div>
-          <h4 className="text-sm font-bold uppercase tracking-wider text-white">
-            Contact
-          </h4>
-          <ul className="mt-4 space-y-2.5 text-sm text-slate-400">
-            <li>
-              <a href="mailto:support@nightfury.co.in" className="hover:text-flame-400">
+          {/* Contact */}
+          <div>
+            <div
+              className="mb-4 text-[10px] tracking-[.2em] text-dim uppercase"
+              style={{ fontFamily: "var(--font-spline), monospace" }}
+            >
+              Contact
+            </div>
+            <div className="flex flex-col gap-3 text-sm font-semibold tracking-wide text-[#C8C8CE]">
+              <a href="mailto:support@nightfury.co.in" className="nf-link w-fit">
                 support@nightfury.co.in
               </a>
-            </li>
-            <li>
-              <a href="tel:+919839600197" className="hover:text-flame-400">
+              <a href="tel:+919839600197" className="nf-link w-fit">
                 +91 98396 00197
               </a>
-            </li>
-            <li>Mon - Sat, 10:00 - 19:00 IST</li>
-          </ul>
+              <span>Mon - Sat, 10:00 - 19:00 IST</span>
+            </div>
+          </div>
         </div>
-      </div>
 
-      <div className="border-t border-white/5 py-5 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} NightFury Automotive. All rights reserved.
+        {/* Bottom row */}
+        <div
+          className="flex justify-center py-6 text-[11px] tracking-[.14em] text-faint uppercase"
+          style={{ fontFamily: "var(--font-spline), monospace" }}
+        >
+          &copy; {new Date().getFullYear()} NIGHTFURY AUTOMOTIVE. ALL RIGHTS RESERVED.
+        </div>
       </div>
     </footer>
   );

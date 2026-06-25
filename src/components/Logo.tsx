@@ -1,19 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
 
-export default function Logo({ className = "" }: { className?: string }) {
+export default function Logo({ className = "", size = "md" }: { className?: string; size?: "md" | "lg" }) {
+  const fontSize = size === "lg" ? "text-[42px]" : "text-[24px]";
+  const imgSize = size === "lg" ? 44 : 36;
+
   return (
-    <Link href="/" className={`inline-flex items-center gap-2.5 ${className}`}>
+    <Link href="/" className={`inline-flex items-center gap-3 ${className}`}>
       <Image
         src="/media/logos/logo.png"
         alt="NightFury"
-        width={38}
-        height={38}
+        width={imgSize}
+        height={imgSize}
         className="rounded-md"
         priority
       />
-      <span className="font-display text-2xl font-bold italic tracking-tight text-white">
-        Night<span className="text-flame-500">Fury</span>
+      <span className={`nf-word ${fontSize}`} style={{ lineHeight: ".85" }}>
+        <span className="n">Night</span>
+        <span className="f">Fury</span>
+        <span className="reg">&reg;</span>
       </span>
     </Link>
   );

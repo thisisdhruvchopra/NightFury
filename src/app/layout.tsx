@@ -1,26 +1,26 @@
 import type { Metadata } from "next";
-import { Montserrat, Inter } from "next/font/google";
+import { Saira_Condensed, Spline_Sans_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
+const saira = Saira_Condensed({
+  variable: "--font-saira",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
+  weight: ["500", "600", "700", "800"],
 });
 
-const inter = Inter({
-  variable: "--font-inter",
+const spline = Spline_Sans_Mono({
+  variable: "--font-spline",
   subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "NightFury, Premium Automotive Parts & Accessories",
+  title: "NightFury - Drive The Difference",
   description:
-    "NightFury Vision, Aroma and Care, premium LED headlights, car perfumes and car care products. Drive the difference.",
+    "NightFury Vision, Aroma and Care - premium LED headlights, car perfumes and car care products. Drive the difference.",
 };
 
 export default function RootLayout({
@@ -31,7 +31,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${montserrat.variable} ${inter.variable} h-full antialiased`}
+      className={`${saira.variable} ${spline.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Navbar />

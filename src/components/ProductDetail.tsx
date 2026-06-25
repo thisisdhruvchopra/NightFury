@@ -4,8 +4,7 @@ import { useState } from "react";
 import type { Product } from "@/lib/products";
 import DistributorModal from "./DistributorModal";
 
-/** Product copy column with selectable output options (e.g. 240W / 300W). */
-export default function ProductDetail({ product: p }: { product: Product }) {
+export default function ProductDetail({ product: p }: Readonly<{ product: Product }>) {
   const [watt, setWatt] = useState(p.wattOptions?.[0] ?? null);
   const [showDistributor, setShowDistributor] = useState(false);
 
@@ -17,69 +16,106 @@ export default function ProductDetail({ product: p }: { product: Product }) {
         );
 
   return (
-    <div>
-      {p.badge && (
-        <span className="inline-block rounded-full bg-flame-500/15 px-3 py-1 text-xs font-semibold text-flame-400">
-          {p.badge}
-        </span>
-      )}
-      <h2 className="mt-4 text-3xl font-bold md:text-4xl">{p.name}</h2>
-      {p.variant && <p className="mt-1 text-sm text-slate-500">{p.variant}</p>}
-      <p className="mt-2 text-lg font-medium text-flame-400">{p.tagline}</p>
-      <p className="mt-5 leading-relaxed text-slate-300">{p.description}</p>
+    <div className="flex flex-col justify-center">
+      <div
+        className="text-[11px] tracking-[.2em] text-accent uppercase"
+        style={{ fontFamily: "var(--font-spline), monospace" }}
+      >
+        {p.badge ?? "NIGHTFURY"}
+      </div>
 
-      {p.wattOptions && (
-        <div className="mt-6">
-          <span className="text-sm font-medium text-slate-300">Output</span>
-          <div className="mt-2 flex flex-wrap items-center gap-2">
-            {p.wattOptions.map((w) => (
-              <button
-                key={w}
-                type="button"
-                onClick={() => setWatt(w)}
-                className={`rounded-lg border px-5 py-2.5 text-sm font-semibold transition-colors ${
-                  watt === w
-                    ? "border-flame-500 bg-flame-500/10 text-flame-400"
-                    : "border-white/15 text-slate-300 hover:border-flame-500/50"
-                }`}
-              >
-                {w}
-              </button>
-            ))}
-            <button
-              type="button"
-              onClick={() => setShowDistributor(true)}
-              className="ml-1 rounded-lg bg-flame-500 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-flame-600"
-            >
-              Get Yours Today!
-            </button>
-          </div>
+      <h2
+        className="mt-3 text-[40px] font-extrabold italic uppercase leading-[.92] tracking-tight md:text-[46px]"
+        style={{ transform: "skewX(-4deg)" }}
+      >
+        {p.name}
+      </h2>
+
+      {p.variant && (
+        <div
+          className="mt-2 text-[13px] text-muted"
+          style={{ fontFamily: "var(--font-spline), monospace" }}
+        >
+          {p.variant}
         </div>
       )}
 
-      {showDistributor && (
-        <DistributorModal onClose={() => setShowDistributor(false)} />
-      )}
+      <div
+        className="mt-2 text-[13px] text-muted"
+        style={{ fontFamily: "var(--font-spline), monospace" }}
+      >
+        {p.tagline}
+      </div>
 
-      <ul className="mt-7 grid gap-2.5 sm:grid-cols-2">
+      <p
+        className="mt-4 max-w-[400px] text-[12.5px] leading-[1.65] text-muted"
+        style={{ fontFamily: "var(--font-spline), monospace" }}
+      >
+        {p.description}
+      </p>
+
+      {/* Features */}
+      <ul className="mt-5 grid gap-2 sm:grid-cols-2">
         {p.features.map((f) => (
-          <li key={f} className="flex items-start gap-2.5 text-sm text-slate-300">
-            <svg className="mt-0.5 shrink-0" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#f28c28" strokeWidth="2">
-              <path d="M5 13l4 4L19 7" />
-            </svg>
-            {f}
+          <li
+            key={f}
+            className="flex items-center gap-2 text-xs tracking-wide text-[#C8C8CE]"
+            style={{ fontFamily: "var(--font-spline), monospace" }}
+          >
+            <span className="text-accent">&#9670;</span> {f}
           </li>
         ))}
       </ul>
 
-      <div className="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-xl border border-white/10 bg-white/10 sm:grid-cols-3">
+      {/* Specs grid */}
+      <div
+        className="mt-5"
+        style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px 26px", maxWidth: "380px" }}
+      >
         {specs.map((s) => (
-          <div key={s.label} className="bg-night-900 px-4 py-3.5">
-            <div className="text-xs text-slate-500">{s.label}</div>
-            <div className="mt-0.5 text-sm font-semibold text-white">{s.value}</div>
+          <div
+            key={s.label}
+            className="flex items-center gap-2 text-xs tracking-wide text-[#C8C8CE]"
+            style={{ fontFamily: "var(--font-spline), monospace" }}
+          >
+            <span className="text-accent">&#9670;</span> {s.label}: {s.value}
           </div>
         ))}
       </div>
+
+      {/* Watt options + CTA */}
+      <div className="mt-6 flex flex-wrap items-center gap-3">
+        {p.wattOptions?.map((w) => (
+          <button
+            key={w}
+            type="button"
+            onClick={() => setWatt(w)}
+            className="border px-4 py-2 text-xs font-bold tracking-[.1em] uppercase transition-colors"
+            style={{
+              fontFamily: "var(--font-spline), monospace",
+              borderRadius: "2px",
+              borderColor: watt === w ? "var(--color-accent)" : "var(--color-border-strong)",
+              background: watt === w ? "rgba(255,85,0,.1)" : "transparent",
+              color: watt === w ? "var(--color-accent)" : "var(--color-chalk)",
+            }}
+          >
+            {w}
+          </button>
+        ))}
+
+        <button
+          type="button"
+          onClick={() => setShowDistributor(true)}
+          className="nf-btn nf-btn-primary"
+          style={{ padding: "12px 22px", fontSize: "14px" }}
+        >
+          <span>Get Yours Today! &rarr;</span>
+        </button>
+      </div>
+
+      {showDistributor && (
+        <DistributorModal onClose={() => setShowDistributor(false)} />
+      )}
     </div>
   );
 }
