@@ -128,13 +128,6 @@ export default function Home() {
             />
             <div className="relative">
               <div
-                className="absolute left-4 top-4 z-10 text-[10px] leading-[1.9] tracking-[.18em] text-[#7A7A82] uppercase"
-                style={{ fontFamily: "var(--font-spline), monospace" }}
-              >
-                <div className="text-accent">&#9679; COMING SOON</div>
-                <div>PRODUCT IMAGERY ON ITS WAY</div>
-              </div>
-              <div
                 className="absolute right-4 top-4 z-10 bg-accent px-3 py-1 text-[10px] font-bold tracking-[.14em] text-carbon"
                 style={{ fontFamily: "var(--font-spline), monospace", transform: "skewX(-10deg)" }}
               >
