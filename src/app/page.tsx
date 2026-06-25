@@ -140,9 +140,11 @@ export default function Home() {
               >
                 PREMIUM EDITION
               </div>
-              <div className="ph" style={{ width: "100%", height: "480px", borderRadius: "4px" }}>
-                VISION - 4-WHEELER LED HEADLIGHT
-              </div>
+              <img
+                src="/media/photos/carledad.png"
+                alt="NightFury 4-Wheeler LED Headlight"
+                style={{ width: "100%", borderRadius: "4px", objectFit: "contain" }}
+              />
               <div className="absolute left-2 top-2 h-4 w-4 border-l-2 border-t-2 border-[#3A3A40]" />
               <div className="absolute bottom-2 right-2 h-4 w-4 border-b-2 border-r-2 border-[#3A3A40]" />
             </div>
