@@ -134,7 +134,7 @@ export default function Home() {
                 PREMIUM EDITION
               </div>
               <img
-                src="/media/products/4whled.png"
+                src="/media/posters/4whad.png"
                 alt="NightFury 4-Wheeler LED Headlight"
                 style={{ width: "100%", borderRadius: "4px", objectFit: "contain" }}
               />
