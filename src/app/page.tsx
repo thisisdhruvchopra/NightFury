@@ -95,15 +95,15 @@ export default function Home() {
             className="mt-6 max-w-lg text-left text-[13px] leading-[1.8] text-chalk/70 md:text-[15px]"
             style={{ fontFamily: "var(--font-spline), monospace" }}
           >
-            250% brighter. CANBUS-ready. 18-month warranty.<br className="hidden md:block" />
+            240W and 300W LED Headlights. CANBUS-ready. 18-month warranty.<br className="hidden md:block" />
             Precision LED headlights for cars and bikes.
           </p>
 
           {/* Stats row */}
           <div className="mt-8 flex flex-wrap items-center justify-center gap-8 md:gap-12">
             <div className="text-center">
-              <div className="text-[28px] font-extrabold italic text-chalk md:text-[34px]">250<span className="text-[16px] text-accent">%</span></div>
-              <div className="text-[9px] tracking-[.18em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Brighter</div>
+              <div className="text-[28px] font-extrabold italic text-chalk md:text-[34px]">240W<span className="text-[16px] text-accent">/</span>300W</div>
+              <div className="text-[9px] tracking-[.18em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>LED Headlights</div>
             </div>
             <div className="h-8 w-px bg-chalk/10" />
             <div className="text-center">
