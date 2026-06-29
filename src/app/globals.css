@@ -116,8 +116,8 @@ h1, h2, h3, h4, .font-display {
 
 /* ===== Marquee ===== */
 .marquee-bar {
-  background: #000;
-  color: #fff;
+  background: var(--color-accent);
+  color: var(--color-carbon);
   overflow: hidden;
   white-space: nowrap;
   border-bottom: 1px solid rgba(0,0,0,.25);
@@ -223,6 +223,17 @@ h1, h2, h3, h4, .font-display {
   border-radius: 50%;
   animation: nfGlow 2s ease-in-out infinite;
 }
+
+/* ===== Legal prose ===== */
+.legal-prose p { margin-bottom: 1em; }
+.legal-prose ul, .legal-prose ol { margin: .75em 0; padding-left: 1.5em; }
+.legal-prose ul { list-style: disc; }
+.legal-prose ol { list-style: decimal; }
+.legal-prose li { margin-bottom: .4em; }
+.legal-prose a { color: var(--color-accent); text-decoration: underline; text-underline-offset: 3px; }
+.legal-prose a:hover { color: var(--color-chalk); }
+.legal-prose strong { color: var(--color-chalk); font-weight: 600; }
+.legal-prose h3 { color: var(--color-chalk); font-weight: 700; font-size: 15px; margin: 1.5em 0 .5em; text-transform: uppercase; letter-spacing: .06em; }
 
 /* ===== Responsive ===== */
 @media (max-width: 980px) {
