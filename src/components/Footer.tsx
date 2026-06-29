@@ -129,7 +129,7 @@ export default function Footer() {
           className="flex justify-center border-t border-border py-6 text-[11px] tracking-[.14em] text-faint uppercase"
           style={mono}
         >
-          &copy; {new Date().getFullYear()} {BUSINESS.legalName.toUpperCase()}. ALL RIGHTS RESERVED.
+          &copy; {new Date().getFullYear()}&nbsp;NIGHTFURY&trade;. ALL RIGHTS RESERVED.
         </div>
       </div>
     </footer>

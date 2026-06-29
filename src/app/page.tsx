@@ -11,17 +11,17 @@ const STATS = [
 
 const PILLARS = [
   {
-    icon: "⚙",
+    icon: "",
     title: "Engineered, Not Assembled",
     body: "Every NightFury product passes thermal, vibration and endurance testing before it earns the badge. We reject entire batches over a single failure.",
   },
   {
-    icon: "🛡",
+    icon: "",
     title: "18-Month Warranty",
     body: "We back our lighting with one of the longest warranties in the segment, because products built right don't come back.",
   },
   {
-    icon: "🤝",
+    icon: "",
     title: "Dealer-First Network",
     body: "From metro accessory hubs to highway service points, our growing partner network keeps genuine NightFury parts within reach.",
   },
@@ -37,11 +37,146 @@ const ALL_PRODUCTS = SUB_BRANDS.flatMap((b) =>
   b.products.map((p) => ({ ...p, brand: b.slug, brandName: b.name }))
 );
 
-const FEATURED = ALL_PRODUCTS.find((p) => p.slug === "led-4w")!;
+const FEATURED = ALL_PRODUCTS.find((p) => p.slug === "aroma-core")!;
 
 export default function Home() {
   return (
     <>
+      {/* ============ PRODUCT TILES ============ */}
+
+      {/* VISION - Full hero tile */}
+      <section className="relative min-h-[100vh] overflow-hidden">
+        {/* Background: car with LEDs on */}
+        <div className="absolute inset-0">
+          <img
+            src="/media/graphics/carled.png"
+            alt=""
+            className="h-full w-full object-cover"
+            style={{ objectPosition: "center 40%" }}
+          />
+          {/* Dark overlays for text legibility */}
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(10,10,11,.4) 0%, rgba(10,10,11,.15) 30%, rgba(10,10,11,.7) 70%, rgba(10,10,11,.95) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 80% 60% at 50% 35%, transparent 30%, rgba(10,10,11,.5) 100%)" }} />
+        </div>
+
+        {/* Accent glow behind headline */}
+        <div
+          className="pointer-events-none absolute left-1/2 top-[35%] -translate-x-1/2 -translate-y-1/2"
+          style={{ width: "600px", height: "400px", background: "radial-gradient(ellipse at center, rgba(255,85,0,.15), transparent 70%)", filter: "blur(40px)" }}
+        />
+
+        {/* Livery stripes */}
+        <div
+          className="pointer-events-none absolute"
+          style={{ top: "8%", right: "-10%", width: "70%", height: "3px", background: "var(--color-accent)", opacity: 0.3, transform: "rotate(-8deg)" }}
+        />
+        <div
+          className="pointer-events-none absolute"
+          style={{ top: "10%", right: "-10%", width: "70%", height: "1px", background: "var(--color-chalk)", opacity: 0.1, transform: "rotate(-8deg)" }}
+        />
+
+        {/* Content */}
+        <div className="relative z-10 flex min-h-[100vh] flex-col items-start justify-center px-5 md:px-10 lg:px-20" style={{ paddingBottom: "10vh" }}>
+          <div
+            className="inline-flex items-center gap-2 border border-chalk/20 px-4 py-1.5 text-[10px] tracking-[.3em] text-accent uppercase backdrop-blur-sm"
+            style={{ fontFamily: "var(--font-spline), monospace", borderRadius: "2px" }}
+          >
+            <span className="dot" /> NIGHTFURY VISION
+          </div>
+
+          <h2
+            className="mt-6 text-left text-[52px] font-extrabold italic uppercase leading-[.82] tracking-tight md:text-[80px] lg:text-[110px]"
+            style={{ transform: "skewX(-4deg)" }}
+          >
+            Own The<br /><span className="text-accent">Night</span>
+          </h2>
+
+          <p
+            className="mt-6 max-w-lg text-left text-[13px] leading-[1.8] text-chalk/70 md:text-[15px]"
+            style={{ fontFamily: "var(--font-spline), monospace" }}
+          >
+            250% brighter. CANBUS-ready. 18-month warranty.<br className="hidden md:block" />
+            Precision LED headlights for cars and bikes.
+          </p>
+
+          {/* Stats row */}
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-8 md:gap-12">
+            <div className="text-center">
+              <div className="text-[28px] font-extrabold italic text-chalk md:text-[34px]">250<span className="text-[16px] text-accent">%</span></div>
+              <div className="text-[9px] tracking-[.18em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Brighter</div>
+            </div>
+            <div className="h-8 w-px bg-chalk/10" />
+            <div className="text-center">
+              <div className="text-[28px] font-extrabold italic text-chalk md:text-[34px]">5K<span className="text-[16px] text-accent">hr</span></div>
+              <div className="text-[9px] tracking-[.18em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Life Span</div>
+            </div>
+            <div className="h-8 w-px bg-chalk/10" />
+            <div className="text-center">
+              <div className="text-[28px] font-extrabold italic text-chalk md:text-[34px]">IP67</div>
+              <div className="text-[9px] tracking-[.18em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Rated</div>
+            </div>
+            <div className="h-8 w-px bg-chalk/10" />
+            <div className="text-center">
+              <div className="text-[28px] font-extrabold italic text-chalk md:text-[34px]">18<span className="text-[16px] text-accent">mo</span></div>
+              <div className="text-[9px] tracking-[.18em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Warranty</div>
+            </div>
+          </div>
+
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/vision" className="nf-btn nf-btn-primary" style={{ padding: "16px 34px", fontSize: "16px", boxShadow: "6px 6px 0 rgba(255,85,0,.3)" }}>
+              <span>Explore Vision &rarr;</span>
+            </Link>
+            <Link href="/vision#led-4w" className="nf-btn nf-btn-outline" style={{ padding: "16px 28px", fontSize: "15px", borderColor: "rgba(255,255,255,.2)", backdropFilter: "blur(4px)" }}>
+              <span>Shop 4W LED</span>
+            </Link>
+          </div>
+
+        </div>
+      </section>
+
+      {/* AROMA - Full hero tile */}
+      <section
+        className="relative flex min-h-[90vh] items-center justify-center overflow-hidden"
+        style={{ background: "linear-gradient(180deg, var(--color-carbon), #0d0a08)" }}
+      >
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{
+            background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,85,0,.1), transparent 65%)",
+          }}
+        />
+        <div className="relative z-10 mx-auto max-w-[1280px] px-5 py-20 text-center md:px-10">
+          <div
+            className="text-[11px] tracking-[.3em] text-accent uppercase"
+            style={{ fontFamily: "var(--font-spline), monospace" }}
+          >
+            NIGHTFURY AROMA
+          </div>
+          <h2
+            className="mt-5 text-[56px] font-extrabold italic uppercase leading-[.85] tracking-tight md:text-[90px] lg:text-[110px]"
+            style={{ transform: "skewX(-4deg)" }}
+          >
+            Smell The<br /><span className="text-accent">Difference</span>
+          </h2>
+          <p
+            className="mx-auto mt-6 max-w-xl text-sm leading-[1.7] text-muted md:text-base"
+            style={{ fontFamily: "var(--font-spline), monospace" }}
+          >
+            Premium cabin fragrances engineered like a performance part. Essence, Air, and Core - three ways to own the drive.
+          </p>
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/aroma" className="nf-btn nf-btn-primary" style={{ padding: "16px 32px", fontSize: "16px", boxShadow: "6px 6px 0 rgba(255,85,0,.25)" }}>
+              <span>Explore Aroma &rarr;</span>
+            </Link>
+            <Link href="/aroma#aroma-core" className="nf-btn nf-btn-outline" style={{ padding: "16px 28px", fontSize: "15px" }}>
+              <span>Shop Best Seller</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <div className="carbon-trim" />
+
       {/* ============ HERO ============ */}
       <section className="mx-auto max-w-[1280px] px-10">
         <div
@@ -167,9 +302,11 @@ export default function Home() {
                 className="pointer-events-none absolute inset-0 z-10"
                 style={{ background: "radial-gradient(60% 50% at 50% 30%, rgba(255,85,0,.14), transparent 70%)" }}
               />
-              <div className="ph" style={{ width: "100%", height: "230px" }}>
-                {b.slug.toUpperCase()} - COMING SOON
-              </div>
+              <img
+                src={`/media/posters/${b.slug.toUpperCase()}.png`}
+                alt={b.name}
+                style={{ width: "100%", height: "230px", objectFit: "cover" }}
+              />
               <div className="relative z-20 flex items-center justify-between border-t border-border px-5 py-5">
                 <div>
                   <div className="text-[23px] font-extrabold italic uppercase leading-[.95]" style={{ transform: "skewX(-5deg)" }}>
@@ -207,13 +344,13 @@ export default function Home() {
           <div className="relative" style={{ minHeight: "460px" }}>
             <div className="absolute inset-0" style={{ background: "radial-gradient(56% 56% at 50% 50%, rgba(255,85,0,.24), transparent 70%)" }} />
             <div
-              className="absolute left-5 top-5 z-10 bg-chalk px-3 py-1 text-[15px] font-extrabold italic tracking-[.05em] text-carbon"
+              className="absolute left-5 top-5 z-10 bg-accent px-3 py-1 text-[15px] font-extrabold italic tracking-[.05em] text-carbon"
               style={{ fontFamily: "var(--font-display), sans-serif", transform: "skewX(-9deg)" }}
             >
-              PREMIUM EDITION
+              BEST SELLER
             </div>
             <div className="ph absolute" style={{ inset: "30px", borderRadius: "4px" }}>
-              4-WHEELER LED HEADLIGHT - COMING SOON
+              AROMA CORE - COMING SOON
             </div>
           </div>
 
@@ -223,19 +360,19 @@ export default function Home() {
               className="text-[11px] tracking-[.2em] text-accent uppercase"
               style={{ fontFamily: "var(--font-spline), monospace" }}
             >
-              VISION &middot; 4-WHEELER &middot; PAIR PACK
+              AROMA &middot; GEL FRESHENER &middot; BEST SELLER
             </div>
             <h3
               className="mt-3 text-[46px] font-extrabold italic uppercase leading-[.92] tracking-tight"
               style={{ transform: "skewX(-4deg)" }}
             >
-              4-Wheeler LED<br />Headlight
+              Aroma<br />Core
             </h3>
             <div
               className="mt-2.5 text-[13px] text-muted"
               style={{ fontFamily: "var(--font-spline), monospace" }}
             >
-              Superior visibility on the road
+              {FEATURED.tagline}
             </div>
             <p
               className="mt-3.5 max-w-[400px] text-[12.5px] leading-[1.65] text-muted"
@@ -258,8 +395,8 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-5">
-              <Link href="/vision" className="nf-btn nf-btn-primary" style={{ padding: "14px 26px", fontSize: "16px", boxShadow: "5px 5px 0 rgba(255,85,0,.22)" }}>
-                <span>Get Yours Today! &rarr;</span>
+              <Link href="/aroma#aroma-core" className="nf-btn nf-btn-primary" style={{ padding: "14px 26px", fontSize: "16px", boxShadow: "5px 5px 0 rgba(255,85,0,.22)" }}>
+                <span>Shop Now &rarr;</span>
               </Link>
             </div>
           </div>
@@ -312,7 +449,7 @@ export default function Home() {
                     className="border border-border-strong bg-raised px-3 py-2 text-[11px] font-bold tracking-[.1em] text-chalk uppercase transition-colors group-hover:border-accent group-hover:text-accent"
                     style={{ fontFamily: "var(--font-spline), monospace", borderRadius: "2px" }}
                   >
-                    {p.slug === "led-4w" ? "Find Dealer" : "Coming Soon"}
+                    {p.outOfStock ? "Out of Stock" : p.slug === "led-4w" ? "Find Dealer" : "Coming Soon"}
                   </span>
                 </div>
               </div>

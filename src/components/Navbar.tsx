@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Logo from "./Logo";
+import CartIcon from "./CartIcon";
 
 const LINKS = [
   { href: "/vision", label: "Vision" },
@@ -64,11 +65,15 @@ export default function Navbar() {
           </div>
 
           <div className="hidden items-center gap-4 md:flex">
+            <CartIcon />
             <a href="#contact" className="nf-btn nf-btn-primary" style={{ padding: "9px 16px", fontSize: "14px" }}>
               <span>Find Nearby Dealer</span>
             </a>
           </div>
 
+          <div className="flex items-center gap-3 md:hidden">
+            <CartIcon />
+          </div>
           <button
             className="text-chalk md:hidden"
             onClick={() => setOpen(!open)}

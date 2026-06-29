@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { CartProvider } from "@/lib/cart";
 import { BUSINESS, SUPPORT, SITE_URL } from "@/lib/legal";
 
 const saira = Saira_Condensed({
@@ -69,9 +70,11 @@ export default function RootLayout({
       className={`${saira.variable} ${spline.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <CartProvider>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        </CartProvider>
         <Analytics />
         <script
           type="application/ld+json"

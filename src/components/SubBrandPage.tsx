@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { getSubBrand } from "@/lib/products";
 import ProductVisual from "./ProductVisual";
+import ProductGallery from "./ProductGallery";
 import ProductDetail from "./ProductDetail";
 import Reviews from "./Reviews";
 
@@ -81,7 +82,11 @@ export default function SubBrandPage({ slug }: { slug: string }) {
               >
                 <div className="absolute inset-0" style={{ background: "radial-gradient(56% 56% at 50% 50%, rgba(255,85,0,.2), transparent 70%)" }} />
                 <div className="absolute inset-8">
-                  <ProductVisual product={p} />
+                  {p.mediaDir ? (
+                    <ProductGallery mediaDir={p.mediaDir} productName={p.name} />
+                  ) : (
+                    <ProductVisual product={p} />
+                  )}
                 </div>
               </div>
 

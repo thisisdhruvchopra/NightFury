@@ -8,11 +8,18 @@ export type Product = {
   specs: { label: string; value: string }[];
   /** Path under /public. If the file is missing, the UI falls back to SVG box art. */
   image?: string;
+  /** Media gallery folder path under /public/media/products/. Files named 1.png, 2.png, etc. or 1.mp4 etc. */
+  mediaDir?: string;
   /** Which built-in SVG box art to render when no photo exists. */
   boxArt?: "led2w" | "microfiber" | "wipes";
   /** Selectable output options, e.g. wattages. */
   wattOptions?: string[];
+  /** Selectable fragrance options for Aroma products. */
+  fragranceOptions?: string[];
+  /** Selectable pack size options. */
+  packOptions?: string[];
   badge?: string;
+  outOfStock?: boolean;
 };
 
 export type SubBrand = {
@@ -56,13 +63,15 @@ export const SUB_BRANDS: SubBrand[] = [
           { label: "Warranty", value: "18 months" },
           { label: "Pack", value: "Pair Pack" },
         ],
-        image: "/media/products/4whled.png",
+        image: "/media/products/vision/4whled/1.png",
+        mediaDir: "vision/4whled",
         wattOptions: ["240W", "300W"],
         badge: "Premium Edition",
       },
       {
         slug: "led-2w",
         name: "2-Wheeler LED Headlight",
+        mediaDir: "vision/2whled",
         variant: "Single Unit",
         tagline: "Own the night, on two wheels",
         description:
@@ -84,6 +93,7 @@ export const SUB_BRANDS: SubBrand[] = [
           { label: "Fitment", value: "H4 Universal" },
         ],
         badge: "Premium Edition",
+        outOfStock: true,
       },
     ],
   },
@@ -98,7 +108,9 @@ export const SUB_BRANDS: SubBrand[] = [
       {
         slug: "aroma-hanging",
         name: "Aroma Essence",
-        variant: "Hanging Bottle · Ocean Breeze · 15 ml",
+        mediaDir: "aroma/essence",
+        variant: "Hanging Bottle · 15 ml",
+        fragranceOptions: ["Fragrance A", "Fragrance B", "Fragrance C", "Fragrance D", "Fragrance E"],
         tagline: "Premium fragrance, suspended in glass",
         description:
           "A faceted glass bottle with a braided cord and natural wood cap, filled with 8 ml of slow-release premium fragrance oil. Ocean Breeze keeps the cabin fresh for weeks, not days.",
@@ -119,9 +131,11 @@ export const SUB_BRANDS: SubBrand[] = [
         badge: "Premium Edition",
       },
       {
-        slug: "aroma-spray",
-        name: "Aroma Elite",
-        variant: "Spray + Hanging Card · Midnight Noir · 50 ml",
+        slug: "aroma-air",
+        name: "Aroma Air",
+        mediaDir: "aroma/air",
+        variant: "Spray + Hanging Card · 50 ml",
+        fragranceOptions: ["Fragrance A", "Fragrance B", "Fragrance C", "Fragrance D", "Fragrance E"],
         tagline: "Spray. Hang. Arrive.",
         description:
           "A matte-black 50 ml atomizer paired with a NightFury hanging card. Mist the card, hang it from your mirror, and refresh whenever you want, one bottle outlasts a dozen disposable fresheners.",
@@ -141,6 +155,31 @@ export const SUB_BRANDS: SubBrand[] = [
         ],
         badge: "Premium Edition",
       },
+      {
+        slug: "aroma-core",
+        name: "Aroma Core",
+        mediaDir: "aroma/core",
+        variant: "Gel Dashboard Freshener · 120g",
+        fragranceOptions: ["Fragrance A", "Fragrance B", "Fragrance C", "Fragrance D", "Fragrance E"],
+        tagline: "Silent fragrance, always on.",
+        description:
+          "A sleek gel-based dashboard freshener in a matte-black canister. Aroma Core sits quietly on your console and releases a steady, subtle fragrance for weeks. No cords, no clips, no refills needed.",
+        features: [
+          "Premium gel fragrance",
+          "Long lasting, up to 60 days",
+          "Compact dashboard design",
+          "Matte-black canister",
+          "No installation required",
+          "Made for every drive",
+        ],
+        specs: [
+          { label: "Weight", value: "120g" },
+          { label: "Type", value: "Gel dashboard freshener" },
+          { label: "Placement", value: "Dashboard / console" },
+          { label: "Duration", value: "Up to 60 days" },
+        ],
+        badge: "Premium Edition",
+      },
     ],
   },
   {
@@ -154,7 +193,9 @@ export const SUB_BRANDS: SubBrand[] = [
       {
         slug: "care-microfiber",
         name: "Microfiber Cloth",
-        variant: "380 GSM · Pack of 2",
+        mediaDir: "care/microfiber",
+        variant: "380 GSM",
+        packOptions: ["Pack of 1", "Pack of 2", "Pack of 3"],
         tagline: "Scratch-free shine, every wipe",
         description:
           "Ultra-plush 380 GSM microfiber with laser-cut edgeless borders. Lifts dust and polish residue without a single swirl mark, safe on ceramic coats, PPF and gloss black trim.",
@@ -173,10 +214,12 @@ export const SUB_BRANDS: SubBrand[] = [
           { label: "Blend", value: "80/20 polyester-polyamide" },
         ],
         badge: "Premium Edition",
+        outOfStock: true,
       },
       {
         slug: "care-wipes",
         name: "Car Wet Wipes",
+        mediaDir: "care/wipes",
         variant: "Interior & Dashboard · 40 wipes",
         tagline: "Showroom clean, anywhere",
         description:
@@ -196,6 +239,7 @@ export const SUB_BRANDS: SubBrand[] = [
           { label: "Finish", value: "Matte anti-static" },
         ],
         badge: "Premium Edition",
+        outOfStock: true,
       },
     ],
   },
