@@ -116,8 +116,8 @@ h1, h2, h3, h4, .font-display {
 
 /* ===== Marquee ===== */
 .marquee-bar {
-  background: var(--color-accent);
-  color: var(--color-carbon);
+  background: #000;
+  color: #fff;
   overflow: hidden;
   white-space: nowrap;
   border-bottom: 1px solid rgba(0,0,0,.25);
