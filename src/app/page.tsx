@@ -167,9 +167,11 @@ export default function Home() {
                 className="pointer-events-none absolute inset-0 z-10"
                 style={{ background: "radial-gradient(60% 50% at 50% 30%, rgba(255,85,0,.14), transparent 70%)" }}
               />
-              <div className="ph" style={{ width: "100%", height: "230px" }}>
-                {b.slug.toUpperCase()} - COMING SOON
-              </div>
+              <img
+                src={`/media/posters/${b.slug}.png`}
+                alt={b.name}
+                style={{ width: "100%", height: "230px", objectFit: "cover" }}
+              />
               <div className="relative z-20 flex items-center justify-between border-t border-border px-5 py-5">
                 <div>
                   <div className="text-[23px] font-extrabold italic uppercase leading-[.95]" style={{ transform: "skewX(-5deg)" }}>
