@@ -303,7 +303,7 @@ export default function Home() {
                 style={{ background: "radial-gradient(60% 50% at 50% 30%, rgba(255,85,0,.14), transparent 70%)" }}
               />
               <img
-                src={`/media/posters/${b.slug.toUpperCase()}.png`}
+                src={`/media/posters/${b.slug}.png`}
                 alt={b.name}
                 style={{ width: "100%", height: "230px", objectFit: "cover" }}
               />
