@@ -85,48 +85,48 @@ export default function Home() {
           </div>
 
           <h2
-            className="mt-6 text-left text-[52px] font-extrabold italic uppercase leading-[.82] tracking-tight md:text-[80px] lg:text-[110px]"
+            className="vision-headline mt-6 text-left text-[40px] font-extrabold italic uppercase leading-[.82] tracking-tight md:text-[80px] lg:text-[110px]"
             style={{ transform: "skewX(-4deg)" }}
           >
             Own The<br /><span className="text-accent">Night</span>
           </h2>
 
           <p
-            className="mt-6 max-w-lg text-left text-[13px] leading-[1.8] text-chalk/70 md:text-[15px]"
+            className="mt-5 max-w-lg text-left text-[12px] leading-[1.8] text-chalk/70 md:text-[15px]"
             style={{ fontFamily: "var(--font-spline), monospace" }}
           >
-            240W and 300W LED Headlights. CANBUS-ready. 18-month warranty.<br className="hidden md:block" />
-            Precision LED headlights for cars and bikes.
+            240W and 300W LED Headlights. CANBUS-ready. 18-month warranty.{" "}
+            <span className="hidden md:inline">Precision LED headlights for cars and bikes.</span>
           </p>
 
           {/* Stats row */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-8 md:gap-12">
-            <div className="text-center">
-              <div className="text-[28px] font-extrabold italic text-chalk md:text-[34px]">240W<span className="text-[16px] text-accent">/</span>300W</div>
-              <div className="text-[9px] tracking-[.18em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>LED Headlights</div>
+          <div className="vision-stats mt-7 flex flex-wrap items-center gap-6 md:gap-12">
+            <div>
+              <div className="text-[22px] font-extrabold italic text-chalk md:text-[34px]">240W<span className="text-[14px] text-accent">/</span>300W</div>
+              <div className="text-[9px] tracking-[.16em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>LED Headlights</div>
             </div>
-            <div className="h-8 w-px bg-chalk/10" />
-            <div className="text-center">
-              <div className="text-[28px] font-extrabold italic text-chalk md:text-[34px]">5K<span className="text-[16px] text-accent">hr</span></div>
-              <div className="text-[9px] tracking-[.18em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Life Span</div>
+            <div className="h-6 w-px bg-chalk/10" />
+            <div>
+              <div className="text-[22px] font-extrabold italic text-chalk md:text-[34px]">5K<span className="text-[14px] text-accent">hr</span></div>
+              <div className="text-[9px] tracking-[.16em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Life Span</div>
             </div>
-            <div className="h-8 w-px bg-chalk/10" />
-            <div className="text-center">
-              <div className="text-[28px] font-extrabold italic text-chalk md:text-[34px]">IP67</div>
-              <div className="text-[9px] tracking-[.18em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Rated</div>
+            <div className="h-6 w-px bg-chalk/10" />
+            <div>
+              <div className="text-[22px] font-extrabold italic text-chalk md:text-[34px]">IP67</div>
+              <div className="text-[9px] tracking-[.16em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Rated</div>
             </div>
-            <div className="h-8 w-px bg-chalk/10" />
-            <div className="text-center">
-              <div className="text-[28px] font-extrabold italic text-chalk md:text-[34px]">18<span className="text-[16px] text-accent">mo</span></div>
-              <div className="text-[9px] tracking-[.18em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Warranty</div>
+            <div className="h-6 w-px bg-chalk/10" />
+            <div>
+              <div className="text-[22px] font-extrabold italic text-chalk md:text-[34px]">18<span className="text-[14px] text-accent">mo</span></div>
+              <div className="text-[9px] tracking-[.16em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Warranty</div>
             </div>
           </div>
 
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Link href="/vision" className="nf-btn nf-btn-primary" style={{ padding: "16px 34px", fontSize: "16px", boxShadow: "6px 6px 0 rgba(255,85,0,.3)" }}>
+          <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Link href="/vision" className="nf-btn nf-btn-primary" style={{ padding: "13px 26px", fontSize: "14px", boxShadow: "6px 6px 0 rgba(255,85,0,.3)" }}>
               <span>Explore Vision &rarr;</span>
             </Link>
-            <Link href="/vision#led-4w" className="nf-btn nf-btn-outline" style={{ padding: "16px 28px", fontSize: "15px", borderColor: "rgba(255,255,255,.2)", backdropFilter: "blur(4px)" }}>
+            <Link href="/vision#led-4w" className="nf-btn nf-btn-outline" style={{ padding: "13px 22px", fontSize: "13px", borderColor: "rgba(255,255,255,.2)", backdropFilter: "blur(4px)" }}>
               <span>Shop 4W LED</span>
             </Link>
           </div>
@@ -153,7 +153,7 @@ export default function Home() {
             NIGHTFURY AROMA
           </div>
           <h2
-            className="mt-5 text-[56px] font-extrabold italic uppercase leading-[.85] tracking-tight md:text-[90px] lg:text-[110px]"
+            className="mt-5 text-[38px] font-extrabold italic uppercase leading-[.85] tracking-tight md:text-[90px] lg:text-[110px]"
             style={{ transform: "skewX(-4deg)" }}
           >
             Smell The<br /><span className="text-accent">Difference</span>
@@ -210,7 +210,7 @@ export default function Home() {
             </div>
 
             <h1
-              className="m-0 text-[84px] font-extrabold italic uppercase leading-[.88] tracking-tight"
+              className="hero-h1 m-0 text-[48px] font-extrabold italic uppercase leading-[.88] tracking-tight md:text-[84px]"
               style={{ transform: "skewX(-4deg)" }}
             >
               Night<span className="text-accent">Fury</span>
@@ -236,7 +236,7 @@ export default function Home() {
             <div className="mt-11 flex flex-wrap gap-7">
               {STATS.map((s) => (
                 <div key={s.cap}>
-                  <div className="text-[30px] font-extrabold italic leading-[.9] text-chalk">
+                  <div className="text-[22px] font-extrabold italic leading-[.9] text-chalk md:text-[30px]">
                     {s.value}
                     {s.unit && <span className="text-[15px] text-accent">{s.unit}</span>}
                   </div>
@@ -281,16 +281,16 @@ export default function Home() {
       </section>
 
       {/* ============ CATEGORIES ============ */}
-      <section id="brands" className="mx-auto max-w-[1280px] px-10 pt-22">
+      <section id="brands" className="mx-auto max-w-[1280px] px-5 pt-12 md:px-10 md:pt-22">
         <div className="mb-7 flex items-end gap-4">
           <span className="text-[13px] font-semibold text-accent" style={{ fontFamily: "var(--font-spline), monospace" }}>
             01
           </span>
-          <h2 className="m-0 text-[38px] font-extrabold italic uppercase tracking-tight" style={{ transform: "skewX(-4deg)" }}>
+          <h2 className="m-0 text-[22px] font-extrabold italic uppercase tracking-tight md:text-[38px]" style={{ transform: "skewX(-4deg)" }}>
             The NightFury Range
           </h2>
-          <div className="mb-3 h-px flex-1 bg-grid-line" />
-          <span className="mb-2 text-[11px] tracking-[.16em] text-dim uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>
+          <div className="mb-3 hidden h-px flex-1 bg-grid-line md:block" />
+          <span className="mb-2 hidden text-[11px] tracking-[.16em] text-dim uppercase md:block" style={{ fontFamily: "var(--font-spline), monospace" }}>
             OUR PRODUCT LINES
           </span>
         </div>
@@ -329,7 +329,7 @@ export default function Home() {
       </section>
 
       {/* ============ FEATURED PRODUCT ============ */}
-      <section className="mx-auto max-w-[1280px] px-10 pt-22">
+      <section className="mx-auto max-w-[1280px] px-5 pt-12 md:px-10 md:pt-22">
         <div
           className="nf-card relative overflow-hidden"
           style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", background: "linear-gradient(150deg, #15100c, #0A0A0B 60%)" }}
@@ -341,7 +341,7 @@ export default function Home() {
           />
 
           {/* Image */}
-          <div className="relative" style={{ minHeight: "460px" }}>
+          <div className="relative" style={{ minHeight: "260px" }}>
             <div className="absolute inset-0" style={{ background: "radial-gradient(56% 56% at 50% 50%, rgba(255,85,0,.24), transparent 70%)" }} />
             <div
               className="absolute left-5 top-5 z-10 bg-accent px-3 py-1 text-[15px] font-extrabold italic tracking-[.05em] text-carbon"
@@ -355,7 +355,7 @@ export default function Home() {
           </div>
 
           {/* Body */}
-          <div className="relative z-10 flex flex-col justify-center px-10 py-11">
+          <div className="relative z-10 flex flex-col justify-center px-5 py-8 md:px-10 md:py-11">
             <div
               className="text-[11px] tracking-[.2em] text-accent uppercase"
               style={{ fontFamily: "var(--font-spline), monospace" }}
@@ -363,7 +363,7 @@ export default function Home() {
               AROMA &middot; GEL FRESHENER &middot; BEST SELLER
             </div>
             <h3
-              className="mt-3 text-[46px] font-extrabold italic uppercase leading-[.92] tracking-tight"
+              className="mt-3 text-[28px] font-extrabold italic uppercase leading-[.92] tracking-tight md:text-[46px]"
               style={{ transform: "skewX(-4deg)" }}
             >
               Aroma<br />Core
@@ -404,16 +404,16 @@ export default function Home() {
       </section>
 
       {/* ============ LINEUP ============ */}
-      <section className="mx-auto max-w-[1280px] px-10 pt-22">
+      <section className="mx-auto max-w-[1280px] px-5 pt-12 md:px-10 md:pt-22">
         <div className="mb-7 flex items-end gap-4">
           <span className="text-[13px] font-semibold text-accent" style={{ fontFamily: "var(--font-spline), monospace" }}>
             02
           </span>
-          <h2 className="m-0 text-[38px] font-extrabold italic uppercase tracking-tight" style={{ transform: "skewX(-4deg)" }}>
+          <h2 className="m-0 text-[22px] font-extrabold italic uppercase tracking-tight md:text-[38px]" style={{ transform: "skewX(-4deg)" }}>
             The Lineup
           </h2>
-          <div className="mb-3 h-px flex-1 bg-grid-line" />
-          <span className="mb-2 text-[11px] tracking-[.16em] text-dim uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>
+          <div className="mb-3 hidden h-px flex-1 bg-grid-line md:block" />
+          <span className="mb-2 hidden text-[11px] tracking-[.16em] text-dim uppercase md:block" style={{ fontFamily: "var(--font-spline), monospace" }}>
             {ALL_PRODUCTS.length} PRODUCTS &middot; 3 LINES
           </span>
         </div>
@@ -459,8 +459,8 @@ export default function Home() {
       </section>
 
       {/* ============ WHY NIGHTFURY ============ */}
-      <section className="mx-auto max-w-[1280px] px-10 pt-22">
-        <div className="nf-card relative overflow-hidden p-12">
+      <section className="mx-auto max-w-[1280px] px-5 pt-12 md:px-10 md:pt-22">
+        <div className="nf-card relative overflow-hidden p-6 md:p-12">
           <div
             className="pointer-events-none absolute right-[-20px] top-1/2 -translate-y-1/2 text-[90px] font-bold italic uppercase leading-[.7] whitespace-nowrap"
             style={{ fontFamily: "Arial, Helvetica, sans-serif", color: "rgba(255,255,255,.035)" }}
@@ -475,7 +475,7 @@ export default function Home() {
             THE NIGHTFURY STANDARD
           </div>
           <h2
-            className="mt-2 text-[34px] font-extrabold italic uppercase tracking-tight"
+            className="mt-2 text-[24px] font-extrabold italic uppercase tracking-tight md:text-[34px]"
             style={{ transform: "skewX(-4deg)" }}
           >
             Built Like A <span className="text-accent">Performance</span> Brand
@@ -507,16 +507,16 @@ export default function Home() {
       </section>
 
       {/* ============ REVIEWS ============ */}
-      <section className="mx-auto max-w-[1280px] px-10 pt-22">
+      <section className="mx-auto max-w-[1280px] px-5 pt-12 md:px-10 md:pt-22">
         <div className="mb-7 flex items-end gap-4">
           <span className="text-[13px] font-semibold text-accent" style={{ fontFamily: "var(--font-spline), monospace" }}>
             03
           </span>
-          <h2 className="m-0 text-[38px] font-extrabold italic uppercase tracking-tight" style={{ transform: "skewX(-4deg)" }}>
+          <h2 className="m-0 text-[22px] font-extrabold italic uppercase tracking-tight md:text-[38px]" style={{ transform: "skewX(-4deg)" }}>
             What Drivers &amp; Dealers Say
           </h2>
-          <div className="mb-3 h-px flex-1 bg-grid-line" />
-          <span className="mb-2 text-[11px] tracking-[.16em] text-dim uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>
+          <div className="mb-3 hidden h-px flex-1 bg-grid-line md:block" />
+          <span className="mb-2 hidden text-[11px] tracking-[.16em] text-dim uppercase md:block" style={{ fontFamily: "var(--font-spline), monospace" }}>
             TRUSTED ACROSS INDIA
           </span>
         </div>
@@ -554,9 +554,9 @@ export default function Home() {
       </section>
 
       {/* ============ CLOSING CTA ============ */}
-      <section className="mx-auto max-w-[1280px] px-10 pt-22 pb-16">
+      <section className="mx-auto max-w-[1280px] px-5 pt-12 md:px-10 md:pt-22 pb-16">
         <div
-          className="nf-card overflow-hidden p-12"
+          className="nf-card overflow-hidden p-6 md:p-12"
           style={{ background: "linear-gradient(120deg, var(--color-accent), #cc4400)", textAlign: "center" }}
         >
           <div
@@ -566,7 +566,7 @@ export default function Home() {
             THE NIGHTFURY STANDARD
           </div>
           <h2
-            className="mt-4 text-[42px] font-extrabold italic uppercase leading-[.92] text-carbon"
+            className="mt-4 text-[28px] font-extrabold italic uppercase leading-[.92] text-carbon md:text-[42px]"
             style={{ transform: "skewX(-4deg)" }}
           >
             Ready To Drive<br />The Difference?

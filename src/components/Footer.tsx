@@ -11,7 +11,7 @@ export default function Footer() {
     <footer id="contact">
       <div className="carbon-trim" />
 
-      <div className="mx-auto max-w-[1280px] px-5 pt-20 md:px-10">
+      <div className="mx-auto max-w-[1280px] px-5 pt-12 md:px-10 md:pt-20">
         <div
           className="foot-top"
           style={{
