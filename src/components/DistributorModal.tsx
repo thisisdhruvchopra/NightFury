@@ -1,16 +1,17 @@
 "use client";
 
 import { useEffect } from "react";
+import { BUSINESS, SUPPORT } from "@/lib/legal";
 
-const MAPS_QUERY = encodeURIComponent("Yash Marketing, Kanpur");
+const MAPS_QUERY = encodeURIComponent(`${BUSINESS.legalName}, ${BUSINESS.address.city}`);
 
 export default function DistributorModal({ onClose }: Readonly<{ onClose: () => void }>) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
     };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    globalThis.addEventListener("keydown", onKey);
+    return () => globalThis.removeEventListener("keydown", onKey);
   }, [onClose]);
 
   return (
@@ -40,33 +41,40 @@ export default function DistributorModal({ onClose }: Readonly<{ onClose: () => 
         </div>
 
         <div className="px-6 py-5">
-          <p className="text-base font-bold text-chalk">Yash Marketing</p>
+          <p className="text-base font-bold text-chalk">{BUSINESS.legalName}</p>
           <p
-            className="mt-1 text-[11px] tracking-[.12em] text-dim"
+            className="mt-0.5 text-[10px] tracking-[.1em] text-accent uppercase"
             style={{ fontFamily: "var(--font-spline), monospace" }}
           >
-            KANPUR, UTTAR PRADESH
+            {BUSINESS.tagline}
+          </p>
+          <p
+            className="mt-2 text-[11px] tracking-[.08em] text-dim"
+            style={{ fontFamily: "var(--font-spline), monospace" }}
+          >
+            {BUSINESS.address.line1}, {BUSINESS.address.line2},<br />
+            {BUSINESS.address.city}, {BUSINESS.address.state} {BUSINESS.address.pin}
           </p>
 
           <ul className="mt-4 space-y-3">
             <li className="flex items-center gap-3">
               <span className="text-accent">&#9742;</span>
               <a
-                href="tel:+919839187898"
+                href={SUPPORT.phoneHref}
                 className="nf-link text-sm text-[#C8C8CE]"
                 style={{ fontFamily: "var(--font-spline), monospace" }}
               >
-                +91 98391 87898
+                {SUPPORT.phone}
               </a>
             </li>
             <li className="flex items-center gap-3">
               <span className="text-accent">&#9993;</span>
               <a
-                href="mailto:yashp.marketing@gmail.com"
+                href={`mailto:${SUPPORT.email}`}
                 className="nf-link text-sm text-[#C8C8CE]"
                 style={{ fontFamily: "var(--font-spline), monospace" }}
               >
-                yashp.marketing@gmail.com
+                {SUPPORT.email}
               </a>
             </li>
           </ul>
