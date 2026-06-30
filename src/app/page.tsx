@@ -186,8 +186,8 @@ export default function Home() {
             gridTemplateColumns: "1.05fr 1fr",
             gap: "30px",
             alignItems: "center",
-            minHeight: "620px",
-            padding: "40px 0",
+            minHeight: "auto",
+            padding: "40px 0 32px",
           }}
         >
           {/* Livery stripes */}
@@ -233,7 +233,7 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="mt-11 flex flex-wrap gap-7">
+            <div className="mt-11 hidden flex-wrap gap-7 md:flex">
               {STATS.map((s) => (
                 <div key={s.cap}>
                   <div className="text-[22px] font-extrabold italic leading-[.9] text-chalk md:text-[30px]">
@@ -251,8 +251,8 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Right: hero image placeholder */}
-          <div className="relative z-10">
+          {/* Right: hero image - hidden on mobile (Vision tile above already shows the car) */}
+          <div className="relative z-10 hidden md:block">
             <div
               className="pointer-events-none absolute"
               style={{
@@ -305,7 +305,7 @@ export default function Home() {
               <img
                 src={`/media/posters/${b.slug}.png`}
                 alt={b.name}
-                style={{ width: "100%", height: "230px", objectFit: "cover" }}
+                style={{ width: "100%", height: "clamp(140px, 30vw, 230px)", objectFit: "cover" }}
               />
               <div className="relative z-20 flex items-center justify-between border-t border-border px-5 py-5">
                 <div>
@@ -328,8 +328,29 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ FEATURED PRODUCT ============ */}
-      <section className="mx-auto max-w-[1280px] px-5 pt-12 md:px-10 md:pt-22">
+      {/* ============ MOBILE: Shop CTA strip ============ */}
+      <div className="mx-auto max-w-[1280px] px-5 pt-8 md:hidden">
+        <div
+          className="nf-card flex flex-col items-center gap-4 p-6 text-center"
+          style={{ background: "linear-gradient(135deg, #15100c, #0A0A0B)" }}
+        >
+          <div className="text-[10px] tracking-[.2em] text-accent uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>
+            AROMA &middot; BEST SELLER
+          </div>
+          <h3 className="text-[22px] font-extrabold italic uppercase" style={{ transform: "skewX(-4deg)" }}>
+            Aroma Core <span className="text-accent">&mdash;</span> Shop Now
+          </h3>
+          <p className="text-[12px] leading-[1.6] text-muted" style={{ fontFamily: "var(--font-spline), monospace" }}>
+            Gel dashboard freshener. Up to 60 days of premium fragrance.
+          </p>
+          <Link href="/aroma#aroma-core" className="nf-btn nf-btn-primary" style={{ padding: "12px 24px", fontSize: "14px" }}>
+            <span>Shop Aroma Core &rarr;</span>
+          </Link>
+        </div>
+      </div>
+
+      {/* ============ FEATURED PRODUCT (desktop only) ============ */}
+      <section className="mx-auto hidden max-w-[1280px] px-5 pt-12 md:block md:px-10 md:pt-22">
         <div
           className="nf-card relative overflow-hidden"
           style={{ display: "grid", gridTemplateColumns: "1fr 1.05fr", background: "linear-gradient(150deg, #15100c, #0A0A0B 60%)" }}
@@ -403,8 +424,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ============ LINEUP ============ */}
-      <section className="mx-auto max-w-[1280px] px-5 pt-12 md:px-10 md:pt-22">
+      {/* ============ LINEUP (desktop only) ============ */}
+      <section className="mx-auto hidden max-w-[1280px] px-5 pt-12 md:block md:px-10 md:pt-22">
         <div className="mb-7 flex items-end gap-4">
           <span className="text-[13px] font-semibold text-accent" style={{ fontFamily: "var(--font-spline), monospace" }}>
             02
@@ -522,8 +543,8 @@ export default function Home() {
         </div>
 
         <div className="review-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "20px" }}>
-          {TESTIMONIALS.map((t) => (
-            <div key={t.name} className="nf-card p-6">
+          {TESTIMONIALS.map((t, i) => (
+            <div key={t.name} className={`nf-card p-6 ${i > 0 ? "hidden md:block" : ""}`}>
               <span className="text-sm tracking-[2px] text-accent">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               <p
                 className="mt-4 text-[13px] leading-[1.65] text-muted"
