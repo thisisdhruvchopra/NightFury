@@ -135,31 +135,40 @@ export default function Home() {
       </section>
 
       {/* AROMA - Full hero tile */}
-      <section
-        className="relative flex min-h-[90vh] items-center justify-center overflow-hidden"
-        style={{ background: "linear-gradient(180deg, var(--color-carbon), #0d0a08)" }}
-      >
+      <section className="relative min-h-[90vh] overflow-hidden">
+        {/* Background image */}
+        <div className="absolute inset-0">
+          <img
+            src="/media/graphics/aromahome.png"
+            alt=""
+            className="h-full w-full object-cover"
+            style={{ objectPosition: "center center" }}
+          />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(10,10,11,.3) 0%, rgba(10,10,11,.1) 30%, rgba(10,10,11,.65) 70%, rgba(10,10,11,.95) 100%)" }} />
+          <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 60% at 50% 40%, transparent 30%, rgba(10,10,11,.45) 100%)" }} />
+        </div>
+
+        {/* Accent glow */}
         <div
-          className="pointer-events-none absolute inset-0"
-          style={{
-            background: "radial-gradient(ellipse 60% 50% at 50% 50%, rgba(255,85,0,.1), transparent 65%)",
-          }}
+          className="pointer-events-none absolute left-1/2 top-[40%] -translate-x-1/2 -translate-y-1/2"
+          style={{ width: "500px", height: "350px", background: "radial-gradient(ellipse at center, rgba(255,85,0,.12), transparent 70%)", filter: "blur(40px)" }}
         />
-        <div className="relative z-10 mx-auto max-w-[1280px] px-5 py-20 text-center md:px-10">
+
+        <div className="relative z-10 flex min-h-[90vh] flex-col items-center justify-center px-5 py-20 text-center md:px-10">
           <div
-            className="text-[11px] tracking-[.3em] text-accent uppercase"
-            style={{ fontFamily: "var(--font-spline), monospace" }}
+            className="inline-flex items-center gap-2 border border-chalk/20 px-4 py-1.5 text-[10px] tracking-[.3em] text-accent uppercase backdrop-blur-sm"
+            style={{ fontFamily: "var(--font-spline), monospace", borderRadius: "2px" }}
           >
-            NIGHTFURY AROMA
+            <span className="dot" /> NIGHTFURY AROMA
           </div>
           <h2
-            className="mt-5 text-[38px] font-extrabold italic uppercase leading-[.85] tracking-tight md:text-[90px] lg:text-[110px]"
+            className="mt-6 text-[38px] font-extrabold italic uppercase leading-[.85] tracking-tight md:text-[90px] lg:text-[110px]"
             style={{ transform: "skewX(-4deg)" }}
           >
             Smell The<br /><span className="text-accent">Difference</span>
           </h2>
           <p
-            className="mx-auto mt-6 max-w-xl text-sm leading-[1.7] text-muted md:text-base"
+            className="mx-auto mt-6 max-w-xl text-[13px] leading-[1.8] text-chalk/70 md:text-[15px]"
             style={{ fontFamily: "var(--font-spline), monospace" }}
           >
             Premium cabin fragrances engineered like a performance part. Essence, Air, and Core - three ways to own the drive.
@@ -168,7 +177,7 @@ export default function Home() {
             <Link href="/aroma" className="nf-btn nf-btn-primary" style={{ padding: "16px 32px", fontSize: "16px", boxShadow: "6px 6px 0 rgba(255,85,0,.25)" }}>
               <span>Explore Aroma &rarr;</span>
             </Link>
-            <Link href="/aroma#aroma-core" className="nf-btn nf-btn-outline" style={{ padding: "16px 28px", fontSize: "15px" }}>
+            <Link href="/aroma#aroma-core" className="nf-btn nf-btn-outline" style={{ padding: "16px 28px", fontSize: "15px", borderColor: "rgba(255,255,255,.2)", backdropFilter: "blur(4px)" }}>
               <span>Shop Best Seller</span>
             </Link>
           </div>
