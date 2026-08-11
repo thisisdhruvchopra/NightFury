@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Saira_Condensed, Spline_Sans_Mono } from "next/font/google";
+import { Saira_Condensed, Spline_Sans_Mono, Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
@@ -15,6 +15,13 @@ const saira = Saira_Condensed({
 
 const spline = Spline_Sans_Mono({
   variable: "--font-spline",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
+// Body/UI text face. Saira Condensed is a display font, too narrow to read at paragraph sizes.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -67,7 +74,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${saira.variable} ${spline.variable} h-full antialiased`}
+      className={`${saira.variable} ${spline.variable} ${inter.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <CartProvider>

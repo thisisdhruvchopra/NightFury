@@ -79,7 +79,7 @@ export default function CartPage() {
                       {item.productName}
                     </div>
                     <div className="mt-1 flex flex-wrap gap-2 text-[11px] text-dim" style={mono}>
-                      {item.variant && <span>Output: <span className="text-muted">{item.variant}</span></span>}
+                      {item.variant && <span>{item.variantLabel ?? "Output"}: <span className="text-muted">{item.variant}</span></span>}
                       {item.fragrance && <span>Fragrance: <span className="text-muted">{item.fragrance}</span></span>}
                       {item.pack && <span>Size: <span className="text-muted">{item.pack}</span></span>}
                     </div>

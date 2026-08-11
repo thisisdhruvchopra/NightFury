@@ -92,8 +92,8 @@ export default function Home() {
           </h2>
 
           <p
-            className="mt-5 max-w-lg text-left text-[12px] leading-[1.8] text-chalk/70 md:text-[15px]"
-            style={{ fontFamily: "var(--font-spline), monospace" }}
+            className="mt-5 max-w-lg text-left text-[15px] leading-[1.75] text-chalk/80 md:text-[17px]"
+            style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
           >
             240W and 300W LED Headlights. CANBUS-ready. 18-month warranty.{" "}
             <span className="hidden md:inline">Precision LED headlights for cars and bikes.</span>
@@ -103,22 +103,22 @@ export default function Home() {
           <div className="vision-stats mt-7 flex flex-wrap items-center gap-6 md:gap-12">
             <div>
               <div className="text-[22px] font-extrabold italic text-chalk md:text-[34px]">240W<span className="text-[14px] text-accent">/</span>300W</div>
-              <div className="text-[9px] tracking-[.16em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>LED Headlights</div>
+              <div className="text-[11px] tracking-[.13em] text-chalk/60 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>LED Headlights</div>
             </div>
             <div className="h-6 w-px bg-chalk/10" />
             <div>
               <div className="text-[22px] font-extrabold italic text-chalk md:text-[34px]">5K<span className="text-[14px] text-accent">hr</span></div>
-              <div className="text-[9px] tracking-[.16em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Life Span</div>
+              <div className="text-[11px] tracking-[.13em] text-chalk/60 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Life Span</div>
             </div>
             <div className="h-6 w-px bg-chalk/10" />
             <div>
               <div className="text-[22px] font-extrabold italic text-chalk md:text-[34px]">IP67</div>
-              <div className="text-[9px] tracking-[.16em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Rated</div>
+              <div className="text-[11px] tracking-[.13em] text-chalk/60 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Rated</div>
             </div>
             <div className="h-6 w-px bg-chalk/10" />
             <div>
               <div className="text-[22px] font-extrabold italic text-chalk md:text-[34px]">18<span className="text-[14px] text-accent">mo</span></div>
-              <div className="text-[9px] tracking-[.16em] text-chalk/40 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Warranty</div>
+              <div className="text-[11px] tracking-[.13em] text-chalk/60 uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>Warranty</div>
             </div>
           </div>
 
@@ -172,8 +172,8 @@ export default function Home() {
               Smell The<br /><span className="text-accent">Difference</span>
             </h2>
             <p
-              className="mt-5 text-left text-[12px] leading-[1.8] text-chalk/70 md:text-[14px]"
-              style={{ fontFamily: "var(--font-spline), monospace" }}
+              className="mt-5 text-left text-[15px] leading-[1.75] text-chalk/80 md:text-[16px]"
+              style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
             >
               Premium cabin fragrances engineered like a performance part. Essence, Air, and Core - three ways to own the drive.
             </p>
@@ -181,7 +181,7 @@ export default function Home() {
               <Link href="/aroma" className="nf-btn nf-btn-primary" style={{ padding: "14px 28px", fontSize: "15px", boxShadow: "6px 6px 0 rgba(255,85,0,.25)" }}>
                 <span>Explore Aroma &rarr;</span>
               </Link>
-              <Link href="/aroma#aroma-core" className="nf-btn nf-btn-outline" style={{ padding: "14px 24px", fontSize: "14px", borderColor: "rgba(255,255,255,.2)", backdropFilter: "blur(4px)" }}>
+              <Link href="/aroma/core" className="nf-btn nf-btn-outline" style={{ padding: "14px 24px", fontSize: "14px", borderColor: "rgba(255,255,255,.2)", backdropFilter: "blur(4px)" }}>
                 <span>Shop Best Seller</span>
               </Link>
             </div>
@@ -231,8 +231,8 @@ export default function Home() {
             </h1>
 
             <p
-              className="mt-6 max-w-[430px] text-sm leading-[1.7] text-muted"
-              style={{ fontFamily: "var(--font-spline), monospace" }}
+              className="mt-6 max-w-[430px] text-[16px] leading-[1.7] text-muted"
+              style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
             >
               Lighting that owns the dark, fragrance that defines your cabin, and
               care that keeps every drive showroom-fresh. One brand, one standard.
@@ -304,7 +304,7 @@ export default function Home() {
             The NightFury Range
           </h2>
           <div className="mb-3 hidden h-px flex-1 bg-grid-line md:block" />
-          <span className="mb-2 hidden text-[11px] tracking-[.16em] text-dim uppercase md:block" style={{ fontFamily: "var(--font-spline), monospace" }}>
+          <span className="mb-2 hidden text-[12.5px] tracking-[.13em] text-dim uppercase md:block" style={{ fontFamily: "var(--font-spline), monospace" }}>
             OUR PRODUCT LINES
           </span>
         </div>
@@ -348,16 +348,16 @@ export default function Home() {
           className="nf-card flex flex-col items-center gap-4 p-6 text-center"
           style={{ background: "linear-gradient(135deg, #15100c, #0A0A0B)" }}
         >
-          <div className="text-[10px] tracking-[.2em] text-accent uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>
+          <div className="text-[12px] tracking-[.18em] text-accent uppercase" style={{ fontFamily: "var(--font-spline), monospace" }}>
             AROMA &middot; BEST SELLER
           </div>
           <h3 className="text-[22px] font-extrabold italic uppercase" style={{ transform: "skewX(-4deg)" }}>
             Aroma Core <span className="text-accent">&mdash;</span> Shop Now
           </h3>
-          <p className="text-[12px] leading-[1.6] text-muted" style={{ fontFamily: "var(--font-spline), monospace" }}>
+          <p className="text-[15px] leading-[1.65] text-muted" style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}>
             Gel dashboard freshener. Up to 60 days of premium fragrance.
           </p>
-          <Link href="/aroma#aroma-core" className="nf-btn nf-btn-primary" style={{ padding: "12px 24px", fontSize: "14px" }}>
+          <Link href="/aroma/core" className="nf-btn nf-btn-primary" style={{ padding: "12px 24px", fontSize: "14px" }}>
             <span>Shop Aroma Core &rarr;</span>
           </Link>
         </div>
@@ -410,8 +410,8 @@ export default function Home() {
               {FEATURED.tagline}
             </div>
             <p
-              className="mt-3.5 max-w-[400px] text-[12.5px] leading-[1.65] text-muted"
-              style={{ fontFamily: "var(--font-spline), monospace" }}
+              className="mt-3.5 max-w-[430px] text-[15px] leading-[1.7] text-muted"
+              style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
             >
               {FEATURED.description}
             </p>
@@ -430,7 +430,7 @@ export default function Home() {
               ))}
             </div>
             <div className="mt-5">
-              <Link href="/aroma#aroma-core" className="nf-btn nf-btn-primary" style={{ padding: "14px 26px", fontSize: "16px", boxShadow: "5px 5px 0 rgba(255,85,0,.22)" }}>
+              <Link href="/aroma/core" className="nf-btn nf-btn-primary" style={{ padding: "14px 26px", fontSize: "16px", boxShadow: "5px 5px 0 rgba(255,85,0,.22)" }}>
                 <span>Shop Now &rarr;</span>
               </Link>
             </div>
@@ -448,7 +448,7 @@ export default function Home() {
             The Lineup
           </h2>
           <div className="mb-3 hidden h-px flex-1 bg-grid-line md:block" />
-          <span className="mb-2 hidden text-[11px] tracking-[.16em] text-dim uppercase md:block" style={{ fontFamily: "var(--font-spline), monospace" }}>
+          <span className="mb-2 hidden text-[12.5px] tracking-[.13em] text-dim uppercase md:block" style={{ fontFamily: "var(--font-spline), monospace" }}>
             {ALL_PRODUCTS.length} PRODUCTS &middot; 3 LINES
           </span>
         </div>
@@ -474,7 +474,7 @@ export default function Home() {
                   {p.name}
                 </div>
                 <div
-                  className="text-[10px] tracking-[.06em] text-dim leading-[1.5]"
+                  className="text-[13px] tracking-[.01em] text-dim leading-[1.55]"
                   style={{ fontFamily: "var(--font-spline), monospace" }}
                 >
                   {p.variant}
@@ -516,8 +516,8 @@ export default function Home() {
             Built Like A <span className="text-accent">Performance</span> Brand
           </h2>
           <p
-            className="mt-4 max-w-[540px] text-[12.5px] leading-[1.65] text-muted"
-            style={{ fontFamily: "var(--font-spline), monospace" }}
+            className="mt-4 max-w-[560px] text-[15px] leading-[1.7] text-muted"
+            style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
           >
             The aftermarket is flooded with unbranded parts that fail in months.
             NightFury exists for drivers and riders who want OEM-plus quality with
@@ -530,7 +530,7 @@ export default function Home() {
                 <div className="text-2xl">{p.icon}</div>
                 <div className="mt-3 text-base font-bold italic uppercase text-chalk">{p.title}</div>
                 <div
-                  className="mt-2 text-xs leading-[1.65] text-dim"
+                  className="mt-2 text-[14px] leading-[1.65] text-dim"
                   style={{ fontFamily: "var(--font-spline), monospace" }}
                 >
                   {p.body}
@@ -551,7 +551,7 @@ export default function Home() {
             What Drivers &amp; Dealers Say
           </h2>
           <div className="mb-3 hidden h-px flex-1 bg-grid-line md:block" />
-          <span className="mb-2 hidden text-[11px] tracking-[.16em] text-dim uppercase md:block" style={{ fontFamily: "var(--font-spline), monospace" }}>
+          <span className="mb-2 hidden text-[12.5px] tracking-[.13em] text-dim uppercase md:block" style={{ fontFamily: "var(--font-spline), monospace" }}>
             TRUSTED ACROSS INDIA
           </span>
         </div>
@@ -561,8 +561,8 @@ export default function Home() {
             <div key={t.name} className={`nf-card p-6 ${i > 0 ? "hidden md:block" : ""}`}>
               <span className="text-sm tracking-[2px] text-accent">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
               <p
-                className="mt-4 text-[13px] leading-[1.65] text-muted"
-                style={{ fontFamily: "var(--font-spline), monospace" }}
+                className="mt-4 text-[15px] leading-[1.7] text-muted"
+                style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
               >
                 &ldquo;{t.quote}&rdquo;
               </p>
@@ -607,8 +607,8 @@ export default function Home() {
             Ready To Drive<br />The Difference?
           </h2>
           <p
-            className="mx-auto mt-4 max-w-[420px] text-[13px] leading-[1.6] text-carbon/70"
-            style={{ fontFamily: "var(--font-spline), monospace" }}
+            className="mx-auto mt-4 max-w-[460px] text-[15px] leading-[1.65] text-carbon/75"
+            style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
           >
             Find NightFury at your nearest accessories dealer, or partner with
             us to bring the range to your shelves.

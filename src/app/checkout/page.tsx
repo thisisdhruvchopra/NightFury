@@ -364,6 +364,7 @@ export default function CheckoutPage() {
                     <div className="text-muted">
                       <span className="text-chalk">{item.productName}</span>
                       {item.variant && <span className="text-dim"> ({item.variant})</span>}
+                      {item.fragrance && <span className="text-dim"> ({item.fragrance})</span>}
                       {item.pack && <span className="text-dim"> ({item.pack})</span>}
                       <span className="text-dim"> x{item.quantity}</span>
                     </div>

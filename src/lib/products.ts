@@ -1,5 +1,24 @@
+/** A single scent, with its own copy, note pyramid and photo. */
+export type Fragrance = {
+  name: string;
+  /** Short marketing line shown under the name. */
+  tagline: string;
+  description: string;
+  notes: { top: string; middle: string; base: string };
+  /** Path under /public. Falls back to a placeholder if the file is missing. */
+  image?: string;
+};
+
+export type FragranceType = {
+  name: string;
+  description: string;
+  fragrances: Fragrance[];
+};
+
 export type Product = {
   slug: string;
+  /** Clean URL segment for the product's own page, e.g. /aroma/essence. */
+  pageSlug?: string;
   name: string;
   variant?: string;
   tagline: string;
@@ -16,6 +35,8 @@ export type Product = {
   wattOptions?: string[];
   /** Selectable fragrance options for Aroma products. */
   fragranceOptions?: string[];
+  /** Fragrance grouped by type, e.g. Gel / Organic. Takes precedence over fragranceOptions. */
+  fragranceTypes?: FragranceType[];
   /** Selectable pack size options. */
   packOptions?: string[];
   badge?: string;
@@ -107,6 +128,7 @@ export const SUB_BRANDS: SubBrand[] = [
     products: [
       {
         slug: "aroma-hanging",
+        pageSlug: "essence",
         name: "Aroma Essence",
         mediaDir: "aroma/essence",
         variant: "Hanging Bottle · 15 ml",
@@ -126,12 +148,13 @@ export const SUB_BRANDS: SubBrand[] = [
           { label: "Volume", value: "15 ml" },
           { label: "Fragrance", value: "Ocean Breeze" },
           { label: "Type", value: "Hanging bottle" },
-          { label: "Duration", value: "Up to 45 days" },
+          { label: "Duration", value: "Up to 55 days" },
         ],
         badge: "Premium Edition",
       },
       {
         slug: "aroma-air",
+        pageSlug: "air",
         name: "Aroma Air",
         mediaDir: "aroma/air",
         variant: "Spray + Hanging Card · 50 ml",
@@ -157,13 +180,69 @@ export const SUB_BRANDS: SubBrand[] = [
       },
       {
         slug: "aroma-core",
+        pageSlug: "core",
         name: "Aroma Core",
         mediaDir: "aroma/core",
-        variant: "Gel Dashboard Freshener · 120g",
-        fragranceOptions: ["Fragrance A", "Fragrance B", "Fragrance C", "Fragrance D", "Fragrance E"],
+        variant: "Gel Dashboard Freshener · 55g",
+        fragranceTypes: [
+          {
+            name: "Gel",
+            description:
+              "Solid gel in a glass canister with wheel rim design inspired from luxury cars. Releases at a steady rate whatever the cabin temperature, and never spills on a hard corner.",
+            fragrances: [
+              {
+                name: "Citrus Zest",
+                tagline: "Bright. Clean. Awake.",
+                description:
+                  "A sharp burst of cold-pressed citrus that cuts through stale cabin air on the first turn of the key. Bright enough for the morning commute without turning sweet by the afternoon.",
+                notes: { top: "Sicilian bergamot, lemon peel", middle: "Neroli, green apple", base: "White musk, light cedar" },
+                image: "/media/products/aroma/core/gel/citrus-zest.png",
+              },
+              {
+                name: "Berry Bloom",
+                tagline: "Soft. Rounded. Warm.",
+                description:
+                  "Ripe red berries over a bed of florals, warmed by vanilla as it settles. The friendliest scent in the range, and the one passengers ask about most.",
+                notes: { top: "Wild strawberry, raspberry", middle: "Rose petal, jasmine", base: "Vanilla, soft amber" },
+                image: "/media/products/aroma/core/gel/berry-bloom.png",
+              },
+              {
+                name: "Mountain Mint",
+                tagline: "Cool. Sharp. Focused.",
+                description:
+                  "Crushed mint and eucalyptus with a cool green edge that keeps the cabin feeling ventilated. Built for long night drives and heavy traffic.",
+                notes: { top: "Peppermint, eucalyptus", middle: "Spearmint, green tea", base: "Vetiver, cedarwood" },
+                image: "/media/products/aroma/core/gel/mountain-mint.png",
+              },
+            ],
+          },
+          {
+            name: "Organic",
+            description:
+              "Organically derived oils on a natural carrier wooden base. A softer, closer throw for drivers who want fragrance without the intensity of a synthetic blend.",
+            fragrances: [
+              {
+                name: "Nature's Bloom",
+                tagline: "Fresh Florals. Open Air.",
+                description:
+                  "Orange blossom and jasmine over a clean dew accord, the smell of a window left open on a spring morning. Light on the nose and slow to fade.",
+                notes: { top: "Orange blossom, dew accord", middle: "Jasmine, ylang-ylang", base: "Sandalwood, white musk" },
+                image: "/media/products/aroma/core/organic/natures-bloom.png",
+              },
+              {
+                name: "Earth Essence",
+                tagline: "Grounded. Woody. Quiet.",
+                description:
+                  "Damp earth, moss and warm wood, closer to a forest floor after rain than to a perfume counter. The most understated scent in the range.",
+                notes: { top: "Bergamot, black pepper", middle: "Patchouli, clary sage", base: "Oakmoss, sandalwood" },
+                image: "/media/products/aroma/core/organic/earth-essence.png",
+              },
+            ],
+          },
+        ],
         tagline: "Silent fragrance, always on.",
         description:
-          "A sleek gel-based dashboard freshener in a matte-black canister. Aroma Core sits quietly on your console and releases a steady, subtle fragrance for weeks. No cords, no clips, no refills needed.",
+          "A sleek a glass canister with wheel rim design inspired from luxury cars. Aroma Core sits quietly on your console and releases a steady, subtle fragrance for weeks. No cords, no clips, no refills needed.",
         features: [
           "Premium gel fragrance",
           "Long lasting, up to 60 days",
@@ -173,8 +252,8 @@ export const SUB_BRANDS: SubBrand[] = [
           "Made for every drive",
         ],
         specs: [
-          { label: "Weight", value: "120g" },
-          { label: "Type", value: "Gel dashboard freshener" },
+          { label: "Weight", value: "55g" },
+          { label: "Fragrances", value: "5 scents, 2 types" },
           { label: "Placement", value: "Dashboard / console" },
           { label: "Duration", value: "Up to 60 days" },
         ],
@@ -247,4 +326,11 @@ export const SUB_BRANDS: SubBrand[] = [
 
 export function getSubBrand(slug: string) {
   return SUB_BRANDS.find((b) => b.slug === slug);
+}
+
+/** Look up a product by its clean page slug within a sub-brand, e.g. ("aroma", "essence"). */
+export function getProductByPageSlug(brandSlug: string, pageSlug: string) {
+  const brand = getSubBrand(brandSlug);
+  if (!brand) return undefined;
+  return brand.products.find((p) => p.pageSlug === pageSlug);
 }

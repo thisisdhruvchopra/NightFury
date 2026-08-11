@@ -6,7 +6,10 @@ import { getProductPrice, calculateShipping, formatPrice } from "./pricing";
 export type CartItem = {
   productSlug: string;
   productName: string;
+  /** Price-bearing choice: wattage for Vision, fragrance type for Aroma Core. */
   variant?: string;
+  /** What `variant` represents, e.g. "Output" or "Type". Defaults to "Output". */
+  variantLabel?: string;
   fragrance?: string;
   pack?: string;
   quantity: number;

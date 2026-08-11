@@ -12,6 +12,22 @@ at the URL `/media/<subfolder>/<filename>`.
 | `graphics/` | Banners, social graphics, illustrations | `/media/graphics/launch-banner.png` |
 | `posters/` | Print posters and shelf displays | `/media/posters/dealer-a4.pdf` |
 
+## Per-fragrance photos (Aroma Core)
+
+Each scent has its own photo, swapped in when the shopper selects it. Drop these
+exact filenames in:
+
+| Scent | File |
+| --- | --- |
+| Citrus Zest | `products/aroma/core/gel/citrus-zest.png` |
+| Berry Bloom | `products/aroma/core/gel/berry-bloom.png` |
+| Mountain Mint | `products/aroma/core/gel/mountain-mint.png` |
+| Nature's Bloom | `products/aroma/core/organic/natures-bloom.png` |
+| Earth Essence | `products/aroma/core/organic/earth-essence.png` |
+
+Until a file exists the UI shows a "Photo on its way" placeholder, so missing
+images never break the page. Paths are set in `src/lib/products.ts`.
+
 ## Naming
 
 Use lowercase with hyphens: `vision-led-2w-front.png`, not

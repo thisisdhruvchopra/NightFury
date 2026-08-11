@@ -28,8 +28,13 @@ export const PRICING: Record<string, ProductPricing> = {
     price: 449,
   },
   "aroma-core": {
-    mrp: 799,
-    price: 599,
+    // Fallback mirrors Gel, the default selection. Keep in sync with variantPricing.Gel.
+    mrp: 690,
+    price: 499,
+    variantPricing: {
+      Gel: { mrp: 690, price: 499 },
+      Organic: { mrp: 790, price: 599 },
+    },
   },
   "care-microfiber": {
     mrp: 399,

@@ -7,9 +7,11 @@
   --color-accent: #FF5500;
   --color-redline: #E11D2A;
   --color-chalk: #F4F5F7;
-  --color-muted: #9A9AA0;
-  --color-dim: #6E6E76;
-  --color-faint: #5A5A60;
+  /* Greys lightened for legibility on the near-black ground.
+     Previous values (#9A9AA0 / #6E6E76 / #5A5A60) fell below WCAG AA for body text. */
+  --color-muted: #C2C2CA;
+  --color-dim: #9E9EA8;
+  --color-faint: #80808A;
   --color-border: #17171A;
   --color-border-strong: #2A2A30;
   --color-border-hover: #2E2E34;
@@ -17,6 +19,8 @@
 
   --font-display: var(--font-saira);
   --font-mono: var(--font-spline);
+  /* Body/UI text. Use this for anything a person has to actually read. */
+  --font-body: var(--font-inter);
 }
 
 :root {
@@ -36,7 +40,9 @@ body {
     linear-gradient(90deg, #0C0C0E 10px, #0A0A0B 10px, #0A0A0B 20px, #0C0C0E 20px);
   background-size: 20px 20px;
   color: var(--color-chalk);
-  font-family: var(--font-display), 'Arial Narrow', Arial, sans-serif;
+  font-family: var(--font-body), system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -236,11 +242,46 @@ h1, h2, h3, h4, .font-display {
 .legal-prose h3 { color: var(--color-chalk); font-weight: 700; font-size: 15px; margin: 1.5em 0 .5em; text-transform: uppercase; letter-spacing: .06em; }
 
 /* ===== Product article layout (SubBrandPage) ===== */
-.product-article { display: grid; grid-template-columns: 1fr 1.05fr; }
+/* scroll-margin keeps #anchor targets clear of the sticky navbar */
+.product-article { display: grid; grid-template-columns: 1fr 1.05fr; scroll-margin-top: 80px; }
 .product-article.reverse { grid-template-columns: 1.05fr 1fr; }
+
+/* ===== Aroma scroll showcase ===== */
+.aroma-showcase {
+  scroll-snap-type: y proximity;
+}
+.aroma-panel {
+  min-height: calc(100svh - 64px);
+  scroll-margin-top: 64px;
+}
+.aroma-panel > div > .aroma-panel-photo { order: 0; }
+.aroma-panel > div > .aroma-panel-copy { order: 1; }
+
+@media (min-width: 981px) {
+  .aroma-panel > div { grid-template-columns: 1fr 1.1fr !important; }
+  .aroma-panel > div.aroma-panel-reverse { grid-template-columns: 1.1fr 1fr !important; }
+  .aroma-panel > div.aroma-panel-reverse > .aroma-panel-photo { order: 1; }
+  .aroma-panel > div.aroma-panel-reverse > .aroma-panel-copy { order: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aroma-showcase { scroll-snap-type: none; }
+}
+
+/* Panels are auto-height below 980px, so snapping would catch at arbitrary points. */
+@media (max-width: 980px) {
+  .aroma-showcase { scroll-snap-type: none; }
+}
+
+/* Two-column spec grid is too cramped on phones. */
+.spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px 26px; max-width: 440px; }
+@media (max-width: 640px) {
+  .spec-grid { grid-template-columns: 1fr; gap: 12px; }
+}
 
 /* ===== Responsive — tablet (980px) ===== */
 @media (max-width: 980px) {
+  .aroma-panel { min-height: auto; }
   .hero-grid { grid-template-columns: 1fr !important; min-height: auto !important; }
   .cat-grid { grid-template-columns: 1fr !important; }
   .lineup-grid { grid-template-columns: repeat(2, 1fr) !important; }

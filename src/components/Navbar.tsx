@@ -6,7 +6,7 @@ import { useState, useRef } from "react";
 import Logo from "./Logo";
 import CartIcon from "./CartIcon";
 
-const mono = { fontFamily: "var(--font-spline), monospace" } as const;
+import { body, display, mono } from "@/lib/fonts";
 
 const NAV_ITEMS = [
   {
@@ -25,9 +25,9 @@ const NAV_ITEMS = [
     href: "/aroma",
     tagline: "Smell the Difference",
     products: [
-      { name: "Aroma Essence", href: "/aroma#aroma-hanging", spec: "Hanging Bottle · 15ml" },
-      { name: "Aroma Air", href: "/aroma#aroma-air", spec: "Spray + Card · 50ml" },
-      { name: "Aroma Core", href: "/aroma#aroma-core", spec: "Gel Freshener · 120g" },
+      { name: "Aroma Essence", href: "/aroma/essence", spec: "Hanging Bottle · 15ml" },
+      { name: "Aroma Air", href: "/aroma/air", spec: "Spray + Card · 50ml" },
+      { name: "Aroma Core", href: "/aroma/core", spec: "Gel Freshener · 55g" },
     ],
   },
   {
@@ -105,9 +105,10 @@ export default function Navbar() {
               >
                 <Link
                   href={item.href}
-                  className={`flex items-center gap-1.5 rounded-none px-4 py-5 text-[13px] font-bold tracking-[.1em] uppercase transition-colors ${
+                  className={`flex items-center gap-1.5 rounded-none px-4 py-5 text-[14px] font-semibold tracking-[.14em] uppercase transition-colors ${
                     isActive(item.slug) ? "text-accent" : "text-chalk hover:text-accent"
                   }`}
+                  style={display}
                 >
                   {item.label}
                   <svg
@@ -138,14 +139,14 @@ export default function Navbar() {
                       onClick={() => setActiveDropdown(null)}
                     >
                       <div>
-                        <div className="text-[11px] font-bold tracking-[.06em] text-chalk">
+                        <div className="text-[13px] font-bold tracking-[.16em] text-chalk uppercase" style={display}>
                           NightFury {item.label === "Lighting" ? "Vision" : item.label === "Car Perfumes" ? "Aroma" : "Care"}
                         </div>
-                        <div className="text-[10px] tracking-[.12em] text-accent uppercase" style={mono}>
+                        <div className="mt-1 text-[11px] font-medium tracking-[.14em] text-accent uppercase" style={mono}>
                           {item.tagline}
                         </div>
                       </div>
-                      <span className="text-[10px] tracking-[.1em] text-dim uppercase" style={mono}>
+                      <span className="text-[11px] font-medium tracking-[.1em] text-dim uppercase" style={mono}>
                         View All &rarr;
                       </span>
                     </Link>
@@ -160,10 +161,13 @@ export default function Navbar() {
                           onClick={() => setActiveDropdown(null)}
                         >
                           <div>
-                            <div className="text-[13px] font-semibold text-chalk transition-colors group-hover:text-accent">
+                            <div
+                              className="text-[15px] font-semibold tracking-[.03em] text-chalk transition-colors group-hover:text-accent"
+                              style={display}
+                            >
                               {p.name}
                             </div>
-                            <div className="mt-0.5 text-[10px] tracking-[.06em] text-dim" style={mono}>
+                            <div className="mt-1 text-[12px] font-medium tracking-[.02em] text-dim" style={body}>
                               {p.spec}
                             </div>
                           </div>
@@ -222,11 +226,12 @@ export default function Navbar() {
                 >
                   <div className="flex items-center gap-3">
                     <span
-                      className={`text-sm font-bold tracking-[.1em] uppercase ${isActive(item.slug) ? "text-accent" : "text-chalk"}`}
+                      className={`text-[15px] font-semibold tracking-[.14em] uppercase ${isActive(item.slug) ? "text-accent" : "text-chalk"}`}
+                      style={display}
                     >
                       {item.label}
                     </span>
-                    <span className="text-[10px] tracking-[.12em] text-dim uppercase" style={mono}>
+                    <span className="text-[11px] font-medium tracking-[.12em] text-dim uppercase" style={mono}>
                       {item.tagline}
                     </span>
                   </div>
@@ -245,7 +250,7 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       onClick={() => { setMobileOpen(false); setMobileExpanded(null); }}
-                      className="flex items-center justify-between px-5 py-3 text-[11px] tracking-[.14em] text-accent uppercase"
+                      className="flex items-center justify-between px-5 py-3 text-[11.5px] font-bold tracking-[.14em] text-accent uppercase"
                       style={mono}
                     >
                       View all {item.label}
@@ -260,8 +265,8 @@ export default function Navbar() {
                         className="flex items-center justify-between border-t border-border px-5 py-3.5 transition-colors active:bg-raised"
                       >
                         <div>
-                          <div className="text-[13px] font-semibold text-chalk">{p.name}</div>
-                          <div className="mt-0.5 text-[10px] tracking-[.06em] text-dim" style={mono}>{p.spec}</div>
+                          <div className="text-[17px] font-bold tracking-[.02em] text-chalk" style={display}>{p.name}</div>
+                          <div className="mt-1 text-[12px] font-medium tracking-[.02em] text-dim" style={body}>{p.spec}</div>
                         </div>
                         <span className="text-accent text-[12px]">&#9670;</span>
                       </Link>
