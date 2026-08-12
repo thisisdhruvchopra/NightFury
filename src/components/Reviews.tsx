@@ -2,9 +2,18 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import { supabase, REVIEW_MEDIA_BUCKET } from "@/lib/supabase";
+import type { FragranceType } from "@/lib/products";
 import StarRating from "./StarRating";
 
-type ProductOption = { slug: string; name: string; wattOptions?: string[] };
+type ProductOption = {
+  slug: string;
+  name: string;
+  wattOptions?: string[];
+  /** Scents grouped by type (Aroma Core). */
+  fragranceTypes?: FragranceType[];
+  /** Flat scent list (Aroma Essence / Air). */
+  fragranceOptions?: string[];
+};
 
 type ReviewMedia = { type: "image" | "video"; url: string };
 
@@ -18,7 +27,10 @@ type Review = {
   body: string;
   date: string;
   media: ReviewMedia[];
+  /** Wattage for Vision, fragrance type (Gel / Organic) for Aroma Core. */
   variant?: string;
+  /** The specific scent the reviewer chose. */
+  fragrance?: string;
 };
 
 type PendingFile = { file: File; previewUrl: string; type: "image" | "video" };
@@ -27,6 +39,30 @@ const MAX_FILES = 4;
 const MAX_FILE_MB = 25;
 
 const mono = { fontFamily: "var(--font-spline), monospace" } as const;
+
+function ChoiceChip({
+  label,
+  selected,
+  onClick,
+}: Readonly<{ label: string; selected: boolean; onClick: () => void }>) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-pressed={selected}
+      className="border px-3.5 py-1.5 text-xs font-bold transition-colors"
+      style={{
+        ...mono,
+        borderRadius: "2px",
+        borderColor: selected ? "var(--color-accent)" : "var(--color-border-strong)",
+        background: selected ? "rgba(255,85,0,.1)" : "transparent",
+        color: selected ? "var(--color-accent)" : "var(--color-chalk)",
+      }}
+    >
+      {label}
+    </button>
+  );
+}
 
 export default function Reviews({ products }: Readonly<{ products: ProductOption[] }>) {
   const [remote, setRemote] = useState<Review[]>([]);
@@ -39,6 +75,14 @@ export default function Reviews({ products }: Readonly<{ products: ProductOption
   const [watt, setWatt] = useState<string | null>(
     products[0]?.wattOptions?.[0] ?? null,
   );
+  const [fragType, setFragType] = useState<string | null>(
+    products[0]?.fragranceTypes?.[0]?.name ?? null,
+  );
+  const [fragrance, setFragrance] = useState<string | null>(
+    products[0]?.fragranceTypes?.[0]?.fragrances[0]?.name ??
+      products[0]?.fragranceOptions?.[0] ??
+      null,
+  );
   const [rating, setRating] = useState(5);
   const [hoverRating, setHoverRating] = useState(0);
   const [title, setTitle] = useState("");
@@ -49,6 +93,30 @@ export default function Reviews({ products }: Readonly<{ products: ProductOption
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const slugs = useMemo(() => products.map((p) => p.slug), [products]);
+
+  const selectedProduct = products.find((p) => p.slug === productSlug);
+  const selectedType = selectedProduct?.fragranceTypes?.find((t) => t.name === fragType);
+  /** Scents selectable for the current product, narrowed by type when grouped. */
+  const scentChoices: string[] = selectedProduct?.fragranceTypes
+    ? (selectedType?.fragrances.map((f) => f.name) ?? [])
+    : (selectedProduct?.fragranceOptions ?? []);
+
+  /** Reset the scent pickers when the reviewer switches product or type. */
+  function selectProduct(slug: string) {
+    setProductSlug(slug);
+    const p = products.find((x) => x.slug === slug);
+    setWatt(p?.wattOptions?.[0] ?? null);
+    setFragType(p?.fragranceTypes?.[0]?.name ?? null);
+    setFragrance(
+      p?.fragranceTypes?.[0]?.fragrances[0]?.name ?? p?.fragranceOptions?.[0] ?? null,
+    );
+  }
+
+  function selectFragType(name: string) {
+    setFragType(name);
+    const t = selectedProduct?.fragranceTypes?.find((x) => x.name === name);
+    setFragrance(t?.fragrances[0]?.name ?? null);
+  }
 
   useEffect(() => {
     if (!supabase) return;
@@ -71,6 +139,7 @@ export default function Reviews({ products }: Readonly<{ products: ProductOption
             date: (r.created_at as string).slice(0, 10),
             media: (r.media as ReviewMedia[]) ?? [],
             variant: r.variant ?? undefined,
+            fragrance: r.fragrance ?? undefined,
           })),
         );
       });
@@ -99,6 +168,11 @@ export default function Reviews({ products }: Readonly<{ products: ProductOption
 
   function productName(slug: string) {
     return products.find((p) => p.slug === slug)?.name ?? slug;
+  }
+
+  /** `variant` means wattage on Vision but fragrance type on Aroma Core. */
+  function variantLabelFor(slug: string) {
+    return products.find((p) => p.slug === slug)?.fragranceTypes ? "Type" : "Output";
   }
 
   function addFiles(list: FileList | null) {
@@ -154,9 +228,21 @@ export default function Reviews({ products }: Readonly<{ products: ProductOption
           body: body.trim(),
           media,
         };
-        if (watt) row.variant = watt;
+        // `variant` carries wattage for Vision, fragrance type for Aroma Core.
+        const rowVariant = watt ?? fragType ?? null;
+        if (rowVariant) row.variant = rowVariant;
+        if (fragrance) row.fragrance = fragrance;
+
         let { error: insErr } = await supabase.from("reviews").insert(row);
-        if (insErr && watt && /variant/i.test(insErr.message)) {
+
+        // Older schemas lack a `fragrance` column: fold it into `variant` and retry.
+        if (insErr && fragrance && /fragrance/i.test(insErr.message)) {
+          delete row.fragrance;
+          row.variant = rowVariant ? `${rowVariant} · ${fragrance}` : fragrance;
+          ({ error: insErr } = await supabase.from("reviews").insert(row));
+        }
+        // Older schemas lack `variant` too: drop it entirely rather than lose the review.
+        if (insErr && row.variant && /variant/i.test(insErr.message)) {
           delete row.variant;
           ({ error: insErr } = await supabase.from("reviews").insert(row));
         }
@@ -174,7 +260,8 @@ export default function Reviews({ products }: Readonly<{ products: ProductOption
         body: body.trim(),
         date: new Date().toISOString().slice(0, 10),
         media,
-        variant: watt ?? undefined,
+        variant: watt ?? fragType ?? undefined,
+        fragrance: fragrance ?? undefined,
       };
       setLocal((l) => [newReview, ...l]);
       setName("");
@@ -258,13 +345,22 @@ export default function Reviews({ products }: Readonly<{ products: ProductOption
 
                 <h3 className="mt-4 text-sm font-bold text-chalk">{r.title}</h3>
                 <p className="mt-1.5 text-[13px] leading-[1.65] text-muted" style={mono}>{r.body}</p>
-                <p className="mt-3 text-[10px] tracking-[.1em] text-dim" style={mono}>
-                  Product:{" "}
-                  <span className="text-[#C8C8CE]">
-                    {productName(r.productSlug)}
-                    {r.variant ? ` · ${r.variant}` : ""}
+                <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11px] tracking-[.06em] text-dim" style={mono}>
+                  <span>
+                    Product: <span className="text-[#C8C8CE]">{productName(r.productSlug)}</span>
                   </span>
-                </p>
+                  {r.variant && (
+                    <span>
+                      {variantLabelFor(r.productSlug)}:{" "}
+                      <span className="text-[#C8C8CE]">{r.variant}</span>
+                    </span>
+                  )}
+                  {r.fragrance && (
+                    <span>
+                      Fragrance: <span className="text-accent">{r.fragrance}</span>
+                    </span>
+                  )}
+                </div>
 
                 {r.media.length > 0 && (
                   <div className="mt-4 flex flex-wrap gap-3">
@@ -335,13 +431,7 @@ export default function Reviews({ products }: Readonly<{ products: ProductOption
                 <select
                   className={inputCls}
                   value={productSlug}
-                  onChange={(e) => {
-                    setProductSlug(e.target.value);
-                    setWatt(
-                      products.find((p) => p.slug === e.target.value)
-                        ?.wattOptions?.[0] ?? null,
-                    );
-                  }}
+                  onChange={(e) => selectProduct(e.target.value)}
                   style={{ ...mono, borderRadius: "2px" }}
                 >
                   {products.map((p) => (
@@ -351,32 +441,42 @@ export default function Reviews({ products }: Readonly<{ products: ProductOption
                   ))}
                 </select>
 
-                {(() => {
-                  const opts = products.find((p) => p.slug === productSlug)?.wattOptions;
-                  if (!opts) return null;
-                  return (
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-dim" style={mono}>Output:</span>
-                      {opts.map((w) => (
-                        <button
-                          key={w}
-                          type="button"
-                          onClick={() => setWatt(w)}
-                          className="border px-3.5 py-1.5 text-xs font-bold transition-colors"
-                          style={{
-                            ...mono,
-                            borderRadius: "2px",
-                            borderColor: watt === w ? "var(--color-accent)" : "var(--color-border-strong)",
-                            background: watt === w ? "rgba(255,85,0,.1)" : "transparent",
-                            color: watt === w ? "var(--color-accent)" : "var(--color-chalk)",
-                          }}
-                        >
-                          {w}
-                        </button>
-                      ))}
-                    </div>
-                  );
-                })()}
+                {selectedProduct?.wattOptions && (
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm text-dim" style={mono}>Output:</span>
+                    {selectedProduct.wattOptions.map((w) => (
+                      <ChoiceChip key={w} label={w} selected={watt === w} onClick={() => setWatt(w)} />
+                    ))}
+                  </div>
+                )}
+
+                {selectedProduct?.fragranceTypes && (
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm text-dim" style={mono}>Type:</span>
+                    {selectedProduct.fragranceTypes.map((t) => (
+                      <ChoiceChip
+                        key={t.name}
+                        label={t.name}
+                        selected={fragType === t.name}
+                        onClick={() => selectFragType(t.name)}
+                      />
+                    ))}
+                  </div>
+                )}
+
+                {scentChoices.length > 0 && (
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="text-sm text-dim" style={mono}>Fragrance:</span>
+                    {scentChoices.map((f) => (
+                      <ChoiceChip
+                        key={f}
+                        label={f}
+                        selected={fragrance === f}
+                        onClick={() => setFragrance(f)}
+                      />
+                    ))}
+                  </div>
+                )}
 
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-dim" style={mono}>Your rating:</span>

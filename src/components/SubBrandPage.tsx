@@ -19,6 +19,8 @@ export default function SubBrandPage({ slug }: Readonly<{ slug: string }>) {
     slug: p.slug,
     name: p.name,
     wattOptions: p.wattOptions,
+    fragranceTypes: p.fragranceTypes,
+    fragranceOptions: p.fragranceOptions,
   }));
 
   return (

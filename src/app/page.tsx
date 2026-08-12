@@ -175,7 +175,7 @@ export default function Home() {
               className="mt-5 text-left text-[15px] leading-[1.75] text-chalk/80 md:text-[16px]"
               style={{ fontFamily: "var(--font-inter), system-ui, sans-serif" }}
             >
-              Premium cabin fragrances engineered like a performance part. Essence, Air, and Core - three ways to own the drive.
+              Premium cabin fragrances engineered like a performance part. Core, Air, and Essence - three ways to own the drive.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-4">
               <Link href="/aroma" className="nf-btn nf-btn-primary" style={{ padding: "14px 28px", fontSize: "15px", boxShadow: "6px 6px 0 rgba(255,85,0,.25)" }}>

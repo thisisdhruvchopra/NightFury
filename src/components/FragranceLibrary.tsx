@@ -87,7 +87,24 @@ function ScentCard({ fragrance }: Readonly<{ fragrance: Fragrance }>) {
   );
 }
 
+/**
+ * Display order for this section only. The buy-panel selector keeps the data
+ * order (Gel first, which is also the default selection).
+ */
+const LIBRARY_ORDER = ["Organic", "Gel"];
+
+function orderForDisplay(types: FragranceType[]) {
+  const rank = (name: string) => {
+    const i = LIBRARY_ORDER.indexOf(name);
+    return i === -1 ? LIBRARY_ORDER.length : i;
+  };
+  // Stable sort, so any type not listed above keeps its data order at the end.
+  return [...types].sort((a, b) => rank(a.name) - rank(b.name));
+}
+
 export default function FragranceLibrary({ types }: Readonly<{ types: FragranceType[] }>) {
+  const ordered = orderForDisplay(types);
+
   return (
     <section className="py-12 md:py-16">
       <div className="mx-auto max-w-[1280px] px-5 md:px-10">
@@ -98,7 +115,7 @@ export default function FragranceLibrary({ types }: Readonly<{ types: FragranceT
           The fragrance range
         </h2>
 
-        {types.map((t) => (
+        {ordered.map((t) => (
           <div key={t.name} className="mt-10">
             <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1 border-t border-border pt-5">
               <span className="text-[13px] font-bold tracking-[.18em] text-accent uppercase" style={mono}>

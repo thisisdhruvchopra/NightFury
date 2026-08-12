@@ -25,9 +25,9 @@ const NAV_ITEMS = [
     href: "/aroma",
     tagline: "Smell the Difference",
     products: [
-      { name: "Aroma Essence", href: "/aroma/essence", spec: "Hanging Bottle · 15ml" },
-      { name: "Aroma Air", href: "/aroma/air", spec: "Spray + Card · 50ml" },
       { name: "Aroma Core", href: "/aroma/core", spec: "Gel Freshener · 55g" },
+      { name: "Aroma Air", href: "/aroma/air", spec: "Spray + Card · 50ml" },
+      { name: "Aroma Essence", href: "/aroma/essence", spec: "Hanging Bottle · 15ml" },
     ],
   },
   {

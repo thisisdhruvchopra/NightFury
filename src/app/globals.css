@@ -27,6 +27,17 @@
   color-scheme: dark;
 }
 
+/* In-page anchor jumps glide, and land clear of the 64px sticky navbar. */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+#reviews { scroll-margin-top: 80px; }
+
 *{box-sizing:border-box;}
 
 body {

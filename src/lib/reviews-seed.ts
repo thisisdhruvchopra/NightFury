@@ -24,7 +24,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: "Ananya Iyer",
     role: "Swift owner · Bengaluru",
     quote:
-      "The Midnight Noir spray is genuinely premium, my cab-driver friends keep asking what it is. One bottle has lasted me three months and counting.",
+      "The Aroma Air spray is genuinely premium, my cab-driver friends keep asking what it is. One bottle has lasted me three months and counting.",
     rating: 5,
   },
 ];

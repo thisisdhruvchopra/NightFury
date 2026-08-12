@@ -108,7 +108,15 @@ export default function ProductPage({
       {/* ============ REVIEWS ============ */}
       <div className="border-t border-border">
         <Reviews
-          products={[{ slug: product.slug, name: product.name, wattOptions: product.wattOptions }]}
+          products={[
+            {
+              slug: product.slug,
+              name: product.name,
+              wattOptions: product.wattOptions,
+              fragranceTypes: product.fragranceTypes,
+              fragranceOptions: product.fragranceOptions,
+            },
+          ]}
         />
       </div>
     </>

@@ -127,58 +127,6 @@ export const SUB_BRANDS: SubBrand[] = [
       "Cabin fragrance engineered like a performance part. Long-lasting premium oils, signature glass and matte-black hardware, because the way your car smells says as much as the way it sounds.",
     products: [
       {
-        slug: "aroma-hanging",
-        pageSlug: "essence",
-        name: "Aroma Essence",
-        mediaDir: "aroma/essence",
-        variant: "Hanging Bottle · 15 ml",
-        fragranceOptions: ["Fragrance A", "Fragrance B", "Fragrance C", "Fragrance D", "Fragrance E"],
-        tagline: "Premium fragrance, suspended in glass",
-        description:
-          "A faceted glass bottle with a braided cord and natural wood cap, filled with 8 ml of slow-release premium fragrance oil. Ocean Breeze keeps the cabin fresh for weeks, not days.",
-        features: [
-          "Premium fragrance oil",
-          "Long lasting, weeks of slow release",
-          "Refreshing aroma",
-          "Faceted glass bottle, wood cap",
-          "Braided hanging cord",
-          "Made for every drive",
-        ],
-        specs: [
-          { label: "Volume", value: "15 ml" },
-          { label: "Fragrance", value: "Ocean Breeze" },
-          { label: "Type", value: "Hanging bottle" },
-          { label: "Duration", value: "Up to 55 days" },
-        ],
-        badge: "Premium Edition",
-      },
-      {
-        slug: "aroma-air",
-        pageSlug: "air",
-        name: "Aroma Air",
-        mediaDir: "aroma/air",
-        variant: "Spray + Hanging Card · 50 ml",
-        fragranceOptions: ["Fragrance A", "Fragrance B", "Fragrance C", "Fragrance D", "Fragrance E"],
-        tagline: "Spray. Hang. Arrive.",
-        description:
-          "A matte-black 50 ml atomizer paired with a NightFury hanging card. Mist the card, hang it from your mirror, and refresh whenever you want, one bottle outlasts a dozen disposable fresheners.",
-        features: [
-          "Premium fragrance",
-          "Long lasting formula",
-          "Refreshing aroma",
-          "Matte-black atomizer bottle",
-          "Reusable hanging card included",
-          "Made for every drive",
-        ],
-        specs: [
-          { label: "Volume", value: "50 ml" },
-          { label: "Fragrance", value: "Midnight Noir" },
-          { label: "Type", value: "Spray + hanging card" },
-          { label: "Duration", value: "500+ sprays" },
-        ],
-        badge: "Premium Edition",
-      },
-      {
         slug: "aroma-core",
         pageSlug: "core",
         name: "Aroma Core",
@@ -188,7 +136,7 @@ export const SUB_BRANDS: SubBrand[] = [
           {
             name: "Gel",
             description:
-              "Solid gel in a glass canister with wheel rim design inspired from luxury cars. Releases at a steady rate whatever the cabin temperature, and never spills on a hard corner.",
+              "A solid gel that releases at a steady rate whatever the cabin temperature, and never spills on a hard corner.",
             fragrances: [
               {
                 name: "Citrus Zest",
@@ -219,7 +167,7 @@ export const SUB_BRANDS: SubBrand[] = [
           {
             name: "Organic",
             description:
-              "Organically derived oils on a natural carrier wooden base. A softer, closer throw for drivers who want fragrance without the intensity of a synthetic blend.",
+              "Organically derived oils on a natural carrier. A softer, closer throw for drivers who want fragrance without the intensity of a synthetic blend.",
             fragrances: [
               {
                 name: "Nature's Bloom",
@@ -242,12 +190,12 @@ export const SUB_BRANDS: SubBrand[] = [
         ],
         tagline: "Silent fragrance, always on.",
         description:
-          "A sleek a glass canister with wheel rim design inspired from luxury cars. Aroma Core sits quietly on your console and releases a steady, subtle fragrance for weeks. No cords, no clips, no refills needed.",
+          "A sleek glass canister with a wheel rim design inspired by luxury cars. Aroma Core sits quietly on your console and releases a steady, subtle fragrance for weeks. No cords, no clips, no refills needed.",
         features: [
-          "Premium gel fragrance",
+          "Gel and organic formulations",
           "Long lasting, up to 60 days",
           "Compact dashboard design",
-          "Matte-black canister",
+          "Glass canister, wheel-rim design",
           "No installation required",
           "Made for every drive",
         ],
@@ -256,6 +204,58 @@ export const SUB_BRANDS: SubBrand[] = [
           { label: "Fragrances", value: "5 scents, 2 types" },
           { label: "Placement", value: "Dashboard / console" },
           { label: "Duration", value: "Up to 60 days" },
+        ],
+        badge: "Premium Edition",
+      },
+      {
+        slug: "aroma-air",
+        pageSlug: "air",
+        name: "Aroma Air",
+        mediaDir: "aroma/air",
+        variant: "Spray + Hanging Card · 50 ml",
+        fragranceOptions: ["Fragrance A", "Fragrance B", "Fragrance C", "Fragrance D", "Fragrance E"],
+        tagline: "Spray. Hang. Arrive.",
+        description:
+          "A matte-black 50 ml atomizer paired with a NightFury hanging card. Mist the card, hang it from your mirror, and refresh whenever you want, one bottle outlasts a dozen disposable fresheners.",
+        features: [
+          "Premium fragrance",
+          "Long lasting formula",
+          "Refreshing aroma",
+          "Matte-black atomizer bottle",
+          "Reusable hanging card included",
+          "Made for every drive",
+        ],
+        specs: [
+          { label: "Volume", value: "50 ml" },
+          { label: "Fragrances", value: "5 scents" },
+          { label: "Type", value: "Spray + hanging card" },
+          { label: "Duration", value: "500+ sprays" },
+        ],
+        badge: "Premium Edition",
+      },
+      {
+        slug: "aroma-hanging",
+        pageSlug: "essence",
+        name: "Aroma Essence",
+        mediaDir: "aroma/essence",
+        variant: "Hanging Bottle · 15 ml",
+        fragranceOptions: ["Fragrance A", "Fragrance B", "Fragrance C", "Fragrance D", "Fragrance E"],
+        tagline: "Premium fragrance, suspended in glass",
+        description:
+          "A faceted glass bottle with a braided cord and natural wood cap, filled with 15 ml of slow-release premium fragrance oil. Choose your scent, it keeps the cabin fresh for weeks, not days.",
+        features: [
+          "Premium fragrance oil",
+          "Long lasting, weeks of slow release",
+          "Refreshing aroma",
+          "Faceted glass bottle, wood cap",
+          "Braided hanging cord",
+          "Made for every drive",
+        ],
+        specs: [
+          { label: "Volume", value: "15 ml" },
+          { label: "Fragrances", value: "5 scents" },
+          { label: "Type", value: "Hanging bottle" },
+          { label: "Duration", value: "Up to 55 days" },
         ],
         badge: "Premium Edition",
       },
