@@ -2,7 +2,7 @@ export const BUSINESS = {
   legalName: "Yash Marketing",
   brandName: "NightFury",
   tagline: "Authorized Distributor of NightFury",
-  gstin: "XXXXXX",
+  gstin: "09AABFY5202B1ZL",
   address: {
     line1: "109/75, Sisamau Bazar",
     line2: "Nehru Nagar, Jawahar Nagar",

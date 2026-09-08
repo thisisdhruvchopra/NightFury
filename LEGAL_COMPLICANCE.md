@@ -20,7 +20,7 @@ Yash Marketing operates as the authorized distributor and business entity respon
 
 ## 1.2 GST Information
 
-GSTIN: XXXXXX
+GSTIN: 09AABFY5202B1ZL
 
 (To be updated before public launch.)
 
