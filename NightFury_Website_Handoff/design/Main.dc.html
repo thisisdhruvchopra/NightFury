@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>NightFury Home</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Saira+Condensed:ital,wght@0,500;0,600;0,700;0,800;1,600;1,700;1,800&amp;family=Spline+Sans+Mono:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F5F7}
+a{color:#0A0A0B}a:hover{color:#B83E00}
+@keyframes nfMarquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes nfPulse{0%,100%{opacity:.45}50%{opacity:1}}
+.nf-link{position:relative}
+.nf-link::after{content:"";position:absolute;left:0;bottom:6px;height:3px;width:0;background:#FF5500;transition:width .22s ease}
+.nf-link:hover::after{width:100%}
+.nf-panel{transition:transform .25s ease, box-shadow .25s ease}
+.nf-panel-o:hover{transform:translateY(-6px);box-shadow:8px 8px 0 #FF5500}
+.nf-panel-n:hover{transform:translateY(-6px);box-shadow:8px 8px 0 #020F26}
+@media (prefers-reduced-motion: reduce){.nf-panel{transition:none}}
+</style>
+</helmet>
+<div style="font-family: 'Saira Condensed', 'Arial Narrow', Arial, sans-serif; color: #0A0A0B; background: #F4F5F7; overflow-x: clip">
+
+<div style="background: #020F26; color: #F4F5F7; overflow: hidden; white-space: nowrap; border-bottom: 2px solid {{accent}}">
+<div style="display: inline-flex; gap: 48px; padding: 9px 0; font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; animation: nfMarquee 26s linear infinite">
+<span>18-month warranty on Vision</span><span>//</span><span>IP67 water and dust rated</span><span>//</span><span>Now live on Flipkart</span><span>//</span><span>Dealer enquiries open across India</span><span>//</span><span>Drive the difference</span><span>//</span>
+<span>18-month warranty on Vision</span><span>//</span><span>IP67 water and dust rated</span><span>//</span><span>Now live on Flipkart</span><span>//</span><span>Dealer enquiries open across India</span><span>//</span><span>Drive the difference</span><span>//</span>
+</div>
+</div>
+
+<header style="position: sticky; top: 0; z-index: 40; background: #FFFFFF; border-bottom: 1px solid #E2E4E9; box-sizing: border-box; height: 76px">
+<nav aria-label="Main" style="max-width: 1280px; margin: 0 auto; padding: 0 40px; height: 75px; display: flex; align-items: center; gap: 32px">
+<a href="#top" aria-label="NightFury, Drive the Difference" style="text-decoration: none; display: inline-flex; flex-direction: column; align-items: center; flex: 0 0 auto; line-height: 1"><span style="font-family: 'Saira Condensed', 'Arial Narrow', Arial, sans-serif; font-weight: 800; font-style: italic; font-size: 34px; letter-spacing: -0.01em; line-height: 0.95; transform: skewX(-4deg)"><span style="color: #0A0A0B">NIGHT</span><span style="color: {{accent}}">FURY</span></span><span style="margin-top: 4px; font-family: 'Spline Sans Mono', 'Courier New', monospace; font-weight: 600; font-size: 8px; letter-spacing: 0.42em; margin-right: -0.42em; color: #3A3D46">DRIVE THE DIFFERENCE</span></a>
+<div style="display: flex; gap: 34px; flex: 1 1 auto; min-width: 0; justify-content: center; font-family: 'Spline Sans Mono', monospace; font-weight: 500; font-style: normal; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; white-space: nowrap">
+<a href="Vision.dc.html" class="nf-link" style="text-decoration: none; padding: 14px 0">Lighting</a>
+<a href="Aroma.dc.html" class="nf-link" style="text-decoration: none; padding: 14px 0">Car Perfumes</a>
+<a href="Care.dc.html" class="nf-link" style="text-decoration: none; padding: 14px 0">Car Care</a>
+<a href="#buy" class="nf-link" style="text-decoration: none; padding: 14px 0">Where to Buy</a>
+<a href="#standard" class="nf-link" style="text-decoration: none; padding: 14px 0">About</a>
+</div>
+<a href="#dealer" style="text-decoration: none; flex: 0 0 auto; display: inline-block; background: #020F26; color: #FFFFFF; font-family: 'Spline Sans Mono', monospace; font-weight: 600; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; padding: 13px 20px; border-radius: 2px">Become a Dealer</a>
+</nav>
+</header>
+
+<section id="top" style="background: #FFFFFF; scroll-margin-top: 80px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 72px 40px 0; display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr); gap: 48px; align-items: end">
+<div style="min-width: 0">
+<div style="display: inline-flex; align-items: center; gap: 12px; font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #F4F5F7; background: #020F26; padding: 8px 14px"><span style="width: 8px; height: 8px; background: {{accent}}; animation: nfPulse 2s ease-in-out infinite"></span>Premium automotive accessories</div>
+<h1 style="margin: 26px 0 0; font-weight: 800; font-style: italic; font-size: 136px; line-height: 0.84; letter-spacing: -0.025em; text-transform: uppercase">Drive the<br><span style="color: #E04A00">difference.</span></h1>
+</div>
+<div style="min-width: 0; padding-bottom: 8px">
+<div style="display: flex; flex-direction: column; gap: 6px; font-weight: 800; font-style: italic; font-size: 30px; line-height: 1; text-transform: uppercase">
+<span style="display: flex; align-items: center; gap: 12px"><span style="width: 10px; height: 10px; background: {{accent}}"></span>See it.</span>
+<span style="display: flex; align-items: center; gap: 12px"><span style="width: 10px; height: 10px; background: {{accent}}"></span>Smell it.</span>
+<span style="display: flex; align-items: center; gap: 12px"><span style="width: 10px; height: 10px; background: {{accent}}"></span>Feel it.</span>
+</div>
+<p style="margin: 18px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 14px; line-height: 1.75; color: #3A3D46">Lighting that owns the dark. Fragrance that takes over the cabin. Care that keeps it showroom-sharp. One brand, zero compromise.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 24px">
+<a href="#aroma" style="text-decoration: none; display: inline-block; background: {{accent}}; color: #0A0A0B; font-weight: 800; font-style: italic; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase; padding: 15px 26px; transform: skewX(-8deg); box-shadow: 6px 6px 0 #020F26"><span style="display: inline-block; transform: skewX(8deg)">Explore &#8594;</span></a>
+<a href="#dealer" style="text-decoration: none; display: inline-block; border: 2px solid #020F26; color: #0A0A0B; font-weight: 800; font-style: italic; font-size: 18px; letter-spacing: 0.04em; text-transform: uppercase; padding: 13px 24px; transform: skewX(-8deg)"><span style="display: inline-block; transform: skewX(8deg)">Stock NightFury</span></a>
+</div>
+</div>
+</div>
+
+<div style="max-width: 1280px; margin: 0 auto; padding: 56px 40px 80px">
+<p style="margin: 0 0 16px; font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #3A3D46">// Pick your sense</p>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+
+<a href="Vision.dc.html" class="nf-panel nf-panel-o" style="text-decoration: none; position: relative; display: flex; flex-direction: column; justify-content: space-between; height: 400px; padding: 28px; box-sizing: border-box; background: #020F26; color: #F4F5F7; border-radius: 3px; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; top: 96px; right: 0; width: 62%; height: 140px">
+<div style="position: absolute; left: 0; top: 15px; width: 110px; height: 110px; border-radius: 50%; background: #1C2B47; display: flex; align-items: center; justify-content: center"><div style="width: 66px; height: 66px; border-radius: 50%; background: #F4F5F7; box-shadow: 0 0 0 8px rgba(244,245,247,0.18)"></div></div>
+<div style="position: absolute; left: 70px; top: 0; right: 0; height: 140px; clip-path: polygon(0 38%, 100% 0, 100% 100%, 0 62%); background: linear-gradient(90deg, rgba(234,242,255,0.85), rgba(234,242,255,0.05)); animation: nfPulse 3s ease-in-out infinite"></div>
+</div>
+<div style="display: flex; align-items: baseline; gap: 12px"><span style="font-weight: 800; font-style: italic; font-size: 56px; line-height: 1; color: {{accent}}">01</span><span style="font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #AEB6C6">See</span></div>
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="min-width: 0"><div style="font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: #AEB6C6">See the difference</div><div style="margin-top: 6px; font-weight: 800; font-style: italic; font-size: 44px; line-height: 0.9; text-transform: uppercase; white-space: nowrap">Lighting</div><div style="margin-top: 8px; font-family: 'Spline Sans Mono', monospace; font-size: 13px; color: #C9CFDB">LED headlights for cars and bikes</div></div>
+<span aria-hidden="true" style="flex: 0 0 auto; width: 52px; height: 52px; background: {{accent}}; display: flex; align-items: center; justify-content: center"><span style="width: 18px; height: 24px; background: #020F26; clip-path: polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span></span>
+</div>
+</a>
+
+<a href="Aroma.dc.html" class="nf-panel nf-panel-n" style="text-decoration: none; position: relative; display: flex; flex-direction: column; justify-content: space-between; height: 400px; padding: 28px; box-sizing: border-box; background: {{accent}}; color: #0A0A0B; border-radius: 3px; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; top: 92px; right: 28px; display: flex; align-items: flex-end; gap: 22px; transform: scale(0.72); transform-origin: top right">
+<div style="display: flex; flex-direction: column; align-items: center">
+<div style="width: 3px; height: 54px; background: #020F26"></div>
+<div style="width: 44px; height: 34px; border-radius: 8px 8px 4px 4px; background: #B07A45; border-bottom: 4px solid #8C6436; box-sizing: border-box"></div>
+<div style="width: 104px; height: 110px; margin-top: -2px; clip-path: polygon(22% 0, 78% 0, 100% 28%, 100% 76%, 80% 100%, 20% 100%, 0 76%, 0 28%); background: #FFFFFF; display: flex; align-items: flex-end"><div style="width: 100%; height: 70%; background: #C93F86"></div></div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center">
+<div style="width: 132px; height: 34px; border-radius: 9px; background: #020F26; display: flex; align-items: center; justify-content: space-evenly; padding: 0 14px; box-sizing: border-box"><span style="width: 5px; height: 20px; border-radius: 3px; background: #5A6782"></span><span style="width: 12px; height: 12px; border-radius: 50%; background: {{accent}}"></span><span style="width: 5px; height: 20px; border-radius: 3px; background: #5A6782"></span></div>
+<div style="width: 120px; height: 110px; margin-top: -5px; border-radius: 0 0 26px 26px; background: rgba(255,255,255,0.85); overflow: hidden; display: flex; align-items: flex-end"><div style="width: 100%; height: 60%; background: #F5C518"></div></div>
+</div>
+</div>
+<div style="display: flex; align-items: baseline; gap: 12px"><span style="font-weight: 800; font-style: italic; font-size: 56px; line-height: 1; color: #020F26">02</span><span style="font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #020F26">Smell</span></div>
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="min-width: 0"><div style="font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #020F26">Smell the difference</div><div style="margin-top: 6px; font-weight: 800; font-style: italic; font-size: 44px; line-height: 0.9; text-transform: uppercase; white-space: nowrap; color: #020F26">Car Perfumes</div><div style="margin-top: 8px; font-family: 'Spline Sans Mono', monospace; font-size: 13px; color: #020F26">3 formats, 11 scents</div></div>
+<span aria-hidden="true" style="flex: 0 0 auto; width: 52px; height: 52px; background: #020F26; display: flex; align-items: center; justify-content: center"><span style="width: 18px; height: 24px; background: {{accent}}; clip-path: polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span></span>
+</div>
+</a>
+
+<a href="Care.dc.html" class="nf-panel nf-panel-o" style="text-decoration: none; position: relative; display: flex; flex-direction: column; justify-content: space-between; height: 400px; padding: 26px; box-sizing: border-box; background: #F4F5F7; color: #0A0A0B; border: 2px solid #020F26; border-radius: 3px; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; top: 100px; right: 30px; width: 170px; height: 140px">
+<div style="position: absolute; left: 0; bottom: 0; width: 150px; height: 40px; border-radius: 6px; background: #8FA8CF"></div>
+<div style="position: absolute; left: 10px; bottom: 34px; width: 150px; height: 40px; border-radius: 6px; background: #3B5B8C"></div>
+<div style="position: absolute; left: 20px; bottom: 68px; width: 150px; height: 40px; border-radius: 6px; background: #020F26"></div>
+<div style="position: absolute; left: 34px; bottom: 102px; width: 96px; height: 16px; border-radius: 3px; background: {{accent}}"></div>
+</div>
+<div style="display: flex; align-items: baseline; gap: 12px"><span style="font-weight: 800; font-style: italic; font-size: 56px; line-height: 1; color: #E04A00">03</span><span style="font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #3A3D46">Feel</span></div>
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 16px">
+<div style="min-width: 0"><div style="display: flex; align-items: center; gap: 10px; font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #3A3D46">Feel the difference <span style="background: #020F26; color: #FFFFFF; padding: 3px 7px; letter-spacing: 0.12em">Soon</span></div><div style="margin-top: 6px; font-weight: 800; font-style: italic; font-size: 44px; line-height: 0.9; text-transform: uppercase; white-space: nowrap; color: #020F26">Car Care</div><div style="margin-top: 8px; font-family: 'Spline Sans Mono', monospace; font-size: 13px; color: #3A3D46">Microfiber and wipes</div></div>
+<span aria-hidden="true" style="flex: 0 0 auto; width: 52px; height: 52px; background: #020F26; display: flex; align-items: center; justify-content: center"><span style="width: 18px; height: 24px; background: {{accent}}; clip-path: polygon(0 0,55% 0,100% 50%,55% 100%,0 100%,45% 50%)"></span></span>
+</div>
+</a>
+
+</div>
+</div>
+<div aria-hidden="true" style="display: flex; flex-direction: column; gap: 4px; overflow: hidden">
+<div style="height: 14px; background: {{accent}}"></div>
+<div style="height: 6px; background: #020F26"></div>
+</div>
+</section>
+
+<div style="background: #020F26; color: #F4F5F7">
+<div style="max-width: 1280px; margin: 0 auto; padding: 18px 40px; display: flex; flex-wrap: wrap; gap: 14px 40px; justify-content: space-between; font-family: 'Spline Sans Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase">
+<span style="display: inline-flex; align-items: center; gap: 10px"><span style="width: 9px; height: 9px; background: {{accent}}"></span>18-month warranty</span>
+<span style="display: inline-flex; align-items: center; gap: 10px"><span style="width: 9px; height: 9px; background: {{accent}}"></span>IP67 rated</span>
+<span style="display: inline-flex; align-items: center; gap: 10px"><span style="width: 9px; height: 9px; background: {{accent}}"></span>100% batch tested</span>
+<span style="display: inline-flex; align-items: center; gap: 10px"><span style="width: 9px; height: 9px; background: {{accent}}"></span>Flipkart + dealers</span>
+</div>
+</div>
+
+<section id="aroma" style="background: #F4F5F7; scroll-margin-top: 80px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 88px 40px 48px">
+<p style="margin: 0; font-family: 'Spline Sans Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #B83E00">02 // NightFury Aroma</p>
+<h2 style="margin: 14px 0 0; font-weight: 800; font-style: italic; font-size: 96px; line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase">Smell the <span style="color: #E04A00">difference.</span></h2>
+<div style="display: flex; flex-wrap: wrap; gap: 20px 48px; margin-top: 26px; align-items: center; justify-content: space-between">
+<p style="margin: 0; font-family: 'Spline Sans Mono', monospace; font-size: 15px; line-height: 1.75; color: #3A3D46; max-width: 560px">Three formats. Eleven scents. Fragrance engineered like a performance part, because the way your car smells says as much as the way it sounds.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 14px">
+<a href="#aroma-core" style="text-decoration: none; display: inline-block; border: 2px solid #020F26; background: #FFFFFF; font-weight: 800; font-style: italic; font-size: 17px; text-transform: uppercase; padding: 10px 18px">01 Core</a>
+<a href="#aroma-air" style="text-decoration: none; display: inline-block; border: 2px solid #020F26; background: #FFFFFF; font-weight: 800; font-style: italic; font-size: 17px; text-transform: uppercase; padding: 10px 18px">02 Air</a>
+<a href="#aroma-essence" style="text-decoration: none; display: inline-block; border: 2px solid #020F26; background: #FFFFFF; font-weight: 800; font-style: italic; font-size: 17px; text-transform: uppercase; padding: 10px 18px">03 Essence</a>
+</div>
+</div>
+</div>
+
+<sc-for list="{{sections}}" as="sec" hint-placeholder-count="3">
+<div id="{{sec.anchor}}" style="border-top: 2px solid #020F26; background: #FFFFFF; scroll-margin-top: 76px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 56px 40px 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: stretch">
+<div style="min-width: 0; display: flex; flex-direction: column; justify-content: flex-end">
+<div style="display: inline-block; background: #F4F5F7; color: #0A0A0B; font-weight: 800; font-style: italic; font-size: 22px; line-height: 1; padding: 6px 14px; border: 3px solid #020F26; box-shadow: 5px 5px 0 {{accent}}">N&#176; {{sec.num}}</div>
+<h3 style="margin: 22px 0 0; font-weight: 800; font-style: italic; font-size: 84px; line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase">{{sec.title}}</h3>
+<p style="margin: 10px 0 0; font-weight: 800; font-style: italic; font-size: 28px; text-transform: uppercase; color: #E04A00">{{sec.tagline}}</p>
+</div>
+<div style="min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 20px; border-left: 2px solid #020F26; padding-left: 40px">
+<p style="margin: 0; font-family: 'Spline Sans Mono', monospace; font-size: 14px; line-height: 1.75; color: #3A3D46">{{sec.blurb}}</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px">
+<sc-for list="{{sec.specList}}" as="sp" hint-placeholder-count="4">
+<div style="border: 2px solid #020F26; border-radius: 3px; padding: 10px 14px; font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #0A0A0B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{sp}}</div>
+</sc-for>
+</div>
+</div>
+</div>
+
+<div ref="{{sec.setRef}}" style="position: relative; height: calc(clamp(600px, calc(100vh - 76px), 960px) + {{sec.extraH}}px)">
+<div style="position: sticky; top: 76px; height: clamp(600px, calc(100vh - 76px), 960px); box-sizing: border-box; background-color: {{sec.s.tint}}; transition: background-color 0.6s ease; overflow: hidden; border-top: 1px solid rgba(10,10,11,0.12)">
+<div style="height: 5px; background: rgba(10,10,11,0.1)"><div style="height: 5px; width: {{sec.progressPct}}%; background: #020F26; transition: width 0.4s ease"></div></div>
+<div style="max-width: 1280px; height: calc(100% - 5px); margin: 0 auto; padding: 32px 40px; box-sizing: border-box; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) 230px; gap: 32px; align-items: center">
+
+<div style="min-width: 0">
+<p style="margin: 0; font-family: 'Spline Sans Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: {{sec.s.deep}}">{{sec.s.label}} // {{sec.counter}}</p>
+<h4 style="margin: 10px 0 0; font-weight: 800; font-style: italic; font-size: 76px; line-height: 0.9; letter-spacing: -0.01em; text-transform: uppercase; color: {{sec.s.deep}}; transition: color 0.6s ease">{{sec.s.name}}</h4>
+<p style="margin: 14px 0 0; font-weight: 800; font-style: italic; font-size: 26px; text-transform: uppercase; letter-spacing: 0.02em; color: #0A0A0B">{{sec.s.character}}</p>
+<p style="margin: 8px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 13px; line-height: 1.65; color: #262932; max-width: 480px">{{sec.s.desc}}</p>
+<div style="margin-top: 18px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; max-width: 520px">
+<div style="background: rgba(255,255,255,0.8); border: 1.5px solid #020F26; border-radius: 3px; padding: 10px 12px; min-width: 0"><div style="font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{sec.s.deep}}">Top</div><div style="margin-top: 5px; font-weight: 700; font-size: 16px; line-height: 1.15">{{sec.s.top}}</div></div>
+<div style="background: rgba(255,255,255,0.8); border: 1.5px solid #020F26; border-radius: 3px; padding: 10px 12px; min-width: 0"><div style="font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{sec.s.deep}}">Heart</div><div style="margin-top: 5px; font-weight: 700; font-size: 16px; line-height: 1.15">{{sec.s.mid}}</div></div>
+<div style="background: rgba(255,255,255,0.8); border: 1.5px solid #020F26; border-radius: 3px; padding: 10px 12px; min-width: 0"><div style="font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: {{sec.s.deep}}">Base</div><div style="margin-top: 5px; font-weight: 700; font-size: 16px; line-height: 1.15">{{sec.s.base}}</div></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 24px">
+<sc-if value="{{sec.s.hasLink}}" hint-placeholder-val="{{ true }}">
+<a href="{{sec.s.link}}" target="_blank" rel="noopener" style="text-decoration: none; display: inline-block; background: #020F26; color: #F4F5F7; font-weight: 800; font-style: italic; font-size: 17px; letter-spacing: 0.04em; text-transform: uppercase; padding: 14px 24px; transform: skewX(-8deg); box-shadow: 5px 5px 0 {{accent}}"><span style="display: inline-block; transform: skewX(8deg)">Buy on Flipkart &#8594;</span></a>
+</sc-if>
+<sc-if value="{{sec.s.noLink}}" hint-placeholder-val="{{ false }}">
+<a href="#buy" style="text-decoration: none; display: inline-block; background: #020F26; color: #F4F5F7; font-weight: 800; font-style: italic; font-size: 17px; letter-spacing: 0.04em; text-transform: uppercase; padding: 14px 24px; transform: skewX(-8deg); box-shadow: 5px 5px 0 {{accent}}"><span style="display: inline-block; transform: skewX(8deg)">Coming to Flipkart soon</span></a>
+</sc-if>
+<a href="#dealer" style="text-decoration: none; display: inline-block; border: 2px solid #020F26; color: #0A0A0B; background: #FFFFFF; font-weight: 800; font-style: italic; font-size: 17px; letter-spacing: 0.04em; text-transform: uppercase; padding: 12px 22px; transform: skewX(-8deg)"><span style="display: inline-block; transform: skewX(8deg)">Bulk enquiry</span></a>
+</div>
+</div>
+
+<div aria-hidden="true" style="min-width: 0; height: 440px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden">
+<div style="position: absolute; width: 340px; height: 340px; max-width: 100%; border-radius: 50%; background-color: {{sec.s.halo}}; transition: background-color 0.6s ease"></div>
+<div style="position: absolute; left: 6px; top: 6px; width: 18px; height: 18px; border-left: 2px solid #020F26; border-top: 2px solid #020F26"></div>
+<div style="position: absolute; right: 6px; bottom: 6px; width: 18px; height: 18px; border-right: 2px solid #020F26; border-bottom: 2px solid #020F26"></div>
+<div style="position: relative; display: flex; flex-direction: column; align-items: center">
+
+<sc-if value="{{sec.isCore}}" hint-placeholder-val="{{ true }}">
+<div style="display: flex; flex-direction: column; align-items: center">
+<div style="width: 220px; height: 54px; border-radius: 14px; background: #1C1E23; display: flex; align-items: center; justify-content: space-evenly; padding: 0 22px; box-sizing: border-box; position: relative; z-index: 2">
+<span style="width: 7px; height: 32px; border-radius: 4px; background: #5A5F6B"></span><span style="width: 7px; height: 32px; border-radius: 4px; background: #5A5F6B"></span><span style="width: 18px; height: 18px; border-radius: 50%; background-color: {{sec.s.liquid}}"></span><span style="width: 7px; height: 32px; border-radius: 4px; background: #5A5F6B"></span><span style="width: 7px; height: 32px; border-radius: 4px; background: #5A5F6B"></span>
+</div>
+<div style="width: 200px; height: 186px; margin-top: -8px; border-radius: 0 0 40px 40px; border: 3px solid rgba(10,10,11,0.2); border-top: none; background: rgba(255,255,255,0.65); position: relative; overflow: hidden; display: flex; align-items: flex-end">
+<div style="width: 100%; height: 62%; background-color: {{sec.s.liquid}}; transition: background-color 0.6s ease; display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; padding: 16px; box-sizing: border-box">
+<sc-if value="{{sec.s.organic}}" hint-placeholder-val="{{ false }}">
+<span style="width: 36px; height: 28px; border-radius: 3px; background: #B88A55; border: 2px solid #8C6436"></span><span style="width: 36px; height: 28px; border-radius: 3px; background: #C99A63; border: 2px solid #8C6436"></span><span style="width: 36px; height: 28px; border-radius: 3px; background: #B88A55; border: 2px solid #8C6436"></span><span style="width: 36px; height: 28px; border-radius: 3px; background: #C99A63; border: 2px solid #8C6436"></span>
+</sc-if>
+</div>
+<span style="position: absolute; top: 20px; left: 0; right: 0; text-align: center; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-style: italic; font-size: 17px; color: rgba(10,10,11,0.6)">NIGHTFURY</span>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{sec.isAir}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; align-items: flex-end; gap: 26px">
+<div style="display: flex; flex-direction: column; align-items: center">
+<div style="width: 30px; height: 22px; border-radius: 6px 6px 2px 2px; background: #2A2D33"></div>
+<div style="width: 58px; height: 18px; background: #16181C"></div>
+<div style="width: 128px; height: 240px; border-radius: 18px; background: #1C1E23; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 10px">
+<div style="width: 100%; height: 52px; background-color: {{sec.s.liquid}}; transition: background-color 0.6s ease; display: flex; align-items: center; justify-content: center; font-weight: 800; font-style: italic; font-size: 28px; letter-spacing: 0.08em; color: #0A0A0B">AIR</div>
+<span style="font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-style: italic; font-size: 14px; color: #9A9AA0">NIGHTFURY</span>
+</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 56px">
+<div style="width: 2px; height: 64px; background: #6B5A45"></div>
+<div style="width: 98px; height: 164px; border-radius: 10px; background-color: {{sec.s.liquid}}; transition: background-color 0.6s ease; display: flex; flex-direction: column; align-items: center; padding-top: 14px; box-sizing: border-box">
+<span style="width: 14px; height: 14px; border-radius: 50%; background: #FFFFFF"></span>
+<span style="margin-top: 40px; font-family: Arial, Helvetica, sans-serif; font-weight: 700; font-style: italic; font-size: 22px; color: rgba(10,10,11,0.75)">NF</span>
+</div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{sec.isEssence}}" hint-placeholder-val="{{ false }}">
+<div style="display: flex; flex-direction: column; align-items: center">
+<div style="width: 4px; height: 84px; background: repeating-linear-gradient(180deg, #8C6436 0 6px, #B88A55 6px 12px)"></div>
+<div style="width: 70px; height: 56px; border-radius: 12px 12px 6px 6px; background: #B07A45; border-bottom: 6px solid #8C6436; box-sizing: border-box"></div>
+<div style="width: 176px; height: 186px; margin-top: -2px; clip-path: polygon(22% 0, 78% 0, 100% 28%, 100% 76%, 80% 100%, 20% 100%, 0 76%, 0 28%); background-color: {{sec.s.liquid}}; transition: background-color 0.6s ease; position: relative">
+<div style="position: absolute; left: 16%; top: 12%; width: 20%; height: 72%; background: rgba(255,255,255,0.38); clip-path: polygon(0 18%, 100% 0, 100% 100%, 0 86%)"></div>
+<div style="position: absolute; right: 14%; top: 18%; width: 10%; height: 56%; background: rgba(10,10,11,0.1)"></div>
+</div>
+</div>
+</sc-if>
+
+<div style="width: 210px; height: 20px; border-radius: 50%; background: rgba(10,10,11,0.14); margin-top: 16px"></div>
+</div>
+</div>
+
+<div style="min-width: 0; display: flex; flex-direction: column; gap: 8px">
+<p style="margin: 0 0 4px; font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #262932">// Scroll or pick</p>
+<sc-for list="{{sec.rail}}" as="r" hint-placeholder-count="5">
+<button type="button" onClick="{{r.pick}}" style="display: flex; align-items: center; gap: 10px; width: 100%; min-height: 46px; padding: 8px 12px; border: 2px solid #020F26; border-radius: 3px; background: {{r.bg}}; color: {{r.fg}}; cursor: pointer; text-align: left; font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-style: italic; font-size: 18px; text-transform: uppercase; letter-spacing: 0.02em; white-space: nowrap; overflow: hidden">
+<span style="font-family: 'Spline Sans Mono', monospace; font-style: normal; font-size: 11px; font-weight: 700; color: {{r.numFg}}; flex: 0 0 auto">{{r.num}}</span>
+<span style="width: 12px; height: 12px; background-color: {{r.liquid}}; flex: 0 0 auto; border: 1.5px solid {{r.fg}}"></span>
+<span style="overflow: hidden; text-overflow: ellipsis">{{r.name}}</span>
+</button>
+</sc-for>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</sc-for>
+</section>
+
+<section id="vision" style="background: #FFFFFF; border-top: 2px solid #020F26; scroll-margin-top: 76px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 96px 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: center">
+<div style="min-width: 0; position: relative; height: 480px; border-radius: 3px; border: 2px solid #020F26; background: repeating-linear-gradient(135deg, #F4F5F7 0 14px, #ECEDF0 14px 28px); display: flex; align-items: center; justify-content: center; text-align: center; padding: 24px; box-sizing: border-box">
+<div style="position: absolute; top: 20px; left: 20px; background: #020F26; color: #F4F5F7; font-weight: 800; font-style: italic; font-size: 18px; padding: 6px 14px; box-shadow: 4px 4px 0 {{accent}}">N&#176; 001 Flagship</div>
+<span style="font-family: 'Spline Sans Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #3A3D46">[Product photo: 4W LED pair, beam on]</span>
+</div>
+<div style="min-width: 0">
+<p style="margin: 0; font-family: 'Spline Sans Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #B83E00">01 // NightFury Vision // See the difference</p>
+<h2 style="margin: 16px 0 0; font-weight: 800; font-style: italic; font-size: 96px; line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase">Own the <span style="color: #E04A00">night.</span></h2>
+<p style="margin: 22px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 15px; line-height: 1.75; color: #3A3D46">The 4-Wheeler LED pair. Dual 6000K and 4300K modes, full-width road coverage, CANBUS-ready so it plugs in with zero dashboard errors.</p>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 28px; border-top: 2px solid #020F26; border-bottom: 2px solid #020F26">
+<div style="padding: 16px 8px 16px 0; min-width: 0"><div style="font-weight: 800; font-style: italic; font-size: 36px; line-height: 0.9">300<span style="font-size: 17px; color: #B83E00">W</span></div><div style="font-family: 'Spline Sans Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: #3A3D46; margin-top: 6px">PEAK, PAIR</div></div>
+<div style="padding: 16px 8px; min-width: 0"><div style="font-weight: 800; font-style: italic; font-size: 36px; line-height: 0.9">5K<span style="font-size: 17px; color: #B83E00">HR</span></div><div style="font-family: 'Spline Sans Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: #3A3D46; margin-top: 6px">LIFE SPAN</div></div>
+<div style="padding: 16px 8px; min-width: 0"><div style="font-weight: 800; font-style: italic; font-size: 36px; line-height: 0.9">IP<span style="font-size: 17px; color: #B83E00">67</span></div><div style="font-family: 'Spline Sans Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: #3A3D46; margin-top: 6px">SEALED</div></div>
+<div style="padding: 16px 0 16px 8px; min-width: 0"><div style="font-weight: 800; font-style: italic; font-size: 36px; line-height: 0.9">18<span style="font-size: 17px; color: #B83E00">MO</span></div><div style="font-family: 'Spline Sans Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; color: #3A3D46; margin-top: 6px">WARRANTY</div></div>
+</div>
+<p style="margin: 18px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase">Outputs 240W / 300W // 9V to 32V // CANBUS</p>
+<div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 28px">
+<a href="#buy" style="text-decoration: none; display: inline-block; background: #020F26; color: #F4F5F7; font-weight: 800; font-style: italic; font-size: 17px; letter-spacing: 0.04em; text-transform: uppercase; padding: 14px 24px; transform: skewX(-8deg); box-shadow: 5px 5px 0 {{accent}}"><span style="display: inline-block; transform: skewX(8deg)">Coming to Flipkart soon</span></a>
+<a href="#dealer" style="text-decoration: none; display: inline-block; border: 2px solid #020F26; color: #0A0A0B; font-weight: 800; font-style: italic; font-size: 17px; letter-spacing: 0.04em; text-transform: uppercase; padding: 12px 22px; transform: skewX(-8deg)"><span style="display: inline-block; transform: skewX(8deg)">Bulk enquiry</span></a>
+</div>
+<p style="margin: 22px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 13px; color: #3A3D46">2-Wheeler LED headlight: coming soon. <a href="#buy" style="font-weight: 700">Notify me</a></p>
+</div>
+</div>
+</section>
+
+<section id="care" style="background: #F4F5F7; border-top: 2px solid #020F26; scroll-margin-top: 76px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 88px 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 48px; align-items: center">
+<div style="min-width: 0">
+<p style="margin: 0; font-family: 'Spline Sans Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #B83E00">03 // NightFury Care // Feel the difference</p>
+<h2 style="margin: 16px 0 0; font-weight: 800; font-style: italic; font-size: 80px; line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase">Showroom sharp. <span style="color: #E04A00">Every wipe.</span></h2>
+<p style="margin: 20px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 15px; line-height: 1.75; color: #3A3D46">Detailing-grade microfiber and pH-balanced wipes. The same materials professional studios trust. Landing soon.</p>
+</div>
+<div style="min-width: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px">
+<div style="background: #FFFFFF; border: 2px solid #020F26; border-radius: 3px; padding: 26px; min-width: 0">
+<span style="display: inline-block; background: #020F26; color: #FFFFFF; font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 11px">Coming soon</span>
+<div style="font-weight: 800; font-style: italic; font-size: 32px; text-transform: uppercase; line-height: 0.95; margin-top: 18px">Microfiber Cloth</div>
+<div style="font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #3A3D46; margin-top: 8px">380 GSM // Edgeless // Swirl-free</div>
+<a href="#buy" style="display: inline-block; margin-top: 16px; font-weight: 800; font-style: italic; font-size: 18px; text-transform: uppercase; padding: 8px 0">Notify me &#8594;</a>
+</div>
+<div style="background: #FFFFFF; border: 2px solid #020F26; border-radius: 3px; padding: 26px; min-width: 0">
+<span style="display: inline-block; background: #020F26; color: #FFFFFF; font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 11px">Coming soon</span>
+<div style="font-weight: 800; font-style: italic; font-size: 32px; text-transform: uppercase; line-height: 0.95; margin-top: 18px">Car Wet Wipes</div>
+<div style="font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #3A3D46; margin-top: 8px">40 wipes // pH-balanced // Matte</div>
+<a href="#buy" style="display: inline-block; margin-top: 16px; font-weight: 800; font-style: italic; font-size: 18px; text-transform: uppercase; padding: 8px 0">Notify me &#8594;</a>
+</div>
+</div>
+</div>
+</section>
+
+<section id="standard" style="background: #FFFFFF; border-top: 2px solid #020F26; scroll-margin-top: 76px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 96px 40px">
+<h2 style="margin: 0 0 48px; font-weight: 800; font-style: italic; font-size: 84px; line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase; max-width: 900px">Built like a <span style="color: #E04A00">performance brand.</span></h2>
+<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px">
+<div style="border: 2px solid #020F26; border-radius: 3px; padding: 28px; min-width: 0">
+<div style="width: 56px; height: 56px; background: #020F26; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14l4-4"></path><path d="M3.3 16a9 9 0 1 1 17.4 0"></path><circle cx="12" cy="14" r="1.5"></circle></svg></div>
+<h3 style="margin: 20px 0 0; font-weight: 800; font-style: italic; font-size: 28px; line-height: 1; text-transform: uppercase">Engineered, not assembled</h3>
+<p style="margin: 12px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 13px; line-height: 1.7; color: #3A3D46">Thermal, vibration and endurance tested before it earns the badge. One failure scraps the whole batch.</p>
+</div>
+<div style="border: 2px solid #020F26; border-radius: 3px; padding: 28px; min-width: 0">
+<div style="width: 56px; height: 56px; background: #020F26; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"></path><path d="M8.5 12l2.5 2.5 4.5-5"></path></svg></div>
+<h3 style="margin: 20px 0 0; font-weight: 800; font-style: italic; font-size: 28px; line-height: 1; text-transform: uppercase">18-month warranty</h3>
+<p style="margin: 12px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 13px; line-height: 1.7; color: #3A3D46">One of the longest lighting warranties in the segment. Built right, it doesn't come back.</p>
+</div>
+<div style="border: 2px solid #020F26; border-radius: 3px; padding: 28px; min-width: 0">
+<div style="width: 56px; height: 56px; background: #020F26; display: flex; align-items: center; justify-content: center"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"></path><circle cx="12" cy="9.5" r="2.5"></circle></svg></div>
+<h3 style="margin: 20px 0 0; font-weight: 800; font-style: italic; font-size: 28px; line-height: 1; text-transform: uppercase">Dealer-first network</h3>
+<p style="margin: 12px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 13px; line-height: 1.7; color: #3A3D46">From metro accessory hubs to highway service points. Genuine NightFury, always within reach.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section id="buy" style="background: #F4F5F7; border-top: 2px solid #020F26; scroll-margin-top: 76px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 96px 40px">
+<h2 style="margin: 0 0 40px; font-weight: 800; font-style: italic; font-size: 84px; line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase">Get it <span style="color: #E04A00">your way.</span></h2>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px">
+<div style="background: #FFFFFF; border: 2px solid #020F26; border-radius: 3px; padding: 36px; min-width: 0">
+<p style="margin: 0; font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #B83E00">// Online</p>
+<h3 style="margin: 10px 0 0; font-weight: 800; font-style: italic; font-size: 42px; text-transform: uppercase">Buy on Flipkart</h3>
+<p style="margin: 12px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 14px; line-height: 1.7; color: #3A3D46">Aroma Core is live on the official NightFury listings. Aroma Air, Aroma Essence and the 4W LED land next.</p>
+<a href="#aroma-core" style="text-decoration: none; display: inline-block; margin-top: 26px; background: #020F26; color: #F4F5F7; font-weight: 800; font-style: italic; font-size: 17px; text-transform: uppercase; padding: 14px 24px; transform: skewX(-8deg); box-shadow: 5px 5px 0 {{accent}}"><span style="display: inline-block; transform: skewX(8deg)">Shop the range &#8594;</span></a>
+</div>
+<div style="background: #FFFFFF; border: 2px solid #020F26; border-radius: 3px; padding: 36px; min-width: 0">
+<p style="margin: 0; font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #B83E00">// In store</p>
+<h3 style="margin: 10px 0 0; font-weight: 800; font-style: italic; font-size: 42px; text-transform: uppercase">Find a dealer</h3>
+<p style="margin: 12px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 14px; line-height: 1.7; color: #3A3D46">Drop your city. We point you to the nearest NightFury dealer.</p>
+<form style="display: flex; margin-top: 26px; border: 2px solid #020F26; background: #FFFFFF">
+<label for="city" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Your city</label>
+<input id="city" type="text" placeholder="YOUR CITY" style="flex: 1 1 auto; min-width: 0; height: 52px; padding: 0 18px; border: none; outline: none; background: transparent; font-family: 'Spline Sans Mono', monospace; font-size: 14px; letter-spacing: 0.1em">
+<button type="button" style="flex: 0 0 auto; height: 52px; padding: 0 24px; border: none; background: {{accent}}; color: #0A0A0B; font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-style: italic; font-size: 18px; text-transform: uppercase; cursor: pointer">Find &#8594;</button>
+</form>
+</div>
+</div>
+<p style="margin: 22px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 12px; color: #3A3D46">The 18-month warranty covers purchases from official NightFury listings and authorized dealers only.</p>
+</div>
+</section>
+
+<section id="dealer" style="background: {{accent}}; scroll-margin-top: 76px">
+<div style="max-width: 1280px; margin: 0 auto; padding: 96px 40px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 40px; align-items: end">
+<div style="min-width: 0">
+<p style="margin: 0 0 14px; font-family: 'Spline Sans Mono', monospace; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #0A0A0B">// For dealers</p>
+<h2 style="margin: 0; font-weight: 800; font-style: italic; font-size: 88px; line-height: 0.88; letter-spacing: -0.02em; text-transform: uppercase; color: #0A0A0B">Stock the brand they ask for by name.</h2>
+<p style="margin: 22px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 15px; line-height: 1.75; color: #0A0A0B; max-width: 600px">Three lines from one supplier. Retail-ready packaging. Warranty handled for your customers. Direct support from Yash Marketing, Kanpur.</p>
+</div>
+<a href="#dealer" style="text-decoration: none; display: inline-block; white-space: nowrap; background: #020F26; color: #F4F5F7; font-weight: 800; font-style: italic; font-size: 22px; letter-spacing: 0.04em; text-transform: uppercase; padding: 20px 34px; transform: skewX(-8deg); box-shadow: 7px 7px 0 #FFFFFF"><span style="display: inline-block; transform: skewX(8deg)">Become a Dealer &#8594;</span></a>
+</div>
+</section>
+
+<section style="background: #FFFFFF; border-top: 2px solid #020F26">
+<div style="max-width: 1280px; margin: 0 auto; padding: 64px 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 32px; align-items: center">
+<div style="min-width: 0">
+<p style="margin: 0 0 8px; font-family: 'Spline Sans Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #B83E00">// Join the garage</p>
+<h2 style="margin: 0; font-weight: 800; font-style: italic; font-size: 52px; line-height: 0.9; text-transform: uppercase">New drops. First.</h2>
+</div>
+<form style="min-width: 0; display: flex; border: 2px solid #020F26; background: #FFFFFF; box-shadow: 6px 6px 0 {{accent}}">
+<label for="nl" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0)">Email or WhatsApp number</label>
+<input id="nl" type="text" placeholder="EMAIL OR WHATSAPP" style="flex: 1 1 auto; min-width: 0; height: 56px; padding: 0 20px; border: none; outline: none; background: transparent; font-family: 'Spline Sans Mono', monospace; font-size: 14px; letter-spacing: 0.1em">
+<button type="button" style="flex: 0 0 auto; height: 56px; padding: 0 28px; border: none; background: #020F26; color: #F4F5F7; font-family: 'Saira Condensed', sans-serif; font-weight: 800; font-style: italic; font-size: 19px; text-transform: uppercase; cursor: pointer">Subscribe</button>
+</form>
+</div>
+</section>
+
+<footer style="background: #020F26; color: #F4F5F7">
+<div aria-hidden="true" style="height: 6px; background: {{accent}}"></div>
+<div style="max-width: 1280px; margin: 0 auto; padding: 56px 40px 40px; display: grid; grid-template-columns: minmax(0, 1.5fr) repeat(3, minmax(0, 1fr)); gap: 40px">
+<div style="min-width: 0">
+<div role="img" aria-label="NightFury, Drive the Difference" style="display: inline-flex; flex-direction: column; align-items: center">
+<div style="font-family: 'Saira Condensed', 'Arial Narrow', Arial, sans-serif; font-weight: 700; font-style: italic; font-size: 44px; letter-spacing: 0; line-height: 0.95; transform: skewX(-4deg)"><span style="color: #F4F5F7">NIGHT</span><span style="color: {{accent}}">FURY</span></div>
+<div style="margin-top: 8px; font-family: 'Spline Sans Mono', 'Courier New', monospace; font-weight: 500; font-size: 9px; letter-spacing: 0.42em; margin-right: -0.42em; color: rgba(244,245,247,0.82)">DRIVE THE DIFFERENCE</div>
+</div>
+<p style="margin: 24px 0 0; font-family: 'Spline Sans Mono', monospace; font-size: 12px; line-height: 1.8; color: #AEB6C6">Yash Marketing<br>Authorized Distributor of NightFury<br>GSTIN 09AABFY5202B1ZL<br>109/75, Sisamau Bazar, Nehru Nagar,<br>Kanpur, Uttar Pradesh 208012</p>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; min-width: 0">
+<span style="font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: {{accent}}">Products</span>
+<a href="Vision.dc.html" style="font-weight: 700; font-size: 18px; text-transform: uppercase; text-decoration: none; color: #F4F5F7">Vision</a><a href="Aroma.dc.html" style="font-weight: 700; font-size: 18px; text-transform: uppercase; text-decoration: none; color: #F4F5F7">Aroma</a><a href="Care.dc.html" style="font-weight: 700; font-size: 18px; text-transform: uppercase; text-decoration: none; color: #F4F5F7">Care</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; min-width: 0">
+<span style="font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: {{accent}}">Company</span>
+<a href="#standard" style="font-weight: 700; font-size: 18px; text-transform: uppercase; text-decoration: none; color: #F4F5F7">About</a><a href="#dealer" style="font-weight: 700; font-size: 18px; text-transform: uppercase; text-decoration: none; color: #F4F5F7">Become a Dealer</a><a href="#buy" style="font-weight: 700; font-size: 18px; text-transform: uppercase; text-decoration: none; color: #F4F5F7">Where to Buy</a><a href="#buy" style="font-weight: 700; font-size: 18px; text-transform: uppercase; text-decoration: none; color: #F4F5F7">Warranty</a>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; min-width: 0">
+<span style="font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: {{accent}}">Support</span>
+<span style="font-family: 'Spline Sans Mono', monospace; font-size: 13px">support@nightfury.in</span><span style="font-family: 'Spline Sans Mono', monospace; font-size: 13px">+91 80521 70430</span><span style="font-family: 'Spline Sans Mono', monospace; font-size: 13px; color: #AEB6C6">Mon to Sat, 10 AM to 7 PM IST</span>
+</div>
+</div>
+<div style="max-width: 1280px; margin: 0 auto; padding: 20px 40px 36px; display: flex; flex-wrap: wrap; gap: 10px 24px; justify-content: space-between; font-family: 'Spline Sans Mono', monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #AEB6C6; border-top: 1px solid #1C2B47">
+<span>&#169; MMXXVI NightFury // All rights reserved</span>
+<span>Terms // Privacy // Shipping // Refund // Warranty</span>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#FF5500","options":["#FF5500","#FF7A1A","#0A0A0B"]},"$preview":{"width":1440,"height":10400}}'>
+var NF_STEP = 360;
+var NF_STAGE = 620;
+var NF_NAV = 76;
+var NF_TBC = "[To be confirmed]";
+var NF_AIR_DESC = "Mist the NightFury card, hang it from the mirror, hit refresh whenever you want. One bottle outlasts a dozen disposable fresheners.";
+var NF_ESS_DESC = "Slow-release fragrance oil in faceted glass, braided cord, natural wood cap. Up to 60 days of a cabin that smells like yours.";
+var NF_SECTIONS = [
+  {
+    key: "core", anchor: "aroma-core", num: "01", title: "Aroma Core",
+    tagline: "Bolted to the dash. Always on.",
+    blurb: "A glass canister with a wheel-rim cap inspired by luxury cars. Sits on the console and releases a steady fragrance for weeks. No cords, no clips, no refills.",
+    specs: "55g // Gel or Organic // 5 scents // Up to 60 days",
+    scents: [
+      { label: "Core // Gel", name: "Citrus Zest", character: "Bright. Clean. Awake.", desc: "A sharp burst of cold-pressed citrus that cuts through stale cabin air on the first turn of the key.", top: "Bergamot, lemon peel", mid: "Neroli, green apple", base: "White musk, cedar", tint: "#FFF4CC", halo: "#FCE29A", liquid: "#F5C518", deep: "#6A4E00", link: "https://www.flipkart.com/nightfury-citrus-zest-car-freshener-blocks-aroma-core-gel-dashboard-fragrance/p/itmf928653d25692?pid=AIRHS89GBT7CT8BX" },
+      { label: "Core // Gel", name: "Berry Bloom", character: "Soft. Rounded. Warm.", desc: "Ripe red berries over florals, warmed by vanilla as it settles. The one passengers ask about most.", top: "Strawberry, raspberry", mid: "Rose petal, jasmine", base: "Vanilla, soft amber", tint: "#FDE2EC", halo: "#F7BFD3", liquid: "#C93F86", deep: "#7E1F52", link: "https://www.flipkart.com/nightfury-berry-bloom-car-freshener-blocks-aroma-core-gel-dashboard-fragrance/p/itm0eaf7f43ca9ee?pid=AIRHS89GZA52HFQ6" },
+      { label: "Core // Gel", name: "Mountain Mint", character: "Cool. Sharp. Focused.", desc: "Crushed mint and eucalyptus with a cold green edge. Built for long night drives and heavy traffic.", top: "Peppermint, eucalyptus", mid: "Spearmint, green tea", base: "Vetiver, cedarwood", tint: "#DDF4E9", halo: "#B6E6CF", liquid: "#2FB580", deep: "#17603F", link: "https://www.flipkart.com/nightfury-mountain-mint-car-freshener-blocks-aroma-core-gel-dashboard-fragrance/p/itm9683550bc48e0?pid=AIRHS849QDNDRZYG" },
+      { label: "Core // Organic", organic: true, name: "Nature's Bloom", character: "Fresh florals. Open air.", desc: "Orange blossom and jasmine over a clean dew accord. A window left open on a spring morning.", top: "Orange blossom, dew", mid: "Jasmine, ylang-ylang", base: "Sandalwood, musk", tint: "#FDE7D6", halo: "#F7CBAD", liquid: "#EF9A6E", deep: "#843D1C", link: "https://www.flipkart.com/nightfury-nature-s-bloom-car-freshener-blocks-aroma-core/p/itm0a6151873ad5d?pid=AIRHRMB8UZXWZPFN" },
+      { label: "Core // Organic", organic: true, name: "Earth Essence", character: "Grounded. Woody. Quiet.", desc: "Damp earth, moss and warm wood. Closer to a forest floor after rain than a perfume counter.", top: "Bergamot, black pepper", mid: "Patchouli, clary sage", base: "Oakmoss, sandalwood", tint: "#EAE5D8", halo: "#D6CDB4", liquid: "#8C7A4F", deep: "#4B4026", link: "https://www.flipkart.com/nightfury-earth-essence-car-freshener-blocks-aroma-core-organic-dashboard-fragrance/p/itm512ca9b2a1f0f?pid=AIRHQEPGTNCFNNUE" }
+    ]
+  },
+  {
+    key: "air", anchor: "aroma-air", num: "02", title: "Aroma Air",
+    tagline: "Spray. Hang. Arrive.",
+    blurb: "A matte-black 50 ml atomizer paired with a NightFury hanging card. Your scent, your intensity, on demand.",
+    specs: "50 ml // 500+ sprays // 3 scents // Hanging card included",
+    scents: [
+      { label: "Air // 50 ml", name: "Azure", character: "[Character line]", desc: NF_AIR_DESC, top: NF_TBC, mid: NF_TBC, base: NF_TBC, tint: "#DEEBFA", halo: "#B8D3F3", liquid: "#3B8BEB", deep: "#184A86", link: "" },
+      { label: "Air // 50 ml", name: "Bonfire", character: "[Character line]", desc: NF_AIR_DESC, top: NF_TBC, mid: NF_TBC, base: NF_TBC, tint: "#FDE8D6", halo: "#F8CDA6", liquid: "#E8772E", deep: "#843A0C", link: "" },
+      { label: "Air // 50 ml", name: "Impulsive", character: "[Character line]", desc: NF_AIR_DESC, top: NF_TBC, mid: NF_TBC, base: NF_TBC, tint: "#ECE2F9", halo: "#D4BFF2", liquid: "#8A55D6", deep: "#4A2884", link: "" }
+    ]
+  },
+  {
+    key: "essence", anchor: "aroma-essence", num: "03", title: "Aroma Essence",
+    tagline: "Hang it. Own the cabin.",
+    blurb: "Faceted glass, braided cord, natural wood cap. The most premium way to scent the drive, and it looks the part on the mirror.",
+    specs: "15 ml // Up to 60 days // 3 scents // Glass + wood",
+    scents: [
+      { label: "Essence // 15 ml", name: "Blue Ocean", character: "[Character line]", desc: NF_ESS_DESC, top: NF_TBC, mid: NF_TBC, base: NF_TBC, tint: "#DCF2F4", halo: "#B1E0E6", liquid: "#1EA3B5", deep: "#0C5A65", link: "" },
+      { label: "Essence // 15 ml", name: "Romance", character: "[Character line]", desc: NF_ESS_DESC, top: NF_TBC, mid: NF_TBC, base: NF_TBC, tint: "#FBE3EE", halo: "#F2C2D8", liquid: "#C25A8E", deep: "#74234D", link: "" },
+      { label: "Essence // 15 ml", name: "Fresh Jasmine", character: "[Character line]", desc: NF_ESS_DESC, top: NF_TBC, mid: NF_TBC, base: NF_TBC, tint: "#EFF4DE", halo: "#D9E4AE", liquid: "#AFC45A", deep: "#4A5719", link: "" }
+    ]
+  }
+];
+
+function nfScrollParent(el) {
+  var p = el ? el.parentElement : null;
+  while (p && p !== document.body && p !== document.documentElement) {
+    var oy = window.getComputedStyle(p).overflowY;
+    if ((oy === "auto" || oy === "scroll") && p.scrollHeight > p.clientHeight) return p;
+    p = p.parentElement;
+  }
+  return null;
+}
+
+class Component extends DCLogic {
+  state = { core: 0, air: 0, essence: 0 };
+  tracks = {};
+  refSetters = {
+    core: (el) => { this.tracks.core = el; },
+    air: (el) => { this.tracks.air = el; },
+    essence: (el) => { this.tracks.essence = el; }
+  };
+
+  onScroll = () => {
+    var next = {};
+    var changed = false;
+    NF_SECTIONS.forEach((sec) => {
+      var el = this.tracks[sec.key];
+      if (!el) return;
+      var r = el.getBoundingClientRect();
+      var i = Math.floor((NF_NAV - r.top + NF_STEP / 2) / NF_STEP);
+      i = Math.max(0, Math.min(sec.scents.length - 1, i));
+      if (i !== this.state[sec.key]) { next[sec.key] = i; changed = true; }
+    });
+    if (changed) this.setState(next);
+  };
+
+  go(key, i) {
+    var upd = {};
+    upd[key] = i;
+    this.setState(upd);
+    var el = this.tracks[key];
+    if (!el) return;
+    try {
+      var delta = el.getBoundingClientRect().top - NF_NAV + i * NF_STEP + 2;
+      var sp = nfScrollParent(el);
+      if (sp) sp.scrollBy({ top: delta, behavior: "smooth" });
+      else window.scrollBy({ top: delta, behavior: "smooth" });
+    } catch (e) {}
+  }
+
+  componentDidMount() {
+    document.addEventListener("scroll", this.onScroll, { passive: true, capture: true });
+    window.addEventListener("resize", this.onScroll, { passive: true });
+    this.onScroll();
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener("scroll", this.onScroll, { capture: true });
+    window.removeEventListener("resize", this.onScroll);
+  }
+
+  renderVals() {
+    var pad = function (x) { return (x < 10 ? "0" : "") + x; };
+    var sections = NF_SECTIONS.map((sec) => {
+      var idx = this.state[sec.key] || 0;
+      var n = sec.scents.length;
+      var cur = sec.scents[idx];
+      return {
+        key: sec.key,
+        anchor: sec.anchor,
+        num: sec.num,
+        title: sec.title,
+        tagline: sec.tagline,
+        blurb: sec.blurb,
+        specList: sec.specs.split(" // "),
+        isCore: sec.key === "core",
+        isAir: sec.key === "air",
+        isEssence: sec.key === "essence",
+        setRef: this.refSetters[sec.key],
+        extraH: (n - 1) * NF_STEP,
+        counter: pad(idx + 1) + " / " + pad(n),
+        progressPct: Math.round(((idx + 1) / n) * 100),
+        s: Object.assign({}, cur, { organic: !!cur.organic, hasLink: !!cur.link, noLink: !cur.link }),
+        rail: sec.scents.map((sc, i) => ({
+          num: pad(i + 1),
+          name: sc.name,
+          liquid: sc.liquid,
+          bg: i === idx ? "#020F26" : "rgba(255,255,255,0.85)",
+          fg: i === idx ? "#F4F5F7" : "#0A0A0B",
+          numFg: i === idx ? "#FF8A4C" : "#3A3D46",
+          pick: () => this.go(sec.key, i)
+        }))
+      };
+    });
+    return {
+      accent: this.props.accent ?? "#FF5500",
+      sections: sections
+    };
+  }
+}
+</script>
+</body>
+</html>
