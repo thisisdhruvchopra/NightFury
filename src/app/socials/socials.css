@@ -1,0 +1,116 @@
+/* /socials keeps its original dark styling (own host, own look). These rules
+   were the old site-wide theme; they are scoped here so the light rebuild
+   does not touch this page. */
+.socials-root {
+  --color-carbon: #0A0A0B;
+  --color-panel: #0C0C0E;
+  --color-accent: #FF5500;
+  --color-chalk: #F4F5F7;
+  --color-muted: #C2C2CA;
+  --color-dim: #9E9EA8;
+  --color-faint: #80808A;
+  --color-border: #17171A;
+  --color-border-strong: #2A2A30;
+  --color-border-hover: #2E2E34;
+
+  color-scheme: dark;
+  background-color: var(--color-carbon);
+  background-image:
+    linear-gradient(27deg, #0F0F11 5px, transparent 5px) 0 5px,
+    linear-gradient(207deg, #0F0F11 5px, transparent 5px) 10px 0px,
+    linear-gradient(27deg, #131315 5px, transparent 5px) 0px 10px,
+    linear-gradient(207deg, #131315 5px, transparent 5px) 10px 5px,
+    linear-gradient(90deg, #0C0C0E 10px, #0A0A0B 10px, #0A0A0B 20px, #0C0C0E 20px);
+  background-size: 20px 20px;
+  color: var(--color-chalk);
+  line-height: 1.6;
+}
+.socials-root a { color: inherit; text-decoration: none; }
+.socials-root a:hover { color: inherit; }
+.socials-root h1, .socials-root h2, .socials-root h3 { color: var(--color-chalk); }
+
+.socials-root .nf-card {
+  border: 1px solid var(--color-border);
+  border-radius: 3px;
+  transition: transform .25s ease, border-color .25s ease;
+  background-color: var(--color-panel);
+  background-image:
+    linear-gradient(27deg, #131316 4px, transparent 4px) 0 4px,
+    linear-gradient(207deg, #131316 4px, transparent 4px) 8px 0px,
+    linear-gradient(27deg, #161619 4px, transparent 4px) 0px 8px,
+    linear-gradient(207deg, #161619 4px, transparent 4px) 8px 4px,
+    linear-gradient(90deg, #0E0E10 8px, #0C0C0E 8px, #0C0C0E 16px, #0E0E10 16px);
+  background-size: 16px 16px;
+}
+.socials-root .nf-card:hover { transform: translateY(-4px); border-color: var(--color-border-hover); }
+
+.socials-root .carbon-trim {
+  height: 7px;
+  width: 100%;
+  border-top: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-border);
+  background-color: #0E0E10;
+}
+
+.socials-root .nf-btn {
+  transition: transform .12s ease, box-shadow .2s ease, background .2s ease;
+  display: inline-flex;
+  cursor: pointer;
+  border: none;
+  align-items: center;
+  border-radius: 0;
+  letter-spacing: normal;
+}
+.socials-root .nf-btn-primary {
+  background: var(--color-accent);
+  color: var(--color-carbon);
+  font-weight: 800;
+  font-style: italic;
+  text-transform: uppercase;
+  transform: skewX(-8deg);
+  box-shadow: 5px 5px 0 rgba(255,85,0,0.22);
+  padding: 14px 26px;
+  font-size: 15px;
+  font-family: var(--font-display);
+}
+.socials-root .nf-btn-primary > span { display: inline-block; transform: skewX(8deg); }
+.socials-root .nf-btn-primary:hover { transform: skewX(-8deg) translateY(-2px); color: var(--color-carbon); }
+
+/* Panel 1 clears the marquee bar + 76px sticky header on first paint. */
+.socials-panel {
+  min-height: calc(100svh - 112px);
+  scroll-margin-top: 76px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.socials-panel-2 { min-height: calc(100svh - 76px); }
+
+.socials-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+@media (max-width: 1040px) {
+  .socials-grid { grid-template-columns: repeat(3, 1fr); }
+  .socials-grid > :last-child { grid-column: span 2; }
+}
+@media (max-width: 680px) {
+  .socials-grid { grid-template-columns: 1fr; gap: 8px; }
+  .socials-grid > :last-child { grid-column: auto; }
+  .socials-note, .socials-arrow { display: none; }
+  .socials-bg-img { object-position: 74% bottom; }
+  .socials-tile { flex-direction: row; align-items: center; gap: 10px; padding: 11px 12px; }
+  .socials-icon { height: 34px; width: 34px; }
+  .socials-icon svg { width: 17px; height: 17px; }
+  .socials-panel-2 { padding-top: 16px; padding-bottom: 16px; }
+  .socials-dist-grid { gap: 10px; margin-top: 18px; }
+  .socials-dist-card { padding: 14px; }
+  .socials-dist-h2 { font-size: 26px; }
+  .socials-contacts { display: grid; grid-template-columns: 1fr 1fr; column-gap: 12px; }
+  .socials-contacts > * { margin-top: 0; }
+  .socials-contacts > :nth-child(n + 3) { margin-top: 12px; }
+  .socials-response { display: none; }
+}
+@media (max-height: 620px) {
+  .socials-panel, .socials-panel-2 { min-height: auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .socials-root .nf-card, .socials-root .nf-btn { transition: none; }
+}

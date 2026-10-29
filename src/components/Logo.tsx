@@ -1,25 +1,40 @@
-import Link from "next/link";
-import Image from "next/image";
-
-export default function Logo({ className = "", size = "md" }: { className?: string; size?: "md" | "lg" }) {
-  const fontSize = size === "lg" ? "text-[42px]" : "text-[24px]";
-  const imgSize = size === "lg" ? 44 : 36;
-
+/**
+ * NightFury lockup rendered as live HTML text (HANDOFF section 4, Logo).
+ * The supplied SVG uses <text> and falls back to a system font, so the site
+ * draws the wordmark itself with Saira Condensed.
+ */
+export default function Logo({
+  variant = "header",
+}: Readonly<{ variant?: "header" | "footer" }>) {
+  const footer = variant === "footer";
   return (
-    <Link href="/" className={`inline-flex items-center gap-3 ${className}`}>
-      <Image
-        src="/media/logos/logo.png"
-        alt="NightFury"
-        width={imgSize}
-        height={imgSize}
-        className="rounded-md"
-        priority
-      />
-      <span className={`nf-word ${fontSize}`} style={{ lineHeight: ".85" }}>
-        <span className="n">Night</span>
-        <span className="f">Fury</span>
-        <span className="reg">&reg;</span>
+    <span className="inline-flex flex-col items-center leading-none">
+      <span
+        className="font-display italic"
+        style={{
+          fontWeight: footer ? 700 : 800,
+          fontSize: footer ? 44 : 34,
+          letterSpacing: footer ? 0 : "-0.01em",
+          lineHeight: 0.95,
+          transform: "skewX(-4deg)",
+        }}
+      >
+        <span style={{ color: footer ? "#F4F5F7" : "#0A0A0B" }}>NIGHT</span>
+        <span style={{ color: "#FF5500" }}>FURY</span>
       </span>
-    </Link>
+      <span
+        className="font-mono"
+        style={{
+          marginTop: footer ? 8 : 4,
+          fontWeight: footer ? 500 : 600,
+          fontSize: footer ? 9 : 8,
+          letterSpacing: "0.42em",
+          marginRight: "-0.42em",
+          color: footer ? "rgba(244,245,247,0.82)" : "#3A3D46",
+        }}
+      >
+        DRIVE THE DIFFERENCE
+      </span>
+    </span>
   );
 }

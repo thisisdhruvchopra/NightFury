@@ -1,45 +1,43 @@
-import type { Metadata } from "next";
-import { Saira_Condensed, Spline_Sans_Mono, Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Saira_Condensed, Spline_Sans_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
+import Header from "@/components/Header";
+import Marquee from "@/components/Marquee";
 import Footer from "@/components/Footer";
-import { CartProvider } from "@/lib/cart";
 import { BUSINESS, SUPPORT, SITE_URL } from "@/lib/legal";
 
 const saira = Saira_Condensed({
   variable: "--font-saira",
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
+  style: ["normal", "italic"],
+  display: "swap",
 });
 
 const spline = Spline_Sans_Mono({
   variable: "--font-spline",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-});
-
-// Body/UI text face. Saira Condensed is a display font, too narrow to read at paragraph sizes.
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "NightFury - Drive The Difference",
+  metadataBase: new URL(SITE_URL),
+  title: "NightFury: LED Headlights, Car Perfumes and Car Care",
   description:
-    "NightFury Vision, Aroma and Care - premium LED headlights, car perfumes and car care products. Drive the difference.",
-  keywords: ["NightFury", "LED headlights", "car perfumes", "car care", "automotive accessories", "Yash Marketing"],
+    "NightFury Vision LED headlights, Aroma car perfumes and Care detailing products. Buy on Flipkart or through authorized dealers across India.",
   openGraph: {
-    title: "NightFury - Drive The Difference",
-    description: "Premium automotive parts and accessories. Vision. Aroma. Care.",
-    url: SITE_URL,
     siteName: "NightFury",
+    url: SITE_URL,
     type: "website",
+    locale: "en_IN",
   },
   twitter: { card: "summary_large_image" },
-  metadataBase: new URL(SITE_URL),
+};
+
+export const viewport: Viewport = {
+  themeColor: "#FFFFFF",
 };
 
 const orgSchema = {
@@ -48,7 +46,7 @@ const orgSchema = {
   name: BUSINESS.brandName,
   legalName: BUSINESS.legalName,
   url: SITE_URL,
-  logo: `${SITE_URL}/media/logos/logo.png`,
+  slogan: "Drive The Difference",
   contactPoint: {
     "@type": "ContactPoint",
     telephone: SUPPORT.phone,
@@ -72,16 +70,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${saira.variable} ${spline.variable} ${inter.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <CartProvider>
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
-        </CartProvider>
+    <html lang="en-IN" className={`${saira.variable} ${spline.variable}`}>
+      <body>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-navy focus:px-4 focus:py-3 focus:font-mono focus:text-white"
+        >
+          Skip to content
+        </a>
+        <div className="nf-shell">
+          <Marquee />
+          <Header />
+          <main id="main">{children}</main>
+          <Footer />
+        </div>
         <Analytics />
         <script
           type="application/ld+json"

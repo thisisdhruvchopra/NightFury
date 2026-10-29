@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
+import "./socials.css";
 import { BUSINESS, SUPPORT, SITE_URL } from "@/lib/legal";
 import {
   SOCIALS_PAGE,
@@ -137,7 +138,7 @@ function LinkTile({ link }: Readonly<{ link: SocialLink }>) {
 
 export default function SocialsPage() {
   return (
-    <div className={manrope.variable}>
+    <div className={`${manrope.variable} socials-root`}>
       {/* ===== Panel 1: everything above the fold ===== */}
       <section className="socials-panel relative isolate w-full px-5 py-8 md:px-10">
         {/* Car photo is scoped to this panel so it is not cropped away over a
