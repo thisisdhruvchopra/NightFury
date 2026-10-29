@@ -8,13 +8,13 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       // No website orders: the cart and checkout flow is gone.
-      { source: "/cart", destination: "/", permanent: true },
-      { source: "/checkout", destination: "/", permanent: true },
-      { source: "/order-confirmation", destination: "/", permanent: true },
+      { source: "/cart", destination: "/", statusCode: 301 },
+      { source: "/checkout", destination: "/", statusCode: 301 },
+      { source: "/order-confirmation", destination: "/", statusCode: 301 },
       // Aroma formats now live as sections of /aroma.
-      { source: "/aroma/core", destination: "/aroma#core", permanent: true },
-      { source: "/aroma/air", destination: "/aroma#air", permanent: true },
-      { source: "/aroma/essence", destination: "/aroma#essence", permanent: true },
+      { source: "/aroma/core", destination: "/aroma#core", statusCode: 301 },
+      { source: "/aroma/air", destination: "/aroma#air", statusCode: 301 },
+      { source: "/aroma/essence", destination: "/aroma#essence", statusCode: 301 },
     ];
   },
   async rewrites() {
