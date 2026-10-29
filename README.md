@@ -1,16 +1,33 @@
-# NightFury - Brand Website
+# NightFury - Brand and dealer website
 
-Premium automotive parts brand site. Next.js (App Router) + Tailwind CSS v4 +
-Supabase (reviews with photo/video uploads).
+nightfury.co.in. Next.js (App Router) + Tailwind CSS v4, deployed on Vercel.
+There are no prices and no cart: retail goes to Flipkart, and the main
+conversion is a dealer enquiry.
 
 ## Pages
 
 | Route | Content |
 | --- | --- |
-| `/` | Brand showcase: hero, stats, three product lines, testimonials |
-| `/vision` | LED headlights (2-wheeler + 4-wheeler) + reviews |
-| `/aroma` | Car perfumes (hanging bottle + spray) + reviews |
-| `/care` | Microfiber cloth + wet wipes + reviews |
+| `/` | Hero, sense tiles, Aroma scroll stages, Vision, Care, where to buy, dealer band |
+| `/aroma` | 360 viewer, Core / Air / Essence with scent cards, comparison table |
+| `/vision` | 4W LED with output and colour-mode selectors, 2W LED notify |
+| `/care` | Microfiber and wet wipes (coming soon), notify form |
+| `/dealers` | Dealer enquiry form (`?line=aroma&product=aroma-core` pre-fills it) |
+| `/where-to-buy` | Every Flipkart listing, find-a-dealer form, notify form |
+| `/about`, `/contact-us` | Company and support details |
+| Legal (5) | Terms, Privacy, Shipping, Refund, Warranty |
+| `/socials` | Link page with its own dark styling (optionally on `SOCIALS_HOST`) |
+
+`/cart`, `/checkout`, `/order-confirmation` and `/aroma/{core,air,essence}`
+are permanent redirects (`next.config.ts`).
+
+## Where things live
+
+- `src/data/products.ts`: every product, scent, colour, spec and Flipkart URL.
+  Adding a Flipkart listing is a change to this file only.
+- `src/app/globals.css`: design tokens (navy, fury orange, chalk) and shared classes.
+- `src/components/`: Header, Footer, Marquee, ScrollStage, Viewer360, forms and so on.
+- `src/app/api/leads/route.ts`: form intake. See `TODO.md` for destinations.
 
 ## Run locally
 
@@ -19,54 +36,4 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:3000.
-
-## Product photos
-
-Drop your real product photos into `public/products/` with these names:
-
-- `vision-led-4w.png` - 4-Wheeler LED box
-- `aroma-hanging.png` - hanging bottle perfume box
-- `aroma-spray.png` - spray perfume box
-
-The 2-Wheeler LED, Microfiber and Wet Wipes products currently render
-built-in SVG box art ([src/components/BoxArt.tsx](src/components/BoxArt.tsx)).
-Once you generate photoreal renders using [PROMPTS.md](PROMPTS.md), save them
-as `vision-led-2w.png`, `care-microfiber.png`, `care-wipes.png` in
-`public/products/` and add an `image:` path for those products in
-[src/lib/products.ts](src/lib/products.ts).
-
-If a photo file is missing, the site automatically falls back to the SVG art,
-nothing breaks.
-
-## Reviews backend (Supabase)
-
-Without configuration the review form runs in **demo mode** (posts appear
-instantly but only live in the browser session). To make reviews persist:
-
-1. Create a free project at https://supabase.com
-2. Open the SQL Editor and run [supabase/schema.sql](supabase/schema.sql)
-   (creates the `reviews` table, policies, and the public `review-media`
-   storage bucket)
-3. Copy `.env.local.example` to `.env.local` and fill in your project URL and
-   anon key (Dashboard → Project Settings → API)
-4. Restart `npm run dev`
-
-Uploaded review photos/videos go to the `review-media` bucket. Since the form
-is public, check the Supabase dashboard periodically and delete anything
-inappropriate (table editor → `reviews`, storage → `review-media`).
-
-## Deploy (Vercel)
-
-1. Push this repo to GitHub
-2. Import it at https://vercel.com/new
-3. Add the two `NEXT_PUBLIC_SUPABASE_*` env vars in the Vercel project
-   settings
-4. Deploy. Every push to `main` redeploys automatically
-
-## Seed content
-
-Testimonials and the pre-loaded reviews live in
-[src/lib/reviews-seed.ts](src/lib/reviews-seed.ts). They are placeholder
-marketing content, replace them with genuine customer feedback as it comes
-in.
+Open http://localhost:3000. Open items and placeholders are listed in `TODO.md`.
