@@ -125,7 +125,7 @@ export default function ScrollStage({ product }: Readonly<{ product: Product }>)
             </div>
 
             <div aria-hidden="true" className="relative flex h-[440px] min-w-0 items-center justify-center overflow-hidden">
-              <div className="nf-tint absolute h-[340px] w-[340px] max-w-full rounded-full" style={{ backgroundColor: colors.halo }} />
+              <div className="nf-tint absolute aspect-square w-[min(340px,100%)] rounded-full" style={{ backgroundColor: colors.halo }} />
               <div className="absolute top-[6px] left-[6px] h-[18px] w-[18px] border-t-2 border-l-2 border-navy" />
               <div className="absolute right-[6px] bottom-[6px] h-[18px] w-[18px] border-r-2 border-b-2 border-navy" />
               <div className="relative origin-center scale-[0.8] xl:scale-100">
@@ -148,7 +148,7 @@ export default function ScrollStage({ product }: Readonly<{ product: Product }>)
                   >
                     <span className="flex-none font-mono text-[11px] font-bold not-italic" style={{ color: on ? "#FF8A4C" : "#3A3D46" }}>{pad(i + 1)}</span>
                     <span aria-hidden="true" className="h-3 w-3 flex-none border-[1.5px]" style={{ backgroundColor: sc.colors.liquid, borderColor: on ? "#F4F5F7" : "#0A0A0B" }} />
-                    <span className="truncate">{sc.name}</span>
+                    <span className="truncate pr-1">{sc.name}</span>
                   </button>
                 );
               })}
