@@ -11,7 +11,8 @@ const saira = Saira_Condensed({
   variable: "--font-saira",
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
-  style: ["normal", "italic"],
+  // Google ships no italic cut of Saira Condensed; the browser slants the
+  // upright face, exactly as the design files render.
   display: "swap",
 });
 

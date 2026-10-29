@@ -5,6 +5,18 @@ import type { NextConfig } from "next";
 const socialsHost = process.env.SOCIALS_HOST;
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      // No website orders: the cart and checkout flow is gone.
+      { source: "/cart", destination: "/", permanent: true },
+      { source: "/checkout", destination: "/", permanent: true },
+      { source: "/order-confirmation", destination: "/", permanent: true },
+      // Aroma formats now live as sections of /aroma.
+      { source: "/aroma/core", destination: "/aroma#core", permanent: true },
+      { source: "/aroma/air", destination: "/aroma#air", permanent: true },
+      { source: "/aroma/essence", destination: "/aroma#essence", permanent: true },
+    ];
+  },
   async rewrites() {
     if (!socialsHost) return [];
     return {

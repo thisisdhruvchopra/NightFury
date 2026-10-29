@@ -4,11 +4,11 @@ import { SHIPPING, SUPPORT, SITE_URL } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Shipping Policy - NightFury",
-  description: "NightFury shipping rates, delivery timelines, and service areas. Pan India delivery via Shiprocket with free shipping on orders above Rs.999.",
-  keywords: ["NightFury shipping", "delivery policy", "shipping charges", "Pan India delivery"],
+  description: "NightFury delivery timelines and service areas. Pan India delivery via Shiprocket.",
+  keywords: ["NightFury shipping", "delivery policy", "Pan India delivery"],
   openGraph: {
     title: "Shipping Policy - NightFury",
-    description: "Shipping rates, delivery timelines, and service areas for NightFury products.",
+    description: "Delivery timelines and service areas for NightFury products.",
     url: `${SITE_URL}/shipping-policy`,
     type: "website",
   },
@@ -20,7 +20,7 @@ export default function ShippingPage() {
   return (
     <LegalPage
       title="Shipping Policy"
-      description="We ship NightFury products across India. Here is everything you need to know about our shipping process, timelines, and charges."
+      description="We ship NightFury products across India. Here is everything you need to know about our shipping process and timelines."
       breadcrumb="Shipping Policy"
       sections={[
         {
@@ -71,24 +71,6 @@ export default function ShippingPage() {
                 <li>Public holidays</li>
                 <li>Courier delays</li>
               </ul>
-            </>
-          ),
-        },
-        {
-          id: "charges",
-          title: "Shipping Charges",
-          content: (
-            <>
-              <ul>
-                {SHIPPING.tiers.map((t) => (
-                  <li key={t.label}>
-                    <strong>{t.label}:</strong> {t.fee}
-                  </li>
-                ))}
-              </ul>
-              <p>
-                NightFury reserves the right to modify shipping charges without prior notice.
-              </p>
             </>
           ),
         },

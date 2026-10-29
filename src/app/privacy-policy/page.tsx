@@ -20,7 +20,7 @@ export default function PrivacyPage() {
   return (
     <LegalPage
       title="Privacy Policy"
-      description="This policy explains how we collect, use, and safeguard your personal data when you visit nightfury.in or purchase our products."
+      description="This policy explains how we collect, use, and safeguard your personal data when you visit our website or contact us."
       breadcrumb="Privacy Policy"
       sections={[
         {
@@ -33,9 +33,8 @@ export default function PrivacyPage() {
                 <li>Name</li>
                 <li>Email address</li>
                 <li>Phone number</li>
-                <li>Billing address</li>
-                <li>Shipping address</li>
-                <li>Order information</li>
+                <li>City and state</li>
+                <li>Business name and GSTIN (dealer enquiries only)</li>
                 <li>Device information</li>
                 <li>IP address</li>
               </ul>
@@ -49,14 +48,14 @@ export default function PrivacyPage() {
             <>
               <p>Information is collected solely for:</p>
               <ul>
-                <li>Order processing and fulfillment</li>
+                <li>Responding to dealer and product enquiries</li>
                 <li>Customer support</li>
                 <li>Warranty management</li>
                 <li>Fraud prevention</li>
                 <li>Marketing communications</li>
               </ul>
               <p>
-                We do not sell, rent, or share your personal information with third parties except as necessary to process your order (payment gateways, shipping partners) or as required by law.
+                We do not sell, rent, or share your personal information with third parties except as necessary to respond to your enquiry or as required by law.
               </p>
             </>
           ),
@@ -66,7 +65,7 @@ export default function PrivacyPage() {
           title: "Data Security",
           content: (
             <p>
-              We implement industry-standard security measures to protect your personal data. All online transactions are processed through secure payment infrastructure. NightFury does not store complete card information on its servers.
+              We implement industry-standard security measures to protect your personal data.
             </p>
           ),
         },

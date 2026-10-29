@@ -233,6 +233,7 @@ const inputProps = (id: string, error?: string) => ({
 
 /** "Find a dealer": city plus name and phone, tagged as a customer lead. */
 export function FindDealerForm() {
+  const city = useSearchParams().get("city")?.slice(0, 60) ?? "";
   const id = useId();
   const { status, errors, submit } = useLead();
 
@@ -252,7 +253,7 @@ export function FindDealerForm() {
     >
       <Honeypot />
       <Field id={`${id}-city`} label="Your city" error={errors.city}>
-        <input {...inputProps(`${id}-city`, errors.city)} name="city" autoComplete="address-level2" required />
+        <input {...inputProps(`${id}-city`, errors.city)} name="city" defaultValue={city} autoComplete="address-level2" required />
       </Field>
       <div className="grid gap-4 sm:grid-cols-2">
         <Field id={`${id}-name`} label="Name" error={errors.name}>

@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Breadcrumb, Eyebrow } from "@/components/ui";
 
 export type LegalSection = {
   id: string;
@@ -21,96 +21,48 @@ export default function LegalPage({
 }>) {
   return (
     <>
-      {/* Breadcrumb */}
-      <div className="mx-auto max-w-[1280px] px-5 pt-6 md:px-10">
-        <nav
-          aria-label="Breadcrumb"
-          className="text-[11px] tracking-[.14em] text-dim uppercase"
-          style={{ fontFamily: "var(--font-spline), monospace" }}
-        >
-          <Link href="/" className="nf-link">
-            Home
-          </Link>
-          <span className="mx-2 text-border-strong">/</span>
-          <span className="text-muted">{breadcrumb}</span>
-        </nav>
-      </div>
+      <section className="bg-white">
+        <Breadcrumb current={breadcrumb} />
+        <header className="nf-container pt-10 pb-12">
+          <Eyebrow>{"// Legal"}</Eyebrow>
+          <h1 className="nf-display mt-4" style={{ fontSize: "clamp(44px, 6vw, 80px)" }}>{title}</h1>
+          <p className="nf-body mt-4 max-w-2xl">{description}</p>
+          {effectiveDate && (
+            <p className="nf-label mt-3">Effective date: {effectiveDate}</p>
+          )}
+        </header>
+        <div aria-hidden="true" className="flex flex-col gap-1">
+          <div className="h-[10px] bg-fury" />
+          <div className="h-[4px] bg-navy" />
+        </div>
+      </section>
 
-      {/* Header */}
-      <header className="mx-auto max-w-[1280px] px-5 pt-8 pb-10 md:px-10">
-        <h1
-          className="text-[36px] font-extrabold italic uppercase leading-[.92] tracking-tight md:text-[48px]"
-          style={{ transform: "skewX(-4deg)" }}
-        >
-          {title}
-        </h1>
-        <p
-          className="mt-3 max-w-2xl text-sm leading-[1.7] text-muted"
-          style={{ fontFamily: "var(--font-spline), monospace" }}
-        >
-          {description}
-        </p>
-        {effectiveDate && (
-          <p
-            className="mt-2 text-[11px] tracking-[.12em] text-dim"
-            style={{ fontFamily: "var(--font-spline), monospace" }}
-          >
-            EFFECTIVE DATE: {effectiveDate}
-          </p>
-        )}
-      </header>
+      <div className="bg-chalk">
+        <div className="nf-container flex gap-12 py-14">
+          <aside className="hidden w-60 shrink-0 lg:block">
+            <nav className="sticky top-[108px]" aria-label="On this page">
+              <p className="nf-label mb-4 text-fury-sm">On this page</p>
+              <ol className="m-0 flex list-none flex-col gap-2 border-l-2 border-navy p-0 pl-4">
+                {sections.map((s) => (
+                  <li key={s.id}>
+                    <a href={`#${s.id}`} className="block font-mono text-[12px] leading-[1.6] text-muted no-underline hover:text-fury-sm">
+                      {s.title}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </aside>
 
-      <div className="carbon-trim" />
-
-      {/* Body: TOC + Content */}
-      <div className="mx-auto flex max-w-[1280px] gap-12 px-5 py-12 md:px-10">
-        {/* Sticky TOC - desktop */}
-        <aside className="hidden w-56 shrink-0 lg:block">
-          <nav
-            className="sticky top-24"
-            aria-label="Table of contents"
-          >
-            <div
-              className="mb-4 text-[10px] tracking-[.2em] text-accent uppercase"
-              style={{ fontFamily: "var(--font-spline), monospace" }}
-            >
-              On this page
-            </div>
-            <ol className="flex flex-col gap-2 border-l border-border pl-4">
-              {sections.map((s) => (
-                <li key={s.id}>
-                  <a
-                    href={`#${s.id}`}
-                    className="nf-link block text-[12px] leading-[1.6] text-muted transition-colors hover:text-chalk"
-                    style={{ fontFamily: "var(--font-spline), monospace" }}
-                  >
-                    {s.title}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </nav>
-        </aside>
-
-        {/* Content */}
-        <article className="min-w-0 max-w-4xl flex-1">
-          {sections.map((s) => (
-            <section key={s.id} id={s.id} className="mb-12 scroll-mt-24">
-              <h2
-                className="mb-4 text-[22px] font-bold italic uppercase tracking-tight md:text-[26px]"
-                style={{ transform: "skewX(-3deg)" }}
-              >
-                {s.title}
-              </h2>
-              <div
-                className="legal-prose text-[13px] leading-[1.8] text-muted"
-                style={{ fontFamily: "var(--font-spline), monospace" }}
-              >
-                {s.content}
-              </div>
-            </section>
-          ))}
-        </article>
+          <article className="min-w-0 max-w-4xl flex-1">
+            {sections.map((s) => (
+              <section key={s.id} id={s.id} className="nf-anchor mb-12">
+                <h2 className="nf-display mb-4 text-[clamp(24px,2.4vw,30px)]" style={{ letterSpacing: 0, lineHeight: 1 }}>{s.title}</h2>
+                <div className="legal-prose font-mono text-[13px] leading-[1.8] text-muted">{s.content}</div>
+              </section>
+            ))}
+          </article>
+        </div>
       </div>
     </>
   );

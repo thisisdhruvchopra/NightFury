@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import LegalPage from "@/components/legal/LegalPage";
-import { BUSINESS, SUPPORT, JURISDICTION, PAYMENT, SITE_URL } from "@/lib/legal";
+import { BUSINESS, SUPPORT, JURISDICTION, SITE_URL } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions - NightFury",
@@ -20,7 +20,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terms & Conditions"
-      description="These terms govern your use of nightfury.in and the purchase of NightFury products. Please read them carefully before using our website or placing an order."
+      description="These terms govern your use of nightfury.in and the purchase of NightFury products. Please read them carefully before using our website."
       breadcrumb="Terms & Conditions"
       sections={[
         {
@@ -42,7 +42,7 @@ export default function TermsPage() {
           title: "Eligibility",
           content: (
             <p>
-              By using this website, you represent that you are at least 18 years of age, or accessing the website under the supervision of a parent or legal guardian. You agree to provide accurate, current, and complete information during registration and checkout.
+              By using this website, you represent that you are at least 18 years of age, or accessing the website under the supervision of a parent or legal guardian. You agree to provide accurate, current, and complete information when you submit any form on this website.
             </p>
           ),
         },
@@ -54,39 +54,6 @@ export default function TermsPage() {
               <p>
                 All product descriptions, images, and specifications are provided for informational purposes. NightFury reserves the right to modify product details, pricing, and availability without prior notice.
               </p>
-              <p>
-                Prices displayed are in Indian Rupees (INR) and are inclusive of applicable taxes unless stated otherwise.
-              </p>
-            </>
-          ),
-        },
-        {
-          id: "payments",
-          title: "Payments",
-          content: (
-            <>
-              <p>
-                All online transactions are processed securely through <strong>{PAYMENT.gateway}</strong>. NightFury does not store complete card information on its servers.
-              </p>
-              <p>Accepted payment methods include:</p>
-              <ul>
-                {PAYMENT.methods.map((m) => (
-                  <li key={m}>{m}</li>
-                ))}
-              </ul>
-              <p>
-                Cash on Delivery may be available on eligible PIN codes. NightFury reserves the right to restrict COD on selected products, locations, or order values, and to cancel suspicious COD orders.
-              </p>
-            </>
-          ),
-        },
-        {
-          id: "cancellation",
-          title: "Cancellation",
-          content: (
-            <>
-              <p>Orders may be cancelled without penalty before dispatch.</p>
-              <p>Orders cannot be cancelled after dispatch. Post-dispatch requests will be handled under our <a href="/refund-return-policy">Return & Refund Policy</a>.</p>
             </>
           ),
         },
