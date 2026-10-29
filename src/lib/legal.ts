@@ -36,11 +36,6 @@ export const SHIPPING = {
   partner: "Shiprocket",
   processingTime: "24 hours",
   deliveryTime: "1-3 Business Days",
-  tiers: [
-    { label: "Orders below Rs.499", fee: "Rs.79" },
-    { label: "Orders Rs.499 - Rs.999", fee: "Rs.49" },
-    { label: "Orders above Rs.999", fee: "Free" },
-  ],
   serviceArea: "Pan India",
 } as const;
 
@@ -75,22 +70,9 @@ export const WARRANTY = {
   ],
 } as const;
 
-export const PAYMENT = {
-  gateway: "Razorpay",
-  methods: [
-    "UPI",
-    "Credit Cards",
-    "Debit Cards",
-    "Net Banking",
-    "Wallets",
-    "Razorpay Supported Methods",
-    "Cash on Delivery (Eligible Locations Only)",
-  ],
-} as const;
-
 export const JURISDICTION = "Kanpur, Uttar Pradesh, India";
 
-export const SITE_URL = "https://nightfury.in";
+export const SITE_URL = "https://www.nightfury.co.in";
 
 export const LEGAL_LINKS = [
   { href: "/terms-and-conditions", label: "Terms & Conditions" },
