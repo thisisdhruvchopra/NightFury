@@ -109,37 +109,31 @@ function Illustration({ item }: Readonly<{ item: StageItem }>) {
 }
 
 /**
- * Product photo as a hero panel: the white studio background becomes a white
- * card with a navy border and a hard shadow in the scent colour, so the jar
- * stands off the tinted stage instead of blending into it. Each swap remounts
- * the image and fades it in (keyed by src).
+ * Transparent product cutout, shown large like a hero image. It sits flush
+ * right in its column so the stage mirrors the text on the left. Each swap
+ * remounts the image and fades it in (keyed by src).
  */
-function PhotoPanel({ item, compact }: Readonly<{ item: StageItem; compact?: boolean }>) {
+function Cutout({ item, compact }: Readonly<{ item: StageItem; compact?: boolean }>) {
   return (
-    <figure
-      className={`nf-tint relative m-0 w-full overflow-hidden rounded-[3px] border-2 border-navy bg-white ${compact ? "" : "max-w-[640px]"}`}
-      style={{ boxShadow: `${compact ? 6 : 10}px ${compact ? 6 : 10}px 0 ${item.colors.liquid}` }}
-    >
-      {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized WebP that swaps on scroll; a plain img keeps the crossfade simple */}
-      <img
-        key={item.photo}
-        src={item.photo}
-        alt=""
-        width={1200}
-        height={900}
-        decoding="async"
-        className="nf-photo-in block aspect-[4/3] h-auto w-full object-contain"
-      />
-    </figure>
+    // eslint-disable-next-line @next/next/no-img-element -- pre-sized WebP that swaps on scroll; a plain img keeps the crossfade simple
+    <img
+      key={item.photo}
+      src={item.photo}
+      alt=""
+      width={900}
+      height={700}
+      decoding="async"
+      className={`nf-photo-in block h-auto w-auto max-w-full object-contain ${compact ? "max-h-[240px]" : "max-h-[min(560px,calc(var(--stage-h)-140px))]"}`}
+    />
   );
 }
 
-/** Product visual: a photo panel when one exists, otherwise halo, illustration and floor shadow. */
+/** Product visual: a cutout photo when one exists, otherwise halo, illustration and floor shadow. */
 export default function StageVisual({ item, compact }: Readonly<{ item: StageItem; compact?: boolean }>) {
   if (item.photo) {
     return (
-      <div aria-hidden="true" className={`relative flex min-w-0 items-center justify-center ${compact ? "pt-1 pr-2 pb-3" : ""}`}>
-        <PhotoPanel item={item} compact={compact} />
+      <div aria-hidden="true" className={`relative flex min-w-0 items-center ${compact ? "justify-center py-2" : "justify-end"}`}>
+        <Cutout item={item} compact={compact} />
       </div>
     );
   }
