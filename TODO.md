@@ -33,6 +33,17 @@ rate-limits each IP, and then:
       to that scent in `src/data/products.ts`.
 - [ ] 4W LED bulb fitments (H4 / H7 / H11 and so on), now
       `[Confirm bulb types ...]` on /vision.
+- [ ] 2W LED 12W and 25W: fit, colour temperature, warranty and launch
+      status. All show `[To be confirmed]` on the homepage stage and /vision.
+      (The old Vision design said 60W / H4 universal; that line was replaced
+      because the homepage brief lists 12W and 25W.)
+- [ ] Microfiber and Wet Wipes sizes, pack counts and colours. The homepage
+      stage shows `[To be confirmed]`, but /care still carries the older
+      design's specs (380 GSM, 40 x 40 cm, 40 wipes). Confirm which is right.
+- [ ] Homepage stage photos: transparent WebP, about 900px, at
+      `public/home/{stage}/{item}.webp` (stages: core, air, essence, led-4w,
+      led-2w, care-range). After uploading, set `photo: true` on that scent,
+      model or Care `home` entry in `src/data/products.ts`.
 - [ ] Microfiber pack sizes: the selector offers 1 / 2 / 3, marked
       `[Pack sizes to be confirmed]`.
 
@@ -45,6 +56,10 @@ rate-limits each IP, and then:
 
 ## Owner confirmations
 
+- [ ] NightFury Flipkart brand or store URL for the homepage dealer band link
+      ("Buying for your car? Shop on Flipkart"). It points at
+      https://www.flipkart.com/ until then: `FLIPKART_STORE_URL` in
+      `src/data/products.ts`.
 - [ ] Trademark registration status (no ® is shown anywhere until confirmed).
 - [ ] Outlined logo SVG (text converted to paths) for favicon, OG image and
       use outside the site. The header and footer draw the logo as HTML text.
