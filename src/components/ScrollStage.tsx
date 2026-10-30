@@ -1,181 +1,185 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
-import Bottle from "./Bottle";
-import FlipkartButton from "./FlipkartButton";
-import ScentCard from "./ScentCard";
-import { RacePlate, SkewButton } from "./ui";
-import { dealerHref, flatScents, notifyHref, type Product } from "@/data/products";
+import { useRef, useState } from "react";
+import StageVisual from "./StageVisual";
+import TypeToggle from "./TypeToggle";
+import { SkewButton } from "./ui";
+import type { CoreType, HomeStage, StageItem } from "@/data/products";
 
-const NAV = 76;
-const STEP = 360;
-const pad = (n: number) => String(n).padStart(2, "0");
+/** CTA rule: coming-soon notifies, live with a URL buys on Flipkart, live without waits. */
+function StageCta({ item }: Readonly<{ item: StageItem }>) {
+  const name = `${item.productName} ${item.name}`;
+  if (item.status === "coming-soon") {
+    return (
+      <SkewButton href={item.notifyHref} className="nf-btn--cta" ariaLabel={`Get notified when ${name} launches`}>
+        Get notified &#8594;
+      </SkewButton>
+    );
+  }
+  if (item.flipkartUrl) {
+    return (
+      <SkewButton href={item.flipkartUrl} external className="nf-btn--cta" ariaLabel={`Buy ${name} on Flipkart (opens in a new tab)`}>
+        Buy on Flipkart &#8594;
+      </SkewButton>
+    );
+  }
+  return (
+    <SkewButton href={item.notifyHref} className="nf-btn--cta" ariaLabel={`${name} is coming to Flipkart soon. Get notified`}>
+      Coming to Flipkart soon
+    </SkewButton>
+  );
+}
+
+function Tiles({ item, compact }: Readonly<{ item: StageItem; compact?: boolean }>) {
+  return (
+    <dl className={`m-0 mt-[22px] grid max-w-[520px] gap-[10px] ${compact ? "grid-cols-1" : "grid-cols-3"}`}>
+      {item.tiles.map((t) => (
+        <div key={t.label} className="min-w-0 border-2 border-navy bg-[rgba(255,255,255,0.75)] px-3 py-[10px]">
+          <dt className="nf-tint font-mono text-[10px] font-bold tracking-[0.16em] uppercase" style={{ color: item.colors.deep }}>
+            {t.label}
+          </dt>
+          <dd className="m-0 mt-1 font-mono text-[13px] leading-[1.4] break-words">{t.value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+function Eyebrow({ stage }: Readonly<{ stage: HomeStage }>) {
+  return (
+    <p className="nf-eyebrow">
+      {stage.title}
+      {stage.sub && <span className="text-muted">{stage.sub}</span>}
+    </p>
+  );
+}
+
+const firstOfType = (items: StageItem[], t: CoreType) => items.findIndex((it) => it.type === t);
 
 /**
- * Homepage Aroma stage (HANDOFF 7.1). A tall track holds a sticky stage; each
- * 360px of scroll advances one scent. Below 900px it becomes a swipeable
- * carousel instead. No ancestor may have overflow hidden/auto, or the sticky
- * stage scrolls away.
+ * One homepage stage (HANDOFF_HOME 3.5 and 4). Desktop: a tall tinted track
+ * with a sticky stage; each 360px of scroll is one item. The parent owns the
+ * index so a single scroll listener serves every track. Below 900px: a
+ * horizontal snap carousel of cards instead.
  */
-export default function ScrollStage({ product }: Readonly<{ product: Product }>) {
-  const scents = flatScents(product);
-  const n = scents.length;
-  const trackRef = useRef<HTMLDivElement>(null);
-  const [idx, setIdx] = useState(0);
+export default function ScrollStage({
+  stage,
+  items,
+  idx,
+  trackRef,
+  onPick,
+}: Readonly<{
+  stage: HomeStage;
+  items: StageItem[];
+  idx: number;
+  trackRef: (el: HTMLDivElement | null) => void;
+  onPick: (i: number) => void;
+}>) {
+  const n = items.length;
+  const cur = items[idx];
 
-  const onScroll = useCallback(() => {
-    const el = trackRef.current;
-    if (!el || el.offsetParent === null) return; // hidden on mobile
-    const top = el.getBoundingClientRect().top;
-    const i = Math.max(0, Math.min(n - 1, Math.floor((NAV - top + STEP / 2) / STEP)));
-    setIdx((prev) => (prev === i ? prev : i));
-  }, [n]);
-
-  useEffect(() => {
-    document.addEventListener("scroll", onScroll, { passive: true, capture: true });
-    window.addEventListener("resize", onScroll, { passive: true });
-    onScroll();
-    return () => {
-      document.removeEventListener("scroll", onScroll, { capture: true });
-      window.removeEventListener("resize", onScroll);
-    };
-  }, [onScroll]);
-
-  const go = (i: number) => {
-    setIdx(i);
-    const el = trackRef.current;
+  // Mobile carousel: the toggle follows the card in view and scrolls to a group.
+  const carousel = useRef<HTMLDivElement>(null);
+  const [mIdx, setMIdx] = useState(0);
+  const onCarouselScroll = () => {
+    const el = carousel.current;
     if (!el) return;
+    const cards = [...el.children] as HTMLElement[];
+    const dist = (c: HTMLElement) => Math.abs(c.offsetLeft - el.offsetLeft - el.scrollLeft);
+    let best = 0;
+    cards.forEach((c, i) => { if (dist(c) < dist(cards[best])) best = i; });
+    if (best !== mIdx) setMIdx(best);
+  };
+  const jumpCarousel = (t: CoreType) => {
+    const el = carousel.current;
+    const i = firstOfType(items, t);
+    if (!el || i < 0) return;
+    const card = el.children[i] as HTMLElement;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const delta = el.getBoundingClientRect().top - NAV + i * STEP + 2;
-    window.scrollBy({ top: delta, behavior: reduce ? "auto" : "smooth" });
+    el.scrollTo({ left: card.offsetLeft - el.offsetLeft, behavior: reduce ? "auto" : "smooth" });
   };
 
-  const cur = scents[idx];
-  const { colors } = cur;
-
   return (
-    <div id={`aroma-${product.key}`} className="nf-anchor border-t-2 border-navy bg-white">
-      {/* Product header */}
-      <div className="nf-container grid gap-8 pt-14 pb-10 md:grid-cols-2 md:gap-12">
-        <div className="flex min-w-0 flex-col justify-end">
-          <div><RacePlate num={product.num} /></div>
-          <h3 className="nf-display nf-h3 mt-[22px]" style={{ fontSize: "clamp(48px, 6vw, 84px)" }}>{product.name}</h3>
-          <p className="nf-sub mt-[10px] text-fury-lg">{product.tagline}</p>
-        </div>
-        <div className="flex min-w-0 flex-col justify-between gap-5 md:border-l-2 md:border-navy md:pl-10">
-          <p className="nf-body">{product.summary}</p>
-          <ul className="m-0 grid list-none grid-cols-2 gap-2 p-0">
-            {product.chips?.map((c) => (
-              <li
-                key={c}
-                className="truncate rounded-[3px] border-2 border-navy px-[14px] py-[10px] font-mono text-[12px] font-bold tracking-[0.12em] uppercase"
-              >
-                {c}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-
-      {/* Desktop: pinned stage */}
+    <section id={stage.id} aria-label={stage.title} className="nf-anchor border-t-2 border-navy">
+      {/* Desktop: pinned stage. The whole track carries the tint so no white gap shows. */}
       <div
         ref={trackRef}
-        className="relative hidden stage:block"
-        style={{ height: `calc(var(--stage-h) + ${(n - 1) * STEP}px)` }}
+        className="nf-tint relative hidden stage:block"
+        style={{ height: `calc(var(--stage-h) + ${(n - 1) * 360}px)`, backgroundColor: cur.colors.tint }}
       >
-        <div
-          className="nf-tint sticky top-[76px] overflow-hidden border-t border-[rgba(10,10,11,0.12)]"
-          style={{ height: "var(--stage-h)", backgroundColor: colors.tint }}
-        >
-          <div className="h-[5px] bg-[rgba(10,10,11,0.1)]">
-            <div
-              className="h-[5px] bg-navy transition-[width] duration-400"
-              style={{ width: `${Math.round(((idx + 1) / n) * 100)}%` }}
-            />
-          </div>
-          <div className="nf-container grid h-[calc(100%-5px)] grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_200px] items-center gap-8 py-8 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)_230px]">
+        <div className="sticky top-[76px] overflow-hidden" style={{ height: "var(--stage-h)" }}>
+          <div className="nf-container grid h-full grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] items-center gap-x-16 py-12">
             <div className="min-w-0">
-              <p className="nf-tint m-0 font-mono text-[13px] font-bold tracking-[0.16em] uppercase" style={{ color: colors.deep }}>
-                {cur.group.label} {"//"} {pad(idx + 1)} / {pad(n)}
-              </p>
-              <h4
-                className="nf-display nf-tint mt-[10px]"
-                style={{ fontSize: "clamp(52px, 5.4vw, 76px)", lineHeight: 0.9, letterSpacing: "-0.01em", color: colors.deep }}
+              <Eyebrow stage={stage} />
+              {stage.toggle && <TypeToggle active={cur.type} onPick={(t) => onPick(firstOfType(items, t))} />}
+              <h3
+                className="nf-display nf-tint mt-4"
+                style={{ fontSize: "clamp(56px, 6.6vw, 96px)", lineHeight: 0.86, color: cur.colors.deep, transitionDuration: "0.5s" }}
               >
                 {cur.name}
-              </h4>
-              <p className="nf-sub mt-[14px] text-[26px] tracking-[0.02em]">{cur.character}</p>
-              <p className="mt-2 max-w-[480px] font-mono text-[13px] leading-[1.65] text-[#262932]">{cur.description}</p>
-              <div className="mt-[18px] grid max-w-[520px] grid-cols-3 gap-[10px]">
-                {(["top", "heart", "base"] as const).map((k) => (
-                  <div key={k} className="min-w-0 rounded-[3px] border-[1.5px] border-navy bg-[rgba(255,255,255,0.8)] px-3 py-[10px]">
-                    <div className="font-mono text-[11px] font-bold tracking-[0.14em] uppercase" style={{ color: colors.deep }}>{k}</div>
-                    <div className="mt-[5px] text-[16px] leading-[1.15] font-bold">{cur.notes[k]}</div>
-                  </div>
-                ))}
+              </h3>
+              <p className="nf-sub mt-3 text-[24px]">{cur.line}</p>
+              <Tiles item={cur} />
+              <div className="mt-7">
+                <StageCta item={cur} />
               </div>
-              <div className="mt-6 flex flex-wrap gap-5">
-                <FlipkartButton
-                  url={cur.flipkartUrl}
-                  name={`${product.name} ${cur.name}`}
-                  notifyHref={notifyHref(product.slug, cur.slug)}
-                />
-                <SkewButton href={dealerHref("aroma", product.slug)} variant="outline">Bulk enquiry</SkewButton>
+
+              <div className="mt-10 flex flex-wrap gap-2">
+                {items.map((it, i) => {
+                  const on = i === idx;
+                  const dot = it.visual === "led4" || it.visual === "led2" ? "#FFFFFF" : it.colors.liquid;
+                  return (
+                    <button
+                      key={it.slug}
+                      type="button"
+                      aria-pressed={on}
+                      onClick={() => onPick(i)}
+                      className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-[2px] border-2 border-navy py-2 pr-4 pl-[14px] font-display text-[17px] font-extrabold italic uppercase"
+                      style={{ background: on ? "#020F26" : "#FFFFFF", color: on ? "#F4F5F7" : "#0A0A0B" }}
+                    >
+                      <span aria-hidden="true" className="h-[10px] w-[10px] border-[1.5px]" style={{ backgroundColor: dot, borderColor: on ? "#F4F5F7" : "#0A0A0B" }} />
+                      {it.name}
+                    </button>
+                  );
+                })}
+              </div>
+              <div aria-hidden="true" className="mt-[14px] h-[3px] max-w-[360px] bg-[rgba(2,15,38,0.14)]">
+                <div className="h-[3px] bg-navy transition-[width] duration-400" style={{ width: `${Math.round(((idx + 1) / n) * 100)}%` }} />
               </div>
             </div>
 
-            <div aria-hidden="true" className="relative flex h-[440px] min-w-0 items-center justify-center overflow-hidden">
-              <div className="nf-tint absolute aspect-square w-[min(340px,100%)] rounded-full" style={{ backgroundColor: colors.halo }} />
-              <div className="absolute top-[6px] left-[6px] h-[18px] w-[18px] border-t-2 border-l-2 border-navy" />
-              <div className="absolute right-[6px] bottom-[6px] h-[18px] w-[18px] border-r-2 border-b-2 border-navy" />
-              <div className="relative origin-center scale-[0.8] xl:scale-100">
-                <Bottle kind={product.key as "core" | "air" | "essence"} liquid={colors.liquid} organic={cur.group.organic} />
-              </div>
-            </div>
-
-            <div className="flex min-w-0 flex-col gap-2">
-              <p className="m-0 mb-1 font-mono text-[11px] font-bold tracking-[0.16em] uppercase text-[#262932]">{"// Scroll or pick"}</p>
-              {scents.map((sc, i) => {
-                const on = i === idx;
-                return (
-                  <button
-                    key={sc.slug}
-                    type="button"
-                    onClick={() => go(i)}
-                    aria-current={on ? "true" : undefined}
-                    className="flex min-h-[46px] w-full cursor-pointer items-center gap-[10px] overflow-hidden rounded-[3px] border-2 border-navy px-3 py-2 text-left font-display text-[18px] font-extrabold italic tracking-[0.02em] whitespace-nowrap uppercase"
-                    style={{ background: on ? "#020F26" : "rgba(255,255,255,0.85)", color: on ? "#F4F5F7" : "#0A0A0B" }}
-                  >
-                    <span className="flex-none font-mono text-[11px] font-bold not-italic" style={{ color: on ? "#FF8A4C" : "#3A3D46" }}>{pad(i + 1)}</span>
-                    <span aria-hidden="true" className="h-3 w-3 flex-none border-[1.5px]" style={{ backgroundColor: sc.colors.liquid, borderColor: on ? "#F4F5F7" : "#0A0A0B" }} />
-                    <span className="truncate pr-1">{sc.name}</span>
-                  </button>
-                );
-              })}
-            </div>
+            <StageVisual item={cur} />
           </div>
         </div>
       </div>
 
-      {/* Mobile: swipeable carousel */}
-      <div className="nf-container pb-12 stage:hidden">
-        <p className="nf-label mb-3">{`// Swipe for all ${n} scents`}</p>
-        <div className="nf-carousel" role="region" aria-label={`${product.name} scents`} tabIndex={0}>
-          {scents.map((sc, i) => (
-            <ScentCard
-              key={sc.slug}
-              scent={sc}
-              num={`${sc.group.label} // ${pad(i + 1)}`}
-              productSlug={product.slug}
-              productName={product.name}
-              showDescription
-            />
+      {/* Mobile: title, then a swipeable carousel of item cards. */}
+      <div className="bg-white py-10 stage:hidden">
+        <div className="nf-container">
+          <Eyebrow stage={stage} />
+          {stage.toggle && <TypeToggle active={items[mIdx]?.type} onPick={jumpCarousel} />}
+        </div>
+        <div
+          ref={carousel}
+          onScroll={onCarouselScroll}
+          className="nf-carousel mt-5 scroll-px-5 px-5 md:scroll-px-10 md:px-10"
+          role="region"
+          aria-label={`${stage.title}: ${n} items`}
+          tabIndex={0}
+        >
+          {items.map((it) => (
+            <article key={it.slug} className="flex min-w-0 flex-col rounded-[3px] border-2 border-navy p-5" style={{ backgroundColor: it.colors.tint }}>
+              <StageVisual item={it} compact />
+              <h3 className="nf-display mt-2 text-[44px]" style={{ color: it.colors.deep, lineHeight: 0.9 }}>{it.name}</h3>
+              <p className="nf-sub mt-2 text-[18px]">{it.line}</p>
+              <Tiles item={it} compact />
+              <div className="mt-auto pt-6">
+                <StageCta item={it} />
+              </div>
+            </article>
           ))}
         </div>
-        <div className="mt-6">
-          <SkewButton href={dealerHref("aroma", product.slug)} variant="outline">Bulk enquiry</SkewButton>
-        </div>
       </div>
-    </div>
+    </section>
   );
 }

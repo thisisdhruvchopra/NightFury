@@ -18,13 +18,13 @@ export function SkewButton({
   href: string;
   children: React.ReactNode;
   variant?: BtnVariant;
-  size?: "lg";
+  size?: "lg" | "sm";
   block?: boolean;
   external?: boolean;
   className?: string;
   ariaLabel?: string;
 }>) {
-  const cls = `nf-btn nf-btn--${variant} ${size === "lg" ? "nf-btn--lg" : ""} ${block ? "nf-btn--block" : ""} ${className}`;
+  const cls = `nf-btn nf-btn--${variant} ${size ? `nf-btn--${size}` : ""} ${block ? "nf-btn--block" : ""} ${className}`;
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener" className={cls} aria-label={ariaLabel}>

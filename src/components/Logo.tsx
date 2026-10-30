@@ -12,9 +12,9 @@ export default function Logo({
       <span
         className="font-display italic"
         style={{
-          fontWeight: footer ? 700 : 800,
+          fontWeight: 800,
           fontSize: footer ? 44 : 34,
-          letterSpacing: footer ? 0 : "-0.01em",
+          letterSpacing: "-0.01em",
           lineHeight: 0.95,
           transform: "skewX(-4deg)",
         }}
@@ -26,7 +26,7 @@ export default function Logo({
         className="font-mono"
         style={{
           marginTop: footer ? 8 : 4,
-          fontWeight: footer ? 500 : 600,
+          fontWeight: 600,
           fontSize: footer ? 9 : 8,
           letterSpacing: "0.42em",
           marginRight: "-0.42em",

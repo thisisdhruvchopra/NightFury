@@ -62,12 +62,12 @@ export default function Footer() {
 
       <div className="nf-container">
         <div className="flex flex-wrap justify-between gap-x-6 gap-y-[10px] border-t border-[#1C2B47] pt-5 pb-9 font-mono text-[11px] font-semibold tracking-[0.14em] uppercase text-navy-soft">
-          <span>{"© MMXXVI NightFury // All rights reserved"}</span>
+          <span>&copy; 2026 NightFury. All rights reserved. GSTIN {BUSINESS.gstin}</span>
           <nav aria-label="Legal" className="flex flex-wrap gap-x-2">
             {LEGAL.map((l, i) => (
               <span key={l.href}>
                 <Link href={l.href} className="text-navy-soft no-underline hover:text-fury">{l.label}</Link>
-                {i < LEGAL.length - 1 && <span aria-hidden="true">{" //"}</span>}
+                {i < LEGAL.length - 1 && <span aria-hidden="true"> &middot;</span>}
               </span>
             ))}
           </nav>

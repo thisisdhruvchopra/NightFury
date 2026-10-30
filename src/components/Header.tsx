@@ -10,7 +10,6 @@ export const NAV = [
   { href: "/aroma", label: "Car Perfumes" },
   { href: "/care", label: "Car Care" },
   { href: "/where-to-buy", label: "Where to Buy" },
-  { href: "/about", label: "About" },
 ] as const;
 
 export default function Header() {
@@ -33,7 +32,7 @@ export default function Header() {
           <Logo />
         </Link>
 
-        <div className="hidden min-w-0 flex-1 justify-center gap-[34px] whitespace-nowrap font-mono text-[13px] font-medium tracking-[0.12em] uppercase nav:flex">
+        <div className="hidden min-w-0 flex-1 justify-center gap-9 whitespace-nowrap font-mono text-[13px] font-medium tracking-[0.12em] uppercase nav:flex">
           {NAV.map((n) => (
             <Link
               key={n.href}

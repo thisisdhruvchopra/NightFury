@@ -42,9 +42,9 @@
 @layer base {
 *, *::before, *::after { box-sizing: border-box; }
 
+/* Anchors clear the sticky header with .nf-anchor (scroll-margin-top: 76px). */
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
 }
 
 body {
@@ -158,6 +158,9 @@ a:hover { color: var(--color-fury-sm); }
 .nf-btn > span { display: inline-block; transform: skewX(8deg); }
 .nf-btn:hover { transform: skewX(-8deg) translate(-1px, -2px); }
 .nf-btn--lg { font-size: clamp(18px, 1.6vw, 21px); padding: 17px 30px; }
+.nf-btn--sm { font-size: 14px; letter-spacing: 0.06em; padding: 9px 16px; border-width: 0; }
+.nf-btn--sm.nf-btn--dark { box-shadow: 4px 4px 0 var(--color-fury); }
+.nf-btn--dark.nf-btn--cta { box-shadow: 6px 6px 0 var(--color-fury); }
 .nf-btn--block { display: block; width: 100%; }
 .nf-btn--dark { background: var(--color-navy); color: var(--color-chalk); box-shadow: 5px 5px 0 var(--color-fury); }
 .nf-btn--dark:hover { color: var(--color-chalk); }

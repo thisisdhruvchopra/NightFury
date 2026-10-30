@@ -13,6 +13,7 @@ const DEFAULT = [
 
 // Per-page copy, straight from the design files.
 const BY_PATH: Record<string, string[]> = {
+  "/": ["18-month warranty on Vision", "Now live on Flipkart", "Dealer enquiries open across India"],
   "/aroma": [
     "Aroma Core now live on Flipkart",
     "11 scents, 3 formats",
@@ -33,7 +34,7 @@ const BY_PATH: Record<string, string[]> = {
   ],
 };
 
-export function MarqueeBar({ items }: Readonly<{ items: string[] }>) {
+export function MarqueeBar({ items, seconds = 26 }: Readonly<{ items: string[]; seconds?: number }>) {
   const run = (hidden: boolean) =>
     items.map((t, i) => (
       <Fragment key={`${hidden}-${i}`}>
@@ -47,6 +48,7 @@ export function MarqueeBar({ items }: Readonly<{ items: string[] }>) {
       <div
         aria-hidden="true"
         className="nf-marquee-track inline-flex gap-12 py-[9px] font-mono text-[12px] font-bold tracking-[0.16em] uppercase"
+        style={{ animationDuration: `${seconds}s` }}
       >
         {run(false)}
         {run(true)}
@@ -57,5 +59,5 @@ export function MarqueeBar({ items }: Readonly<{ items: string[] }>) {
 
 export default function Marquee() {
   const pathname = usePathname();
-  return <MarqueeBar items={BY_PATH[pathname] ?? DEFAULT} />;
+  return <MarqueeBar items={BY_PATH[pathname] ?? DEFAULT} seconds={pathname === "/" ? 30 : 26} />;
 }
