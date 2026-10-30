@@ -109,7 +109,9 @@ export default function ScrollStage({
       >
         {/* The stage repeats the tint: it is its own stacking context, and photos multiply onto it. */}
         <div className="nf-tint sticky top-[76px] overflow-hidden" style={{ height: "var(--stage-h)", backgroundColor: cur.colors.tint }}>
-          <div className="nf-container grid h-full grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] items-center gap-x-16 py-12">
+          <div
+            className={`nf-container grid h-full items-center py-12 ${cur.photo ? "grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)] gap-x-12" : "grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-x-16"}`}
+          >
             <div className="min-w-0">
               <Eyebrow stage={stage} />
               {stage.toggle && <TypeToggle active={cur.type} onPick={(t) => onPick(firstOfType(items, t))} />}
