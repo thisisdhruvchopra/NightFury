@@ -1,6 +1,3 @@
-"use client";
-
-import { useState } from "react";
 import type { StageItem } from "@/data/products";
 
 const fill = (c: string) => ({ backgroundColor: c });
@@ -111,19 +108,21 @@ function Illustration({ item }: Readonly<{ item: StageItem }>) {
   );
 }
 
-function Photo({ src }: Readonly<{ src: string }>) {
-  const [ready, setReady] = useState(false);
+/**
+ * Product photo. The shots have white backgrounds, so they are multiplied onto
+ * the tint and halo: white takes the stage colour and the jar stays true.
+ * Each swap remounts the image and fades it in (keyed by src).
+ */
+function Photo({ src, compact }: Readonly<{ src: string; compact?: boolean }>) {
   return (
-    // eslint-disable-next-line @next/next/no-img-element -- transparent cutouts swap on scroll; a plain img keeps the crossfade simple
+    // eslint-disable-next-line @next/next/no-img-element -- pre-sized WebP that swaps on scroll; a plain img keeps the crossfade simple
     <img
       src={src}
       alt=""
-      width={900}
-      height={900}
-      loading="lazy"
-      onLoad={() => setReady(true)}
-      className="nf-tint relative max-h-[360px] w-auto max-w-[90%] object-contain"
-      style={{ opacity: ready ? 1 : 0, transition: "opacity 0.35s ease" }}
+      width={1200}
+      height={800}
+      decoding="async"
+      className={`nf-photo-in relative h-auto w-full object-contain mix-blend-multiply ${compact ? "max-w-[300px]" : "max-w-[600px]"}`}
     />
   );
 }
@@ -139,10 +138,16 @@ export default function StageVisual({ item, compact }: Readonly<{ item: StageIte
         className="nf-tint absolute aspect-square rounded-full"
         style={{ width: compact ? 220 : "min(400px, 100%)", backgroundColor: item.colors.halo }}
       />
-      <div className={`relative flex flex-col items-center ${compact ? "scale-[0.62]" : "scale-90 xl:scale-[1.15]"}`}>
-        {item.photo ? <Photo key={item.photo} src={item.photo} /> : <Illustration item={item} />}
-        <div className="mt-4 h-[18px] w-[200px] rounded-[50%] bg-[rgba(10,10,11,0.16)]" />
-      </div>
+      {item.photo ? (
+        <div className="relative flex w-full justify-center">
+          <Photo key={item.photo} src={item.photo} compact={compact} />
+        </div>
+      ) : (
+        <div className={`relative flex flex-col items-center ${compact ? "scale-[0.62]" : "scale-90 xl:scale-[1.15]"}`}>
+          <Illustration item={item} />
+          <div className="mt-4 h-[18px] w-[200px] rounded-[50%] bg-[rgba(10,10,11,0.16)]" />
+        </div>
+      )}
     </div>
   );
 }

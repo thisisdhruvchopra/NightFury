@@ -40,10 +40,18 @@ rate-limits each IP, and then:
 - [ ] Microfiber and Wet Wipes sizes, pack counts and colours. The homepage
       stage shows `[To be confirmed]`, but /care still carries the older
       design's specs (380 GSM, 40 x 40 cm, 40 wipes). Confirm which is right.
-- [ ] Homepage stage photos: transparent WebP, about 900px, at
-      `public/home/{stage}/{item}.webp` (stages: core, air, essence, led-4w,
-      led-2w, care-range). After uploading, set `photo: true` on that scent,
-      model or Care `home` entry in `src/data/products.ts`.
+- [x] Aroma Core homepage photos (all five scents) are in
+      `public/home/core/`, converted from `aromacoreimages/`.
+- [ ] Aroma Core photos need a clean re-shoot or re-render before launch:
+      every jar shows a ® mark (not allowed until registration is confirmed),
+      the taglines differ ("UNLEASH THE DIFFERENCE", "AIM WELL THE
+      DIFFERENCE"), Berry Bloom's label reads "DIFEREENCE", and Berry Bloom's
+      jar is red while its site colour is pink (#C93F86).
+- [ ] Remaining homepage stage photos: white or transparent background,
+      about 1200px wide, saved as `public/home/{stage}/{item}.webp` (stages:
+      air, essence, led-4w, led-2w, care-range). After adding one, set
+      `photo: true` on that scent, model or Care `home` entry in
+      `src/data/products.ts`.
 - [ ] Microfiber pack sizes: the selector offers 1 / 2 / 3, marked
       `[Pack sizes to be confirmed]`.
 

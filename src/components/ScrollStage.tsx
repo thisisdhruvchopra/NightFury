@@ -107,7 +107,8 @@ export default function ScrollStage({
         className="nf-tint relative hidden stage:block"
         style={{ height: `calc(var(--stage-h) + ${(n - 1) * 360}px)`, backgroundColor: cur.colors.tint }}
       >
-        <div className="sticky top-[76px] overflow-hidden" style={{ height: "var(--stage-h)" }}>
+        {/* The stage repeats the tint: it is its own stacking context, and photos multiply onto it. */}
+        <div className="nf-tint sticky top-[76px] overflow-hidden" style={{ height: "var(--stage-h)", backgroundColor: cur.colors.tint }}>
           <div className="nf-container grid h-full grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] items-center gap-x-16 py-12">
             <div className="min-w-0">
               <Eyebrow stage={stage} />

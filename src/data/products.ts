@@ -232,6 +232,7 @@ export const aromaCore: Product = {
           description: "Orange blossom and jasmine over a clean dew accord. A window left open on a spring morning.",
           notes: { top: "Orange blossom, dew", heart: "Jasmine, ylang-ylang", base: "Sandalwood, musk" },
           type: "organic",
+          photo: true,
           colors: { tint: "#FDE7D6", halo: "#F7CBAD", liquid: "#EF9A6E", deep: "#843D1C" },
           flipkartUrl:
             "https://www.flipkart.com/nightfury-nature-s-bloom-car-freshener-blocks-aroma-core/p/itm0a6151873ad5d?pid=AIRHRMB8UZXWZPFN",
@@ -243,6 +244,7 @@ export const aromaCore: Product = {
           description: "Damp earth, moss and warm wood. Closer to a forest floor after rain than a perfume counter.",
           notes: { top: "Bergamot, black pepper", heart: "Patchouli, clary sage", base: "Oakmoss, sandalwood" },
           type: "organic",
+          photo: true,
           colors: { tint: "#EAE5D8", halo: "#D6CDB4", liquid: "#8C7A4F", deep: "#4B4026" },
           flipkartUrl:
             "https://www.flipkart.com/nightfury-earth-essence-car-freshener-blocks-aroma-core-organic-dashboard-fragrance/p/itm512ca9b2a1f0f?pid=AIRHQEPGTNCFNNUE",
@@ -261,6 +263,7 @@ export const aromaCore: Product = {
           description: "A sharp burst of cold-pressed citrus that cuts through stale cabin air on the first turn of the key.",
           notes: { top: "Bergamot, lemon peel", heart: "Neroli, green apple", base: "White musk, cedar" },
           type: "gel",
+          photo: true,
           colors: { tint: "#FFF4CC", halo: "#FCE29A", liquid: "#F5C518", deep: "#6A4E00" },
           flipkartUrl:
             "https://www.flipkart.com/nightfury-citrus-zest-car-freshener-blocks-aroma-core-gel-dashboard-fragrance/p/itmf928653d25692?pid=AIRHS89GBT7CT8BX",
@@ -272,6 +275,7 @@ export const aromaCore: Product = {
           description: "Ripe red berries over florals, warmed by vanilla as it settles. The one passengers ask about most.",
           notes: { top: "Strawberry, raspberry", heart: "Rose petal, jasmine", base: "Vanilla, soft amber" },
           type: "gel",
+          photo: true,
           colors: { tint: "#FDE2EC", halo: "#F7BFD3", liquid: "#C93F86", deep: "#7E1F52" },
           flipkartUrl:
             "https://www.flipkart.com/nightfury-berry-bloom-car-freshener-blocks-aroma-core-gel-dashboard-fragrance/p/itm0eaf7f43ca9ee?pid=AIRHS89GZA52HFQ6",
@@ -283,6 +287,7 @@ export const aromaCore: Product = {
           description: "Crushed mint and eucalyptus with a cold green edge. Built for long night drives and heavy traffic.",
           notes: { top: "Peppermint, eucalyptus", heart: "Spearmint, green tea", base: "Vetiver, cedarwood" },
           type: "gel",
+          photo: true,
           colors: { tint: "#DDF4E9", halo: "#B6E6CF", liquid: "#2FB580", deep: "#17603F" },
           flipkartUrl:
             "https://www.flipkart.com/nightfury-mountain-mint-car-freshener-blocks-aroma-core-gel-dashboard-fragrance/p/itm9683550bc48e0?pid=AIRHS849QDNDRZYG",
