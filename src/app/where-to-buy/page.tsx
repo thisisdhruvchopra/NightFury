@@ -52,7 +52,7 @@ export default function WhereToBuyPage() {
                       <div className="flex items-center gap-3">
                         <span aria-hidden="true" className="h-6 w-6 flex-none border-2 border-navy" style={{ backgroundColor: s.colors.liquid }} />
                         <span className="min-w-0">
-                          <span className="block font-display text-[22px] leading-none font-extrabold italic uppercase" style={{ color: s.colors.deep }}>{s.name}</span>
+                          <span className="block font-display text-[22px] leading-none font-bold uppercase" style={{ color: s.colors.deep }}>{s.name}</span>
                           {s.group.group && <span className="font-mono text-[11px] font-bold tracking-[0.12em] uppercase text-muted">{s.group.group}</span>}
                         </span>
                       </div>
@@ -76,7 +76,7 @@ export default function WhereToBuyPage() {
                     <li key={p.slug} className="flex min-w-0 flex-col gap-3 rounded-[3px] border-2 border-navy bg-white p-4">
                       <div>
                         <StatusTag status={p.status} />
-                        <span className="mt-3 block font-display text-[22px] leading-none font-extrabold italic uppercase">{p.name}</span>
+                        <span className="mt-3 block font-display text-[22px] leading-none font-bold uppercase">{p.name}</span>
                       </div>
                       <div className="mt-auto">
                         <FlipkartButton look="card" url={url} name={p.name} notifyHref={notifyHref(p.slug)} />

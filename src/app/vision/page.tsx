@@ -5,6 +5,7 @@ import { NotifyForm } from "@/components/forms";
 import { Breadcrumb, Eyebrow, FeatureCard, PhotoSlot, SkewButton, StatusTag } from "@/components/ui";
 import { dealerHref, visionLed2w, visionLed4w } from "@/data/products";
 import { pageMeta, productJsonLd } from "@/lib/seo";
+import { Todo } from "@/lib/todo";
 
 export const metadata = pageMeta({
   title: "NightFury Vision: LED Headlights for Cars and Bikes",
@@ -56,7 +57,7 @@ export default function VisionPage() {
               <div key={s.label} className={`rounded-[3px] p-[clamp(18px,2vw,26px)] ${s.dark ? "bg-navy text-chalk" : "border-2 border-navy bg-white"}`}>
                 <dt className="sr-only">{s.label}</dt>
                 <dd className="m-0">
-                  <span className="font-display text-[clamp(40px,4.4vw,56px)] leading-[0.9] font-extrabold italic">
+                  <span className="font-display text-[clamp(40px,4.4vw,56px)] leading-none font-bold">
                     {s.big}
                     <span className={`text-[clamp(18px,2vw,24px)] ${s.dark ? "text-fury" : "text-fury-sm"}`}>{s.unit}</span>
                   </span>
@@ -113,8 +114,8 @@ export default function VisionPage() {
           <ol className="m-0 grid min-w-0 list-none gap-4 p-0 sm:grid-cols-3">
             {STEPS.map((s, i) => (
               <li key={s.t} className="nf-card bg-white p-6">
-                <div className="font-display text-[52px] leading-none font-extrabold italic text-fury-lg">0{i + 1}</div>
-                <div className="mt-[10px] font-display text-[24px] leading-none font-extrabold italic uppercase">{s.t}</div>
+                <div className="font-display text-[52px] leading-none font-bold text-fury-lg">0{i + 1}</div>
+                <div className="mt-[10px] font-display text-[24px] leading-none font-bold uppercase">{s.t}</div>
                 <p className="nf-body mt-2 text-[13px] leading-[1.6]">{s.d}</p>
               </li>
             ))}
@@ -135,7 +136,9 @@ export default function VisionPage() {
             <h2 id="two-wheeler-title" className="nf-display nf-h3 mt-[14px]">{visionLed2w.name}</h2>
             <p className="nf-sub mt-[10px] text-[24px] text-fury-lg">{visionLed2w.tagline}</p>
             <p className="nf-body mt-[14px]">{visionLed2w.description}</p>
-            <p className="mt-[14px] font-mono text-[12px] font-bold tracking-[0.12em] uppercase">{visionLed2w.formatLine}</p>
+            <p className="mt-[14px] font-mono text-[12px] font-bold tracking-[0.12em] uppercase">
+              {visionLed2w.formatLine} <Todo value="[Fit, colour temperature and warranty]" />
+            </p>
             <NotifyForm product={visionLed2w.slug} className="mt-6 max-w-[480px]" />
           </div>
         </div>

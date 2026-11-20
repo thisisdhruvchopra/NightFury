@@ -5,6 +5,7 @@ import BeamPreview, { type Temp } from "./BeamPreview";
 import FlipkartButton from "./FlipkartButton";
 import { PhotoSlot, SkewButton, SpecTable, Eyebrow } from "./ui";
 import { dealerHref, notifyHref, visionLed4w as p } from "@/data/products";
+import { Todo } from "@/lib/todo";
 
 const TEMPS: { k: Temp; label: string; swatch: string }[] = [
   { k: 6000, label: "6000K White", swatch: "#EAF2FF" },
@@ -25,13 +26,13 @@ export default function VisionConfigurator() {
   return (
     <div className="grid gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start">
       <div className="flex min-w-0 flex-col gap-[18px]">
-        <PhotoSlot white label={p.photoLabel ?? ""} flag={`N° ${p.num} Flagship`} className="h-[clamp(300px,40vw,420px)]" />
+        <PhotoSlot white src="/media/products/vision/4whled/box.webp" alt="NightFury 4-Wheeler LED headlight pair and box" label={p.photoLabel ?? ""} flag={`N° ${p.num} Flagship`} className="h-[clamp(300px,40vw,420px)]" />
         <BeamPreview temp={temp} strong={model.watts === 300} />
       </div>
 
       <div className="min-w-0">
         <Eyebrow>Pair pack {"//"} Live</Eyebrow>
-        <h2 className="nf-display mt-[14px]" style={{ fontSize: "clamp(44px, 5.4vw, 76px)" }}>{p.name}</h2>
+        <h2 className="nf-display mt-[14px]" style={{ fontSize: "clamp(34px, 3.8vw, 52px)" }}>{p.name}</h2>
         <p className="nf-sub mt-[10px] text-fury-lg">{p.tagline}</p>
         <p className="nf-body mt-4">{p.description}</p>
 
@@ -43,7 +44,7 @@ export default function VisionConfigurator() {
               type="button"
               aria-pressed={i === modelIdx}
               onClick={() => setModelIdx(i)}
-              className="min-h-14 cursor-pointer rounded-[3px] border-2 border-navy font-display text-[28px] font-extrabold italic"
+              className="min-h-14 cursor-pointer rounded-[3px] border-2 border-navy font-display text-[28px] font-bold"
               style={pick(i === modelIdx)}
             >
               {m.label}
@@ -61,7 +62,7 @@ export default function VisionConfigurator() {
                 type="button"
                 aria-pressed={on}
                 onClick={() => setTemp(t.k)}
-                className="flex min-h-[52px] cursor-pointer items-center justify-center gap-[10px] rounded-[3px] border-2 border-navy px-2 font-display text-[clamp(18px,2vw,22px)] font-extrabold italic uppercase"
+                className="flex min-h-[52px] cursor-pointer items-center justify-center gap-[10px] rounded-[3px] border-2 border-navy px-2 font-display text-[clamp(18px,2vw,22px)] font-bold uppercase"
                 style={pick(on)}
               >
                 <span aria-hidden="true" className="h-[14px] w-[14px] rounded-full border-[1.5px]" style={{ background: t.swatch, borderColor: on ? "#F4F5F7" : "#0A0A0B" }} />
@@ -82,7 +83,7 @@ export default function VisionConfigurator() {
           <SkewButton href={dealerHref("vision", p.slug)} variant="outline">Bulk enquiry</SkewButton>
         </div>
         <p className="mt-[18px] font-mono text-[12px] text-muted">
-          Fitments: [Confirm bulb types, e.g. H4 / H7 / H11]. Brightness claims to be added with test basis.
+          Fitments: <Todo value="[Bulb types, e.g. H4 / H7 / H11]" fallback="ask your dealer for the right fit for your car" />.
         </p>
       </div>
     </div>

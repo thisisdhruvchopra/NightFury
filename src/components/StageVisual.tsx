@@ -21,7 +21,7 @@ function Illustration({ item }: Readonly<{ item: StageItem }>) {
               <span key={i} className="h-6 w-[30px] rounded-[3px] border-2 border-[#8C6436]" style={{ background: c }} />
             ))}
           </div>
-          <span className="absolute top-[18px] right-0 left-0 text-center font-display text-[16px] font-extrabold italic text-[rgba(10,10,11,0.6)]">
+          <span className="absolute top-[18px] right-0 left-0 text-center font-brand text-[16px] font-extrabold italic text-[rgba(10,10,11,0.6)]">
             NIGHTFURY
           </span>
         </div>
@@ -36,7 +36,7 @@ function Illustration({ item }: Readonly<{ item: StageItem }>) {
         <div className="h-4 w-[54px] bg-[#16181C]" />
         <div className="relative h-[230px] w-[118px] overflow-hidden rounded-[18px] bg-[#1C1E23]">
           <div className="nf-tint absolute top-[90px] right-0 left-0 h-[50px]" style={fill(colors.liquid)} />
-          <span className="absolute top-[100px] right-0 left-0 text-center font-display text-[26px] font-extrabold italic tracking-[0.08em] text-carbon">AIR</span>
+          <span className="absolute top-[100px] right-0 left-0 text-center font-brand text-[26px] font-extrabold italic tracking-[0.08em] text-carbon">AIR</span>
         </div>
       </div>
     );
@@ -103,7 +103,7 @@ function Illustration({ item }: Readonly<{ item: StageItem }>) {
   return (
     <div className="relative flex h-[150px] w-[240px] items-end justify-center rounded-[14px] border-[3px] border-navy bg-white pb-[18px]">
       <div className="absolute top-[22px] left-1/2 -ml-[60px] h-[34px] w-[120px] rounded-[17px]" style={fill(colors.liquid)} />
-      <span className="font-display text-[24px] font-extrabold italic tracking-[0.06em] text-navy">NIGHTFURY</span>
+      <span className="font-brand text-[24px] font-extrabold italic tracking-[0.06em] text-navy">NIGHTFURY</span>
     </div>
   );
 }
@@ -119,7 +119,7 @@ function Cutout({ item, compact }: Readonly<{ item: StageItem; compact?: boolean
     <img
       key={item.photo}
       src={item.photo}
-      alt=""
+      alt={`NightFury ${item.productName} ${item.name}`}
       width={900}
       height={700}
       decoding="async"
@@ -132,7 +132,8 @@ function Cutout({ item, compact }: Readonly<{ item: StageItem; compact?: boolean
 export default function StageVisual({ item, compact }: Readonly<{ item: StageItem; compact?: boolean }>) {
   if (item.photo) {
     return (
-      <div aria-hidden="true" className={`relative flex min-w-0 items-center ${compact ? "justify-center py-2" : "justify-end"}`}>
+      // Wide cutouts (the Core jar) sit flush right; tall ones (the Air bottle) centre in the column.
+      <div className={`relative flex min-w-0 items-center ${compact || item.visual === "air" ? "justify-center" : "justify-end"} ${compact ? "py-2" : ""}`}>
         <Cutout item={item} compact={compact} />
       </div>
     );

@@ -28,7 +28,7 @@ export default function AboutPage() {
             <SectionHeading as="h1" size="nf-h1" className="mt-4" lead="Drive the" accent="difference." breakLine />
           </div>
           <div className="min-w-0">
-            <ul className="m-0 flex list-none flex-col gap-[6px] p-0 font-display text-[clamp(24px,2.4vw,30px)] leading-none font-extrabold italic uppercase">
+            <ul className="m-0 flex list-none flex-col gap-[6px] p-0 font-display text-[clamp(24px,2.4vw,30px)] leading-none font-bold uppercase">
               {["See it.", "Smell it.", "Feel it."].map((t) => (
                 <li key={t} className="flex items-center gap-3"><Pip size={10} />{t}</li>
               ))}
@@ -64,7 +64,7 @@ export default function AboutPage() {
 
       <section className="bg-white" aria-labelledby="standard-title">
         <div className="nf-container nf-section">
-          <h2 id="standard-title" className="nf-display mb-12 max-w-[900px]" style={{ fontSize: "clamp(44px, 6.4vw, 84px)" }}>
+          <h2 id="standard-title" className="nf-display mb-12 max-w-[900px]" style={{ fontSize: "clamp(34px, 4.4vw, 56px)" }}>
             Built like a <span className="nf-accent">performance brand.</span>
           </h2>
           <div className="grid gap-5 md:grid-cols-3">

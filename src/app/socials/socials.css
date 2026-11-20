@@ -2,6 +2,9 @@
    were the old site-wide theme; they are scoped here so the light rebuild
    does not touch this page. */
 .socials-root {
+  /* Own host, own styling: keep the original condensed and mono faces. */
+  --font-display: var(--font-saira), "Arial Narrow", Arial, sans-serif;
+  --font-mono: var(--font-spline), ui-monospace, "Courier New", monospace;
   --color-carbon: #0A0A0B;
   --color-panel: #0C0C0E;
   --color-accent: #FF5500;

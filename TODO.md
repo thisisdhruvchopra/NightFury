@@ -1,5 +1,29 @@
 # NightFury site: open items
 
+## Homepage redesign (Nov 2026): fill these in
+
+Placeholders are anything in [square brackets]. They are **hidden on the live
+site** and shown as orange dashed tags while you run `npm run dev`, so you can
+see exactly what is missing. Replace the bracketed text, brackets included.
+
+- [ ] `src/data/site.ts` STATS: dealers, cities, years in distribution. The
+      live strip shows the first four that are filled in.
+- [ ] `src/data/site.ts` DISTRIBUTOR_NOTE: one line about Yash Marketing. Only
+      name MINDA, HELLA, Philips etc. once those brands say it's OK.
+- [ ] `src/data/products.ts` FLIPKART_STORE_URL: your Flipkart brand page.
+      Until then the dealer band links to a Flipkart search for "nightfury".
+- [ ] Aroma Air and Essence photos: transparent PNG/WebP, about 1200px, saved
+      as `public/home/air/{scent}.webp` and `public/home/essence/{scent}.webp`,
+      then set `photo: true` on that scent. Until then the drawn bottles show.
+- [ ] Support email: the site uses support@nightfury.in, your posters use
+      contact@nightfury.co.in. Pick one and update `src/lib/legal.ts`.
+
+Images added in this pass: `public/home/hero.webp` (from graphics/carled.png),
+`public/home/tiles/*.webp` (cropped from the posters),
+`public/home/led-4w/*.webp` (from graphics/ledlamp.png),
+`public/media/products/vision/4whled/box.webp`, and
+`src/app/opengraph-image.jpg` (link preview for WhatsApp and social).
+
 ## Lead form destinations (decide later)
 
 The dealer, notify and find-a-dealer forms all post to `/api/leads`

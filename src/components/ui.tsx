@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { Status } from "@/data/products";
+import { SHOW_TODOS } from "@/lib/todo";
 
 /* Small presentational building blocks shared by every page. */
 
@@ -86,7 +87,7 @@ export function Breadcrumb({ current }: Readonly<{ current: string }>) {
 export function RacePlate({ num, className = "" }: Readonly<{ num: string; className?: string }>) {
   return (
     <div
-      className={`inline-block border-[3px] border-navy bg-chalk px-[14px] py-[6px] font-display text-[22px] leading-none font-extrabold italic shadow-[5px_5px_0_#FF5500] ${className}`}
+      className={`inline-block border-[3px] border-navy bg-chalk px-[14px] py-[6px] font-display text-[22px] leading-none font-bold ${className}`}
     >
       N&#176; {num}
     </div>
@@ -96,7 +97,7 @@ export function RacePlate({ num, className = "" }: Readonly<{ num: string; class
 /** Navy flag on photo slots, e.g. "N° 001 Flagship". */
 export function PlateFlag({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <div className="absolute top-[18px] left-[18px] bg-navy px-[14px] py-[6px] font-display text-[18px] font-extrabold italic text-chalk shadow-[4px_4px_0_#FF5500]">
+    <div className="absolute top-[18px] left-[18px] bg-navy px-[14px] py-[6px] font-display text-[18px] font-bold text-chalk">
       {children}
     </div>
   );
@@ -139,14 +140,40 @@ export function SpecTable({
   );
 }
 
-/** Striped product-photo slot. The bracketed label stays until real photos exist. */
+/**
+ * Product-photo slot. With `src` it shows the photo. Without one it shows the
+ * striped "[Product photo: ...]" slot while you run `npm run dev`, and a clean
+ * branded panel on the live site, so visitors never see a placeholder.
+ */
 export function PhotoSlot({
   label,
   flag,
   tag,
   white,
+  src,
+  alt = "",
   className = "h-[clamp(300px,40vw,440px)]",
-}: Readonly<{ label: string; flag?: string; tag?: React.ReactNode; white?: boolean; className?: string }>) {
+}: Readonly<{ label: string; flag?: string; tag?: React.ReactNode; white?: boolean; src?: string; alt?: string; className?: string }>) {
+  if (src) {
+    return (
+      <div className={`relative min-w-0 overflow-hidden rounded-[3px] bg-white ${className}`}>
+        {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized WebP */}
+        <img src={src} alt={alt} className="h-full w-full object-contain" loading="lazy" decoding="async" />
+        {flag && <PlateFlag>{flag}</PlateFlag>}
+        {tag && <div className="absolute top-[18px] left-[18px]">{tag}</div>}
+      </div>
+    );
+  }
+  if (!SHOW_TODOS) {
+    return (
+      <div aria-hidden="true" className={`nf-brand-panel relative flex min-w-0 items-center justify-center overflow-hidden rounded-[3px] ${className}`}>
+        {tag && <div className="absolute top-[18px] left-[18px]">{tag}</div>}
+        <span className="nf-display text-[clamp(56px,7vw,96px)] text-white/10">
+          Night<span className="text-fury/40">Fury</span>
+        </span>
+      </div>
+    );
+  }
   return (
     <div className={`nf-ph ${white ? "nf-ph--white" : ""} min-w-0 ${className}`}>
       {flag && <PlateFlag>{flag}</PlateFlag>}

@@ -6,7 +6,8 @@
  * No prices live here, on purpose.
  *
  * Bracketed strings ("[Character line]", "[To be confirmed]") are placeholders
- * the owner still has to supply. Leave them visible until real copy exists.
+ * for you to fill in. They are hidden on the live site and highlighted in
+ * orange during `npm run dev` (see src/lib/todo.tsx).
  */
 
 export type Status = "live" | "coming-soon";
@@ -41,6 +42,9 @@ export type Scent = {
   spin360?: { frames: number; basePath: string };
   /** True once /public/home/{stage}/{slug}.webp exists; until then the illustration shows. */
   photo?: boolean;
+  /** Full-bleed scene photo at /public/home/{stage}/scene/{slug}.webp. When every
+      item in a stage has one, the stage renders as a photo backdrop. */
+  scene?: boolean;
 };
 
 export type ScentGroup = {
@@ -128,12 +132,14 @@ export const visionLed4w: Product = {
       line: "Sharp, white and ready.",
       colors: { tint: "#ECF1F7", halo: "#D5DFEC", liquid: "#FFFFFF", deep: "#020F26" },
       beam: { top: 40, h: 140 },
+      photo: true,
     },
     {
       slug: "300w", label: "300W", watts: 300, flipkartUrl: "",
       line: "Maximum throw.",
       colors: { tint: "#E3EAF3", halo: "#C6D3E5", liquid: "#FFFFFF", deep: "#020F26" },
       beam: { top: 10, h: 200 },
+      photo: true,
     },
   ],
   tiles: [
@@ -164,7 +170,7 @@ export const visionLed2w: Product = {
   tagline: "Own the night, on two wheels.",
   description:
     "The same NightFury optics, packed into a fan-cooled, vibration-tested unit that shrugs off monsoons and broken roads.",
-  formatLine: "12W / 25W // Fit, colour and warranty [To be confirmed]",
+  formatLine: "12W / 25W",
   status: "coming-soon",
   models: [
     {
@@ -233,7 +239,7 @@ export const aromaCore: Product = {
           notes: { top: "Orange blossom, dew", heart: "Jasmine, ylang-ylang", base: "Sandalwood, musk" },
           type: "organic",
           photo: true,
-          colors: { tint: "#FDE7D6", halo: "#F7CBAD", liquid: "#EF9A6E", deep: "#843D1C" },
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#B0705A", deep: "#020F26" },
           flipkartUrl:
             "https://www.flipkart.com/nightfury-nature-s-bloom-car-freshener-blocks-aroma-core/p/itm0a6151873ad5d?pid=AIRHRMB8UZXWZPFN",
         },
@@ -245,7 +251,7 @@ export const aromaCore: Product = {
           notes: { top: "Bergamot, black pepper", heart: "Patchouli, clary sage", base: "Oakmoss, sandalwood" },
           type: "organic",
           photo: true,
-          colors: { tint: "#EAE5D8", halo: "#D6CDB4", liquid: "#8C7A4F", deep: "#4B4026" },
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#7D6E4E", deep: "#020F26" },
           flipkartUrl:
             "https://www.flipkart.com/nightfury-earth-essence-car-freshener-blocks-aroma-core-organic-dashboard-fragrance/p/itm512ca9b2a1f0f?pid=AIRHQEPGTNCFNNUE",
         },
@@ -264,7 +270,7 @@ export const aromaCore: Product = {
           notes: { top: "Bergamot, lemon peel", heart: "Neroli, green apple", base: "White musk, cedar" },
           type: "gel",
           photo: true,
-          colors: { tint: "#FFF4CC", halo: "#FCE29A", liquid: "#F5C518", deep: "#6A4E00" },
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#C29B2A", deep: "#020F26" },
           flipkartUrl:
             "https://www.flipkart.com/nightfury-citrus-zest-car-freshener-blocks-aroma-core-gel-dashboard-fragrance/p/itmf928653d25692?pid=AIRHS89GBT7CT8BX",
         },
@@ -276,7 +282,7 @@ export const aromaCore: Product = {
           notes: { top: "Strawberry, raspberry", heart: "Rose petal, jasmine", base: "Vanilla, soft amber" },
           type: "gel",
           photo: true,
-          colors: { tint: "#FDE2EC", halo: "#F7BFD3", liquid: "#C93F86", deep: "#7E1F52" },
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#8A3A5C", deep: "#020F26" },
           flipkartUrl:
             "https://www.flipkart.com/nightfury-berry-bloom-car-freshener-blocks-aroma-core-gel-dashboard-fragrance/p/itm0eaf7f43ca9ee?pid=AIRHS89GZA52HFQ6",
         },
@@ -288,7 +294,7 @@ export const aromaCore: Product = {
           notes: { top: "Peppermint, eucalyptus", heart: "Spearmint, green tea", base: "Vetiver, cedarwood" },
           type: "gel",
           photo: true,
-          colors: { tint: "#DDF4E9", halo: "#B6E6CF", liquid: "#2FB580", deep: "#17603F" },
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#3E8A6A", deep: "#020F26" },
           flipkartUrl:
             "https://www.flipkart.com/nightfury-mountain-mint-car-freshener-blocks-aroma-core-gel-dashboard-fragrance/p/itm9683550bc48e0?pid=AIRHS849QDNDRZYG",
         },
@@ -330,28 +336,31 @@ export const aromaAir: Product = {
         {
           slug: "azure",
           name: "Azure",
-          character: CHARACTER_TBC,
+          character: "Smell like you mean business.",
           description: AIR_DESC,
-          notes: tbcNotes,
-          colors: { tint: "#DEEBFA", halo: "#B8D3F3", liquid: "#3B8BEB", deep: "#184A86" },
+          notes: { top: "Aquatic, nutmeg", heart: "Muguet, tobacco, iris", base: "Woody amber, sandalwood, musk" },
+          scene: true,
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#3C6EA8", deep: "#020F26" },
           flipkartUrl: "",
         },
         {
           slug: "bonfire",
           name: "Bonfire",
-          character: CHARACTER_TBC,
+          character: "Brewed for the road.",
           description: AIR_DESC,
-          notes: tbcNotes,
-          colors: { tint: "#FDE8D6", halo: "#F8CDA6", liquid: "#E8772E", deep: "#843A0C" },
+          notes: { top: "Mandarin, cinnamon, banana, ginger, dried fruits", heart: "Jasmine, aquatic", base: "Vanilla, gourmand, woody amber, cedar" },
+          scene: true,
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#B0562A", deep: "#020F26" },
           flipkartUrl: "",
         },
         {
           slug: "impulsive",
           name: "Impulsive",
-          character: CHARACTER_TBC,
+          character: "Blame the night.",
           description: AIR_DESC,
-          notes: tbcNotes,
-          colors: { tint: "#ECE2F9", halo: "#D4BFF2", liquid: "#8A55D6", deep: "#4A2884" },
+          notes: { top: "Cardamom, bergamot", heart: "Toffee, lavender", base: "Amberwood, vetiver" },
+          scene: true,
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#9A6A2F", deep: "#020F26" },
           flipkartUrl: "",
         },
       ],
@@ -395,7 +404,7 @@ export const aromaEssence: Product = {
           character: CHARACTER_TBC,
           description: ESSENCE_DESC,
           notes: tbcNotes,
-          colors: { tint: "#DCF2F4", halo: "#B1E0E6", liquid: "#1EA3B5", deep: "#0C5A65" },
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#2D7E89", deep: "#020F26" },
           flipkartUrl: "",
         },
         {
@@ -404,7 +413,7 @@ export const aromaEssence: Product = {
           character: CHARACTER_TBC,
           description: ESSENCE_DESC,
           notes: tbcNotes,
-          colors: { tint: "#FBE3EE", halo: "#F2C2D8", liquid: "#C25A8E", deep: "#74234D" },
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#A05A70", deep: "#020F26" },
           flipkartUrl: "",
         },
         {
@@ -413,7 +422,7 @@ export const aromaEssence: Product = {
           character: CHARACTER_TBC,
           description: ESSENCE_DESC,
           notes: tbcNotes,
-          colors: { tint: "#EFF4DE", halo: "#D9E4AE", liquid: "#AFC45A", deep: "#4A5719" },
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#84954A", deep: "#020F26" },
           flipkartUrl: "",
         },
       ],
@@ -432,7 +441,7 @@ export const careMicrofiber: Product = {
   home: {
     name: "Microfiber",
     line: "Soft on paint and glass.",
-    colors: { tint: "#ECF0F5", halo: "#D3DBE6", liquid: "#3B6FB6", deep: "#020F26" },
+    colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#3B5F8F", deep: "#020F26" },
   },
   tiles: [
     { label: "Size", value: TBC },
@@ -464,7 +473,7 @@ export const careWipes: Product = {
   home: {
     name: "Wet Wipes",
     line: "Quick clean between washes.",
-    colors: { tint: "#E9F1EF", halo: "#CDE1DC", liquid: "#4E9F96", deep: "#020F26" },
+    colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#3F7F78", deep: "#020F26" },
   },
   tiles: [
     { label: "Count", value: TBC },
@@ -531,8 +540,11 @@ export function dealerHref(line?: Line, productSlug?: string) {
 
 /* ------------------------------------------------------------ Homepage */
 
-/** NightFury brand / store page on Flipkart. [Ask the owner]: placeholder until supplied. */
-export const FLIPKART_STORE_URL = "https://www.flipkart.com/";
+/**
+ * NightFury brand / store page on Flipkart. Paste the real URL here; until
+ * then the "Shop on Flipkart" link opens a Flipkart search for NightFury.
+ */
+export const FLIPKART_STORE_URL = "[NightFury Flipkart store URL]";
 
 export type HomeStage = {
   /** Anchor id of the stage section. */
@@ -541,7 +553,7 @@ export type HomeStage = {
   /** Muted suffix after the eyebrow, e.g. " // 50 ml spray". */
   sub?: string;
   /** Navy category band that starts here. */
-  band?: { id: string; title: string; tagline: string };
+  band?: { id: string; title: string; tagline: string; kind?: string; href?: string; body?: string };
   /** Products rendered as items of this stage, in order. */
   products: string[];
   /** Organic | Gel toggle (Aroma Core). */
@@ -549,13 +561,22 @@ export type HomeStage = {
 };
 
 /** Homepage order (HANDOFF_HOME section 2). The page renders entirely from this. */
+/* Only products you can buy today get a full scroll stage. 2-Wheeler LED and
+   Care sit in the smaller "Coming next" row (src/data/site.ts) until launch:
+   to give one a stage, add it back here. */
 export const HOME_STAGES: HomeStage[] = [
-  { id: "core", title: "Aroma Core", band: { id: "aroma", title: "Aroma", tagline: "Smell the difference" }, products: ["aroma-core"], toggle: true },
+  {
+    id: "core", title: "Aroma Core", sub: " // Dashboard 55g",
+    band: { id: "aroma", title: "Aroma", kind: "Car perfumes", tagline: "Smell the difference", href: "/aroma", body: "Three formats, eleven scents. Scroll through the range." },
+    products: ["aroma-core"], toggle: true,
+  },
   { id: "air", title: "Aroma Air", sub: " // 50 ml spray", products: ["aroma-air"] },
   { id: "essence", title: "Aroma Essence", sub: " // 15 ml hanging", products: ["aroma-essence"] },
-  { id: "led-4w", title: "4-Wheeler LED", sub: " // Headlight pair", band: { id: "vision", title: "Vision", tagline: "See the difference" }, products: ["led-4w"] },
-  { id: "led-2w", title: "2-Wheeler LED", sub: " // Coming soon", products: ["led-2w"] },
-  { id: "care-range", title: "Car Care", sub: " // Coming soon", band: { id: "care", title: "Care", tagline: "Feel the difference" }, products: ["care-microfiber", "care-wipes"] },
+  {
+    id: "led-4w", title: "4-Wheeler LED", sub: " // Headlight pair",
+    band: { id: "vision", title: "Vision", kind: "LED headlights", tagline: "See the difference", href: "/vision", body: "240W and 300W pairs, 18-month warranty." },
+    products: ["led-4w"],
+  },
 ];
 
 /** One step of a homepage scroll stage: a scent, a wattage or a product. */
@@ -563,6 +584,10 @@ export type StageItem = {
   slug: string;
   name: string;
   line: string;
+  /** Shown on the live site when `line` is still a placeholder. */
+  fallbackLine: string;
+  /** Shown on the live site when every tile is still a placeholder. */
+  summary: string;
   tiles: Spec[];
   colors: ScentColors;
   visual: Visual;
@@ -575,6 +600,8 @@ export type StageItem = {
   beam?: { top: number; h: number };
   /** Transparent product photo, only when the per-item flag is set. */
   photo?: string;
+  /** Full-bleed scene photo, only when the per-item flag is set. */
+  scene?: string;
 };
 
 const DEFAULT_COLORS: ScentColors = { tint: "#ECF1F7", halo: "#D5DFEC", liquid: "#FFFFFF", deep: "#020F26" };
@@ -590,6 +617,8 @@ export function stageItems(stage: HomeStage): StageItem[] {
         slug: s.slug,
         name: s.name,
         line: s.character,
+        fallbackLine: p.tagline,
+        summary: s.description ?? p.summary ?? p.description,
         colors: s.colors,
         visual,
         status: p.status,
@@ -604,6 +633,7 @@ export function stageItems(stage: HomeStage): StageItem[] {
           { label: "Base", value: s.notes.base },
         ],
         photo: photo(s.slug, s.photo),
+        scene: s.scene ? `/home/${stage.id}/scene/${s.slug}.webp` : undefined,
       }));
     }
     if (p.models) {
@@ -611,6 +641,8 @@ export function stageItems(stage: HomeStage): StageItem[] {
         slug: m.slug,
         name: m.label,
         line: m.line ?? "",
+        fallbackLine: p.tagline,
+        summary: p.summary ?? p.description,
         tiles: p.tiles ?? [],
         colors: m.colors ?? DEFAULT_COLORS,
         visual,
@@ -628,6 +660,8 @@ export function stageItems(stage: HomeStage): StageItem[] {
       slug: p.slug,
       name: h.name,
       line: h.line,
+      fallbackLine: p.tagline,
+      summary: p.summary ?? p.description,
       tiles: p.tiles ?? [],
       colors: h.colors,
       visual,

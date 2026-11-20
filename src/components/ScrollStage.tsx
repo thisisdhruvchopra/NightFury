@@ -5,6 +5,7 @@ import StageVisual from "./StageVisual";
 import TypeToggle from "./TypeToggle";
 import { SkewButton } from "./ui";
 import type { CoreType, HomeStage, StageItem } from "@/data/products";
+import { SHOW_TODOS, Todo, ready } from "@/lib/todo";
 
 /** CTA rule: coming-soon notifies, live with a URL buys on Flipkart, live without waits. */
 function StageCta({ item }: Readonly<{ item: StageItem }>) {
@@ -30,15 +31,24 @@ function StageCta({ item }: Readonly<{ item: StageItem }>) {
   );
 }
 
+/**
+ * Spec or scent-note tiles. Unfinished tiles are hidden on the live site; if
+ * none are finished, the product summary shows instead so the stage never
+ * looks empty.
+ */
 function Tiles({ item, compact }: Readonly<{ item: StageItem; compact?: boolean }>) {
+  const tiles = SHOW_TODOS ? item.tiles : item.tiles.filter((t) => ready(t.value));
+  if (!tiles.length) {
+    return <p className="nf-body mt-[22px] max-w-[480px]">{item.summary}</p>;
+  }
   return (
-    <dl className={`m-0 mt-[22px] grid max-w-[520px] gap-[10px] ${compact ? "grid-cols-1" : "grid-cols-3"}`}>
-      {item.tiles.map((t) => (
+    <dl className={`m-0 mt-[22px] grid max-w-[520px] gap-[10px] ${compact ? "grid-cols-1" : tiles.length === 3 ? "grid-cols-3" : "grid-cols-2"}`}>
+      {tiles.map((t) => (
         <div key={t.label} className="min-w-0 border-2 border-navy bg-[rgba(255,255,255,0.75)] px-3 py-[10px]">
           <dt className="nf-tint font-mono text-[10px] font-bold tracking-[0.16em] uppercase" style={{ color: item.colors.deep }}>
             {t.label}
           </dt>
-          <dd className="m-0 mt-1 font-mono text-[13px] leading-[1.4] break-words">{t.value}</dd>
+          <dd className="m-0 mt-1 font-mono text-[13px] leading-[1.4] break-words"><Todo value={t.value} /></dd>
         </div>
       ))}
     </dl>
@@ -117,11 +127,11 @@ export default function ScrollStage({
               {stage.toggle && <TypeToggle active={cur.type} onPick={(t) => onPick(firstOfType(items, t))} />}
               <h3
                 className="nf-display nf-tint mt-4"
-                style={{ fontSize: "clamp(56px, 6.6vw, 96px)", lineHeight: 0.86, color: cur.colors.deep, transitionDuration: "0.5s" }}
+                style={{ fontSize: "clamp(40px, 4.4vw, 64px)", lineHeight: 1, color: cur.colors.deep, transitionDuration: "0.5s" }}
               >
                 {cur.name}
               </h3>
-              <p className="nf-sub mt-3 text-[24px]">{cur.line}</p>
+              <p className="nf-sub mt-3 text-[24px]"><Todo value={cur.line} fallback={cur.fallbackLine} /></p>
               <Tiles item={cur} />
               <div className="mt-7">
                 <StageCta item={cur} />
@@ -137,7 +147,7 @@ export default function ScrollStage({
                       type="button"
                       aria-pressed={on}
                       onClick={() => onPick(i)}
-                      className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-[2px] border-2 border-navy py-2 pr-4 pl-[14px] font-display text-[17px] font-extrabold italic uppercase"
+                      className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-[2px] border-2 border-navy py-2 pr-4 pl-[14px] font-display text-[17px] font-bold uppercase"
                       style={{ background: on ? "#020F26" : "#FFFFFF", color: on ? "#F4F5F7" : "#0A0A0B" }}
                     >
                       <span aria-hidden="true" className="h-[10px] w-[10px] border-[1.5px]" style={{ backgroundColor: dot, borderColor: on ? "#F4F5F7" : "#0A0A0B" }} />
@@ -171,10 +181,10 @@ export default function ScrollStage({
           tabIndex={0}
         >
           {items.map((it) => (
-            <article key={it.slug} className="flex min-w-0 flex-col rounded-[3px] border-2 border-navy p-5" style={{ backgroundColor: it.colors.tint }}>
+            <article key={it.slug} className="flex min-w-0 flex-col rounded-[3px] p-5" style={{ backgroundColor: it.colors.tint }}>
               <StageVisual item={it} compact />
-              <h3 className="nf-display mt-2 text-[44px]" style={{ color: it.colors.deep, lineHeight: 0.9 }}>{it.name}</h3>
-              <p className="nf-sub mt-2 text-[18px]">{it.line}</p>
+              <h3 className="nf-display mt-2 text-[34px]" style={{ color: it.colors.deep, lineHeight: 1 }}>{it.name}</h3>
+              <p className="nf-sub mt-2 text-[18px]"><Todo value={it.line} fallback={it.fallbackLine} /></p>
               <Tiles item={it} compact />
               <div className="mt-auto pt-6">
                 <StageCta item={it} />
@@ -182,6 +192,14 @@ export default function ScrollStage({
             </article>
           ))}
         </div>
+        {n > 1 && (
+          <div aria-hidden="true" className="nf-container mt-4 flex items-center gap-[6px]">
+            {items.map((it, i) => (
+              <span key={it.slug} className="h-[3px] transition-all duration-300" style={{ width: i === mIdx ? 28 : 10, background: i === mIdx ? "#020F26" : "rgba(2,15,38,0.2)" }} />
+            ))}
+            <span className="ml-3 font-mono text-[11px] font-bold tracking-[0.14em] text-muted uppercase">{mIdx + 1} / {n} &middot; Swipe</span>
+          </div>
+        )}
       </div>
     </section>
   );

@@ -84,7 +84,7 @@ export default function Bottle({
             <div className="relative h-[240px] w-32 overflow-hidden rounded-[18px] bg-[#1C1E23]">
               <div className="nf-tint absolute top-[94px] right-0 left-0 h-[52px]" style={fill} />
               <span
-                className="absolute top-[104px] right-0 left-0 text-center font-display text-[28px] font-extrabold italic tracking-[0.08em] text-carbon"
+                className="absolute top-[104px] right-0 left-0 text-center font-brand text-[28px] font-extrabold italic tracking-[0.08em] text-carbon"
                 style={labelStyle}
               >
                 AIR

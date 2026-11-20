@@ -27,7 +27,7 @@ export default function ContactPage() {
         <Breadcrumb current="Contact Us" />
         <header className="nf-container pt-10 pb-12">
           <Eyebrow>Get in touch</Eyebrow>
-          <h1 className="nf-display mt-4" style={{ fontSize: "clamp(44px, 6vw, 80px)" }}>Contact Us</h1>
+          <h1 className="nf-display mt-4" style={{ fontSize: "clamp(36px, 4.4vw, 56px)" }}>Contact Us</h1>
           <p className="nf-body mt-4 max-w-2xl">
             Have a question about NightFury products, need support with an order, or interested in becoming a dealer? We are here to help.
           </p>

@@ -33,7 +33,7 @@ export default function CarePage() {
           </div>
           <div id="notify" className="on-navy nf-anchor min-w-0 rounded-[3px] bg-navy p-[clamp(24px,3vw,32px)] text-chalk">
             <StatusTag status="coming-soon" tone="orange" className="py-[6px]" />
-            <h2 className="nf-display mt-[18px] text-[44px] text-chalk" style={{ lineHeight: 0.92, letterSpacing: 0 }}>Be first in line.</h2>
+            <h2 className="nf-display mt-[18px] text-[44px] text-chalk" style={{ lineHeight: 1, letterSpacing: 0 }}>Be first in line.</h2>
             <p className="mt-[10px] font-mono text-[13px] leading-[1.7] text-[#C9CFDB]">
               We&apos;ll message you the day Care lands on Flipkart and with dealers.
             </p>
@@ -48,7 +48,7 @@ export default function CarePage() {
           <PhotoSlot white label={careMicrofiber.photoLabel ?? ""} flag={`N° ${careMicrofiber.num}`} />
           <div className="min-w-0">
             <StatusTag status={careMicrofiber.status} className="py-[6px]" />
-            <h2 id="mf-title" className="nf-display mt-4" style={{ fontSize: "clamp(44px, 5.4vw, 72px)" }}>{careMicrofiber.name}</h2>
+            <h2 id="mf-title" className="nf-display mt-4" style={{ fontSize: "clamp(34px, 3.8vw, 50px)" }}>{careMicrofiber.name}</h2>
             <p className="nf-sub mt-[10px] text-[24px] text-fury-lg">{careMicrofiber.tagline}</p>
             <p className="nf-body mt-[14px]">{careMicrofiber.description}</p>
             <CarePacks product={careMicrofiber} />
@@ -65,7 +65,7 @@ export default function CarePage() {
         <div className="nf-container nf-section grid items-center gap-14 lg:grid-cols-2">
           <div className="order-2 min-w-0 lg:order-1">
             <StatusTag status={careWipes.status} className="py-[6px]" />
-            <h2 id="wipes-title" className="nf-display mt-4" style={{ fontSize: "clamp(44px, 5.4vw, 72px)" }}>{careWipes.name}</h2>
+            <h2 id="wipes-title" className="nf-display mt-4" style={{ fontSize: "clamp(34px, 3.8vw, 50px)" }}>{careWipes.name}</h2>
             <p className="nf-sub mt-[10px] text-[24px] text-fury-lg">{careWipes.tagline}</p>
             <p className="nf-body mt-[14px]">{careWipes.description}</p>
             <SpecTable specs={careWipes.specs} className="mt-[22px]" />

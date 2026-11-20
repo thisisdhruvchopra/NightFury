@@ -10,7 +10,7 @@ export default function Logo({
   return (
     <span className="inline-flex flex-col items-center leading-none">
       <span
-        className="font-display italic"
+        className="font-brand italic"
         style={{
           fontWeight: 800,
           fontSize: footer ? 44 : 34,

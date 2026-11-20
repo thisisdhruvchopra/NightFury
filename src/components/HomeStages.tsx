@@ -3,11 +3,16 @@
 import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import CategoryBand from "./CategoryBand";
 import ScrollStage from "./ScrollStage";
+import SceneStage from "./SceneStage";
 import { HOME_STAGES, stageItems } from "@/data/products";
 
 const NAV = 76;
 const STEP = 360;
-const STAGES = HOME_STAGES.map((stage) => ({ stage, items: stageItems(stage) }));
+/* A stage whose every item has a scene photo renders as a photo backdrop. */
+const STAGES = HOME_STAGES.map((stage) => {
+  const items = stageItems(stage);
+  return { stage, items, Stage: items.every((it) => it.scene) ? SceneStage : ScrollStage };
+});
 
 /**
  * Category bands and the six homepage scroll stages, rendered from
@@ -54,10 +59,10 @@ export default function HomeStages() {
 
   return (
     <>
-      {STAGES.map(({ stage, items }, s) => (
+      {STAGES.map(({ stage, items, Stage }, s) => (
         <Fragment key={stage.id}>
           {stage.band && <CategoryBand {...stage.band} />}
-          <ScrollStage
+          <Stage
             stage={stage}
             items={items}
             idx={idx[s]}

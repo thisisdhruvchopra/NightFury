@@ -82,7 +82,7 @@ export default function SensePanel({ sense }: Readonly<{ sense: Sense }>) {
     >
       <Art sense={sense} />
       <div className="relative flex items-baseline gap-3">
-        <span className="font-display text-[56px] leading-none font-extrabold italic" style={{ color: c.numColor }}>{c.num}</span>
+        <span className="font-display text-[56px] leading-none font-bold" style={{ color: c.numColor }}>{c.num}</span>
         <span className="font-mono text-[12px] font-bold tracking-[0.2em] uppercase" style={{ color: c.textColor }}>{c.verb}</span>
       </div>
       <div className="relative flex items-end justify-between gap-4">
@@ -91,7 +91,7 @@ export default function SensePanel({ sense }: Readonly<{ sense: Sense }>) {
             {c.tagline}
             {c.soon && <StatusTag status="coming-soon" label="Soon" className="px-[7px] py-[3px] tracking-[0.12em]" />}
           </div>
-          <div className="nf-display mt-[6px] text-[clamp(36px,3.4vw,44px)] whitespace-nowrap" style={{ lineHeight: 0.9, letterSpacing: 0 }}>{c.title}</div>
+          <div className="nf-display mt-[6px] text-[clamp(28px,2.6vw,34px)] whitespace-nowrap" style={{ lineHeight: 1, letterSpacing: 0 }}>{c.title}</div>
           <div className="mt-2 font-mono text-[13px]" style={{ color: sense === "see" ? "#C9CFDB" : c.textColor }}>{c.sub}</div>
         </div>
         <span aria-hidden="true" className="flex h-[52px] w-[52px] flex-none items-center justify-center" style={{ background: c.tileBg }}>

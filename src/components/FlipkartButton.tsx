@@ -31,9 +31,9 @@ export default function FlipkartButton({
   }
 
   const base =
-    "block text-center font-display font-extrabold italic uppercase no-underline";
+    "block text-center font-display font-bold uppercase no-underline";
   if (look === "block") {
-    const cls = `${base} bg-navy px-5 py-[15px] text-[19px] tracking-[0.04em] text-chalk shadow-[5px_5px_0_#FF5500] hover:text-chalk`;
+    const cls = `${base} bg-navy px-5 py-[15px] text-[19px] tracking-[0.04em] text-chalk hover:text-chalk`;
     return url ? (
       <a href={url} target="_blank" rel="noopener" className={cls} aria-label={`${buyLabel}: ${name} (opens in a new tab)`}>
         {buyLabel} &#8594;

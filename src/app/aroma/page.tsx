@@ -61,9 +61,9 @@ export default function AromaPage() {
                   href={`#${p.key}`}
                   className={`grid grid-cols-[48px_minmax(0,1fr)_auto] items-center gap-4 rounded-[3px] px-5 py-[18px] no-underline sm:grid-cols-[56px_minmax(0,1fr)_auto] ${first ? "bg-navy text-chalk hover:text-chalk" : "border-2 border-navy bg-white"}`}
                 >
-                  <span className={`font-display text-[40px] leading-none font-extrabold italic ${first ? "text-fury" : "text-fury-lg"}`}>{p.num}</span>
+                  <span className={`font-display text-[40px] leading-none font-bold ${first ? "text-fury" : "text-fury-lg"}`}>{p.num}</span>
                   <span className="min-w-0">
-                    <span className="block font-display text-[clamp(24px,2.4vw,30px)] leading-none font-extrabold italic uppercase">{p.name}</span>
+                    <span className="block font-display text-[clamp(24px,2.4vw,30px)] leading-none font-bold uppercase">{p.name}</span>
                     <span className={`mt-1 block font-mono text-[11px] tracking-[0.14em] uppercase ${first ? "text-[#B9BCC4]" : "text-[#4A4D57]"}`}>{p.formatLine}</span>
                   </span>
                   <StatusTag status={p.status} tone={first ? "orange" : "navy"} className="px-[9px] text-[10px] tracking-[0.12em]" />
@@ -113,7 +113,7 @@ export default function AromaPage() {
                 <ol className="m-0 flex list-none flex-col gap-[10px] p-0">
                   {p.steps?.map((t, i) => (
                     <li key={t} className="flex items-baseline gap-3">
-                      <span className="w-7 flex-none font-display text-[22px] font-extrabold italic text-fury-lg">{pad(i + 1)}</span>
+                      <span className="w-7 flex-none font-display text-[22px] font-bold text-fury-lg">{pad(i + 1)}</span>
                       <span className="font-mono text-[13px] leading-[1.6]">{t}</span>
                     </li>
                   ))}
@@ -161,7 +161,7 @@ export default function AromaPage() {
                 <tr className="bg-navy text-chalk">
                   <td className="w-[22%] px-5 py-[18px]" />
                   {AROMA_PRODUCTS.map((p) => (
-                    <th key={p.slug} scope="col" className="px-5 py-[18px] text-left font-display text-[26px] font-extrabold italic uppercase">
+                    <th key={p.slug} scope="col" className="px-5 py-[18px] text-left font-display text-[26px] font-bold uppercase">
                       {p.name.replace("Aroma ", "")}
                     </th>
                   ))}

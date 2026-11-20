@@ -5,6 +5,7 @@ import Bottle from "./Bottle";
 import FlipkartButton from "./FlipkartButton";
 import { AROMA_PRODUCTS, flatScents, notifyHref } from "@/data/products";
 import { useReducedMotion } from "@/lib/useReducedMotion";
+import { Todo } from "@/lib/todo";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 const LABEL: Record<string, string> = { core: "Core", air: "Air", essence: "Essence" };
@@ -152,7 +153,7 @@ export default function Viewer360() {
                 type="button"
                 aria-pressed={i === prodIdx}
                 onClick={() => pickProduct(i)}
-                className="min-h-12 cursor-pointer rounded-[3px] border-2 border-navy p-2 font-display text-[19px] font-extrabold italic uppercase"
+                className="min-h-12 cursor-pointer rounded-[3px] border-2 border-navy p-2 font-display text-[19px] font-bold uppercase"
                 style={toggleStyle(i === prodIdx)}
               >
                 {LABEL[p.key]}
@@ -185,8 +186,8 @@ export default function Viewer360() {
           <p className="m-0 font-mono text-[12px] font-bold tracking-[0.14em] uppercase" style={{ color: colors.deep }}>
             {product.name}{cur.group.group ? ` // ${cur.group.group}` : ""}
           </p>
-          <p className="nf-display mt-[6px] text-[44px] leading-[0.95]" style={{ color: colors.deep, letterSpacing: 0 }}>{cur.name}</p>
-          <p className="nf-sub mt-[6px] text-[20px]">{cur.character}</p>
+          <p className="nf-display mt-[6px] text-[34px] leading-none" style={{ color: colors.deep, letterSpacing: 0 }}>{cur.name}</p>
+          <p className="nf-sub mt-[6px] text-[20px]"><Todo value={cur.character} fallback={product.tagline} /></p>
         </div>
         <div className="flex gap-[10px]">
           <button type="button" onClick={() => rotate(-45)} aria-label="Rotate left 45 degrees" className="min-h-12 flex-1 cursor-pointer rounded-[3px] border-2 border-navy bg-white font-mono text-[13px] font-bold">

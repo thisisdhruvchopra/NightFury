@@ -114,7 +114,6 @@ export function NotifyForm({
   buttonTone = "orange",
   placeholder = "PHONE OR EMAIL",
   label = "Phone or email",
-  shadow,
   className = "",
 }: Readonly<{
   product: string;
@@ -124,6 +123,7 @@ export function NotifyForm({
   buttonTone?: "orange" | "navy";
   placeholder?: string;
   label?: string;
+  /** Kept for existing callers; the offset shadow was retired. */
   shadow?: boolean;
   className?: string;
 }>) {
@@ -146,7 +146,7 @@ export function NotifyForm({
     >
       <Honeypot />
       <div
-        className={`flex border-2 ${dark ? "border-chalk" : "border-navy bg-white"} ${shadow ? "shadow-[6px_6px_0_#FF5500]" : ""}`}
+        className={`flex border-2 ${dark ? "border-chalk" : "border-navy bg-white"}`}
       >
         <label htmlFor={`${id}-contact`} className="sr-only">{label}</label>
         <input
@@ -163,7 +163,7 @@ export function NotifyForm({
         <button
           type="submit"
           disabled={status === "sending"}
-          className={`h-[52px] flex-none cursor-pointer border-none px-[22px] font-display text-[18px] font-extrabold italic uppercase disabled:opacity-60 ${buttonTone === "orange" ? "bg-fury text-carbon" : "bg-navy text-chalk"}`}
+          className={`h-[52px] flex-none cursor-pointer border-none px-[22px] font-display text-[18px] font-bold uppercase disabled:opacity-60 ${buttonTone === "orange" ? "bg-fury text-carbon" : "bg-navy text-chalk"}`}
         >
           {status === "sending" ? "Sending" : button}
         </button>

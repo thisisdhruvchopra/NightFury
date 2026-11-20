@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Saira_Condensed, Spline_Sans_Mono } from "next/font/google";
+import { Inter, Inter_Tight, Saira_Condensed, Spline_Sans_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -7,15 +7,30 @@ import Marquee from "@/components/Marquee";
 import Footer from "@/components/Footer";
 import { BUSINESS, SUPPORT, SITE_URL } from "@/lib/legal";
 
+// Saira Condensed now draws only the NightFury wordmark and the product
+// mockup labels, so the logo keeps its original lockup.
 const saira = Saira_Condensed({
   variable: "--font-saira",
   subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  // Google ships no italic cut of Saira Condensed; the browser slants the
-  // upright face, exactly as the design files render.
+  weight: ["700", "800"],
   display: "swap",
 });
 
+// Headings: a tight, upright grotesque for a sober, corporate voice.
+const interTight = Inter_Tight({
+  variable: "--font-inter-tight",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Paragraphs, labels and navigation.
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+// Kept only for the /socials page, which has its own styling.
 const spline = Spline_Sans_Mono({
   variable: "--font-spline",
   subsets: ["latin"],
@@ -71,7 +86,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-IN" className={`${saira.variable} ${spline.variable}`}>
+    <html lang="en-IN" className={`${saira.variable} ${interTight.variable} ${inter.variable} ${spline.variable}`}>
       <body>
         <a
           href="#main"
