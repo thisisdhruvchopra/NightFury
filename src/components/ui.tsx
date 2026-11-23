@@ -4,7 +4,7 @@ import { SHOW_TODOS } from "@/lib/todo";
 
 /* Small presentational building blocks shared by every page. */
 
-type BtnVariant = "dark" | "orange" | "outline";
+type BtnVariant = "dark" | "orange" | "outline" | "light";
 
 export function SkewButton({
   href,

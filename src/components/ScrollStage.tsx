@@ -6,6 +6,7 @@ import TypeToggle from "./TypeToggle";
 import { SkewButton } from "./ui";
 import type { CoreType, HomeStage, StageItem } from "@/data/products";
 import { SHOW_TODOS, Todo, ready } from "@/lib/todo";
+import { FlipkartLabel } from "./FlipkartMark";
 
 /** CTA rule: coming-soon notifies, live with a URL buys on Flipkart, live without waits. */
 function StageCta({ item }: Readonly<{ item: StageItem }>) {
@@ -20,7 +21,7 @@ function StageCta({ item }: Readonly<{ item: StageItem }>) {
   if (item.flipkartUrl) {
     return (
       <SkewButton href={item.flipkartUrl} external className="nf-btn--cta" ariaLabel={`Buy ${name} on Flipkart (opens in a new tab)`}>
-        Buy on Flipkart &#8594;
+        <FlipkartLabel>Buy on Flipkart &#8594;</FlipkartLabel>
       </SkewButton>
     );
   }
@@ -117,10 +118,12 @@ export default function ScrollStage({
         className="nf-tint relative hidden stage:block"
         style={{ height: `calc(var(--stage-h) + ${(n - 1) * 360}px)`, backgroundColor: cur.colors.tint }}
       >
-        {/* The stage repeats the tint: it is its own stacking context, and photos multiply onto it. */}
+        {/* The stage repeats the tint so no gap shows while it pins. */}
         <div className="nf-tint sticky top-[76px] overflow-hidden" style={{ height: "var(--stage-h)", backgroundColor: cur.colors.tint }}>
+          {/* Aroma Core: a studio-light backdrop whose colour follows the active scent. */}
+          {stage.id === "core" && <div className="nf-core-bg" data-scent={cur.slug} data-variant={cur.type} aria-hidden="true" />}
           <div
-            className={`nf-container grid h-full items-center py-12 ${cur.photo ? "grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)] gap-x-12" : "grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-x-16"}`}
+            className={`nf-container relative z-10 grid h-full items-center py-12 ${cur.photo ? "grid-cols-[minmax(0,0.95fr)_minmax(0,1.15fr)] gap-x-12" : "grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)] gap-x-16"}`}
           >
             <div className="min-w-0">
               <Eyebrow stage={stage} />

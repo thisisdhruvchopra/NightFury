@@ -1,4 +1,5 @@
 import { SkewButton } from "./ui";
+import { FlipkartIcon } from "./FlipkartMark";
 
 /** Orange "For dealers" band that closes every product page and the homepage. */
 export default function DealerBand({
@@ -39,9 +40,10 @@ export default function DealerBand({
             <a
               href={secondary.href}
               {...(secondary.external ? { target: "_blank", rel: "noopener" } : {})}
-              className="py-[10px] font-mono text-[13px] font-bold tracking-[0.08em] uppercase text-carbon hover:text-navy"
+              className="inline-flex items-center gap-[10px] py-[10px] font-mono text-[13px] font-bold tracking-[0.08em] uppercase text-carbon hover:text-navy"
             >
-              {secondary.label}{" "}&#8594;
+              {/flipkart/i.test(secondary.href + secondary.label) && <FlipkartIcon size={20} />}
+              <span>{secondary.label}{" "}&#8594;</span>
             </a>
           )}
         </div>

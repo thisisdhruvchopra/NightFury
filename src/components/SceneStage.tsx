@@ -4,21 +4,26 @@ import { useRef, useState } from "react";
 import { SkewButton } from "./ui";
 import type { HomeStage, StageItem } from "@/data/products";
 import { SHOW_TODOS, Todo, ready } from "@/lib/todo";
+import { FlipkartLabel } from "./FlipkartMark";
+
+/* Scenes ship at 1890px plus a sharpened 3200px copy for big and high-density
+   screens (scripts/air-scenes.py); the browser picks by rendered width. */
+const sceneSrcSet = (src?: string) => (src ? `${src} 1890w, ${src.replace(/\.webp$/, "@2x.webp")} 3200w` : undefined);
 
 /* Until a scent's Flipkart URL is filled in, the button opens a Flipkart
    search for that scent so it never leads nowhere. */
 const flipkartHref = (it: StageItem) =>
   it.flipkartUrl || `https://www.flipkart.com/search?q=${encodeURIComponent(`NightFury ${it.productName} ${it.name}`)}`;
 
-function Cta({ item }: Readonly<{ item: StageItem }>) {
+export function Cta({ item }: Readonly<{ item: StageItem }>) {
   return (
     <SkewButton
       href={flipkartHref(item)}
       external
-      variant="orange"
+      variant="light"
       ariaLabel={`Buy ${item.productName} ${item.name} on Flipkart (opens in a new tab)`}
     >
-      Buy on Flipkart &#8594;
+      <FlipkartLabel>Buy on Flipkart &#8594;</FlipkartLabel>
     </SkewButton>
   );
 }
@@ -39,13 +44,29 @@ function Notes({ item }: Readonly<{ item: StageItem }>) {
   );
 }
 
-function Eyebrow({ stage }: Readonly<{ stage: HomeStage }>) {
+export function Eyebrow({ stage }: Readonly<{ stage: HomeStage }>) {
   return (
     <p className="nf-eyebrow text-fury">
       {stage.title}
       {stage.sub && <span className="text-navy-soft">{stage.sub}</span>}
     </p>
   );
+}
+
+/** Tracks which card of a horizontal snap carousel is closest to the start. */
+export function useCarousel() {
+  const carousel = useRef<HTMLDivElement>(null);
+  const [mIdx, setMIdx] = useState(0);
+  const onCarouselScroll = () => {
+    const el = carousel.current;
+    if (!el) return;
+    const cards = [...el.children] as HTMLElement[];
+    const dist = (c: HTMLElement) => Math.abs(c.offsetLeft - el.offsetLeft - el.scrollLeft);
+    let best = 0;
+    cards.forEach((c, i) => { if (dist(c) < dist(cards[best])) best = i; });
+    if (best !== mIdx) setMIdx(best);
+  };
+  return { carousel, mIdx, onCarouselScroll };
 }
 
 /**
@@ -70,17 +91,7 @@ export default function SceneStage({
   const n = items.length;
   const cur = items[idx];
 
-  const carousel = useRef<HTMLDivElement>(null);
-  const [mIdx, setMIdx] = useState(0);
-  const onCarouselScroll = () => {
-    const el = carousel.current;
-    if (!el) return;
-    const cards = [...el.children] as HTMLElement[];
-    const dist = (c: HTMLElement) => Math.abs(c.offsetLeft - el.offsetLeft - el.scrollLeft);
-    let best = 0;
-    cards.forEach((c, i) => { if (dist(c) < dist(cards[best])) best = i; });
-    if (best !== mIdx) setMIdx(best);
-  };
+  const { carousel, mIdx, onCarouselScroll } = useCarousel();
 
   return (
     <section id={stage.id} aria-label={stage.title} className="nf-anchor on-navy border-t-2 border-navy bg-[#05070B] text-chalk">
@@ -92,6 +103,8 @@ export default function SceneStage({
             <img
               key={it.slug}
               src={it.scene}
+              srcSet={sceneSrcSet(it.scene)}
+              sizes="100vw"
               alt={i === idx ? `NightFury ${it.productName} ${it.name} spray bottle` : ""}
               aria-hidden={i !== idx}
               loading="lazy"
@@ -162,6 +175,8 @@ export default function SceneStage({
               {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized WebP scene */}
               <img
                 src={it.scene}
+                srcSet={sceneSrcSet(it.scene)}
+                sizes="(min-width: 768px) 60vw, 90vw"
                 alt={`NightFury ${it.productName} ${it.name} spray bottle`}
                 loading="lazy"
                 decoding="async"

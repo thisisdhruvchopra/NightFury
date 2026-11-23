@@ -19,6 +19,7 @@ const saira = Saira_Condensed({
 // Headings: a tight, upright grotesque for a sober, corporate voice.
 const interTight = Inter_Tight({
   variable: "--font-inter-tight",
+  style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -26,6 +27,7 @@ const interTight = Inter_Tight({
 // Paragraphs, labels and navigation.
 const inter = Inter({
   variable: "--font-inter",
+  style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
 });

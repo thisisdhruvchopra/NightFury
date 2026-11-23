@@ -45,6 +45,10 @@ export type Scent = {
   /** Full-bleed scene photo at /public/home/{stage}/scene/{slug}.webp. When every
       item in a stage has one, the stage renders as a photo backdrop. */
   scene?: boolean;
+  /** Retail box photo at /public/home/{stage}/box/{slug}.webp, with a blurred
+      {slug}-bg.webp backdrop. When every item in a stage has one, the stage
+      shows the box centred with the copy either side. */
+  box?: boolean;
 };
 
 export type ScentGroup = {
@@ -108,8 +112,6 @@ const tbcNotes = { top: TBC, heart: TBC, base: TBC };
 
 const AIR_DESC =
   "Mist the NightFury card, hang it from the mirror, hit refresh whenever you want. One bottle outlasts a dozen disposable fresheners.";
-const ESSENCE_DESC =
-  "Slow-release fragrance oil in faceted glass, braided cord, natural wood cap. Up to 60 days of a cabin that smells like yours.";
 
 /* ------------------------------------------------------------------ Vision */
 
@@ -377,53 +379,59 @@ export const aromaEssence: Product = {
   name: "Aroma Essence",
   tagline: "Hang it. Own the cabin.",
   description:
-    "A faceted glass bottle with a braided cord and natural wood cap, holding 15 ml of slow-release fragrance oil. The most premium way to scent the drive.",
+    "A faceted glass bottle with a braided cord and natural wood cap, holding 12 ml of slow-release fragrance oil. The most premium way to scent the drive.",
   summary:
     "Faceted glass, braided cord, natural wood cap. The most premium way to scent the drive, and it looks the part on the mirror.",
-  formatLine: "Hanging glass // 15 ml // 3 scents",
-  chips: ["15 ml", "Up to 60 days", "3 scents", "Glass + wood"],
+  formatLine: "Hanging glass // 12 ml // 3 scents",
+  chips: ["12 ml", "Up to 45 days", "3 scents", "Glass + wood"],
   status: "live",
   specs: [
-    { label: "Volume", value: "15 ml" },
-    { label: "Lasts", value: "Up to 60 days" },
+    { label: "Volume", value: "12 ml" },
+    { label: "Lasts", value: "Up to 45 days" },
     { label: "Scents", value: "3" },
     { label: "Build", value: "Glass, braided cord, wood cap" },
   ],
   steps: [
     "Loop the braided cord over the rear-view mirror.",
     "Tip the bottle once so the oil reaches the wood cap.",
-    "Let it hang. Fresh cabin for up to 60 days.",
+    "Let it hang. Fresh cabin for up to 45 days.",
   ],
   variants: [
     {
-      label: "Essence // 15 ml",
+      label: "Essence // 12 ml",
       scents: [
         {
           slug: "blue-ocean",
           name: "Blue Ocean",
-          character: CHARACTER_TBC,
-          description: ESSENCE_DESC,
+          character: "Open water, open road.",
+          description: "Cool, clean and airy. A fresh marine scent that keeps the cabin feeling wide open, even in traffic.",
           notes: tbcNotes,
-          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#2D7E89", deep: "#020F26" },
-          flipkartUrl: "",
+          box: true,
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#2457C5", deep: "#020F26" },
+          flipkartUrl: 
+            "https://www.flipkart.com/nightfury-blue-ocean-diffuser-aroma-essence/p/itme2ad60f821ad4?pid=AIRHSS8HYJEJTYAV",
         },
         {
           slug: "romance",
           name: "Romance",
-          character: CHARACTER_TBC,
-          description: ESSENCE_DESC,
+          character: "Made for the long way home.",
+          description: "Soft, warm and a little sweet. The one for date nights, late drives and anyone in the passenger seat.",
           notes: tbcNotes,
-          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#A05A70", deep: "#020F26" },
-          flipkartUrl: "",
+          box: true,
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#D9605C", deep: "#020F26" },
+          flipkartUrl: 
+            "https://www.flipkart.com/nightfury-romance-diffuser-aroma-essence/p/itmaab182e1f5fad?pid=AIRHSS8HTGVAFJHG",
         },
         {
           slug: "fresh-jasmine",
           name: "Fresh Jasmine",
-          character: CHARACTER_TBC,
-          description: ESSENCE_DESC,
+          character: "Calm, in full bloom.",
+          description: "Green and floral with a clean finish. A quiet, steady freshness for the daily commute.",
           notes: tbcNotes,
-          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#84954A", deep: "#020F26" },
-          flipkartUrl: "",
+          box: true,
+          colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#7FA22E", deep: "#020F26" },
+          flipkartUrl: 
+            "https://www.flipkart.com/nightfury-fresh-jasmine-diffuser-aroma-essence/p/itm918a83e0cec64?pid=AIRHSS8HYQESKNB7",
         },
       ],
     },
@@ -571,7 +579,7 @@ export const HOME_STAGES: HomeStage[] = [
     products: ["aroma-core"], toggle: true,
   },
   { id: "air", title: "Aroma Air", sub: " // 55 ml spray", products: ["aroma-air"] },
-  { id: "essence", title: "Aroma Essence", sub: " // 15 ml hanging", products: ["aroma-essence"] },
+  { id: "essence", title: "Aroma Essence", sub: " // 12 ml hanging", products: ["aroma-essence"] },
   {
     id: "led-4w", title: "4-Wheeler LED", sub: " // Headlight pair",
     band: { id: "vision", title: "Vision", kind: "LED headlights", tagline: "See the difference", href: "/vision", body: "240W and 300W pairs, 18-month warranty." },
@@ -602,6 +610,10 @@ export type StageItem = {
   photo?: string;
   /** Full-bleed scene photo, only when the per-item flag is set. */
   scene?: string;
+  /** Retail box photo and its blurred backdrop, only when the per-item flag is set. */
+  box?: { src: string; bg: string };
+  /** Product-level specs (volume, lifetime) for stages that show them. */
+  specs?: Spec[];
 };
 
 const DEFAULT_COLORS: ScentColors = { tint: "#ECF1F7", halo: "#D5DFEC", liquid: "#FFFFFF", deep: "#020F26" };
@@ -634,6 +646,8 @@ export function stageItems(stage: HomeStage): StageItem[] {
         ],
         photo: photo(s.slug, s.photo),
         scene: s.scene ? `/home/${stage.id}/scene/${s.slug}.webp` : undefined,
+        specs: p.specs,
+        box: s.box ? { src: `/home/${stage.id}/box/${s.slug}.webp`, bg: `/home/${stage.id}/box/${s.slug}-bg.webp` } : undefined,
       }));
     }
     if (p.models) {

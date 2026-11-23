@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { SkewButton } from "./ui";
+import { FlipkartLabel } from "./FlipkartMark";
 
 /**
  * The one place the retail rule lives: a URL means "Buy on Flipkart" (new
@@ -21,7 +22,7 @@ export default function FlipkartButton({
   if (look === "skew") {
     return url ? (
       <SkewButton href={url} external ariaLabel={`${buyLabel}: ${name} (opens in a new tab)`}>
-        {buyLabel} &#8594;
+        <FlipkartLabel>{buyLabel} &#8594;</FlipkartLabel>
       </SkewButton>
     ) : (
       <SkewButton href={notifyHref} ariaLabel={`${name} is coming to Flipkart soon. Get notified`}>
@@ -36,7 +37,7 @@ export default function FlipkartButton({
     const cls = `${base} bg-navy px-5 py-[15px] text-[19px] tracking-[0.04em] text-chalk hover:text-chalk`;
     return url ? (
       <a href={url} target="_blank" rel="noopener" className={cls} aria-label={`${buyLabel}: ${name} (opens in a new tab)`}>
-        {buyLabel} &#8594;
+        <FlipkartLabel>{buyLabel} &#8594;</FlipkartLabel>
       </a>
     ) : (
       <Link href={notifyHref} className={cls}>Coming to Flipkart soon</Link>
@@ -49,10 +50,10 @@ export default function FlipkartButton({
       href={url}
       target="_blank"
       rel="noopener"
-      className={`${base} bg-navy px-3 py-[11px] text-[16px] text-chalk hover:text-chalk`}
+      className={`${base} whitespace-nowrap bg-navy px-3 py-[11px] text-[15px] text-chalk hover:text-chalk`}
       aria-label={`Buy ${name} on Flipkart (opens in a new tab)`}
     >
-      Buy on Flipkart &#8594;
+      <FlipkartLabel size={20}>Buy on Flipkart</FlipkartLabel>
     </a>
   ) : (
     <Link

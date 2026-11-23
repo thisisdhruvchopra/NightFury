@@ -17,7 +17,7 @@ const BY_PATH: Record<string, string[]> = {
   "/aroma": [
     "Aroma Core now live on Flipkart",
     "11 scents, 3 formats",
-    "Up to 60 days per bottle",
+    "Up to 45 days per Essence bottle",
     "Dealer enquiries open across India",
   ],
   "/vision": [

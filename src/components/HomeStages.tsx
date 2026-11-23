@@ -4,14 +4,17 @@ import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import CategoryBand from "./CategoryBand";
 import ScrollStage from "./ScrollStage";
 import SceneStage from "./SceneStage";
+import BoxStage from "./BoxStage";
 import { HOME_STAGES, stageItems } from "@/data/products";
 
 const NAV = 76;
 const STEP = 360;
-/* A stage whose every item has a scene photo renders as a photo backdrop. */
+/* A stage whose every item has a scene photo renders as a photo backdrop, and
+   one whose every item has a box photo renders the box centre stage. */
 const STAGES = HOME_STAGES.map((stage) => {
   const items = stageItems(stage);
-  return { stage, items, Stage: items.every((it) => it.scene) ? SceneStage : ScrollStage };
+  const Stage = items.every((it) => it.scene) ? SceneStage : items.every((it) => it.box) ? BoxStage : ScrollStage;
+  return { stage, items, Stage };
 });
 
 /**

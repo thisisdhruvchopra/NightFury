@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import Link from "next/link";
 import FlipkartButton from "@/components/FlipkartButton";
+import { FlipkartWordmark } from "@/components/FlipkartMark";
 import DealerBand from "@/components/DealerBand";
 import { FindDealerForm, NotifyPicker } from "@/components/forms";
 import { Breadcrumb, Eyebrow, SectionHeading, StatusTag } from "@/components/ui";
@@ -34,7 +35,10 @@ export default function WhereToBuyPage() {
       <section id="online" className="nf-anchor border-t-2 border-navy bg-chalk" aria-labelledby="online-title">
         <div className="nf-container nf-section">
           <Eyebrow>{"// Online"}</Eyebrow>
-          <SectionHeading lead="Buy on" accent="Flipkart." size="nf-h2-sm" className="mt-[14px] mb-10" />
+          <div className="mt-[14px] mb-10 flex flex-wrap items-end justify-between gap-x-8 gap-y-4">
+            <SectionHeading lead="Buy on" accent="Flipkart." size="nf-h2-sm" />
+            <FlipkartWordmark height={40} />
+          </div>
 
           <div className="flex flex-col gap-10">
             {AROMA_PRODUCTS.map((p) => (

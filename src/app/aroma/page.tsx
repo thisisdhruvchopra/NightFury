@@ -18,8 +18,8 @@ const pad = (n: number) => String(n).padStart(2, "0");
 
 const COMPARE: { label: string; values: [string, string, string] }[] = [
   { label: "Where it goes", values: ["Dashboard or console", "Card on the mirror", "Hangs from the mirror"] },
-  { label: "Size", values: ["55 g glass canister", "55 ml atomizer", "15 ml glass bottle"] },
-  { label: "Lasts", values: ["Up to 60 days", "500+ sprays", "Up to 60 days"] },
+  { label: "Size", values: ["55 g glass canister", "55 ml atomizer", "12 ml glass bottle"] },
+  { label: "Lasts", values: ["Up to 60 days", "500+ sprays", "Up to 45 days"] },
   { label: "Intensity", values: ["Steady, always on", "You control it", "Slow release"] },
   { label: "Scents", values: ["5 (Gel + Organic)", "3", "3"] },
   { label: "Best for", values: ["Set it and forget it", "A burst before every drive", "A premium look on the mirror"] },

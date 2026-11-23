@@ -216,6 +216,9 @@ a:hover { color: var(--color-fury-sm); }
 .nf-btn--orange { background: var(--color-fury); color: var(--color-carbon); border-color: var(--color-fury); }
 .nf-btn--orange:hover { background: var(--color-fury-lg); border-color: var(--color-fury-lg); color: var(--color-carbon); }
 .nf-btn--outline { background: var(--color-white); color: var(--color-carbon); }
+/* Light button for dark photo stages, where orange fights the backdrop. */
+.nf-btn--light { background: var(--color-chalk); color: var(--color-navy); border-color: var(--color-chalk); }
+.nf-btn--light:hover { background: var(--color-white); border-color: var(--color-white); color: var(--color-navy); }
 .nf-btn--outline:hover { background: var(--color-chalk); color: var(--color-carbon); }
 
 .nf-btn[disabled] { opacity: 0.6; cursor: progress; }
@@ -277,6 +280,14 @@ a:hover { color: var(--color-fury-sm); }
     linear-gradient(0deg, rgba(5, 7, 11, 0.45) 0%, rgba(5, 7, 11, 0) 30%);
 }
 
+/* Box stage (Aroma Essence): darken the blurred backdrop at the edges so the
+   copy on either side of the box stays legible. */
+.nf-box-shade {
+  background:
+    radial-gradient(ellipse 60% 70% at 50% 50%, rgba(5, 7, 11, 0) 0%, rgba(5, 7, 11, 0.25) 70%, rgba(5, 7, 11, 0.45) 100%),
+    linear-gradient(90deg, rgba(5, 7, 11, 0.35) 0%, rgba(5, 7, 11, 0) 30%, rgba(5, 7, 11, 0) 70%, rgba(5, 7, 11, 0.35) 100%);
+}
+
 /* Colour-shifting parts of the scroll stage and 360 viewer. */
 .nf-tint { transition: background-color 0.6s ease, color 0.6s ease; }
 
@@ -332,4 +343,115 @@ select.nf-input { appearance: auto; }
   .nf-panel-o:hover, .nf-panel-n:hover { transform: none; }
   .nf-tile-img, .nf-textlink span { transition: none; }
   .nf-tile:hover .nf-tile-img, .nf-textlink:hover span { transform: none; }
+}
+
+/* Stage backdrops for Aroma Essence (dark) and Aroma Core (light). Pure CSS,
+   so they stay sharp at any size. The colours are registered properties, so
+   they animate between scents instead of crossfading two layers. */
+@property --ess-tint { syntax: '<color>'; inherits: true; initial-value: #3a7bff; }
+@property --ess-deep { syntax: '<color>'; inherits: true; initial-value: #0d2f80; }
+@property --core-tint { syntax: '<color>'; inherits: true; initial-value: #c9775a; }
+
+.nf-essence-bg {
+  --ess-halo: #1b4fe0; /* the box art is blue for every scent */
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition:
+    --ess-tint 1.2s cubic-bezier(.4, 0, .2, 1),
+    --ess-deep 1.2s cubic-bezier(.4, 0, .2, 1);
+  background:
+    /* scent bloom behind the bottle */
+    radial-gradient(in oklab ellipse 26% 48% at 44% 58%,
+      color-mix(in oklab, var(--ess-tint) 58%, transparent) 0%,
+      color-mix(in oklab, var(--ess-tint) 40%, transparent) 30%,
+      color-mix(in oklab, var(--ess-tint) 19%, transparent) 60%,
+      color-mix(in oklab, var(--ess-tint) 6%,  transparent) 82%,
+      transparent 100%),
+    /* blue halo around the box */
+    radial-gradient(in oklab ellipse 46% 72% at 50% 52%,
+      color-mix(in oklab, var(--ess-halo) 55%, transparent) 0%,
+      color-mix(in oklab, var(--ess-halo) 40%, transparent) 25%,
+      color-mix(in oklab, var(--ess-halo) 22%, transparent) 48%,
+      color-mix(in oklab, var(--ess-halo) 9%,  transparent) 70%,
+      color-mix(in oklab, var(--ess-halo) 2%,  transparent) 88%,
+      transparent 100%),
+    /* floor glow in the scent colour */
+    radial-gradient(in oklab ellipse 60% 34% at 50% 104%,
+      color-mix(in oklab, var(--ess-tint) 48%, transparent) 0%,
+      color-mix(in oklab, var(--ess-tint) 24%, transparent) 40%,
+      color-mix(in oklab, var(--ess-tint) 7%,  transparent) 72%,
+      transparent 100%),
+    /* corner depth */
+    radial-gradient(in oklab ellipse 50% 60% at 82% 22%,
+      color-mix(in oklab, var(--ess-deep) 75%, transparent) 0%,
+      color-mix(in oklab, var(--ess-deep) 30%, transparent) 50%,
+      transparent 100%),
+    radial-gradient(in oklab ellipse 45% 55% at 14% 78%,
+      color-mix(in oklab, var(--ess-deep) 60%, transparent) 0%,
+      color-mix(in oklab, var(--ess-deep) 22%, transparent) 50%,
+      transparent 100%),
+    linear-gradient(in oklab 180deg, #081022 0%, #060b18 55%, #04070f 100%);
+}
+/* soft vignette */
+.nf-essence-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(in oklab ellipse 80% 90% at 50% 50%,
+    transparent 50%, rgba(2, 4, 9, .3) 78%, rgba(2, 4, 9, .65) 100%);
+}
+/* faint grain dithers away banding on 8-bit screens */
+.nf-essence-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: .06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.nf-essence-bg[data-scent='blue-ocean']    { --ess-tint: #3a7bff; --ess-deep: #0d2f80; }
+.nf-essence-bg[data-scent='romance']       { --ess-tint: #ff3d5e; --ess-deep: #4a1236; }
+.nf-essence-bg[data-scent='fresh-jasmine'] { --ess-tint: #8fd12e; --ess-deep: #163a2a; }
+
+.nf-core-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  transition: --core-tint 1s cubic-bezier(.4, 0, .2, 1);
+  background:
+    /* colour pool behind the jar */
+    radial-gradient(in oklab ellipse 30% 50% at 66% 50%,
+      color-mix(in oklab, var(--core-tint) 45%, transparent) 0%,
+      color-mix(in oklab, var(--core-tint) 32%, transparent) 28%,
+      color-mix(in oklab, var(--core-tint) 17%, transparent) 55%,
+      color-mix(in oklab, var(--core-tint) 6%,  transparent) 78%,
+      transparent 100%),
+    /* corner wash */
+    radial-gradient(in oklab ellipse 55% 75% at 96% 4%,
+      color-mix(in oklab, var(--core-tint) 20%, transparent) 0%,
+      color-mix(in oklab, var(--core-tint) 8%,  transparent) 45%,
+      transparent 100%),
+    /* floor contact shadow */
+    radial-gradient(in oklab ellipse 34% 10% at 66% 79%,
+      rgba(2, 15, 38, .07) 0%, rgba(2, 15, 38, .03) 50%, transparent 100%),
+    linear-gradient(in oklab 180deg, #F9FAFB 0%, #F3F4F7 58%, #ECEEF2 100%);
+}
+.nf-core-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: .05;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.nf-core-bg[data-scent='natures-bloom'] { --core-tint: #c9775a; }
+.nf-core-bg[data-scent='earth-essence'] { --core-tint: #9a8556; }
+.nf-core-bg[data-scent='citrus-zest']   { --core-tint: #c8c21e; }
+.nf-core-bg[data-scent='berry-bloom']   { --core-tint: #b0406e; }
+.nf-core-bg[data-scent='mountain-mint'] { --core-tint: #3fa07a; }
+
+@media (prefers-reduced-motion: reduce) {
+  .nf-essence-bg, .nf-core-bg { transition: none; }
 }
