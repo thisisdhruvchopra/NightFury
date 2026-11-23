@@ -7,7 +7,7 @@ export function FlipkartIcon({ size = 22, className = "" }: Readonly<{ size?: nu
   return (
     // eslint-disable-next-line @next/next/no-img-element -- tiny fixed-size brand icon
     <img
-      src="/brand/flipkart-icon.webp"
+      src="/brand/flipkart/icon.webp"
       alt=""
       aria-hidden="true"
       width={size}
@@ -23,7 +23,7 @@ export function FlipkartWordmark({ height = 32, className = "" }: Readonly<{ hei
   return (
     // eslint-disable-next-line @next/next/no-img-element -- fixed-size brand mark
     <img
-      src="/brand/flipkart-wordmark.webp"
+      src="/brand/flipkart/wordmark.webp"
       alt="Flipkart"
       width={Math.round((height * 560) / 148)}
       height={height}

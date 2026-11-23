@@ -47,10 +47,9 @@ export type SocialLink = {
   external: boolean;
 };
 
-// TODO: confirm the live Instagram handle before shipping.
 export const INSTAGRAM = {
-  handle: "@nightfury.in",
-  url: "https://www.instagram.com/nightfury.in/",
+  handle: "@nightfury.automotive",
+  url: "https://www.instagram.com/nightfury.automotive/",
 } as const;
 
 export const WHATSAPP = {

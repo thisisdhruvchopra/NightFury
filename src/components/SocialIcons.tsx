@@ -1,4 +1,15 @@
-/** Line icons for the official NightFury channels, keyed like SOCIAL_LINKS. */
+/** Icons for the official NightFury channels, keyed like SOCIAL_LINKS.
+    Instagram, WhatsApp and email use the real brand logos from
+    public/brand/<name>/logo.webp (originals in assets/brand/); the rest are
+    line icons that follow the text colour. */
+
+function BrandLogo({ name }: Readonly<{ name: "instagram" | "whatsapp" | "gmail" }>) {
+  return (
+    // eslint-disable-next-line @next/next/no-img-element -- tiny fixed-size brand logo
+    <img src={`/brand/${name}/logo.webp`} alt="" aria-hidden="true" width={22} height={22} style={{ width: 22, height: 22, objectFit: "contain" }} />
+  );
+}
+
 const iconProps = {
   width: 22,
   height: 22,
@@ -18,25 +29,9 @@ export const SOCIAL_ICONS: Record<string, React.ReactNode> = {
       <path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18" />
     </svg>
   ),
-  instagram: (
-    <svg {...iconProps}>
-      <rect x="3" y="3" width="18" height="18" rx="5" />
-      <circle cx="12" cy="12" r="4" />
-      <circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none" />
-    </svg>
-  ),
-  whatsapp: (
-    <svg {...iconProps}>
-      <path d="M3.5 20.5l1.3-4.2A8 8 0 1 1 8 19.4l-4.5 1.1z" />
-      <path d="M9 9.2c.2 1 .8 2.1 1.6 2.9.8.8 1.9 1.4 2.9 1.6l.9-1.1 1.8.9c-.2 1-1.2 1.6-2.2 1.4a8 8 0 0 1-6.1-6.1c-.2-1 .4-2 1.4-2.2l.9 1.8-1.2.8z" />
-    </svg>
-  ),
-  email: (
-    <svg {...iconProps}>
-      <rect x="3" y="5" width="18" height="14" rx="2" />
-      <path d="M3.5 6.5l8.5 6 8.5-6" />
-    </svg>
-  ),
+  instagram: <BrandLogo name="instagram" />,
+  whatsapp: <BrandLogo name="whatsapp" />,
+  email: <BrandLogo name="gmail" />,
   dealer: (
     <svg {...iconProps}>
       <path d="M3 9.5L5 5h14l2 4.5" />

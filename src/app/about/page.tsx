@@ -108,9 +108,16 @@ export default function AboutPage() {
                   {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   className="group grid h-full grid-cols-[44px_minmax(0,1fr)] items-center gap-x-4 gap-y-3 rounded-[4px] border border-navy/15 bg-white p-4 no-underline transition-colors hover:border-navy sm:flex sm:flex-col sm:items-start sm:p-5"
                 >
-                  <span className="flex h-11 w-11 items-center justify-center rounded-[4px] bg-chalk text-navy group-hover:bg-navy group-hover:text-chalk">
-                    {SOCIAL_ICONS[c.key]}
-                  </span>
+                  {c.key === "website" ? (
+                    <span className="flex h-11 w-11 items-center justify-center rounded-[4px] bg-navy">
+                      {/* eslint-disable-next-line @next/next/no-img-element -- tiny fixed-size brand mark */}
+                      <img src="/media/logos/nf-mark.webp" alt="" aria-hidden="true" width={26} height={26} className="h-[26px] w-[26px] object-contain" />
+                    </span>
+                  ) : (
+                    <span className="flex h-11 w-11 items-center justify-center rounded-[4px] bg-chalk text-navy group-hover:bg-navy group-hover:text-chalk">
+                      {SOCIAL_ICONS[c.key]}
+                    </span>
+                  )}
                   <span className="flex min-w-0 flex-col gap-1 sm:gap-3">
                     <span className="font-mono text-[11px] font-bold tracking-[0.16em] text-muted uppercase">{c.label}</span>
                     <span className="truncate font-display text-[17px] font-bold text-navy">{c.handle}</span>

@@ -18,7 +18,8 @@ assets/
         <item>-poster.png      full advertising poster
         <item>-box.png         retail box on a white studio background
   brand/
-    flipkart/          Flipkart icon and wordmark, served from public/brand/
+    <name>/            third-party logos: flipkart, instagram, whatsapp, gmail.
+                       Served copies live in public/brand/<name>/.
 ```
 
 Name every file in lowercase with hyphens, using the same slug the site uses
