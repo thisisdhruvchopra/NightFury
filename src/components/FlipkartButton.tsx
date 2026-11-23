@@ -50,7 +50,7 @@ export default function FlipkartButton({
       href={url}
       target="_blank"
       rel="noopener"
-      className={`${base} whitespace-nowrap bg-navy px-3 py-[11px] text-[15px] text-chalk hover:text-chalk`}
+      className={`${base} whitespace-nowrap rounded-[2px] bg-navy px-3 py-[11px] text-[15px] text-chalk hover:bg-[#0B2047] hover:text-chalk`}
       aria-label={`Buy ${name} on Flipkart (opens in a new tab)`}
     >
       <FlipkartLabel size={20}>Buy on Flipkart</FlipkartLabel>
@@ -58,7 +58,7 @@ export default function FlipkartButton({
   ) : (
     <Link
       href={notifyHref}
-      className={`${base} border-2 border-navy bg-white px-3 py-[9px] text-[16px] text-carbon`}
+      className={`${base} rounded-[2px] border border-navy/20 bg-chalk px-3 py-[10px] text-[14px] text-navy hover:border-navy hover:text-navy`}
       aria-label={`${name} is coming to Flipkart soon. Get notified`}
     >
       Coming to Flipkart soon

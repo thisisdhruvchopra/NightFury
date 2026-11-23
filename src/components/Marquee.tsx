@@ -6,16 +6,16 @@ import { Fragment } from "react";
 const DEFAULT = [
   "18-month warranty on Vision",
   "IP67 water and dust rated",
-  "Aroma Core now on Flipkart",
+  "Aroma Core, Air and Essence now on Flipkart",
   "Dealer enquiries open across India",
   "Drive the difference",
 ];
 
 // Per-page copy, straight from the design files.
 const BY_PATH: Record<string, string[]> = {
-  "/": ["18-month warranty on Vision LED", "Aroma Core now on Flipkart", "11 signature scents", "Dealer enquiries open across India"],
+  "/": ["18-month warranty on Vision LED", "All 11 Aroma scents on Flipkart", "11 signature scents", "Dealer enquiries open across India"],
   "/aroma": [
-    "Aroma Core now live on Flipkart",
+    "Aroma Core, Air and Essence live on Flipkart",
     "11 scents, 3 formats",
     "Up to 45 days per Essence bottle",
     "Dealer enquiries open across India",

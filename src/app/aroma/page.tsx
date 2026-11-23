@@ -10,7 +10,7 @@ import { pageMeta, productJsonLd } from "@/lib/seo";
 export const metadata = pageMeta({
   title: "NightFury Aroma: Premium Car Perfumes",
   description:
-    "Aroma Core dashboard canisters, Aroma Air spray with hanging card, and Aroma Essence hanging glass. Three formats, eleven scents. Aroma Core is on Flipkart now.",
+    "Aroma Core dashboard canisters, Aroma Air spray with hanging card, and Aroma Essence hanging glass. Three formats, eleven scents. All three are on Flipkart now.",
   path: "/aroma",
 });
 

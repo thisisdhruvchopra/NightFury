@@ -343,7 +343,8 @@ export const aromaAir: Product = {
           notes: { top: "Aquatic, nutmeg", heart: "Muguet, tobacco, iris", base: "Woody amber, sandalwood, musk" },
           scene: true,
           colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#3C6EA8", deep: "#020F26" },
-          flipkartUrl: "",
+          flipkartUrl: 
+            "https://www.flipkart.com/nightfury-aroma-air-spray-azur/p/itmf6b86742e2711?pid=AIRHT88VW6ZYUYQW",
         },
         {
           slug: "bonfire",
@@ -353,7 +354,8 @@ export const aromaAir: Product = {
           notes: { top: "Mandarin, cinnamon, banana, ginger, dried fruits", heart: "Jasmine, aquatic", base: "Vanilla, gourmand, woody amber, cedar" },
           scene: true,
           colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#B0562A", deep: "#020F26" },
-          flipkartUrl: "",
+          flipkartUrl: 
+            "https://www.flipkart.com/nightfury-bonfire-spray-azur/p/itmf6b86742e2711?pid=AIRHT88VGMVFGNPS",
         },
         {
           slug: "impulsive",
@@ -363,7 +365,8 @@ export const aromaAir: Product = {
           notes: { top: "Cardamom, bergamot", heart: "Toffee, lavender", base: "Amberwood, vetiver" },
           scene: true,
           colors: { tint: "#F4F5F7", halo: "#E2E4E9", liquid: "#9A6A2F", deep: "#020F26" },
-          flipkartUrl: "",
+          flipkartUrl: 
+            "https://www.flipkart.com/nightfury-impulsive-spray-azur/p/itmf6b86742e2711?pid=AIRHT88VW83TBHNH",
         },
       ],
     },
@@ -685,4 +688,20 @@ export function stageItems(stage: HomeStage): StageItem[] {
       photo: photo(p.slug, h.photo),
     }];
   });
+}
+
+/* ------------------------------------------------------------ Shop photos */
+
+export type ShopImage = { src: string; fit: "contain" | "cover"; position?: string; dark?: boolean };
+
+/**
+ * Best available photo for a product or scent in shop listings: the scent's
+ * own cutout, scene or box photo first, then the product line's tile photo.
+ */
+export function shopImage(p: Product, s?: Scent): ShopImage {
+  if (s?.box) return { src: `/home/essence/box/${s.slug}.webp`, fit: "contain", dark: true };
+  if (s?.scene) return { src: `/home/air/scene/${s.slug}.webp`, fit: "cover", position: "74% 50%", dark: true };
+  if (s?.photo) return { src: `/home/core/${s.slug}.webp`, fit: "contain" };
+  if (p.slug === "led-4w") return { src: "/home/led-4w/240w.webp", fit: "contain" };
+  return { src: `/home/tiles/${p.line}.webp`, fit: "cover", dark: true };
 }

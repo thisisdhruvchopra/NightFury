@@ -10,7 +10,7 @@ import { SHOW_TODOS, Todo, ready } from "@/lib/todo";
 export const metadata = pageMeta({
   title: "NightFury: LED Headlights, Car Perfumes and Car Care",
   description:
-    "NightFury Vision LED headlights, Aroma car perfumes and Care detailing essentials. Buy Aroma Core on Flipkart or stock NightFury through our dealer network across India.",
+    "NightFury Vision LED headlights, Aroma car perfumes and Care detailing essentials. Buy Aroma car perfumes on Flipkart or stock NightFury through our dealer network across India.",
   path: "/",
 });
 
@@ -60,7 +60,7 @@ export default function Home() {
 
         <div className="nf-container absolute inset-x-0 bottom-0 hidden md:block">
           <ul className="m-0 flex list-none flex-wrap gap-x-8 gap-y-2 border-t border-white/15 p-0 py-5 font-mono text-[11px] font-bold tracking-[0.16em] uppercase text-[#C9D0DC]">
-            {["18-month warranty on Vision", "IP67 rated, CANBUS-ready", "Aroma Core live on Flipkart", "Dealer network across India"].map((t) => (
+            {["18-month warranty on Vision", "IP67 rated, CANBUS-ready", "Aroma range live on Flipkart", "Dealer network across India"].map((t) => (
               <li key={t} className="flex items-center gap-[10px]"><Pip size={7} />{t}</li>
             ))}
           </ul>
