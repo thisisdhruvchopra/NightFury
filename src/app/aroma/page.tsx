@@ -18,7 +18,7 @@ const pad = (n: number) => String(n).padStart(2, "0");
 
 const COMPARE: { label: string; values: [string, string, string] }[] = [
   { label: "Where it goes", values: ["Dashboard or console", "Card on the mirror", "Hangs from the mirror"] },
-  { label: "Size", values: ["55g glass canister", "50 ml atomizer", "15 ml glass bottle"] },
+  { label: "Size", values: ["55 g glass canister", "55 ml atomizer", "15 ml glass bottle"] },
   { label: "Lasts", values: ["Up to 60 days", "500+ sprays", "Up to 60 days"] },
   { label: "Intensity", values: ["Steady, always on", "You control it", "Slow release"] },
   { label: "Scents", values: ["5 (Gel + Organic)", "3", "3"] },
@@ -155,27 +155,58 @@ export default function AromaPage() {
           <h2 id="compare-title" className="nf-display nf-h2-sm mt-[14px] mb-9">
             Which one <span className="nf-accent">is yours?</span>
           </h2>
-          <div className="overflow-x-auto rounded-[3px] border-2 border-navy" role="region" aria-labelledby="compare-title" tabIndex={0}>
-            <table className="w-full min-w-[760px] border-collapse font-mono text-[14px]">
+          {/* Desktop and tablet: one table, equal fixed-width product columns. */}
+          <div className="hidden overflow-hidden rounded-[3px] border-2 border-navy md:block">
+            <table className="w-full table-fixed border-collapse text-[15px]">
+              <caption className="sr-only">Aroma Core, Air and Essence compared</caption>
+              <colgroup>
+                <col className="w-[22%]" />
+                <col />
+                <col />
+                <col />
+              </colgroup>
               <thead>
                 <tr className="bg-navy text-chalk">
-                  <td className="w-[22%] px-5 py-[18px]" />
+                  <td className="px-6 py-5" />
                   {AROMA_PRODUCTS.map((p) => (
-                    <th key={p.slug} scope="col" className="px-5 py-[18px] text-left font-display text-[26px] font-bold uppercase">
-                      {p.name.replace("Aroma ", "")}
+                    <th key={p.slug} scope="col" className="border-l border-white/10 px-6 py-5 text-left align-bottom font-normal">
+                      <span className="block font-display text-[24px] leading-tight font-bold">{p.name}</span>
+                      <span className="mt-1 block font-mono text-[11px] font-semibold tracking-[0.12em] text-navy-soft uppercase">{p.formatLine}</span>
                     </th>
                   ))}
                 </tr>
               </thead>
               <tbody>
                 {COMPARE.map((row, i) => (
-                  <tr key={row.label} className={`border-b border-[#DCDEE3] last:border-b-0 ${i % 2 ? "bg-[#F8F9FA]" : ""}`}>
-                    <th scope="row" className="px-5 py-4 text-left text-[11px] tracking-[0.14em] uppercase text-muted">{row.label}</th>
-                    {row.values.map((v, j) => <td key={j} className="px-5 py-4">{v}</td>)}
+                  <tr key={row.label} className={`border-b border-hairline last:border-b-0 ${i % 2 ? "bg-chalk" : "bg-white"}`}>
+                    <th scope="row" className="px-6 py-4 text-left align-top font-mono text-[11px] font-bold tracking-[0.14em] text-muted uppercase">{row.label}</th>
+                    {row.values.map((v, j) => (
+                      <td key={j} className="border-l border-hairline px-6 py-4 align-top leading-[1.45] text-carbon">{v}</td>
+                    ))}
                   </tr>
                 ))}
               </tbody>
             </table>
+          </div>
+
+          {/* Phones: the same comparison as one card per product, no sideways scrolling. */}
+          <div className="grid gap-4 md:hidden">
+            {AROMA_PRODUCTS.map((p, j) => (
+              <section key={p.slug} aria-label={p.name} className="overflow-hidden rounded-[3px] border-2 border-navy bg-white">
+                <div className="bg-navy px-5 py-4 text-chalk">
+                  <h3 className="nf-display text-[22px]">{p.name}</h3>
+                  <p className="m-0 mt-1 font-mono text-[11px] font-semibold tracking-[0.12em] text-navy-soft uppercase">{p.formatLine}</p>
+                </div>
+                <dl className="m-0">
+                  {COMPARE.map((row) => (
+                    <div key={row.label} className="grid grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] gap-4 border-b border-hairline px-5 py-3 last:border-b-0">
+                      <dt className="font-mono text-[11px] font-bold tracking-[0.14em] text-muted uppercase">{row.label}</dt>
+                      <dd className="m-0 text-[15px] leading-[1.45] text-carbon">{row.values[j]}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </section>
+            ))}
           </div>
         </div>
       </section>

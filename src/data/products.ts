@@ -209,7 +209,7 @@ export const aromaCore: Product = {
     "A glass canister with a wheel-rim cap inspired by luxury cars. Sits quietly on the console and releases a steady fragrance for weeks. No cords, no clips, no refills.",
   summary:
     "A glass canister with a wheel-rim cap inspired by luxury cars. Sits on the console and releases a steady fragrance for weeks. No cords, no clips, no refills.",
-  formatLine: "Dashboard // 55g // 5 scents",
+  formatLine: "Dashboard // 55 g // 5 scents",
   chips: ["55g", "Gel or Organic", "5 scents", "Up to 60 days"],
   status: "live",
   specs: [
@@ -312,14 +312,14 @@ export const aromaAir: Product = {
   name: "Aroma Air",
   tagline: "Spray. Hang. Arrive.",
   description:
-    "A matte-black 50 ml atomizer paired with a NightFury hanging card. Mist the card, hang it from the mirror, refresh whenever you want. One bottle outlasts a dozen disposable fresheners.",
+    "A matte-black 55 ml atomizer paired with a NightFury hanging card. Mist the card, hang it from the mirror, refresh whenever you want. One bottle outlasts a dozen disposable fresheners.",
   summary:
-    "A matte-black 50 ml atomizer paired with a NightFury hanging card. Your scent, your intensity, on demand.",
-  formatLine: "Spray + card // 50 ml // 3 scents",
-  chips: ["50 ml", "500+ sprays", "3 scents", "Hanging card included"],
+    "A matte-black 55 ml atomizer paired with a NightFury hanging card. Your scent, your intensity, on demand.",
+  formatLine: "Spray + card // 55 ml // 3 scents",
+  chips: ["55 ml", "500+ sprays", "3 scents", "Hanging card included"],
   status: "live",
   specs: [
-    { label: "Volume", value: "50 ml" },
+    { label: "Volume", value: "55 ml" },
     { label: "Sprays", value: "500+" },
     { label: "Scents", value: "3" },
     { label: "Includes", value: "Hanging card" },
@@ -331,7 +331,7 @@ export const aromaAir: Product = {
   ],
   variants: [
     {
-      label: "Air // 50 ml",
+      label: "Air // 55 ml",
       scents: [
         {
           slug: "azure",
@@ -550,7 +550,7 @@ export type HomeStage = {
   /** Anchor id of the stage section. */
   id: string;
   title: string;
-  /** Muted suffix after the eyebrow, e.g. " // 50 ml spray". */
+  /** Muted suffix after the eyebrow, e.g. " // 55 ml spray". */
   sub?: string;
   /** Navy category band that starts here. */
   band?: { id: string; title: string; tagline: string; kind?: string; href?: string; body?: string };
@@ -570,7 +570,7 @@ export const HOME_STAGES: HomeStage[] = [
     band: { id: "aroma", title: "Aroma", kind: "Car perfumes", tagline: "Smell the difference", href: "/aroma", body: "Three formats, eleven scents. Scroll through the range." },
     products: ["aroma-core"], toggle: true,
   },
-  { id: "air", title: "Aroma Air", sub: " // 50 ml spray", products: ["aroma-air"] },
+  { id: "air", title: "Aroma Air", sub: " // 55 ml spray", products: ["aroma-air"] },
   { id: "essence", title: "Aroma Essence", sub: " // 15 ml hanging", products: ["aroma-essence"] },
   {
     id: "led-4w", title: "4-Wheeler LED", sub: " // Headlight pair",
