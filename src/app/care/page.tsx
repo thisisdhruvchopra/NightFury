@@ -1,9 +1,10 @@
 import CarePacks from "@/components/CarePacks";
 import DealerBand from "@/components/DealerBand";
+import JsonLd from "@/components/JsonLd";
 import { NotifyForm } from "@/components/forms";
 import { Breadcrumb, Eyebrow, FeatureCard, PhotoSlot, SkewButton, SpecTable, StatusTag } from "@/components/ui";
 import { careMicrofiber, careWipes, dealerHref } from "@/data/products";
-import { pageMeta } from "@/lib/seo";
+import { pageMeta, productJsonLd } from "@/lib/seo";
 
 export const metadata = pageMeta({
   title: "NightFury Care: Microfiber Cloths and Car Wipes",
@@ -15,6 +16,9 @@ export const metadata = pageMeta({
 export default function CarePage() {
   return (
     <>
+      <JsonLd data={productJsonLd(careMicrofiber, "/care")} />
+      <JsonLd data={productJsonLd(careWipes, "/care")} />
+
       {/* ============ HERO ============ */}
       <section id="top" className="nf-anchor bg-white">
         <Breadcrumb current="Car Care" />

@@ -5,7 +5,9 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Marquee from "@/components/Marquee";
 import Footer from "@/components/Footer";
-import { BUSINESS, SUPPORT, SITE_URL } from "@/lib/legal";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/legal";
+import { OG_IMAGE, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
 // Saira Condensed now draws only the NightFury wordmark and the product
 // mockup labels, so the logo keeps its original lockup.
@@ -45,41 +47,21 @@ export const metadata: Metadata = {
   title: "NightFury: LED Headlights, Car Perfumes and Car Care",
   description:
     "NightFury Vision LED headlights, Aroma car perfumes and Care detailing products. Buy on Flipkart or through authorized dealers across India.",
+  applicationName: "NightFury",
   openGraph: {
     siteName: "NightFury",
     url: SITE_URL,
     type: "website",
     locale: "en_IN",
+    images: [OG_IMAGE],
   },
-  twitter: { card: "summary_large_image" },
+  twitter: { card: "summary_large_image", images: [OG_IMAGE.url] },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
+  ...(process.env.GOOGLE_SITE_VERIFICATION ? { verification: { google: process.env.GOOGLE_SITE_VERIFICATION } } : {}),
 };
 
 export const viewport: Viewport = {
   themeColor: "#FFFFFF",
-};
-
-const orgSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: BUSINESS.brandName,
-  legalName: BUSINESS.legalName,
-  url: SITE_URL,
-  slogan: "Drive The Difference",
-  contactPoint: {
-    "@type": "ContactPoint",
-    telephone: SUPPORT.phone,
-    email: SUPPORT.email,
-    contactType: "customer service",
-    availableLanguage: ["English", "Hindi"],
-  },
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: `${BUSINESS.address.line1}, ${BUSINESS.address.line2}`,
-    addressLocality: BUSINESS.address.city,
-    addressRegion: BUSINESS.address.state,
-    postalCode: BUSINESS.address.pin,
-    addressCountry: "IN",
-  },
 };
 
 export default function RootLayout({
@@ -103,10 +85,8 @@ export default function RootLayout({
           <Footer />
         </div>
         <Analytics />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-        />
+        <JsonLd data={organizationJsonLd()} />
+        <JsonLd data={websiteJsonLd()} />
       </body>
     </html>
   );

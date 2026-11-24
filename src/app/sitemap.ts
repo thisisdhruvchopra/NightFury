@@ -1,5 +1,15 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/legal";
+import { AROMA_PRODUCTS, flatScents, shopImage, visionLed4w } from "@/data/products";
+
+const abs = (src: string) => `${SITE_URL}${src}`;
+
+/* Product photos listed per page, so they can surface in Google Images. */
+const IMAGES: Record<string, string[]> = {
+  "": [abs("/home/hero.webp")],
+  "/aroma": [...new Set(AROMA_PRODUCTS.flatMap((p) => flatScents(p).map((s) => abs(shopImage(p, s).src))))],
+  "/vision": [abs(shopImage(visionLed4w).src)],
+};
 
 const ROUTES: { path: string; priority: number; freq: "weekly" | "monthly" | "yearly" }[] = [
   { path: "", priority: 1, freq: "weekly" },
@@ -22,5 +32,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${SITE_URL}${r.path}`,
     changeFrequency: r.freq,
     priority: r.priority,
+    ...(IMAGES[r.path] ? { images: IMAGES[r.path] } : {}),
   }));
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGE } from "@/lib/seo";
 import LegalPage from "@/components/legal/LegalPage";
 import { SHIPPING, SUPPORT, SITE_URL } from "@/lib/legal";
 
@@ -11,8 +12,9 @@ export const metadata: Metadata = {
     description: "Delivery timelines and service areas for NightFury products.",
     url: `${SITE_URL}/shipping-policy`,
     type: "website",
+    images: [OG_IMAGE],
   },
-  twitter: { card: "summary" },
+  twitter: { card: "summary_large_image" },
   alternates: { canonical: `${SITE_URL}/shipping-policy` },
 };
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGE } from "@/lib/seo";
 import LegalPage from "@/components/legal/LegalPage";
 import { REFUND, SUPPORT, SITE_URL } from "@/lib/legal";
 
@@ -11,8 +12,9 @@ export const metadata: Metadata = {
     description: "Return windows, refund timelines, and product-specific conditions for NightFury products.",
     url: `${SITE_URL}/refund-return-policy`,
     type: "website",
+    images: [OG_IMAGE],
   },
-  twitter: { card: "summary" },
+  twitter: { card: "summary_large_image" },
   alternates: { canonical: `${SITE_URL}/refund-return-policy` },
 };
 

@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
+import { OG_IMAGE } from "@/lib/seo";
 import LegalPage from "@/components/legal/LegalPage";
 import { BUSINESS, SUPPORT, JURISDICTION, SITE_URL } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions - NightFury",
-  description: "Terms and conditions governing the use of nightfury.in, purchase of NightFury products, and related services by Yash Marketing.",
+  description: "Terms and conditions governing the use of nightfury.co.in, purchase of NightFury products, and related services by Yash Marketing.",
   keywords: ["NightFury terms", "terms and conditions", "Yash Marketing", "automotive accessories terms"],
   openGraph: {
     title: "Terms & Conditions - NightFury",
-    description: "Terms and conditions governing the use of nightfury.in and purchase of NightFury products.",
+    description: "Terms and conditions governing the use of nightfury.co.in and purchase of NightFury products.",
     url: `${SITE_URL}/terms-and-conditions`,
     type: "website",
+    images: [OG_IMAGE],
   },
-  twitter: { card: "summary" },
+  twitter: { card: "summary_large_image" },
   alternates: { canonical: `${SITE_URL}/terms-and-conditions` },
 };
 
@@ -20,7 +22,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terms & Conditions"
-      description="These terms govern your use of nightfury.in and the purchase of NightFury products. Please read them carefully before using our website."
+      description="These terms govern your use of nightfury.co.in and the purchase of NightFury products. Please read them carefully before using our website."
       breadcrumb="Terms & Conditions"
       sections={[
         {

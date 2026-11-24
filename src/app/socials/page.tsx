@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGE } from "@/lib/seo";
 import { Manrope } from "next/font/google";
 import Link from "next/link";
 import Image from "next/image";
@@ -35,8 +36,9 @@ export const metadata: Metadata = {
     description: "Every official NightFury channel in one place.",
     url: SOCIALS_PAGE.url,
     type: "website",
+    images: [OG_IMAGE],
   },
-  twitter: { card: "summary" },
+  twitter: { card: "summary_large_image" },
   alternates: { canonical: SOCIALS_PAGE.url },
 };
 

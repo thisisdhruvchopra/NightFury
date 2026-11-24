@@ -1,18 +1,20 @@
 import type { Metadata } from "next";
+import { OG_IMAGE } from "@/lib/seo";
 import LegalPage from "@/components/legal/LegalPage";
 import { BUSINESS, SUPPORT, GRIEVANCE_OFFICER, SITE_URL } from "@/lib/legal";
 
 export const metadata: Metadata = {
   title: "Privacy Policy - NightFury",
-  description: "How NightFury and Yash Marketing collect, use, and protect your personal information when you use nightfury.in.",
+  description: "How NightFury and Yash Marketing collect, use, and protect your personal information when you use nightfury.co.in.",
   keywords: ["NightFury privacy policy", "data protection", "Yash Marketing privacy"],
   openGraph: {
     title: "Privacy Policy - NightFury",
     description: "How NightFury collects, uses, and protects your personal information.",
     url: `${SITE_URL}/privacy-policy`,
     type: "website",
+    images: [OG_IMAGE],
   },
-  twitter: { card: "summary" },
+  twitter: { card: "summary_large_image" },
   alternates: { canonical: `${SITE_URL}/privacy-policy` },
 };
 

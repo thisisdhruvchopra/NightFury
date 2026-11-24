@@ -1,6 +1,8 @@
 import Link from "next/link";
 import type { Status } from "@/data/products";
 import { SHOW_TODOS } from "@/lib/todo";
+import JsonLd from "./JsonLd";
+import { breadcrumbJsonLd } from "@/lib/seo";
 
 /* Small presentational building blocks shared by every page. */
 
@@ -79,6 +81,7 @@ export function Breadcrumb({ current }: Readonly<{ current: string }>) {
       <Link href="/" className="no-underline">Home</Link>
       <span aria-hidden="true"> / </span>
       <span aria-current="page" className="font-bold text-carbon">{current}</span>
+      <JsonLd data={breadcrumbJsonLd(current)} />
     </nav>
   );
 }
