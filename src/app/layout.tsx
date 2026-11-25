@@ -44,7 +44,7 @@ const spline = Spline_Sans_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Nightfury: LED Headlights, Car Perfumes and Car Care",
+  title: "Nightfury Automotive: LED Headlights, Car Perfumes and Car Care",
   description:
     "Nightfury Vision LED headlights, Aroma car perfumes and Care detailing products. Buy on Flipkart or through authorized dealers across India.",
   applicationName: "Nightfury",

@@ -8,7 +8,7 @@ import { pageMeta } from "@/lib/seo";
 import { SHOW_TODOS, Todo, ready } from "@/lib/todo";
 
 export const metadata = pageMeta({
-  title: "Nightfury: LED Headlights, Car Perfumes and Car Care",
+  title: "Nightfury Automotive: LED Headlights, Car Perfumes and Car Care",
   description:
     "Nightfury Vision LED headlights, Aroma car perfumes and Care detailing essentials. Buy Aroma car perfumes on Flipkart or stock Nightfury through our dealer network across India.",
   path: "/",
