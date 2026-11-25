@@ -5,9 +5,9 @@ import { SUPPORT } from "@/lib/legal";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Become a NightFury Dealer: Stock Vision, Aroma and Care",
+  title: "Become a Nightfury Dealer: Stock Vision, Aroma and Care",
   description:
-    "Stock NightFury LED headlights, car perfumes and car care in your shop. Send a dealer enquiry and our team will call you within 2 working days.",
+    "Stock Nightfury LED headlights, car perfumes and car care in your shop. Send a dealer enquiry and our team will call you within 2 working days.",
   path: "/dealers",
 });
 

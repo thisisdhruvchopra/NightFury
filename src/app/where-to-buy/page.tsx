@@ -19,9 +19,9 @@ import {
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Where to Buy NightFury: Flipkart and Authorized Dealers",
+  title: "Where to Buy Nightfury: Flipkart and Authorized Dealers",
   description:
-    "Buy NightFury Aroma Core, Air and Essence on the official Flipkart listings, or find an authorized NightFury dealer near you. Get notified when Vision and Care land.",
+    "Buy Nightfury Aroma Core, Air and Essence on the official Flipkart listings, or find an authorized Nightfury dealer near you. Get notified when Vision and Care land.",
   path: "/where-to-buy",
 });
 
@@ -96,7 +96,7 @@ export default function WhereToBuyPage() {
             <Eyebrow>{"// Where to buy"}</Eyebrow>
             <h1 className="nf-display nf-h1 mt-4">Buy online, or from a dealer near you.</h1>
             <p className="nf-body nf-body-lg mt-6 max-w-[560px]">
-              Every NightFury product is sold through the official listings on Flipkart and through authorized dealers. The 18-month warranty on Vision covers purchases from these two channels only.
+              Every Nightfury product is sold through the official listings on Flipkart and through authorized dealers. The 18-month warranty on Vision covers purchases from these two channels only.
             </p>
             <div className="mt-8 grid max-w-[560px] gap-3 sm:grid-cols-2">
               <a href="#online" className="flex items-center justify-between gap-3 rounded-[4px] border border-navy/15 bg-white px-5 py-4 no-underline transition-colors hover:border-navy">
@@ -125,7 +125,7 @@ export default function WhereToBuyPage() {
             <div className="min-w-0">
               <Eyebrow>{"// Online"}</Eyebrow>
               <h2 id="online-title" className="nf-display nf-h2-sm mt-[14px]">Official Flipkart listings</h2>
-              <p className="nf-body mt-3 max-w-[560px]">Pick your scent and you land straight on its official NightFury page on Flipkart.</p>
+              <p className="nf-body mt-3 max-w-[560px]">Pick your scent and you land straight on its official Nightfury page on Flipkart.</p>
             </div>
             <FlipkartWordmark height={36} />
           </div>
@@ -139,7 +139,7 @@ export default function WhereToBuyPage() {
                     <ShopCard
                       key={s.slug}
                       img={shopImage(p, s)}
-                      alt={`NightFury ${p.name} ${s.name}`}
+                      alt={`Nightfury ${p.name} ${s.name}`}
                       name={s.name}
                       sub={s.group.group}
                       swatch={s.colors.liquid}
@@ -160,7 +160,7 @@ export default function WhereToBuyPage() {
                     <ShopCard
                       key={p.slug}
                       img={shopImage(p)}
-                      alt={`NightFury ${p.name}`}
+                      alt={`Nightfury ${p.name}`}
                       name={p.name}
                       sub={p.status === "live" ? undefined : "Coming soon"}
                     >
@@ -180,7 +180,7 @@ export default function WhereToBuyPage() {
           <div id="find-dealer" className="nf-anchor min-w-0 rounded-[4px] border border-navy/15 bg-white p-[clamp(24px,3vw,36px)]">
             <p className="nf-eyebrow text-[12px]">{"// In store"}</p>
             <h2 className="nf-display mt-[10px] text-[clamp(28px,3vw,36px)]">Find a dealer</h2>
-            <p className="nf-body mt-3">Share your city and number. We call you back with the nearest authorized NightFury dealer.</p>
+            <p className="nf-body mt-3">Share your city and number. We call you back with the nearest authorized Nightfury dealer.</p>
             <Suspense fallback={null}>
               <FindDealerForm />
             </Suspense>
@@ -197,7 +197,7 @@ export default function WhereToBuyPage() {
       </section>
 
       <DealerBand
-        title="Run a shop? Stock NightFury."
+        title="Run a shop? Stock Nightfury."
         body="Three lines from one supplier. Retail-ready packaging. Warranty handled for your customers. Direct support from Yash Marketing, Kanpur."
         cta="Become a Dealer"
         href="/dealers"

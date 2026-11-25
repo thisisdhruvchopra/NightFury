@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
-/* NightFury design tokens (HANDOFF section 4). No red anywhere. */
+/* Nightfury design tokens (HANDOFF section 4). No red anywhere. */
 @theme {
   --color-chalk: #F4F5F7;     /* page background, alternate sections */
   --color-white: #FFFFFF;     /* primary sections, cards, navbar */
@@ -30,7 +30,7 @@
   --font-mono: var(--font-inter), "Segoe UI", Roboto, Arial, sans-serif;
   /* Paragraph text. */
   --font-sans: var(--font-inter), "Segoe UI", Roboto, Arial, sans-serif;
-  /* NightFury wordmark and product mockup labels only. */
+  /* Nightfury wordmark and product mockup labels only. */
   --font-brand: var(--font-saira), "Arial Narrow", Arial, sans-serif;
 
   --breakpoint-stage: 900px;

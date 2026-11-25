@@ -20,7 +20,7 @@ export default function Footer() {
       <div aria-hidden="true" className="h-[6px] bg-fury" />
       <div className="nf-container grid gap-10 pt-14 pb-10 sm:grid-cols-2 lg:grid-cols-[minmax(0,1.5fr)_repeat(3,minmax(0,1fr))]">
         <div className="min-w-0">
-          <div role="img" aria-label="NightFury, Drive the Difference">
+          <div role="img" aria-label="Nightfury, Drive the Difference">
             <Logo variant="footer" />
           </div>
           <p className="mt-6 font-mono text-[12px] leading-[1.8] text-navy-soft">
@@ -62,7 +62,7 @@ export default function Footer() {
 
       <div className="nf-container">
         <div className="flex flex-wrap justify-between gap-x-6 gap-y-[10px] border-t border-[#1C2B47] pt-5 pb-9 font-mono text-[11px] font-semibold tracking-[0.14em] uppercase text-navy-soft">
-          <span>&copy; 2026 NightFury. All rights reserved. GSTIN {BUSINESS.gstin}</span>
+          <span>&copy; 2026 Nightfury. All rights reserved. GSTIN {BUSINESS.gstin}</span>
           <nav aria-label="Legal" className="flex flex-wrap gap-x-2">
             {LEGAL.map((l, i) => (
               <span key={l.href}>

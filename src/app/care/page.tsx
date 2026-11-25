@@ -7,9 +7,9 @@ import { careMicrofiber, careWipes, dealerHref } from "@/data/products";
 import { pageMeta, productJsonLd } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "NightFury Care: Microfiber Cloths and Car Wipes",
+  title: "Nightfury Care: Microfiber Cloths and Car Wipes",
   description:
-    "NightFury Care is coming: 380 GSM edgeless microfiber cloths and pH-balanced car wet wipes. Get notified the day they land on Flipkart and with dealers.",
+    "Nightfury Care is coming: 380 GSM edgeless microfiber cloths and pH-balanced car wet wipes. Get notified the day they land on Flipkart and with dealers.",
   path: "/care",
 });
 
@@ -24,7 +24,7 @@ export default function CarePage() {
         <Breadcrumb current="Car Care" />
         <div className="nf-container grid items-center gap-14 pt-12 pb-[clamp(56px,8vw,88px)] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
           <div className="min-w-0">
-            <Eyebrow>03 {"//"} NightFury Care</Eyebrow>
+            <Eyebrow>03 {"//"} Nightfury Care</Eyebrow>
             <h1 className="nf-display nf-h1 mt-4">
               Feel the
               <br />

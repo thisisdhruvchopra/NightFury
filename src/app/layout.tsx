@@ -9,7 +9,7 @@ import JsonLd from "@/components/JsonLd";
 import { SITE_URL } from "@/lib/legal";
 import { OG_IMAGE, organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 
-// Saira Condensed now draws only the NightFury wordmark and the product
+// Saira Condensed now draws only the Nightfury wordmark and the product
 // mockup labels, so the logo keeps its original lockup.
 const saira = Saira_Condensed({
   variable: "--font-saira",
@@ -44,12 +44,12 @@ const spline = Spline_Sans_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "NightFury: LED Headlights, Car Perfumes and Car Care",
+  title: "Nightfury: LED Headlights, Car Perfumes and Car Care",
   description:
-    "NightFury Vision LED headlights, Aroma car perfumes and Care detailing products. Buy on Flipkart or through authorized dealers across India.",
-  applicationName: "NightFury",
+    "Nightfury Vision LED headlights, Aroma car perfumes and Care detailing products. Buy on Flipkart or through authorized dealers across India.",
+  applicationName: "Nightfury",
   openGraph: {
-    siteName: "NightFury",
+    siteName: "Nightfury",
     url: SITE_URL,
     type: "website",
     locale: "en_IN",

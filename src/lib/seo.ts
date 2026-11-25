@@ -9,7 +9,7 @@ export const OG_IMAGE = {
   url: "/opengraph-image.jpg",
   width: 1200,
   height: 630,
-  alt: "NightFury: LED headlights, car perfumes and car care",
+  alt: "Nightfury: LED headlights, car perfumes and car care",
 } as const;
 
 /** Square brand logo on navy, used by Google for the knowledge panel and results. */
@@ -29,7 +29,7 @@ export function pageMeta({
     description,
     alternates: { canonical: url },
     // A page-level openGraph replaces the layout's, so the image has to be repeated here.
-    openGraph: { title, description, url, siteName: "NightFury", type: "website", locale: "en_IN", images: [OG_IMAGE] },
+    openGraph: { title, description, url, siteName: "Nightfury", type: "website", locale: "en_IN", images: [OG_IMAGE] },
     twitter: { card: "summary_large_image", title, description, images: [OG_IMAGE.url] },
   };
 }
@@ -45,7 +45,7 @@ export function organizationJsonLd() {
     logo: LOGO_URL,
     image: abs(OG_IMAGE.url),
     slogan: "Drive The Difference",
-    description: "NightFury makes Vision LED headlights, Aroma car perfumes and Care detailing products for drivers in India.",
+    description: "Nightfury makes Vision LED headlights, Aroma car perfumes and Care detailing products for drivers in India.",
     sameAs: [INSTAGRAM.url],
     contactPoint: {
       "@type": "ContactPoint",
@@ -66,14 +66,14 @@ export function organizationJsonLd() {
   };
 }
 
-/** Tells Google the site's name, so results read "NightFury" rather than the bare domain. */
+/** Tells Google the site's name, so results read "Nightfury" rather than the bare domain. */
 export function websiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${SITE_URL}/#website`,
-    name: "NightFury",
-    alternateName: ["NightFury India", "nightfury.co.in"],
+    name: "Nightfury",
+    alternateName: ["Nightfury India", "nightfury.co.in"],
     url: SITE_URL,
     inLanguage: "en-IN",
     publisher: { "@id": `${SITE_URL}/#organization` },
@@ -99,10 +99,10 @@ export function productJsonLd(p: Product, path: string) {
   return {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: `NightFury ${p.name}`,
+    name: `Nightfury ${p.name}`,
     description: p.description,
     image: images,
-    brand: { "@type": "Brand", name: "NightFury" },
+    brand: { "@type": "Brand", name: "Nightfury" },
     manufacturer: { "@id": `${SITE_URL}/#organization` },
     url: `${SITE_URL}${path}`,
     category: p.line === "vision" ? "Vehicle lighting" : p.line === "aroma" ? "Car air freshener" : "Car care",

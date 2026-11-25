@@ -8,13 +8,13 @@ import { pageMeta } from "@/lib/seo";
 import { SHOW_TODOS, Todo, ready } from "@/lib/todo";
 
 export const metadata = pageMeta({
-  title: "NightFury: LED Headlights, Car Perfumes and Car Care",
+  title: "Nightfury: LED Headlights, Car Perfumes and Car Care",
   description:
-    "NightFury Vision LED headlights, Aroma car perfumes and Care detailing essentials. Buy Aroma car perfumes on Flipkart or stock NightFury through our dealer network across India.",
+    "Nightfury Vision LED headlights, Aroma car perfumes and Care detailing essentials. Buy Aroma car perfumes on Flipkart or stock Nightfury through our dealer network across India.",
   path: "/",
 });
 
-/* Until the store URL is filled in, send shoppers to a Flipkart search for NightFury. */
+/* Until the store URL is filled in, send shoppers to a Flipkart search for Nightfury. */
 const flipkartHref = ready(FLIPKART_STORE_URL) ? FLIPKART_STORE_URL : "https://www.flipkart.com/search?q=nightfury";
 
 /* Live site: the first four finished stats. Dev: every stat, placeholders highlighted. */
@@ -69,7 +69,7 @@ export default function Home() {
 
       {/* ============ PROOF NUMBERS ============ */}
       {stats.length > 0 && (
-        <section aria-label="NightFury in numbers" className="border-b border-hairline bg-white">
+        <section aria-label="Nightfury in numbers" className="border-b border-hairline bg-white">
           <div className="nf-container">
           <dl className="grid grid-cols-2 md:grid-cols-[repeat(auto-fit,minmax(180px,1fr))]">
             {stats.map((s) => (
@@ -149,7 +149,7 @@ export default function Home() {
         <div className="nf-container nf-section">
           <div className="grid gap-x-16 gap-y-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.6fr)]">
             <div>
-              <p className="nf-eyebrow">Why NightFury</p>
+              <p className="nf-eyebrow">Why Nightfury</p>
               <h2 id="why-title" className="nf-display nf-h2-sm mt-3">
                 Made to sell. <span className="nf-accent">Built to last.</span>
               </h2>
@@ -169,7 +169,7 @@ export default function Home() {
       <DealerBand
         id="buy"
         eyebrow="// For dealers"
-        title="Stock NightFury."
+        title="Stock Nightfury."
         body="Three product lines from one supplier, retail-ready packaging and direct support from Yash Marketing, Kanpur. Tell us about your shop and we'll call you back within two working days."
         cta="Become a Dealer"
         href="/dealers"

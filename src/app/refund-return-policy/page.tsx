@@ -4,12 +4,12 @@ import LegalPage from "@/components/legal/LegalPage";
 import { REFUND, SUPPORT, SITE_URL } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Refund & Return Policy - NightFury",
-  description: "NightFury return windows, refund timelines, and product-specific return conditions for Vision, Aroma, and Care products.",
-  keywords: ["NightFury returns", "refund policy", "return policy", "NightFury Vision returns"],
+  title: "Refund & Return Policy - Nightfury",
+  description: "Nightfury return windows, refund timelines, and product-specific return conditions for Vision, Aroma, and Care products.",
+  keywords: ["Nightfury returns", "refund policy", "return policy", "Nightfury Vision returns"],
   openGraph: {
-    title: "Refund & Return Policy - NightFury",
-    description: "Return windows, refund timelines, and product-specific conditions for NightFury products.",
+    title: "Refund & Return Policy - Nightfury",
+    description: "Return windows, refund timelines, and product-specific conditions for Nightfury products.",
     url: `${SITE_URL}/refund-return-policy`,
     type: "website",
     images: [OG_IMAGE],
@@ -27,7 +27,7 @@ export default function RefundPage() {
       sections={[
         {
           id: "vision",
-          title: "NightFury Vision Products",
+          title: "Nightfury Vision Products",
           content: (
             <p>
               Customers may initiate a return request within <strong>{REFUND.visionReturnWindow}</strong> of successful delivery.
@@ -36,7 +36,7 @@ export default function RefundPage() {
         },
         {
           id: "aroma",
-          title: "NightFury Aroma Products",
+          title: "Nightfury Aroma Products",
           content: (
             <>
               <p>Returns are not accepted except when:</p>
@@ -51,7 +51,7 @@ export default function RefundPage() {
         },
         {
           id: "care",
-          title: "NightFury Care Products",
+          title: "Nightfury Care Products",
           content: (
             <>
               <p>Returns are not accepted except when:</p>

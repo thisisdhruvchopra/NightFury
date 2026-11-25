@@ -1,4 +1,4 @@
-# NightFury media library
+# Nightfury media library
 
 Drop all brand assets here. Anything in this folder is served by the website
 at the URL `/media/<subfolder>/<filename>`.

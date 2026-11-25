@@ -16,13 +16,13 @@ export const SOCIALS_PAGE = {
     return this.host ? `https://${this.host}` : `${SITE_URL}/socials`;
   },
   eyebrow: "OFFICIAL LINKS",
-  title: "NightFury",
-  /* Split so FURY can carry the accent orange, the way the logo does. */
+  title: "Nightfury",
+  /* Split so fury can carry the accent orange, the way the logo does. */
   titleLead: "Night",
-  titleAccent: "Fury",
+  titleAccent: "fury",
   subtitle: "Drive The Difference",
   blurb:
-    "Every official NightFury channel in one place. Shop the store, follow the build, or talk to the distributor directly.",
+    "Every official Nightfury channel in one place. Shop the store, follow the build, or talk to the distributor directly.",
   /* Background photo behind both panels. */
   background: "/media/graphics/carled.png",
 } as const;
@@ -96,7 +96,7 @@ export const SOCIAL_LINKS: readonly SocialLink[] = [
   {
     key: "dealer",
     label: "Dealer Inquiry",
-    handle: "Become a NightFury dealer",
+    handle: "Become a Nightfury dealer",
     href: `mailto:${SUPPORT.email}?subject=Dealer%20Inquiry`,
     note: "Dealer pricing, territories and commercial terms on request.",
     external: false,

@@ -111,7 +111,7 @@ export const CHARACTER_TBC = "[Character line]";
 const tbcNotes = { top: TBC, heart: TBC, base: TBC };
 
 const AIR_DESC =
-  "Mist the NightFury card, hang it from the mirror, hit refresh whenever you want. One bottle outlasts a dozen disposable fresheners.";
+  "Mist the Nightfury card, hang it from the mirror, hit refresh whenever you want. One bottle outlasts a dozen disposable fresheners.";
 
 /* ------------------------------------------------------------------ Vision */
 
@@ -171,7 +171,7 @@ export const visionLed2w: Product = {
   name: "2-Wheeler LED Headlight",
   tagline: "Own the night, on two wheels.",
   description:
-    "The same NightFury optics, packed into a fan-cooled, vibration-tested unit that shrugs off monsoons and broken roads.",
+    "The same Nightfury optics, packed into a fan-cooled, vibration-tested unit that shrugs off monsoons and broken roads.",
   formatLine: "12W / 25W",
   status: "coming-soon",
   models: [
@@ -314,9 +314,9 @@ export const aromaAir: Product = {
   name: "Aroma Air",
   tagline: "Spray. Hang. Arrive.",
   description:
-    "A matte-black 55 ml atomizer paired with a NightFury hanging card. Mist the card, hang it from the mirror, refresh whenever you want. One bottle outlasts a dozen disposable fresheners.",
+    "A matte-black 55 ml atomizer paired with a Nightfury hanging card. Mist the card, hang it from the mirror, refresh whenever you want. One bottle outlasts a dozen disposable fresheners.",
   summary:
-    "A matte-black 55 ml atomizer paired with a NightFury hanging card. Your scent, your intensity, on demand.",
+    "A matte-black 55 ml atomizer paired with a Nightfury hanging card. Your scent, your intensity, on demand.",
   formatLine: "Spray + card // 55 ml // 3 scents",
   chips: ["55 ml", "500+ sprays", "3 scents", "Hanging card included"],
   status: "live",
@@ -327,7 +327,7 @@ export const aromaAir: Product = {
     { label: "Includes", value: "Hanging card" },
   ],
   steps: [
-    "Mist the NightFury card two or three times.",
+    "Mist the Nightfury card two or three times.",
     "Hang the card from the rear-view mirror.",
     "Re-mist whenever the cabin needs a boost.",
   ],
@@ -552,10 +552,10 @@ export function dealerHref(line?: Line, productSlug?: string) {
 /* ------------------------------------------------------------ Homepage */
 
 /**
- * NightFury brand / store page on Flipkart. Paste the real URL here; until
- * then the "Shop on Flipkart" link opens a Flipkart search for NightFury.
+ * Nightfury brand / store page on Flipkart. Paste the real URL here; until
+ * then the "Shop on Flipkart" link opens a Flipkart search for Nightfury.
  */
-export const FLIPKART_STORE_URL = "[NightFury Flipkart store URL]";
+export const FLIPKART_STORE_URL = "[Nightfury Flipkart store URL]";
 
 export type HomeStage = {
   /** Anchor id of the stage section. */

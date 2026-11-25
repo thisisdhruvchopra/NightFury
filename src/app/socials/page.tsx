@@ -28,12 +28,12 @@ const manrope = Manrope({
 const ui = { fontFamily: "var(--font-manrope), system-ui, sans-serif" } as const;
 
 export const metadata: Metadata = {
-  title: "NightFury - Official Links",
-  description: `Official NightFury links: ${SITE_URL}, Instagram ${INSTAGRAM.handle}, WhatsApp ${SOCIALS_PHONE.display}, and Yash Marketing, authorized distributor, Kanpur.`,
-  keywords: ["NightFury Instagram", "NightFury links", "NightFury distributor", "Yash Marketing Kanpur"],
+  title: "Nightfury - Official Links",
+  description: `Official Nightfury links: ${SITE_URL}, Instagram ${INSTAGRAM.handle}, WhatsApp ${SOCIALS_PHONE.display}, and Yash Marketing, authorized distributor, Kanpur.`,
+  keywords: ["Nightfury Instagram", "Nightfury links", "Nightfury distributor", "Yash Marketing Kanpur"],
   openGraph: {
-    title: "NightFury - Official Links",
-    description: "Every official NightFury channel in one place.",
+    title: "Nightfury - Official Links",
+    description: "Every official Nightfury channel in one place.",
     url: SOCIALS_PAGE.url,
     type: "website",
     images: [OG_IMAGE],
@@ -119,7 +119,7 @@ export default function SocialsPage() {
         <header className="text-center">
           <Image
             src="/media/logos/logo.png"
-            alt="NightFury"
+            alt="Nightfury"
             width={56}
             height={56}
             className="mx-auto h-10 w-10 rounded-lg md:h-14 md:w-14"

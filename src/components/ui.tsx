@@ -172,7 +172,7 @@ export function PhotoSlot({
       <div aria-hidden="true" className={`nf-brand-panel relative flex min-w-0 items-center justify-center overflow-hidden rounded-[3px] ${className}`}>
         {tag && <div className="absolute top-[18px] left-[18px]">{tag}</div>}
         <span className="nf-display text-[clamp(56px,7vw,96px)] text-white/10">
-          Night<span className="text-fury/40">Fury</span>
+          Night<span className="text-fury/40">fury</span>
         </span>
       </div>
     );

@@ -8,14 +8,14 @@ import { SOCIAL_LINKS } from "@/lib/socials";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "About NightFury: Thank You for Choosing Us",
+  title: "About Nightfury: Thank You for Choosing Us",
   description:
-    "NightFury makes Vision LED headlights, Aroma car perfumes and Care detailing essentials. Follow us on Instagram, message us on WhatsApp, and get the most from your NightFury product.",
+    "Nightfury makes Vision LED headlights, Aroma car perfumes and Care detailing essentials. Follow us on Instagram, message us on WhatsApp, and get the most from your Nightfury product.",
   path: "/about",
 });
 
 /* This page is the landing page for the QR code on the thank-you card in
-   every NightFury box, so it speaks to someone who has just bought. */
+   every Nightfury box, so it speaks to someone who has just bought. */
 
 const LINES = [
   {
@@ -69,10 +69,10 @@ export default function AboutPage() {
             <div className="max-w-[640px]">
               <Kicker>{"// Thank you"}</Kicker>
               <h1 className="nf-display nf-h1 mt-4 text-chalk">
-                Thanks for choosing <span className="text-fury">NightFury.</span>
+                Thanks for choosing <span className="text-fury">Nightfury.</span>
               </h1>
               <p className="nf-body nf-body-lg mt-6 text-[#C9D0DC]">
-                You&apos;ve just added a little NightFury to your drive. This page is for you: who we are, how to get the most out of what you bought, and where to find us.
+                You&apos;ve just added a little Nightfury to your drive. This page is for you: who we are, how to get the most out of what you bought, and where to find us.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 {CHANNELS.filter((c) => c.key === "instagram" || c.key === "whatsapp").map((c) => (
@@ -150,11 +150,11 @@ export default function AboutPage() {
         <div className="nf-container nf-section">
           <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-end">
             <div>
-              <Kicker>{"// What is NightFury"}</Kicker>
+              <Kicker>{"// What is Nightfury"}</Kicker>
               <h2 id="what-title" className="nf-display nf-h2-sm mt-[14px]">Made to make any car feel special.</h2>
             </div>
             <p className="nf-body nf-body-lg m-0 max-w-[560px]">
-              NightFury is a car accessories brand from India, built around one idea: <strong className="text-navy">drive the difference</strong>. We make three lines, for how your car looks at night, how it smells inside, and how clean it stays.
+              Nightfury is a car accessories brand from India, built around one idea: <strong className="text-navy">drive the difference</strong>. We make three lines, for how your car looks at night, how it smells inside, and how clean it stays.
             </p>
           </div>
 
@@ -226,7 +226,7 @@ export default function AboutPage() {
           <div className="mt-10 grid gap-4 md:grid-cols-3">
             <div className="rounded-[4px] border border-navy/15 bg-white p-6">
               <p className="m-0 font-display text-[20px] font-bold text-navy">18-month warranty on Vision</p>
-              <p className="nf-body mt-3">Every Vision LED bought from an official NightFury listing or an authorized dealer is covered for manufacturing defects. Keep your invoice or order ID.</p>
+              <p className="nf-body mt-3">Every Vision LED bought from an official Nightfury listing or an authorized dealer is covered for manufacturing defects. Keep your invoice or order ID.</p>
               <Link href="/warranty-policy" className="mt-4 inline-block font-mono text-[12px] font-bold tracking-[0.12em] text-navy uppercase hover:text-fury">Warranty details &#8594;</Link>
             </div>
             <div className="rounded-[4px] border border-navy/15 bg-white p-6">
@@ -241,7 +241,7 @@ export default function AboutPage() {
               <p className="m-0 flex items-center gap-[10px] font-display text-[20px] font-bold text-navy">
                 <FlipkartIcon size={24} /> Bought on Flipkart?
               </p>
-              <p className="nf-body mt-3">A quick rating from your Flipkart orders helps other drivers find NightFury. It means a lot to a young brand like ours.</p>
+              <p className="nf-body mt-3">A quick rating from your Flipkart orders helps other drivers find Nightfury. It means a lot to a young brand like ours.</p>
               <Link href="/where-to-buy#online" className="mt-4 inline-block font-mono text-[12px] font-bold tracking-[0.12em] text-navy uppercase hover:text-fury">Our Flipkart listings &#8594;</Link>
             </div>
           </div>
@@ -257,7 +257,7 @@ export default function AboutPage() {
               Built for drivers who <span className="text-fury">notice the details.</span>
             </h2>
             <p className="nf-body mt-5 max-w-[600px] text-[#C9CFDB]">
-              NightFury started with a simple belief: the car you drive every day deserves the same care as the one you dream about. So we make the things that change how it feels from the driver&apos;s seat, brighter light at night, a cabin that smells like yours, and a finish that stays clean.
+              Nightfury started with a simple belief: the car you drive every day deserves the same care as the one you dream about. So we make the things that change how it feels from the driver&apos;s seat, brighter light at night, a cabin that smells like yours, and a finish that stays clean.
             </p>
             <p className="nf-body mt-4 max-w-[600px] text-[#C9CFDB]">
               Every product is sold through our official Flipkart listings and authorized dealers across India, and backed by a support team you can actually reach.

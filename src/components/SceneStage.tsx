@@ -13,7 +13,7 @@ const sceneSrcSet = (src?: string) => (src ? `${src} 1890w, ${src.replace(/\.web
 /* Until a scent's Flipkart URL is filled in, the button opens a Flipkart
    search for that scent so it never leads nowhere. */
 const flipkartHref = (it: StageItem) =>
-  it.flipkartUrl || `https://www.flipkart.com/search?q=${encodeURIComponent(`NightFury ${it.productName} ${it.name}`)}`;
+  it.flipkartUrl || `https://www.flipkart.com/search?q=${encodeURIComponent(`Nightfury ${it.productName} ${it.name}`)}`;
 
 export function Cta({ item }: Readonly<{ item: StageItem }>) {
   return (
@@ -105,7 +105,7 @@ export default function SceneStage({
               src={it.scene}
               srcSet={sceneSrcSet(it.scene)}
               sizes="100vw"
-              alt={i === idx ? `NightFury ${it.productName} ${it.name} spray bottle` : ""}
+              alt={i === idx ? `Nightfury ${it.productName} ${it.name} spray bottle` : ""}
               aria-hidden={i !== idx}
               loading="lazy"
               decoding="async"
@@ -177,7 +177,7 @@ export default function SceneStage({
                 src={it.scene}
                 srcSet={sceneSrcSet(it.scene)}
                 sizes="(min-width: 768px) 60vw, 90vw"
-                alt={`NightFury ${it.productName} ${it.name} spray bottle`}
+                alt={`Nightfury ${it.productName} ${it.name} spray bottle`}
                 loading="lazy"
                 decoding="async"
                 className="block aspect-[4/3] w-full object-cover object-[74%_50%]"

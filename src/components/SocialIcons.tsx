@@ -1,4 +1,4 @@
-/** Icons for the official NightFury channels, keyed like SOCIAL_LINKS.
+/** Icons for the official Nightfury channels, keyed like SOCIAL_LINKS.
     Instagram, WhatsApp and email use the real brand logos from
     public/brand/<name>/logo.webp (originals in assets/brand/); the rest are
     line icons that follow the text colour. */

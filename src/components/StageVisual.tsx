@@ -119,7 +119,7 @@ function Cutout({ item, compact }: Readonly<{ item: StageItem; compact?: boolean
     <img
       key={item.photo}
       src={item.photo}
-      alt={`NightFury ${item.productName} ${item.name}`}
+      alt={`Nightfury ${item.productName} ${item.name}`}
       width={900}
       height={700}
       decoding="async"

@@ -2,9 +2,9 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "NightFury",
-    short_name: "NightFury",
-    description: "NightFury Vision LED headlights, Aroma car perfumes and Care detailing products.",
+    name: "Nightfury",
+    short_name: "Nightfury",
+    description: "Nightfury Vision LED headlights, Aroma car perfumes and Care detailing products.",
     start_url: "/",
     display: "standalone",
     background_color: "#FFFFFF",

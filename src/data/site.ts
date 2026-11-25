@@ -13,7 +13,7 @@ export const HERO = {
   body:
     "LED headlights, car perfumes and care essentials, engineered to make any car feel special. Supplied to dealers across India and available on Flipkart.",
   image: "/home/hero.webp",
-  imageAlt: "A car at night with NightFury LED headlights cutting through the dark",
+  imageAlt: "A car at night with Nightfury LED headlights cutting through the dark",
 };
 
 /**
@@ -52,7 +52,7 @@ export const LINES = [
     body: "Three formats for the dash, the mirror and on demand. Eleven signature scents.",
     href: "/aroma",
     image: "/home/tiles/aroma.webp",
-    imageAlt: "NightFury Aroma bottle with fragrance smoke",
+    imageAlt: "Nightfury Aroma bottle with fragrance smoke",
     status: "live" as const,
   },
   {
@@ -69,7 +69,7 @@ export const LINES = [
   },
 ];
 
-/** "Why NightFury" points. */
+/** "Why Nightfury" points. */
 export const WHY = [
   {
     icon: "shield" as const,

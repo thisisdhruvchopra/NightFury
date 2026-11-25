@@ -26,7 +26,7 @@ export default function VisionConfigurator() {
   return (
     <div className="grid gap-14 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:items-start">
       <div className="flex min-w-0 flex-col gap-[18px]">
-        <PhotoSlot white src="/media/products/vision/4whled/box.webp" alt="NightFury 4-Wheeler LED headlight pair and box" label={p.photoLabel ?? ""} flag={`N° ${p.num} Flagship`} className="h-[clamp(300px,40vw,420px)]" />
+        <PhotoSlot white src="/media/products/vision/4whled/box.webp" alt="Nightfury 4-Wheeler LED headlight pair and box" label={p.photoLabel ?? ""} flag={`N° ${p.num} Flagship`} className="h-[clamp(300px,40vw,420px)]" />
         <BeamPreview temp={temp} strong={model.watts === 300} />
       </div>
 

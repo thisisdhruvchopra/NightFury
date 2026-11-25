@@ -4,12 +4,12 @@ import LegalPage from "@/components/legal/LegalPage";
 import { BUSINESS, SUPPORT, JURISDICTION, SITE_URL } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Terms & Conditions - NightFury",
-  description: "Terms and conditions governing the use of nightfury.co.in, purchase of NightFury products, and related services by Yash Marketing.",
-  keywords: ["NightFury terms", "terms and conditions", "Yash Marketing", "automotive accessories terms"],
+  title: "Terms & Conditions - Nightfury",
+  description: "Terms and conditions governing the use of nightfury.co.in, purchase of Nightfury products, and related services by Yash Marketing.",
+  keywords: ["Nightfury terms", "terms and conditions", "Yash Marketing", "automotive accessories terms"],
   openGraph: {
-    title: "Terms & Conditions - NightFury",
-    description: "Terms and conditions governing the use of nightfury.co.in and purchase of NightFury products.",
+    title: "Terms & Conditions - Nightfury",
+    description: "Terms and conditions governing the use of nightfury.co.in and purchase of Nightfury products.",
     url: `${SITE_URL}/terms-and-conditions`,
     type: "website",
     images: [OG_IMAGE],
@@ -22,7 +22,7 @@ export default function TermsPage() {
   return (
     <LegalPage
       title="Terms & Conditions"
-      description="These terms govern your use of nightfury.co.in and the purchase of NightFury products. Please read them carefully before using our website."
+      description="These terms govern your use of nightfury.co.in and the purchase of Nightfury products. Please read them carefully before using our website."
       breadcrumb="Terms & Conditions"
       sections={[
         {
@@ -34,7 +34,7 @@ export default function TermsPage() {
                 This website is operated by <strong>{BUSINESS.legalName}</strong>, the authorized distributor of <strong>{BUSINESS.brandName}</strong> products. By accessing or using this website, you agree to be bound by these Terms & Conditions.
               </p>
               <p>
-                {BUSINESS.legalName} operates as the authorized distributor and business entity responsible for the sale, fulfillment, support, warranty, and customer service of all NightFury products.
+                {BUSINESS.legalName} operates as the authorized distributor and business entity responsible for the sale, fulfillment, support, warranty, and customer service of all Nightfury products.
               </p>
             </>
           ),
@@ -54,7 +54,7 @@ export default function TermsPage() {
           content: (
             <>
               <p>
-                All product descriptions, images, and specifications are provided for informational purposes. NightFury reserves the right to modify product details, pricing, and availability without prior notice.
+                All product descriptions, images, and specifications are provided for informational purposes. Nightfury reserves the right to modify product details, pricing, and availability without prior notice.
               </p>
             </>
           ),
@@ -64,7 +64,7 @@ export default function TermsPage() {
           title: "Intellectual Property",
           content: (
             <p>
-              All content on this website, including but not limited to text, graphics, logos, images, product designs, and software, is the property of NightFury / {BUSINESS.legalName} and is protected under applicable intellectual property laws. Unauthorized use, reproduction, or distribution is prohibited.
+              All content on this website, including but not limited to text, graphics, logos, images, product designs, and software, is the property of Nightfury / {BUSINESS.legalName} and is protected under applicable intellectual property laws. Unauthorized use, reproduction, or distribution is prohibited.
             </p>
           ),
         },
@@ -73,7 +73,7 @@ export default function TermsPage() {
           title: "Limitation of Liability",
           content: (
             <p>
-              NightFury shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website or purchase of products. Our total liability shall not exceed the amount paid by you for the specific product in question.
+              Nightfury shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of this website or purchase of products. Our total liability shall not exceed the amount paid by you for the specific product in question.
             </p>
           ),
         },

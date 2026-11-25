@@ -8,9 +8,9 @@ import { pageMeta, productJsonLd } from "@/lib/seo";
 import { Todo } from "@/lib/todo";
 
 export const metadata = pageMeta({
-  title: "NightFury Vision: LED Headlights for Cars and Bikes",
+  title: "Nightfury Vision: LED Headlights for Cars and Bikes",
   description:
-    "NightFury Vision 4-Wheeler LED headlight pair: 240W or 300W, 6000K and 4300K modes, CANBUS-ready, IP67, 18-month warranty. 2-Wheeler LED coming soon.",
+    "Nightfury Vision 4-Wheeler LED headlight pair: 240W or 300W, 6000K and 4300K modes, CANBUS-ready, IP67, 18-month warranty. 2-Wheeler LED coming soon.",
   path: "/vision",
 });
 
@@ -23,7 +23,7 @@ const STATS = [
 
 const STEPS = [
   { t: "Remove", d: "Twist out the stock halogen bulb." },
-  { t: "Plug", d: "Seat the NightFury unit and connect the plug." },
+  { t: "Plug", d: "Seat the Nightfury unit and connect the plug." },
   { t: "Light up", d: "Switch on. Zero dash errors, full beam." },
 ];
 
@@ -37,7 +37,7 @@ export default function VisionPage() {
         <Breadcrumb current="Lighting" />
         <div className="nf-container grid items-center gap-14 pt-12 pb-[clamp(56px,8vw,88px)] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
           <div className="min-w-0">
-            <Eyebrow>01 {"//"} NightFury Vision</Eyebrow>
+            <Eyebrow>01 {"//"} Nightfury Vision</Eyebrow>
             <h1 className="nf-display nf-h1 mt-4">
               See the
               <br />
@@ -153,7 +153,7 @@ export default function VisionPage() {
               18 months. <span className="text-fury">No drama.</span>
             </h2>
             <p className="mt-[18px] max-w-[620px] font-mono text-[15px] leading-[1.7] text-[#C9CFDB]">
-              Register your Vision purchase and keep the bill. If it fails within 18 months, your dealer swaps it. Covers purchases from official NightFury listings and authorized dealers.
+              Register your Vision purchase and keep the bill. If it fails within 18 months, your dealer swaps it. Covers purchases from official Nightfury listings and authorized dealers.
             </p>
           </div>
           <div>

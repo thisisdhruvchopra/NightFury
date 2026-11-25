@@ -78,7 +78,7 @@ export default function BoxStage({
                 <img
                   key={it.slug}
                   src={it.box?.src}
-                  alt={i === idx ? `NightFury ${it.productName} ${it.name} in its retail box` : ""}
+                  alt={i === idx ? `Nightfury ${it.productName} ${it.name} in its retail box` : ""}
                   aria-hidden={i !== idx}
                   decoding="async"
                   className="nf-scene-img absolute inset-0 h-full w-full rounded-[4px] object-contain shadow-[0_30px_80px_rgba(0,0,0,0.55)]"
@@ -140,7 +140,7 @@ export default function BoxStage({
                 {/* eslint-disable-next-line @next/next/no-img-element -- pre-sized WebP box */}
                 <img
                   src={it.box?.src}
-                  alt={`NightFury ${it.productName} ${it.name} in its retail box`}
+                  alt={`Nightfury ${it.productName} ${it.name} in its retail box`}
                   loading="lazy"
                   decoding="async"
                   className="relative block w-full rounded-[3px] shadow-[0_16px_40px_rgba(0,0,0,0.5)]"

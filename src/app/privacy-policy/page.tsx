@@ -4,12 +4,12 @@ import LegalPage from "@/components/legal/LegalPage";
 import { BUSINESS, SUPPORT, GRIEVANCE_OFFICER, SITE_URL } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy - NightFury",
-  description: "How NightFury and Yash Marketing collect, use, and protect your personal information when you use nightfury.co.in.",
-  keywords: ["NightFury privacy policy", "data protection", "Yash Marketing privacy"],
+  title: "Privacy Policy - Nightfury",
+  description: "How Nightfury and Yash Marketing collect, use, and protect your personal information when you use nightfury.co.in.",
+  keywords: ["Nightfury privacy policy", "data protection", "Yash Marketing privacy"],
   openGraph: {
-    title: "Privacy Policy - NightFury",
-    description: "How NightFury collects, uses, and protects your personal information.",
+    title: "Privacy Policy - Nightfury",
+    description: "How Nightfury collects, uses, and protects your personal information.",
     url: `${SITE_URL}/privacy-policy`,
     type: "website",
     images: [OG_IMAGE],
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           title: "Information We Collect",
           content: (
             <>
-              <p>NightFury ({BUSINESS.legalName}) may collect the following information:</p>
+              <p>Nightfury ({BUSINESS.legalName}) may collect the following information:</p>
               <ul>
                 <li>Name</li>
                 <li>Email address</li>
@@ -110,7 +110,7 @@ export default function PrivacyPage() {
           title: "Changes to This Policy",
           content: (
             <p>
-              NightFury reserves the right to update this Privacy Policy at any time. Changes will be posted on this page with an updated effective date. Continued use of the website constitutes acceptance of the revised policy.
+              Nightfury reserves the right to update this Privacy Policy at any time. Changes will be posted on this page with an updated effective date. Continued use of the website constitutes acceptance of the revised policy.
             </p>
           ),
         },

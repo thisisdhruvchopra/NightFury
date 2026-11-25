@@ -27,7 +27,7 @@ const BY_PATH: Record<string, string[]> = {
     "Dealer enquiries open across India",
   ],
   "/care": [
-    "NightFury Care is coming",
+    "Nightfury Care is coming",
     "Detailing-grade microfiber",
     "pH-balanced car wipes",
     "Get notified first",

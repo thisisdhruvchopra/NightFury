@@ -1,4 +1,4 @@
-/* Flipkart brand marks, used to signpost the official NightFury listings.
+/* Flipkart brand marks, used to signpost the official Nightfury listings.
    Originals live in assets/brand/flipkart/; the served copies are in
    public/brand/. */
 

@@ -3,8 +3,8 @@ import { BUSINESS, SUPPORT, GRIEVANCE_OFFICER, SITE_URL } from "@/lib/legal";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "Contact NightFury: Support and Dealer Enquiries",
-  description: `Reach NightFury support at ${SUPPORT.email} or ${SUPPORT.phone}. Yash Marketing, authorized distributor, Kanpur. Dealer inquiries welcome.`,
+  title: "Contact Nightfury: Support and Dealer Enquiries",
+  description: `Reach Nightfury support at ${SUPPORT.email} or ${SUPPORT.phone}. Yash Marketing, authorized distributor, Kanpur. Dealer inquiries welcome.`,
   path: "/contact-us",
 });
 
@@ -29,7 +29,7 @@ export default function ContactPage() {
           <Eyebrow>Get in touch</Eyebrow>
           <h1 className="nf-display mt-4" style={{ fontSize: "clamp(36px, 4.4vw, 56px)" }}>Contact Us</h1>
           <p className="nf-body mt-4 max-w-2xl">
-            Have a question about NightFury products, need support with an order, or interested in becoming a dealer? We are here to help.
+            Have a question about Nightfury products, need support with an order, or interested in becoming a dealer? We are here to help.
           </p>
         </header>
         <div aria-hidden="true" className="flex flex-col gap-1">
@@ -99,7 +99,7 @@ export default function ContactPage() {
 
             <InfoCard title="Become a Dealer">
               <p className="m-0">
-                NightFury supports both retail and dealer/distributor sales. Interested in stocking NightFury products at your shop?
+                Nightfury supports both retail and dealer/distributor sales. Interested in stocking Nightfury products at your shop?
               </p>
               <p className="mt-3 mb-0">
                 Dealer-specific pricing, territories, and commercial terms are available on request.

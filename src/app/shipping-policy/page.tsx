@@ -4,12 +4,12 @@ import LegalPage from "@/components/legal/LegalPage";
 import { SHIPPING, SUPPORT, SITE_URL } from "@/lib/legal";
 
 export const metadata: Metadata = {
-  title: "Shipping Policy - NightFury",
-  description: "NightFury delivery timelines and service areas. Pan India delivery via Shiprocket.",
-  keywords: ["NightFury shipping", "delivery policy", "Pan India delivery"],
+  title: "Shipping Policy - Nightfury",
+  description: "Nightfury delivery timelines and service areas. Pan India delivery via Shiprocket.",
+  keywords: ["Nightfury shipping", "delivery policy", "Pan India delivery"],
   openGraph: {
-    title: "Shipping Policy - NightFury",
-    description: "Delivery timelines and service areas for NightFury products.",
+    title: "Shipping Policy - Nightfury",
+    description: "Delivery timelines and service areas for Nightfury products.",
     url: `${SITE_URL}/shipping-policy`,
     type: "website",
     images: [OG_IMAGE],
@@ -22,7 +22,7 @@ export default function ShippingPage() {
   return (
     <LegalPage
       title="Shipping Policy"
-      description="We ship NightFury products across India. Here is everything you need to know about our shipping process and timelines."
+      description="We ship Nightfury products across India. Here is everything you need to know about our shipping process and timelines."
       breadcrumb="Shipping Policy"
       sections={[
         {
@@ -30,7 +30,7 @@ export default function ShippingPage() {
           title: "Service Area",
           content: (
             <p>
-              NightFury ships <strong>{SHIPPING.serviceArea}</strong>. Shipping availability remains subject to courier serviceability at your PIN code.
+              Nightfury ships <strong>{SHIPPING.serviceArea}</strong>. Shipping availability remains subject to courier serviceability at your PIN code.
             </p>
           ),
         },
@@ -39,7 +39,7 @@ export default function ShippingPage() {
           title: "Shipping Partner",
           content: (
             <p>
-              Our primary logistics platform is <strong>{SHIPPING.partner}</strong>. NightFury may utilize multiple courier providers through {SHIPPING.partner} to ensure timely and reliable delivery.
+              Our primary logistics platform is <strong>{SHIPPING.partner}</strong>. Nightfury may utilize multiple courier providers through {SHIPPING.partner} to ensure timely and reliable delivery.
             </p>
           ),
         },

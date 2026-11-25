@@ -1,7 +1,7 @@
 export const BUSINESS = {
   legalName: "Yash Marketing",
-  brandName: "NightFury",
-  tagline: "Authorized Distributor of NightFury",
+  brandName: "Nightfury",
+  tagline: "Authorized Distributor of Nightfury",
   gstin: "09AABFY5202B1ZL",
   address: {
     line1: "109/75, Sisamau Bazar",
@@ -52,7 +52,7 @@ export const REFUND = {
 } as const;
 
 export const WARRANTY = {
-  applicableProducts: "NightFury Vision Products",
+  applicableProducts: "Nightfury Vision Products",
   coverage: [
     "Manufacturing defects",
     "Product failure during normal usage",

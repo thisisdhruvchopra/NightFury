@@ -26,7 +26,7 @@ export default function Header() {
       >
         <Link
           href="/"
-          aria-label="NightFury, Drive the Difference"
+          aria-label="Nightfury, Drive the Difference"
           className="flex-none no-underline"
         >
           <Logo />

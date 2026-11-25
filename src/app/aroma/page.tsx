@@ -8,7 +8,7 @@ import { AROMA_PRODUCTS, dealerHref } from "@/data/products";
 import { pageMeta, productJsonLd } from "@/lib/seo";
 
 export const metadata = pageMeta({
-  title: "NightFury Aroma: Premium Car Perfumes",
+  title: "Nightfury Aroma: Premium Car Perfumes",
   description:
     "Aroma Core dashboard canisters, Aroma Air spray with hanging card, and Aroma Essence hanging glass. Three formats, eleven scents. All three are on Flipkart now.",
   path: "/aroma",
@@ -37,7 +37,7 @@ export default function AromaPage() {
         <Breadcrumb current="Car Perfumes" />
         <div className="nf-container grid items-center gap-14 pt-12 pb-[clamp(56px,8vw,88px)] lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)]">
           <div className="min-w-0">
-            <Eyebrow>02 {"//"} NightFury Aroma</Eyebrow>
+            <Eyebrow>02 {"//"} Nightfury Aroma</Eyebrow>
             <h1 className="nf-display nf-h1 mt-4">
               Smell the
               <br />

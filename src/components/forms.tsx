@@ -173,7 +173,7 @@ export function NotifyForm({
         id={`${id}-consent`}
         error={errors.consent}
         dark={dark}
-        text="OK to contact me by phone, WhatsApp or email about NightFury launches."
+        text="OK to contact me by phone, WhatsApp or email about Nightfury launches."
       />
       <FormError msg={errors.form ?? errors.product} />
     </form>
@@ -238,7 +238,7 @@ export function FindDealerForm() {
   const { status, errors, submit } = useLead();
 
   if (status === "done") {
-    return <Success>Thanks. We&apos;ll call you with your nearest NightFury dealer within 2 working days.</Success>;
+    return <Success>Thanks. We&apos;ll call you with your nearest Nightfury dealer within 2 working days.</Success>;
   }
 
   return (

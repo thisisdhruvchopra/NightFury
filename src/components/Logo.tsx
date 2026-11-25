@@ -1,5 +1,5 @@
 /**
- * NightFury lockup rendered as live HTML text (HANDOFF section 4, Logo).
+ * Nightfury lockup rendered as live HTML text (HANDOFF section 4, Logo).
  * The supplied SVG uses <text> and falls back to a system font, so the site
  * draws the wordmark itself with Saira Condensed.
  */
