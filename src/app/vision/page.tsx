@@ -1,4 +1,5 @@
 import VisionConfigurator from "@/components/VisionConfigurator";
+import GoogleReviews from "@/components/GoogleReviews";
 import DealerBand from "@/components/DealerBand";
 import JsonLd from "@/components/JsonLd";
 import { NotifyForm } from "@/components/forms";
@@ -161,6 +162,8 @@ export default function VisionPage() {
           </div>
         </div>
       </section>
+
+      <GoogleReviews />
 
       <DealerBand
         title="Stock lighting that doesn't come back."

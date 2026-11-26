@@ -1,4 +1,5 @@
 import Link from "next/link";
+import GoogleReviews from "@/components/GoogleReviews";
 import Viewer360 from "@/components/Viewer360";
 import ScentCard from "@/components/ScentCard";
 import DealerBand from "@/components/DealerBand";
@@ -210,6 +211,8 @@ export default function AromaPage() {
           </div>
         </div>
       </section>
+
+      <GoogleReviews />
 
       <DealerBand
         title="Put Aroma on your counter."

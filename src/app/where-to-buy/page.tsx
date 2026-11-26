@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import GoogleReviews from "@/components/GoogleReviews";
 import Link from "next/link";
 import FlipkartButton from "@/components/FlipkartButton";
 import { FlipkartWordmark } from "@/components/FlipkartMark";
@@ -195,6 +196,8 @@ export default function WhereToBuyPage() {
           </div>
         </div>
       </section>
+
+      <GoogleReviews />
 
       <DealerBand
         title="Run a shop? Stock Nightfury."

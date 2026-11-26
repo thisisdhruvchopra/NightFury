@@ -1,4 +1,5 @@
 import Link from "next/link";
+import GoogleReviews from "@/components/GoogleReviews";
 import HomeStages from "@/components/HomeStages";
 import DealerBand from "@/components/DealerBand";
 import { FeatureCard, Pip, SkewButton, StatusTag } from "@/components/ui";
@@ -165,6 +166,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <GoogleReviews />
 
       <DealerBand
         id="buy"

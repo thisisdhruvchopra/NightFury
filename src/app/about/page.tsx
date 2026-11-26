@@ -1,4 +1,5 @@
 import Link from "next/link";
+import GoogleReviews from "@/components/GoogleReviews";
 import { Breadcrumb } from "@/components/ui";
 import { FlipkartIcon } from "@/components/FlipkartMark";
 import { SOCIAL_ICONS } from "@/components/SocialIcons";
@@ -232,6 +233,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* ============ LIVE GOOGLE REVIEWS (once there are some) ============ */}
+      <GoogleReviews tone="white" prompt={false} />
 
       {/* ============ REVIEWS ============ */}
       <section id="review" className="nf-anchor border-t border-navy/15 bg-chalk" aria-labelledby="review-title">
