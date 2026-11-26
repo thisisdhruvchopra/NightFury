@@ -2,9 +2,10 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/ui";
 import { FlipkartIcon } from "@/components/FlipkartMark";
 import { SOCIAL_ICONS } from "@/components/SocialIcons";
-import { AROMA_PRODUCTS, shopImage } from "@/data/products";
+import { AROMA_PRODUCTS, flatScents, shopImage } from "@/data/products";
 import { SUPPORT } from "@/lib/legal";
-import { SOCIAL_LINKS } from "@/lib/socials";
+import { GOOGLE_REVIEW_URL, SOCIAL_LINKS } from "@/lib/socials";
+import { SHOW_TODOS, ready } from "@/lib/todo";
 import { pageMeta } from "@/lib/seo";
 
 export const metadata = pageMeta({
@@ -47,6 +48,21 @@ const CHANNELS = SOCIAL_LINKS.filter((l) => l.key !== "dealer");
 function Kicker({ children }: Readonly<{ children: React.ReactNode }>) {
   return <p className="m-0 font-mono text-[12px] font-bold tracking-[0.2em] text-fury uppercase">{children}</p>;
 }
+
+function Stars({ size = 18 }: Readonly<{ size?: number }>) {
+  return (
+    <span aria-hidden="true" className="inline-flex gap-[3px] text-[#F2B705]">
+      {[0, 1, 2, 3, 4].map((i) => (
+        <svg key={i} width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.5l2.9 6.1 6.6.8-4.9 4.6 1.3 6.6L12 17.3l-5.9 3.3 1.3-6.6-4.9-4.6 6.6-.8z" />
+        </svg>
+      ))}
+    </span>
+  );
+}
+
+/* The Google card appears once the review link is filled in (always in dev, so it can be checked). */
+const showGoogle = ready(GOOGLE_REVIEW_URL) || SHOW_TODOS;
 
 export default function AboutPage() {
   return (
@@ -217,13 +233,77 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ============ REVIEWS ============ */}
+      <section id="review" className="nf-anchor border-t border-navy/15 bg-chalk" aria-labelledby="review-title">
+        <div className="nf-container nf-section">
+          <Kicker>{"// Reviews"}</Kicker>
+          <h2 id="review-title" className="nf-display nf-h2-sm mt-[14px]">Tell other drivers what you think.</h2>
+          <p className="nf-body mt-3 max-w-[600px]">Honest reviews help other drivers choose, and tell us what to improve. It takes less than a minute.</p>
+
+          <div className={`mt-10 grid items-start gap-4 ${showGoogle ? "lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]" : ""}`}>
+            {showGoogle && (
+              <div className="flex flex-col rounded-[4px] border border-navy/15 bg-white p-[clamp(24px,3vw,32px)]">
+                <Stars size={22} />
+                <p className="m-0 mt-5 font-display text-[24px] leading-tight font-bold text-navy">Review Nightfury on Google</p>
+                <p className="nf-body mt-3">Rate your experience with the brand: the product, delivery and support. Your review shows up when people search for Nightfury.</p>
+                <a
+                  href={ready(GOOGLE_REVIEW_URL) ? GOOGLE_REVIEW_URL : "#review"}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nf-btn nf-btn--dark mt-7 self-start"
+                >
+                  Write a Google review
+                </a>
+                {!ready(GOOGLE_REVIEW_URL) && (
+                  <p className="m-0 mt-3 border border-dashed border-fury px-2 py-1 font-mono text-[11px] text-fury">Dev only: add GOOGLE_REVIEW_URL in src/lib/socials.ts</p>
+                )}
+              </div>
+            )}
+
+            <div className="rounded-[4px] border border-navy/15 bg-white p-[clamp(24px,3vw,32px)]">
+              <p className="m-0 flex items-center gap-[10px] font-display text-[24px] leading-tight font-bold text-navy">
+                <FlipkartIcon size={26} /> Rate the product you bought
+              </p>
+              <p className="nf-body mt-3">Bought on Flipkart? Pick your product and scent to open its listing, then rate it from your orders.</p>
+              <div className="mt-6 flex flex-col gap-5">
+                {AROMA_PRODUCTS.map((p) => {
+                  const scents = flatScents(p).filter((sc) => ready(sc.flipkartUrl));
+                  if (!scents.length) return null;
+                  return (
+                    <div key={p.slug}>
+                      <p className="m-0 font-mono text-[11px] font-bold tracking-[0.14em] text-muted uppercase">{p.name}</p>
+                      <ul className="m-0 mt-2 flex list-none flex-wrap gap-2 p-0">
+                        {scents.map((sc) => (
+                          <li key={sc.slug}>
+                            <a
+                              href={sc.flipkartUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Rate ${p.name} ${sc.name} on Flipkart`}
+                              className="inline-flex min-h-10 items-center gap-2 rounded-[2px] border border-navy/20 bg-white px-3 text-[14px] font-semibold text-navy no-underline transition-colors hover:border-navy hover:bg-chalk"
+                            >
+                              <span aria-hidden="true" className="h-[9px] w-[9px] rounded-full" style={{ backgroundColor: sc.colors.liquid }} />
+                              {sc.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============ SUPPORT ============ */}
-      <section className="border-t border-navy/15 bg-chalk" aria-labelledby="help-title">
+      <section className="border-t border-navy/15 bg-white" aria-labelledby="help-title">
         <div className="nf-container nf-section">
           <Kicker>{"// We've got you"}</Kicker>
           <h2 id="help-title" className="nf-display nf-h2-sm mt-[14px]">Warranty and support.</h2>
 
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
             <div className="rounded-[4px] border border-navy/15 bg-white p-6">
               <p className="m-0 font-display text-[20px] font-bold text-navy">18-month warranty on Vision</p>
               <p className="nf-body mt-3">Every Vision LED bought from an official Nightfury listing or an authorized dealer is covered for manufacturing defects. Keep your invoice or order ID.</p>
@@ -236,13 +316,6 @@ export default function AboutPage() {
                 <a href={`mailto:${SUPPORT.email}`} className="font-semibold text-navy hover:text-fury">{SUPPORT.email}</a>
                 <a href={SUPPORT.phoneHref} className="font-semibold text-navy hover:text-fury">{SUPPORT.phone}</a>
               </p>
-            </div>
-            <div className="rounded-[4px] border border-navy/15 bg-white p-6">
-              <p className="m-0 flex items-center gap-[10px] font-display text-[20px] font-bold text-navy">
-                <FlipkartIcon size={24} /> Bought on Flipkart?
-              </p>
-              <p className="nf-body mt-3">A quick rating from your Flipkart orders helps other drivers find Nightfury. It means a lot to a young brand like ours.</p>
-              <Link href="/where-to-buy#online" className="mt-4 inline-block font-mono text-[12px] font-bold tracking-[0.12em] text-navy uppercase hover:text-fury">Our Flipkart listings &#8594;</Link>
             </div>
           </div>
         </div>

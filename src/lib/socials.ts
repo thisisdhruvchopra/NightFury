@@ -52,6 +52,13 @@ export const INSTAGRAM = {
   url: "https://www.instagram.com/nightfury.automotive/",
 } as const;
 
+/**
+ * "Write a review" link from the Google Business Profile
+ * (Business Profile > Ask for reviews > copy link, e.g. https://g.page/r/XXXX/review).
+ * While it is a bracketed placeholder, the Google review card stays hidden on the live site.
+ */
+export const GOOGLE_REVIEW_URL = "https://g.page/r/CVaxvekmh-TAEBE/review";
+
 export const WHATSAPP = {
   /** Digits only, country code first, no + or spaces. */
   number: SOCIALS_PHONE.digits,
