@@ -167,7 +167,7 @@ export default function VisionPage() {
 
       <DealerBand
         title="Stock lighting that doesn't come back."
-        body="Warranty-backed LED with retail-ready packaging. Bulk pricing through Yash Marketing, Kanpur."
+        body="Warranty-backed LED with retail-ready packaging. Bulk pricing for registered dealers."
         cta="Bulk enquiry"
         href={dealerHref("vision")}
       />

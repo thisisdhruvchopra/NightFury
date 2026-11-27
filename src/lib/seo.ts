@@ -47,7 +47,8 @@ export function organizationJsonLd() {
     image: abs(OG_IMAGE.url),
     slogan: "Drive The Difference",
     description: "Nightfury makes Vision LED headlights, Aroma car perfumes and Care detailing products for drivers in India.",
-    sameAs: [INSTAGRAM.url],
+    // Instagram and the Google Business Profile, so Google ties all three to one brand.
+    sameAs: [INSTAGRAM.url, "https://maps.google.com/?cid=13899382951172223318"],
     contactPoint: {
       "@type": "ContactPoint",
       telephone: SUPPORT.phone,

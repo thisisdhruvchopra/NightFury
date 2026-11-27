@@ -106,7 +106,7 @@ export default function CarePage() {
 
       <DealerBand
         title="Reserve Care stock early."
-        body="Get on the first allocation list through Yash Marketing, Kanpur."
+        body="Get on the first allocation list for dealers."
         cta="Dealer enquiry"
         href={dealerHref("care")}
       />

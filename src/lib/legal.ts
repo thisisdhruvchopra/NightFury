@@ -17,8 +17,8 @@ export const BUSINESS = {
 } as const;
 
 export const SUPPORT = {
-  email: "support@nightfury.in",
-  secondaryEmail: "contact@nightfury.in",
+  email: "support@nightfury.co.in",
+  secondaryEmail: "contact@nightfury.co.in",
   phone: "+91 8052170430",
   phoneHref: "tel:+918052170430",
   hours: "Monday to Saturday, 10:00 AM - 7:00 PM IST",
@@ -28,7 +28,7 @@ export const SUPPORT = {
 export const GRIEVANCE_OFFICER = {
   name: "Dhruv Chopra",
   designation: "Grievance Officer",
-  email: "support@nightfury.in",
+  email: "support@nightfury.co.in",
   phone: "+91 8052170430",
 } as const;
 

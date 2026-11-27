@@ -216,7 +216,7 @@ export default function AromaPage() {
 
       <DealerBand
         title="Put Aroma on your counter."
-        body="Eleven scents, retail-ready packaging, and a format for every customer. Bulk pricing through Yash Marketing, Kanpur."
+        body="Eleven scents, retail-ready packaging, and a format for every customer. Bulk pricing for registered dealers."
         cta="Bulk enquiry"
         href={dealerHref("aroma")}
       />

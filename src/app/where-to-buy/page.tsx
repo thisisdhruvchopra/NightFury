@@ -201,7 +201,7 @@ export default function WhereToBuyPage() {
 
       <DealerBand
         title="Run a shop? Stock Nightfury."
-        body="Three lines from one supplier. Retail-ready packaging. Warranty handled for your customers. Direct support from Yash Marketing, Kanpur."
+        body="Three lines from one supplier. Retail-ready packaging. Warranty handled for your customers. Direct support from the Nightfury team."
         cta="Become a Dealer"
         href="/dealers"
       />

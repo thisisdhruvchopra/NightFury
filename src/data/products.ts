@@ -337,7 +337,7 @@ export const aromaAir: Product = {
       scents: [
         {
           slug: "azure",
-          name: "Azure",
+          name: "Azur",
           character: "Smell like you mean business.",
           description: AIR_DESC,
           notes: { top: "Aquatic, nutmeg", heart: "Muguet, tobacco, iris", base: "Woody amber, sandalwood, musk" },

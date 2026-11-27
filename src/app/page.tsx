@@ -155,7 +155,7 @@ export default function Home() {
                 Made to sell. <span className="nf-accent">Built to last.</span>
               </h2>
               <p className="nf-body mt-5 max-w-[420px]">
-                <Todo value={DISTRIBUTOR_NOTE} fallback="Distributed across India by Yash Marketing, Kanpur." />
+                <Todo value={DISTRIBUTOR_NOTE} fallback="Sold across India on Flipkart and through a growing network of authorized dealers." />
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-2">
@@ -173,7 +173,7 @@ export default function Home() {
         id="buy"
         eyebrow="// For dealers"
         title="Stock Nightfury."
-        body="Three product lines from one supplier, retail-ready packaging and direct support from Yash Marketing, Kanpur. Tell us about your shop and we'll call you back within two working days."
+        body="Three product lines from one supplier, retail-ready packaging and direct support from the Nightfury team. Tell us about your shop and we'll call you back within two working days."
         cta="Become a Dealer"
         href="/dealers"
         secondary={{ href: flipkartHref, label: "Buying for your car? Shop on Flipkart", external: true }}

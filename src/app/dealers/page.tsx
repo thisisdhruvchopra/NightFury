@@ -26,7 +26,7 @@ export default function DealersPage() {
             </h1>
           </div>
           <p className="nf-body nf-body-lg min-w-0">
-            Three lines from one supplier. Retail-ready packaging. Warranty handled for your customers. Direct support from Yash Marketing, Kanpur.
+            Three lines from one supplier. Retail-ready packaging. Warranty handled for your customers. Direct support from the Nightfury team.
           </p>
         </div>
         <div aria-hidden="true" className="flex flex-col gap-1">
@@ -46,10 +46,10 @@ export default function DealersPage() {
           </div>
           <aside className="flex min-w-0 flex-col gap-[18px] lg:sticky lg:top-[108px]">
             <FeatureCard white icon="pin" title="Three lines, one supplier">
-              Vision lighting, Aroma car perfumes and Care detailing essentials, all through Yash Marketing.
+              Vision lighting, Aroma car perfumes and Care detailing essentials, all from one supplier.
             </FeatureCard>
             <FeatureCard white icon="shield" title="Warranty handled">
-              The 18-month Vision warranty is handled through our dealer network, with direct support from Yash Marketing.
+              The 18-month Vision warranty is handled through our dealer network, with direct support from the Nightfury team.
             </FeatureCard>
             <div className="on-navy rounded-[3px] bg-navy p-6 text-chalk">
               <p className="m-0 font-mono text-[11px] font-bold tracking-[0.2em] uppercase text-fury">Prefer to talk?</p>

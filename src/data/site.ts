@@ -21,9 +21,9 @@ export const HERO = {
  * filled in, so add your real numbers and they take over from the defaults.
  */
 export const STATS: { value: string; label: string }[] = [
-  { value: "[000+]", label: "Dealers across India" },
+  { value: "25+", label: "Dealers across India" },
   { value: "[00+]", label: "Cities served" },
-  { value: "[00+]", label: "Years in automotive distribution" },
+  { value: "1", label: "Year in automotive distribution" },
   { value: "3", label: "Product lines" },
   { value: "11", label: "Signature scents" },
   { value: "18 mo", label: "Warranty on Vision LED" },
@@ -89,7 +89,7 @@ export const WHY = [
   {
     icon: "pin" as const,
     title: "Direct dealer support",
-    body: "Stock, schemes and after-sales handled directly by Yash Marketing, Kanpur.",
+    body: "Stock, schemes and after-sales handled directly by the Nightfury team.",
   },
 ];
 
